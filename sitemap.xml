@@ -3,100 +3,100 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>localhost/posts/</loc>
+    <loc>https://madskjeldgaard.github.io/posts/</loc>
     <lastmod>2020-04-14T10:41:44+02:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/pages/about/</loc>
+    <loc>https://madskjeldgaard.github.io/pages/about/</loc>
     <lastmod>2020-04-14T10:41:44+02:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/pages/concerts/</loc>
+    <loc>https://madskjeldgaard.github.io/pages/concerts/</loc>
     <lastmod>2020-04-14T10:41:44+02:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/pages/contact/</loc>
+    <loc>https://madskjeldgaard.github.io/pages/contact/</loc>
     <lastmod>2020-04-14T10:41:44+02:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/</loc>
+    <loc>https://madskjeldgaard.github.io/</loc>
     <lastmod>2020-04-14T10:41:44+02:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/pages/</loc>
+    <loc>https://madskjeldgaard.github.io/pages/</loc>
     <lastmod>2020-04-14T10:41:44+02:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/neovim-setup-for-c-and-openframeworks-development/</loc>
+    <loc>https://madskjeldgaard.github.io/neovim-setup-for-c-and-openframeworks-development/</loc>
     <lastmod>2020-04-06T15:44:23+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/quarantine-live-stream-1/</loc>
+    <loc>https://madskjeldgaard.github.io/quarantine-live-stream-1/</loc>
     <lastmod>2020-03-14T18:06:01+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/sox-tutorial-using-sox-on-android-using-termux/</loc>
+    <loc>https://madskjeldgaard.github.io/sox-tutorial-using-sox-on-android-using-termux/</loc>
     <lastmod>2020-03-09T14:24:51+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/how-to-generate-supercollider-files-containing-random-patterns/</loc>
+    <loc>https://madskjeldgaard.github.io/how-to-generate-supercollider-files-containing-random-patterns/</loc>
     <lastmod>2020-03-01T13:50:52+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</loc>
+    <loc>https://madskjeldgaard.github.io/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</loc>
     <lastmod>2020-01-23T21:18:29+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/pattern-workshop-herlev-bibliotek-2019/</loc>
+    <loc>https://madskjeldgaard.github.io/pattern-workshop-herlev-bibliotek-2019/</loc>
     <lastmod>2019-11-06T11:22:54+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/how-to-change-the-default-synth-in-supercollider/</loc>
+    <loc>https://madskjeldgaard.github.io/how-to-change-the-default-synth-in-supercollider/</loc>
     <lastmod>2019-10-18T12:42:12+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/scintro-notam-2019/</loc>
+    <loc>https://madskjeldgaard.github.io/scintro-notam-2019/</loc>
     <lastmod>2019-09-01T12:54:46+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</loc>
+    <loc>https://madskjeldgaard.github.io/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</loc>
     <lastmod>2019-08-22T08:56:36+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/supercollider-tutorial-mass-producing-synthdefs/</loc>
+    <loc>https://madskjeldgaard.github.io/supercollider-tutorial-mass-producing-synthdefs/</loc>
     <lastmod>2019-08-19T10:36:35+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</loc>
+    <loc>https://madskjeldgaard.github.io/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</loc>
     <lastmod>2019-08-05T17:46:09+00:00</lastmod>
   </url>
   
   <url>
-    <loc>localhost/blog/</loc>
+    <loc>https://madskjeldgaard.github.io/blog/</loc>
   </url>
   
   <url>
-    <loc>localhost/series/</loc>
+    <loc>https://madskjeldgaard.github.io/series/</loc>
   </url>
   
   <url>
-    <loc>localhost/tags/</loc>
+    <loc>https://madskjeldgaard.github.io/tags/</loc>
   </url>
   
 </urlset>

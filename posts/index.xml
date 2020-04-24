@@ -1,19 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Mads Kjeldgaard</title>
-        <link>localhost/posts/</link>
+        <link>https://madskjeldgaard.github.io/posts/</link>
         <description>Recent content on Mads Kjeldgaard</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-uk</language>
         <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate>
-        <atom:link href="localhost/posts/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://madskjeldgaard.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>NeoVim setup for c&#43;&#43; and openFrameworks development</title>
-            <link>localhost/neovim-setup-for-c-and-openframeworks-development/</link>
+            <link>https://madskjeldgaard.github.io/neovim-setup-for-c-and-openframeworks-development/</link>
             <pubDate>Mon, 06 Apr 2020 15:44:23 +0000</pubDate>
             
-            <guid>localhost/neovim-setup-for-c-and-openframeworks-development/</guid>
+            <guid>https://madskjeldgaard.github.io/neovim-setup-for-c-and-openframeworks-development/</guid>
             <description>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
 This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
 I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
@@ -151,10 +151,10 @@ endsnippet
         
         <item>
             <title>Quarantine Live Stream #1: Livecoding using Ndefs in SuperCollider</title>
-            <link>localhost/quarantine-live-stream-1/</link>
+            <link>https://madskjeldgaard.github.io/quarantine-live-stream-1/</link>
             <pubDate>Sat, 14 Mar 2020 18:06:01 +0000</pubDate>
             
-            <guid>localhost/quarantine-live-stream-1/</guid>
+            <guid>https://madskjeldgaard.github.io/quarantine-live-stream-1/</guid>
             <description>A live stream covering how to live code using Ndefs in SuperCollider.
  </description>
             <content type="html"><![CDATA[<p>A live stream covering how to live code using Ndefs in SuperCollider.</p>
@@ -165,10 +165,10 @@ endsnippet
         
         <item>
             <title>SoX tutorial: SoX on Android (using Termux)</title>
-            <link>localhost/sox-tutorial-using-sox-on-android-using-termux/</link>
+            <link>https://madskjeldgaard.github.io/sox-tutorial-using-sox-on-android-using-termux/</link>
             <pubDate>Mon, 09 Mar 2020 14:24:51 +0000</pubDate>
             
-            <guid>localhost/sox-tutorial-using-sox-on-android-using-termux/</guid>
+            <guid>https://madskjeldgaard.github.io/sox-tutorial-using-sox-on-android-using-termux/</guid>
             <description>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.
 Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.
 Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</description>
@@ -222,10 +222,10 @@ Basically it is a command line interface for your Android device and works like 
         
         <item>
             <title>How to generate SuperCollider files containing random patterns</title>
-            <link>localhost/how-to-generate-supercollider-files-containing-random-patterns/</link>
+            <link>https://madskjeldgaard.github.io/how-to-generate-supercollider-files-containing-random-patterns/</link>
             <pubDate>Sun, 01 Mar 2020 13:50:52 +0000</pubDate>
             
-            <guid>localhost/how-to-generate-supercollider-files-containing-random-patterns/</guid>
+            <guid>https://madskjeldgaard.github.io/how-to-generate-supercollider-files-containing-random-patterns/</guid>
             <description>Today I tested out this simple but powerful idea: To generate SuperCollider files containing small generative compositions. The idea is to at some point use this to save the states of generative patterns that I am working on in real time.
 See this gist for a code example.</description>
             <content type="html"><![CDATA[<p>Today I tested out this simple but powerful idea: To generate SuperCollider files containing small generative compositions. The idea is to at some point use this to save the states of generative patterns that I am working on in real time.</p>
@@ -235,10 +235,10 @@ See this gist for a code example.</description>
         
         <item>
             <title>SuperCollider workshop at Notam, january 2020: Algorithmic composition using patterns</title>
-            <link>localhost/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</link>
+            <link>https://madskjeldgaard.github.io/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</link>
             <pubDate>Thu, 23 Jan 2020 21:18:29 +0000</pubDate>
             
-            <guid>localhost/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</guid>
+            <guid>https://madskjeldgaard.github.io/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</guid>
             <description>Here are the slides for the SuperCollider workshop at Notam, january 2020.
 Download slides</description>
             <content type="html"><![CDATA[<p>Here are the slides for the SuperCollider workshop at Notam, january 2020.</p>
@@ -249,10 +249,10 @@ Download slides</description>
         
         <item>
             <title>Pattern workshop, Herlev Bibliotek 2019</title>
-            <link>localhost/pattern-workshop-herlev-bibliotek-2019/</link>
+            <link>https://madskjeldgaard.github.io/pattern-workshop-herlev-bibliotek-2019/</link>
             <pubDate>Wed, 06 Nov 2019 11:22:54 +0000</pubDate>
             
-            <guid>localhost/pattern-workshop-herlev-bibliotek-2019/</guid>
+            <guid>https://madskjeldgaard.github.io/pattern-workshop-herlev-bibliotek-2019/</guid>
             <description>Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.
 The SynthDef used for the workshop can be downloaded here.
 Download slides here.</description>
@@ -265,10 +265,10 @@ Download slides here.</description>
         
         <item>
             <title>How to change the default synth in SuperCollider</title>
-            <link>localhost/how-to-change-the-default-synth-in-supercollider/</link>
+            <link>https://madskjeldgaard.github.io/how-to-change-the-default-synth-in-supercollider/</link>
             <pubDate>Fri, 18 Oct 2019 12:42:12 +0000</pubDate>
             
-            <guid>localhost/how-to-change-the-default-synth-in-supercollider/</guid>
+            <guid>https://madskjeldgaard.github.io/how-to-change-the-default-synth-in-supercollider/</guid>
             <description>The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
 A nice alternative: A triangle wave synth with a low pass filter Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth.</description>
             <content type="html"><![CDATA[<p>The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:</p>
@@ -327,10 +327,10 @@ rq<span style="color:#a6e22e">=</span><span style="color:#ae81ff">1</span><span 
         
         <item>
             <title>Introduction to SuperCollider, Notam 2019</title>
-            <link>localhost/scintro-notam-2019/</link>
+            <link>https://madskjeldgaard.github.io/scintro-notam-2019/</link>
             <pubDate>Sun, 01 Sep 2019 12:54:46 +0000</pubDate>
             
-            <guid>localhost/scintro-notam-2019/</guid>
+            <guid>https://madskjeldgaard.github.io/scintro-notam-2019/</guid>
             <description>Here you will find the material for the introductory workshop held at Notam, Oslo in late summer 2019.
 The slides may be used as a sort of cheatsheet as well as notes for remembering the topics covered:
 • An overview: What is SuperCollider and what can you do with it?
@@ -351,10 +351,10 @@ The slides may be used as a sort of cheatsheet as well as notes for remembering 
         
         <item>
             <title>Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins</title>
-            <link>localhost/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</link>
+            <link>https://madskjeldgaard.github.io/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</link>
             <pubDate>Thu, 22 Aug 2019 08:56:36 +0000</pubDate>
             
-            <guid>localhost/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</guid>
+            <guid>https://madskjeldgaard.github.io/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</guid>
             <description>Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
 Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
 In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.</description>
@@ -415,10 +415,10 @@ In this tutorial we will cover how to set up the Hedrot application to send it�
         
         <item>
             <title>SuperCollider tutorial: Mass producing SynthDefs</title>
-            <link>localhost/supercollider-tutorial-mass-producing-synthdefs/</link>
+            <link>https://madskjeldgaard.github.io/supercollider-tutorial-mass-producing-synthdefs/</link>
             <pubDate>Mon, 19 Aug 2019 10:36:35 +0000</pubDate>
             
-            <guid>localhost/supercollider-tutorial-mass-producing-synthdefs/</guid>
+            <guid>https://madskjeldgaard.github.io/supercollider-tutorial-mass-producing-synthdefs/</guid>
             <description>In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
 But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
 This becomes annoying when working with UGens that want to know the exact number of channels used, eg.</description>
@@ -464,10 +464,10 @@ This becomes annoying when working with UGens that want to know the exact number
         
         <item>
             <title>SuperCollider tutorial: Easily render generative compositions as sound files using NRT</title>
-            <link>localhost/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
+            <link>https://madskjeldgaard.github.io/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
             <pubDate>Mon, 05 Aug 2019 17:46:09 +0000</pubDate>
             
-            <guid>localhost/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
+            <guid>https://madskjeldgaard.github.io/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
             <description>One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
 NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.</description>
             <content type="html"><![CDATA[<p><img src="/wp-content/uploads/2019/08/supercollider-laptop-room-e1566211773173.jpg" alt="alt"></p>
