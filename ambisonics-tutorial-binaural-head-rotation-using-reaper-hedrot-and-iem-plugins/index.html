@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="mads">
+<meta name="description" content="Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
+Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
+In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="localhost/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/" />
+
+
+    <title>
+        
+            Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins :: Mads Kjeldgaard  — Composer and sound hacker
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/localhost/main.min.753fac8f03736f0edc9be411eb20cee875dd7bb8e73c8155fbf6a629c863f4ca.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins">
+<meta itemprop="description" content="Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
+Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
+In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.">
+<meta itemprop="datePublished" content="2019-08-22T08:56:36&#43;00:00" />
+<meta itemprop="dateModified" content="2019-08-22T08:56:36&#43;00:00" />
+<meta itemprop="wordCount" content="1053">
+<meta itemprop="image" content="localhost"/>
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="localhost"/>
+
+<meta name="twitter:title" content="Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins"/>
+<meta name="twitter:description" content="Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
+Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
+In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements."/>
+
+
+
+    <meta property="og:title" content="Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins" />
+<meta property="og:description" content="Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
+Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
+In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="localhost/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/" />
+<meta property="og:image" content="localhost"/>
+<meta property="article:published_time" content="2019-08-22T08:56:36+00:00" />
+<meta property="article:modified_time" content="2019-08-22T08:56:36+00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2019-08-22 08:56:36 &#43;0000 &#43;0000" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">mads kjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="localhost/localhost/pages/about">About</a></li><li><a href="localhost/localhost/posts">Blog</a></li><li><a href="localhost/localhost/pages/contact">Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="localhost/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/">Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins</a></h2>
+
+            
+
+            <div class="post-content">
+                <p><a href="https://abaskind.github.io/hedrot/">Hedrot</a> is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a <a href="https://www.pjrc.com/teensy/">Teensy</a>) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.</p>
+<p>Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.</p>
+<p>In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.</p>
+<p>The goal is to setup IEM’s SceneRotator plugin at the end of our ambisonic signal just before an instance of IEM’s BinauralDecoder plugin. We will then connect the SceneRotator to our head tracker to move the ambisonic sound field, as we move our head.</p>
+<p>PS. Like most things ambisonics, I was introduced to this trick by <a href="https://github.com/balintlaczko">Bálint Laczkó</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we begin, make sure you have the following software installed:</p>
+<ul>
+<li><a href="http://reaper.fm">Reaper</a></li>
+<li><a href="https://plugins.iem.at/">IEM Plugins</a></li>
+<li><a href="https://github.com/abaskind/hedrot">Hedrot</a></li>
+</ul>
+<p>Unfortunately, at the moment Hedrot only works on Windows and MacOS. Albeit if you feel adventurous and want to develop a Hedrot app for Linux, the source code is <a href="https://github.com/abaskind/hedrot">available here</a> .</p>
+<p>You will also need a pair of studio headphones (not in-ear ones) and  <a href="https://github.com/abaskind/hedrot">a built Hedrot tracker</a> .</p>
+<p>It is not necessary but advisable that you also read through and follow the <a href="https://plugins.iem.at/docs/tutorial_basicrouting/">Basic Routing tutorial</a>.</p>
+<h2 id="setting-up-the-hedrotreceiver-application">Setting up the hedrotReceiver application</h2>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/hedrotReceiver.png"><!-- raw HTML omitted --></a></p>
+<p>To get information from the head tracker you need to first connect it to your computer using a usb cable and then open up the hedrotReceiver application.</p>
+<p>If it’s the first time you are using the headtracker, click on “Headtracker Settings”. In the new window, click on “reset all headtracker settings”</p>
+<p>Then, press the “HEADTRACKER IS OFF” button to activate the head tracker. Make sure autodetect is on. You should now see the white box at the top of the app display a path to your headtracker.</p>
+<p>Before setting anything up, you have to calibrate your head tracker. Click the “CALIBRATION” button on the main screen to enter the calibration settings.</p>
+<h3 id="calibration">Calibration</h3>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/calibrationScreen.png"><!-- raw HTML omitted --></a></p>
+<p>At the bottom of this screen, you can see how well your head tracker is performing. The normalized magnetometer and accelerometer readings in the bottom of the screen should ideally be somewhere around the center but they probably aren’t. If this is the first time you are using your head tracker, then you need to calibrate the accelerometer (only needed this one time) by clicking the “CALIBRATE ACCELEROMETER” button. Follow the steps written there and return to the calibration screen. Verify that the reading in the bottom middle of the screen is now somewhere around the middle.</p>
+<p>Next, click the “CALIBRATE MAGNETOMETER” button to calibrate the magnetometer. Follow the steps in the next screen and return to the main calibration screen when you are done. Verify that the readings in the bottom left are now also around the middle, like your accelerometer.</p>
+<p>Every time you attach your headrotator to a new pair of headphones, you need to recalibrate the magnetometer. The accelerometer only needs to be calibrated this one time (normally). That said, make it a happen to check the calibration every time you use the head tracker, often the magnetometer needs to be calibrated even though it hasn’t left the headphones.</p>
+<h3 id="osc-settings">OSC settings</h3>
+<p>Now it’s time to send the tracker’s data to Reaper. Click the “OSC settings” button on the main screen of hedrotReceiver.</p>
+<p>The first thing we need to do, is figure where we are sending the data and modify the OSC patterns accordingly in hedrot.</p>
+<p>The target for this data will be an instance of IEM’s SceneRotator plugin which you can <a href="https://plugins.iem.at/docs/osc/">control using OSC</a>. Change the yaw, pitch and roll OSC patterns to the following:</p>
+<ul>
+<li>yaw: <code>/SceneRotator/yaw</code></li>
+<li>pitch: <code>/SceneRotator/pitch</code></li>
+<li>roll: <code>/SceneRotator/roll</code></li>
+</ul>
+<p>There is no need to change the scaling/order setting in hedrot, because – as <a href="https://plugins.iem.at/docs/osc/">we can see in the IEM documentation</a> – SceneRotator expects values from -180 to 180 degrees, which is what hedrot puts out normally.</p>
+<p>You can ignore the quaternion values in hedrot, as we won’t be using these.</p>
+<p><em>Don’t change the port number just yet.</em></p>
+<h2 id="setting-up-reaper">Setting up Reaper</h2>
+<p>As mentioned at the beginning of this tutorial, it is recommended to follow the <a href="https://plugins.iem.at/docs/tutorial_basicrouting/">basic routing in Reaper tutorial</a>.</p>
+<p>If you’re impatient though, just scroll to the bottom of that tutorial and download the Reaper templates.</p>
+<p>Open up one of the Reaper templates ( in my case I’ve opened the third order template ). Now click the <code>Headphones</code> track and open it’s fx chain. Here you will find a BinauralDecoder instance. Choose headphone equalization here, if you need it.</p>
+<p>Add an instance of SceneRotator to the <code>Headphones</code> just before the BinauralDecoder.</p>
+<h3 id="set-up-scenerotator">Set up SceneRotator</h3>
+<p>In your SceneRotator plugin instance, click the bottom OSC button to set up and open the network port that will receive the data from hedrotReceiver. Set it to 1234 or some other number you like. Click “open” to open this port. If you get a “Connection could not be established!” error, the port is probably used for something else. Try setting it to a different number and click open again.</p>
+<p><em>Note: It is advised to always open the port in the plugin before setting it up in hedrot, as this will block the port.</em></p>
+<h3 id="start-sending-osc-data-from-hedrot">Start sending OSC data from hedrot</h3>
+<p>Back to hedrot. Open the OSC settings again and set the port number to 1234 or whatever number you put in as the port in SceneRotator. Click the red “do not transmit” buttons to activate transmission. Verify that you see values changing on the right side of your OSC settings window.</p>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/transmitting.png"><!-- raw HTML omitted --></a></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>That’s it actually. Now you can play ambisonic material on one of the tracks in the <code>Ambisonic Bus</code> folder track. If you don’t have any on hand, you can add the Reaper JS plugin “Pink Noise Generator” and a StereoEncoder instance to one of those tracks and play around with it’s placement.</p>
+<p>To save yourself the pain of repeating this laborous setup process, you can save your hedrot settings as a preset file in the hedrotReceiver application. You can also save the SceneRotator’s settings to make things easier. And finally, save your Reaper Project as a new template that now includes a head rotator.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            <span></span>
+            <span> <a href="localhost/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/localhost/bundle.min.4a69500057d68129e88f497d354afe68422eb56de6d15e45dbe2190858ea5a76bfcb096406f992984b241db45f47388ac57ab0376e3b32125bef7a8a6d0f06c4.js" integrity="sha512-SmlQAFfWgSnoj0l9NUr&#43;aEIutW3m0V5F2&#43;IZCFjqWna/ywlkBvmSmEskHbRfRziKxXqwN247MhJb73qKbQ8GxA=="></script>
+
+
+
+    </body>
+</html>

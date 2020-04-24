@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="mads">
+<meta name="description" content="It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
+This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
+I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="localhost/neovim-setup-for-c-and-openframeworks-development/" />
+
+
+    <title>
+        
+            NeoVim setup for c&#43;&#43; and openFrameworks development :: Mads Kjeldgaard  — Composer and sound hacker
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/localhost/main.min.753fac8f03736f0edc9be411eb20cee875dd7bb8e73c8155fbf6a629c863f4ca.css">
+
+
+
+
+
+
+<meta itemprop="name" content="NeoVim setup for c&#43;&#43; and openFrameworks development">
+<meta itemprop="description" content="It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
+This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
+I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.">
+<meta itemprop="datePublished" content="2020-04-06T15:44:23&#43;00:00" />
+<meta itemprop="dateModified" content="2020-04-06T15:44:23&#43;00:00" />
+<meta itemprop="wordCount" content="833">
+<meta itemprop="image" content="localhost"/>
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="localhost"/>
+
+<meta name="twitter:title" content="NeoVim setup for c&#43;&#43; and openFrameworks development"/>
+<meta name="twitter:description" content="It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
+This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
+I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins."/>
+
+
+
+    <meta property="og:title" content="NeoVim setup for c&#43;&#43; and openFrameworks development" />
+<meta property="og:description" content="It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
+This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
+I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="localhost/neovim-setup-for-c-and-openframeworks-development/" />
+<meta property="og:image" content="localhost"/>
+<meta property="article:published_time" content="2020-04-06T15:44:23+00:00" />
+<meta property="article:modified_time" content="2020-04-06T15:44:23+00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-04-06 15:44:23 &#43;0000 &#43;0000" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">mads kjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="localhost/localhost/pages/about">About</a></li><li><a href="localhost/localhost/posts">Blog</a></li><li><a href="localhost/localhost/pages/contact">Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="localhost/neovim-setup-for-c-and-openframeworks-development/">NeoVim setup for c++ and openFrameworks development</a></h2>
+
+            
+
+            <div class="post-content">
+                <p>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.</p>
+<p>This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.</p>
+<p>I got a lot of pointers for this setup from <a href="https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE">Chendi Xue’s blogpost about Vim/CPP development</a>.</p>
+<p>So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.</p>
+<h2 id="install-clang-formatting">Install clang formatting</h2>
+<p>On Arch Linux I had to install clang to make this work: <code>sudo pacman -Syu clang</code></p>
+<p>There’s some really nice autoformatting plugins from Google. Add these to your init.vim and install:</p>
+<pre><code>&quot; Code formatting (for c++)
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+</code></pre>
+<p>This should now automatically fix your code automatically with the following in your init.vim:</p>
+<pre><code>&quot; CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE
+&quot; Code formatting
+autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+</code></pre>
+<h2 id="ctags">Ctags</h2>
+<p>Ctags makes it possible to autocomplete source code when you are writing code and with the power of YCM it should also make it possible to work with methods of classes in a nice way.</p>
+<p>First, install Ctags</p>
+<p>Arch: <code>sudo pacman -Syu ctags</code></p>
+<p>To compile tags files for my open frameworks projects I use the python tool <a href="https://pypi.org/project/compiledb/">compiledb</a></p>
+<p>This can be installed using pip:</p>
+<p><code>pip install compiledb</code></p>
+<p>Now, from the root of your open frameworks projects you can run the following command to generate a tags file:</p>
+<p><code>compiledb -n make</code></p>
+<p>This will output a file called <code>compile_commands.json</code> containing the tags.</p>
+<h2 id="youcompleteme">YouCompleteMe</h2>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/04/of-ycm.gif"><!-- raw HTML omitted --></a></p>
+<p>Following this installation guide thoroughly <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Full-Installation-Guide">installation guide</a></p>
+<p>Especially make sure you have <a href="https://clangd.llvm.org/installation.html">clangd</a> installed. On arch, this was installed automatically for me with the <code>clang</code> package but you can verify this on the command line by running <code>which clangd</code> which should return a path to the binary, otherwise you need to install it.</p>
+<p>It’s especially important to add this line to your init.vim file:</p>
+<pre><code>&lt;br /&gt;let g:ycm_clangd_binary_path = &quot;/path/to/clangd&quot;
+</code></pre>
+<p><code>/path/to/clangd</code> can be replaced by the output of the command <code>which clangd</code></p>
+<p>Now you should have automatic debugging and autocomplete suggestions.</p>
+<p>Try opening up a openframeworks, run the <code>compiledb -n make</code> command and move to <code>ofApp.cpp</code> and inside the setup function add the following:</p>
+<p><code>auto rect = ofRectangle(0, 0, 250, 250);</code></p>
+<p>This will make a rectangle object. Now, in the next line, write <code>rect.</code> – by the <code>.</code> you should now see a list of suggested methods to use that are native to the ofRectangle class.</p>
+<h2 id="keybindings">Keybindings</h2>
+<p>Most of the relevant keymappings I use, I got from <a href="http://roosnaflak.com/tech-and-research/openframeworks-nvim-archlinux/">Kenneth Flak’s blogpost about the same</a>. These will setup vim to compile your oF program when you press ctrl-e (this is convenient since this is the same shortcut we use in <a href="https://github.com/davidgranstrom/scnvim">SCNVim</a>):</p>
+<pre><code>augroup c
+autocmd!
+autocmd FileType c,cpp,h,hpp,glsl call MakeRun()
+augroup end
+
+function! MakeRun()
+nnoremap :terminal make -j8 &amp;&amp; make run
+inoremap :terminal make -j8 &amp;&amp; make run
+endfunction
+</code></pre>
+<p>And then some nice keybindings to work with YouCompleteMe:</p>
+<pre><code>&quot; Find definition
+au FileType cpp nnoremap si :YcmCompleter GoToDefinition
+
+&quot; Reboot Ycm server
+au FileType cpp nnoremap sk :YcmRestartServer
+
+&quot; Fix thing under cursor
+au FileType cpp nnoremap :YcmCompleter FixIt
+
+&quot; Regenerate tags file
+au FileType cpp nnoremap :!compiledb -n make
+
+&quot; Go to documentation
+au FileType cpp nnoremap K :YcmCompleter GetDoc
+
+&quot; Echo the type/arguments of class
+au FileType cpp nnoremap ; :YcmCompleter GetType
+
+&quot; new split with alternate file
+nnoremap mv :AV
+&quot; switch in same window
+nnoremap ma :A
+</code></pre>
+<h1 id="snippets">Snippets</h1>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/04/of-snippets.gif"><!-- raw HTML omitted --></a></p>
+<p>Another really nice feature in this dev environment is the addition of snippets. I use UltiSnips for this. When I set this up, I read varying reports about how well UltiSnips works with YCM, but for me it works fine.</p>
+<p>Install <a href="https://github.com/SirVer/ultisnips">UltiSnips</a> and then add these to your init.vim:</p>
+<pre><code>&quot; YouCompleteMe and UltiSnips compatibility.
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+
+&quot; Expand snippets from UltiSnips with tab
+let g:UltiSnipsExpandTrigger=&quot;&quot;
+let g:UltiSnipsJumpForwardTrigger=&quot;&quot;
+let g:UltiSnipsJumpBackwardTrigger=&quot;&quot;
+
+&quot; Where the different snippet directories are stored
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data', 'plugged/vim-snippets']
+</code></pre>
+<p>I’d also recommend installing <a href="github.com/honza/vim-snippets/">vim-snippets</a> which contains extra snippets.</p>
+<p>Now, when for example you type <code>if</code> in a <code>.cpp</code> or <code>.h</code> file you can hit tab to expand it to get the full code for an if-statement. If you want, you can even add your own custom snippets using Ultisnips powerful capabilities ( execute <code>:h snippets</code> in Vim for more info about this ). Below I have defined two snippets. One which will expand when typing <code>ofclass</code> and one when typing <code>ofheader</code>. The first will create a sensible class and the latter a sensible header. Hit tab to cycle through the arguments.</p>
+<p>To use these snippets, add these to the file (which you can create if it doesn’t exist yet) <code>~/.vim/UltiSnips/cpp.snippets</code></p>
+<pre><code>snippet ofclass &quot;Class for open frameworks&quot;
+#include &quot;${1:`!p snip.rv = snip.basename`}.h&quot;
+
+$1::$1(){}
+
+void $1::setup(){${2:}}
+
+void $1::update(){${3:}}
+
+void $1::draw(){${4:}}
+endsnippet
+
+snippet ofheader &quot;Header for open frameworks class&quot;
+#ifndef ${1:`!p snip.rv = &quot;_&quot; + snip.basename.upper()`}
+#define $1
+#include &quot;ofMain.h&quot;
+class ${2:`!p snip.rv = snip.basename`} {
+
+public:
+
+void setup();
+void update();
+void draw();
+
+$2(); // constructor
+
+${0}
+
+private:
+};
+#endif
+endsnippet
+</code></pre>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            <span></span>
+            <span> <a href="localhost/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/localhost/bundle.min.4a69500057d68129e88f497d354afe68422eb56de6d15e45dbe2190858ea5a76bfcb096406f992984b241db45f47388ac57ab0376e3b32125bef7a8a6d0f06c4.js" integrity="sha512-SmlQAFfWgSnoj0l9NUr&#43;aEIutW3m0V5F2&#43;IZCFjqWna/ywlkBvmSmEskHbRfRziKxXqwN247MhJb73qKbQ8GxA=="></script>
+
+
+
+    </body>
+</html>

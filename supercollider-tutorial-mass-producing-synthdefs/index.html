@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="mads">
+<meta name="description" content="In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
+But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
+This becomes annoying when working with UGens that want to know the exact number of channels used, eg." />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="localhost/supercollider-tutorial-mass-producing-synthdefs/" />
+
+
+    <title>
+        
+            SuperCollider tutorial: Mass producing SynthDefs :: Mads Kjeldgaard  — Composer and sound hacker
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/localhost/main.min.753fac8f03736f0edc9be411eb20cee875dd7bb8e73c8155fbf6a629c863f4ca.css">
+
+
+
+
+
+
+<meta itemprop="name" content="SuperCollider tutorial: Mass producing SynthDefs">
+<meta itemprop="description" content="In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
+But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
+This becomes annoying when working with UGens that want to know the exact number of channels used, eg.">
+<meta itemprop="datePublished" content="2019-08-19T10:36:35&#43;00:00" />
+<meta itemprop="dateModified" content="2019-08-19T10:36:35&#43;00:00" />
+<meta itemprop="wordCount" content="871">
+<meta itemprop="image" content="localhost"/>
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="localhost"/>
+
+<meta name="twitter:title" content="SuperCollider tutorial: Mass producing SynthDefs"/>
+<meta name="twitter:description" content="In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
+But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
+This becomes annoying when working with UGens that want to know the exact number of channels used, eg."/>
+
+
+
+    <meta property="og:title" content="SuperCollider tutorial: Mass producing SynthDefs" />
+<meta property="og:description" content="In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
+But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
+This becomes annoying when working with UGens that want to know the exact number of channels used, eg." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="localhost/supercollider-tutorial-mass-producing-synthdefs/" />
+<meta property="og:image" content="localhost"/>
+<meta property="article:published_time" content="2019-08-19T10:36:35+00:00" />
+<meta property="article:modified_time" content="2019-08-19T10:36:35+00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2019-08-19 10:36:35 &#43;0000 &#43;0000" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">mads kjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="localhost/localhost/pages/about">About</a></li><li><a href="localhost/localhost/posts">Blog</a></li><li><a href="localhost/localhost/pages/contact">Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="localhost/supercollider-tutorial-mass-producing-synthdefs/">SuperCollider tutorial: Mass producing SynthDefs</a></h2>
+
+            
+
+            <div class="post-content">
+                <p>In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.</p>
+<p>But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).</p>
+<p>This becomes annoying when working with UGens that want to know the exact number of channels used, eg. <a href="http://doc.sccode.org/Classes/PlayBuf.html">PlayBuf</a>, when defining the Synth.</p>
+<p>These kinds of UGEN arguments cannot be changed from the outside like other UGEN arguments, and so if you want to make a synth based on the PlayBuf buffer player UGEN, you have to make seperate versions for mono and stereo buffers because the <strong>numChannels</strong> argument is fixed on definition.</p>
+<p>In the following, you will see how to mass producing SynthDefs in two different ways: One for simple multichannel enumeration (which can be seen used in the wild in projects such as <a href="https://github.com/musikinformatik/SuperDirt">SuperDirt</a>]) and another for more complex variations in patches.</p>
+<p>These are techniques that I use extensively myself to help me organize my synth library (see <a href="https://github.com/madskjeldgaard/kmodules">KModules</a>) and they can help you unclutter and shrink your own library as well.</p>
+<h1 id="first-technique-multichannel-enumeration">First technique: Multichannel enumeration</h1>
+<p>When you need to create synths and you want it to be flexible in terms of the number of channels involved, a nice way of doing it involves the almighty <em>do</em> function.</p>
+<p>The trick here is basically to put the SynthDef inside of a do function, which will repeat 64 times. We will then use the index from the do process to append to the SynthDef’s name and set the ugens to the appropriate amount of channels.</p>
+<p>Let’s start by making the function to be used inside of the SynthDef:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>As you can see, the synth function is wrapped in an outer function which takes one argument: the number of channels. The function returns the actual synth function we need to put inside of a SynthDef.</p>
+<p>Using the numchans argument, the PlayBuf UGEN is set to appropriate channel number (and the Out UGEN is smart enough to adjust to this).</p>
+<p>The next step is to put this function inside of a SynthDef and call it 64 times. One time for each number of channels we want to have:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Now, whenever you need to use this synthdef, you can call it by it’s basename (“bufplayer” in this case) plus the number of channels. For example: A 33 channel buffer player would then look like <code>Synth(\bufplayer33, [\buffer, b])</code>.</p>
+<h1 id="second-technique-synthdefwrap">Second technique: SynthDef.wrap</h1>
+<p>In the beginning of this blog post I mentioned that the architecture of a SynthDef needs to be fixed upon definition. But there is a way around this which involves an amazing method in the SynthDef class called <a href="http://doc.sccode.org/Overviews/Methods.html#wrap">wrap</a>.</p>
+<p>It may seem a bit hard to understand how it works at first, but once you have gotten the hold of it, wrap has mind blowing potential for quasi-dynamically making SynthDefs. In other words: semi-automatic sound patching.</p>
+<p>Let us say we want to build a Synth which is a basic sawtooth based oscillator with a filter at the end. Now, SuperCollider contains a lot of different filters. Let us make a few different versions of this synth, all containing different filters.</p>
+<p>We will organize the filter functions in an Event (which is a sort of Dictionary). When putting them in a data structure like this, we can easily get all of them using iteration.</p>
+<p>Then, we will use a sort of do-function called <code>keysValuesDo</code> to get the filter names and functions and then for each of them create a SynthDef containing that particular filter.</p>
+<h1 id="the-wrap-function-and-it8217s-arguments">The wrap function and it’s arguments</h1>
+<p>When you add a function to your synthdef using .wrap like this, the outer SynthDef gets the arguments you defined in the filter functions. You do not have to define them with the freq argument of the synthdef itself because <strong>they will automatically be added to your synthdef</strong>. So our SynthDef will get a <code>cutoff</code> argument when we use SynthDef.wrap inside of it with our functions.</p>
+<p>The signal of our Saw oscillator is passed into the filter using the wrap-argument <em>prependArgs</em>.</p>
+<p>This part of SynthDef.wrap is very important and a bit confusing too. Anything you pass in to the prependArgs argument will be put into the first argument(s) of the function used in the wrap-method.</p>
+<p>The argument in question (in our case the <em>in</em> argument) will then be removed from the outer function’s list of arguments. The prepended argument is in other words overwritten and becomes unavailable to the outside SynthDef argument list.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Now, let us test these synths:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Once you have gotten into the habit of using SynthDef.wrap it really is a flexible and powerful way of making Synths which takes care of a lot of the plumbing you otherwise need to do whenever you write a SynthDef, and it allows you to really experiment with different patching ideas.</p>
+<p>Note that, in the example above, whenever you add a filter function to the dictionary at the top, it will automatically be added as another SynthDef.</p>
+<p>Another cool thing about SynthDef.wrap is that you can actually use it inside of NodeProxies and Ndefs as well when livecoding.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            <span></span>
+            <span> <a href="localhost/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/localhost/bundle.min.4a69500057d68129e88f497d354afe68422eb56de6d15e45dbe2190858ea5a76bfcb096406f992984b241db45f47388ac57ab0376e3b32125bef7a8a6d0f06c4.js" integrity="sha512-SmlQAFfWgSnoj0l9NUr&#43;aEIutW3m0V5F2&#43;IZCFjqWna/ywlkBvmSmEskHbRfRziKxXqwN247MhJb73qKbQ8GxA=="></script>
+
+
+
+    </body>
+</html>

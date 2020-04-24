@@ -1,0 +1,525 @@
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>Mads Kjeldgaard</title>
+        <link>localhost/posts/</link>
+        <description>Recent content on Mads Kjeldgaard</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-uk</language>
+        <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate>
+        <atom:link href="localhost/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>NeoVim setup for c&#43;&#43; and openFrameworks development</title>
+            <link>localhost/neovim-setup-for-c-and-openframeworks-development/</link>
+            <pubDate>Mon, 06 Apr 2020 15:44:23 +0000</pubDate>
+            
+            <guid>localhost/neovim-setup-for-c-and-openframeworks-development/</guid>
+            <description>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
+This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
+I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.</description>
+            <content type="html"><![CDATA[<p>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.</p>
+<p>This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.</p>
+<p>I got a lot of pointers for this setup from <a href="https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE">Chendi Xue’s blogpost about Vim/CPP development</a>.</p>
+<p>So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.</p>
+<h2 id="install-clang-formatting">Install clang formatting</h2>
+<p>On Arch Linux I had to install clang to make this work: <code>sudo pacman -Syu clang</code></p>
+<p>There’s some really nice autoformatting plugins from Google. Add these to your init.vim and install:</p>
+<pre><code>&quot; Code formatting (for c++)
+Plug 'google/vim-maktaba'
+Plug 'google/vim-codefmt'
+Plug 'google/vim-glaive'
+</code></pre>
+<p>This should now automatically fix your code automatically with the following in your init.vim:</p>
+<pre><code>&quot; CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE
+&quot; Code formatting
+autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+</code></pre>
+<h2 id="ctags">Ctags</h2>
+<p>Ctags makes it possible to autocomplete source code when you are writing code and with the power of YCM it should also make it possible to work with methods of classes in a nice way.</p>
+<p>First, install Ctags</p>
+<p>Arch: <code>sudo pacman -Syu ctags</code></p>
+<p>To compile tags files for my open frameworks projects I use the python tool <a href="https://pypi.org/project/compiledb/">compiledb</a></p>
+<p>This can be installed using pip:</p>
+<p><code>pip install compiledb</code></p>
+<p>Now, from the root of your open frameworks projects you can run the following command to generate a tags file:</p>
+<p><code>compiledb -n make</code></p>
+<p>This will output a file called <code>compile_commands.json</code> containing the tags.</p>
+<h2 id="youcompleteme">YouCompleteMe</h2>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/04/of-ycm.gif"><!-- raw HTML omitted --></a></p>
+<p>Following this installation guide thoroughly <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Full-Installation-Guide">installation guide</a></p>
+<p>Especially make sure you have <a href="https://clangd.llvm.org/installation.html">clangd</a> installed. On arch, this was installed automatically for me with the <code>clang</code> package but you can verify this on the command line by running <code>which clangd</code> which should return a path to the binary, otherwise you need to install it.</p>
+<p>It’s especially important to add this line to your init.vim file:</p>
+<pre><code>&lt;br /&gt;let g:ycm_clangd_binary_path = &quot;/path/to/clangd&quot;
+</code></pre>
+<p><code>/path/to/clangd</code> can be replaced by the output of the command <code>which clangd</code></p>
+<p>Now you should have automatic debugging and autocomplete suggestions.</p>
+<p>Try opening up a openframeworks, run the <code>compiledb -n make</code> command and move to <code>ofApp.cpp</code> and inside the setup function add the following:</p>
+<p><code>auto rect = ofRectangle(0, 0, 250, 250);</code></p>
+<p>This will make a rectangle object. Now, in the next line, write <code>rect.</code> – by the <code>.</code> you should now see a list of suggested methods to use that are native to the ofRectangle class.</p>
+<h2 id="keybindings">Keybindings</h2>
+<p>Most of the relevant keymappings I use, I got from <a href="http://roosnaflak.com/tech-and-research/openframeworks-nvim-archlinux/">Kenneth Flak’s blogpost about the same</a>. These will setup vim to compile your oF program when you press ctrl-e (this is convenient since this is the same shortcut we use in <a href="https://github.com/davidgranstrom/scnvim">SCNVim</a>):</p>
+<pre><code>augroup c
+autocmd!
+autocmd FileType c,cpp,h,hpp,glsl call MakeRun()
+augroup end
+
+function! MakeRun()
+nnoremap :terminal make -j8 &amp;&amp; make run
+inoremap :terminal make -j8 &amp;&amp; make run
+endfunction
+</code></pre>
+<p>And then some nice keybindings to work with YouCompleteMe:</p>
+<pre><code>&quot; Find definition
+au FileType cpp nnoremap si :YcmCompleter GoToDefinition
+
+&quot; Reboot Ycm server
+au FileType cpp nnoremap sk :YcmRestartServer
+
+&quot; Fix thing under cursor
+au FileType cpp nnoremap :YcmCompleter FixIt
+
+&quot; Regenerate tags file
+au FileType cpp nnoremap :!compiledb -n make
+
+&quot; Go to documentation
+au FileType cpp nnoremap K :YcmCompleter GetDoc
+
+&quot; Echo the type/arguments of class
+au FileType cpp nnoremap ; :YcmCompleter GetType
+
+&quot; new split with alternate file
+nnoremap mv :AV
+&quot; switch in same window
+nnoremap ma :A
+</code></pre>
+<h1 id="snippets">Snippets</h1>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/04/of-snippets.gif"><!-- raw HTML omitted --></a></p>
+<p>Another really nice feature in this dev environment is the addition of snippets. I use UltiSnips for this. When I set this up, I read varying reports about how well UltiSnips works with YCM, but for me it works fine.</p>
+<p>Install <a href="https://github.com/SirVer/ultisnips">UltiSnips</a> and then add these to your init.vim:</p>
+<pre><code>&quot; YouCompleteMe and UltiSnips compatibility.
+let g:ycm_use_ultisnips_completer = 1
+let g:ycm_key_list_select_completion=[]
+let g:ycm_key_list_previous_completion=[]
+
+&quot; Expand snippets from UltiSnips with tab
+let g:UltiSnipsExpandTrigger=&quot;&quot;
+let g:UltiSnipsJumpForwardTrigger=&quot;&quot;
+let g:UltiSnipsJumpBackwardTrigger=&quot;&quot;
+
+&quot; Where the different snippet directories are stored
+let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data', 'plugged/vim-snippets']
+</code></pre>
+<p>I’d also recommend installing <a href="github.com/honza/vim-snippets/">vim-snippets</a> which contains extra snippets.</p>
+<p>Now, when for example you type <code>if</code> in a <code>.cpp</code> or <code>.h</code> file you can hit tab to expand it to get the full code for an if-statement. If you want, you can even add your own custom snippets using Ultisnips powerful capabilities ( execute <code>:h snippets</code> in Vim for more info about this ). Below I have defined two snippets. One which will expand when typing <code>ofclass</code> and one when typing <code>ofheader</code>. The first will create a sensible class and the latter a sensible header. Hit tab to cycle through the arguments.</p>
+<p>To use these snippets, add these to the file (which you can create if it doesn’t exist yet) <code>~/.vim/UltiSnips/cpp.snippets</code></p>
+<pre><code>snippet ofclass &quot;Class for open frameworks&quot;
+#include &quot;${1:`!p snip.rv = snip.basename`}.h&quot;
+
+$1::$1(){}
+
+void $1::setup(){${2:}}
+
+void $1::update(){${3:}}
+
+void $1::draw(){${4:}}
+endsnippet
+
+snippet ofheader &quot;Header for open frameworks class&quot;
+#ifndef ${1:`!p snip.rv = &quot;_&quot; + snip.basename.upper()`}
+#define $1
+#include &quot;ofMain.h&quot;
+class ${2:`!p snip.rv = snip.basename`} {
+
+public:
+
+void setup();
+void update();
+void draw();
+
+$2(); // constructor
+
+${0}
+
+private:
+};
+#endif
+endsnippet
+</code></pre>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Quarantine Live Stream #1: Livecoding using Ndefs in SuperCollider</title>
+            <link>localhost/quarantine-live-stream-1/</link>
+            <pubDate>Sat, 14 Mar 2020 18:06:01 +0000</pubDate>
+            
+            <guid>localhost/quarantine-live-stream-1/</guid>
+            <description>A live stream covering how to live code using Ndefs in SuperCollider.
+ </description>
+            <content type="html"><![CDATA[<p>A live stream covering how to live code using Ndefs in SuperCollider.</p>
+<!-- raw HTML omitted -->
+<p> </p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>SoX tutorial: SoX on Android (using Termux)</title>
+            <link>localhost/sox-tutorial-using-sox-on-android-using-termux/</link>
+            <pubDate>Mon, 09 Mar 2020 14:24:51 +0000</pubDate>
+            
+            <guid>localhost/sox-tutorial-using-sox-on-android-using-termux/</guid>
+            <description>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.
+Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.
+Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</description>
+            <content type="html"><![CDATA[<p>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.</p>
+<p>Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.</p>
+<p>Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</p>
+<h2 id="setup">Setup</h2>
+<p>The first think you need to do is install <a href="https://termux.com/">termux</a> on your phone. It can be installed either via PlayStore or F-Droid.</p>
+<p>Before continuing, it may be a good idea to make sure Termux has the proper storage permissions.</p>
+<p>According to the <a href="https://wiki.termux.com/wiki/Termux-setup-storage">termux wiki</a>:</p>
+<p>“It is necessary to grant storage permission for Termux on Android 6 and higher. Use ‘Settings&gt;Apps&gt;Termux&gt;Permissions&gt;Storage’ and set to true.”</p>
+<h1 id="installing-sox">Installing sox</h1>
+<p>To install a package, first update the information available about the package repos</p>
+<pre><code>pkg update
+</code></pre>
+<p>And then install SoX by executing</p>
+<pre><code>pkg install sox
+</code></pre>
+<p>Hopefully, you now have sox installed on your Android device.</p>
+<p>You can verify this using the <code>which</code> command, if it returns nothing, something is wrong, if it returns a path, you should be good.</p>
+<pre><code>which sox
+</code></pre>
+<h2 id="audio-input">Audio input</h2>
+<p>To use your Android device’s internal microphone, you need to tweak a few things.</p>
+<p>By default, Sox uses the pulseaudio driver to get sound in and out of Termux but the audio input is not activated by default.</p>
+<p>Let’s fix this.</p>
+<p>First, kill pulseaudio if you have it running.</p>
+<pre><code>pulseaudio -k
+</code></pre>
+<p>Then, restart pulseaudio and load the “module-sles-source” module.</p>
+<p>The <code>-D</code> flag will daemonise/background pulseaudio.</p>
+<pre><code>pulseaudio -L &quot;module-sles-source&quot; -D
+</code></pre>
+<p>That’s it, now you can record sound using sox.</p>
+<p>Let’s test it by recording 5 seconds of audio, you should see the “meter” on the right react when you make noise.</p>
+<pre><code>rec yay.wav trim 00:00 00:05
+</code></pre>
+<p>And then play it back</p>
+<pre><code>play yay.wav
+</code></pre>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/03/IMG_2430.jpg"><!-- raw HTML omitted --></a></p>
+<hr>
+<p>This tutorial is part of series of tutorials:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p> </p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>How to generate SuperCollider files containing random patterns</title>
+            <link>localhost/how-to-generate-supercollider-files-containing-random-patterns/</link>
+            <pubDate>Sun, 01 Mar 2020 13:50:52 +0000</pubDate>
+            
+            <guid>localhost/how-to-generate-supercollider-files-containing-random-patterns/</guid>
+            <description>Today I tested out this simple but powerful idea: To generate SuperCollider files containing small generative compositions. The idea is to at some point use this to save the states of generative patterns that I am working on in real time.
+See this gist for a code example.</description>
+            <content type="html"><![CDATA[<p>Today I tested out this simple but powerful idea: To generate SuperCollider files containing small generative compositions. The idea is to at some point use this to save the states of generative patterns that I am working on in real time.</p>
+<p><a href="https://gist.github.com/madskjeldgaard/bb93f0dbb1c4926c0ef17fb481be0e74">See this gist for a code example.</a></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>SuperCollider workshop at Notam, january 2020: Algorithmic composition using patterns</title>
+            <link>localhost/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</link>
+            <pubDate>Thu, 23 Jan 2020 21:18:29 +0000</pubDate>
+            
+            <guid>localhost/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</guid>
+            <description>Here are the slides for the SuperCollider workshop at Notam, january 2020.
+Download slides</description>
+            <content type="html"><![CDATA[<p>Here are the slides for the SuperCollider workshop at Notam, january 2020.</p>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/01/pattern-workshop-notam-2020.pdf">Download slides</a></p>
+<p><!-- raw HTML omitted -->pattern-workshop-notam-2020<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Pattern workshop, Herlev Bibliotek 2019</title>
+            <link>localhost/pattern-workshop-herlev-bibliotek-2019/</link>
+            <pubDate>Wed, 06 Nov 2019 11:22:54 +0000</pubDate>
+            
+            <guid>localhost/pattern-workshop-herlev-bibliotek-2019/</guid>
+            <description>Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.
+The SynthDef used for the workshop can be downloaded here.
+Download slides here.</description>
+            <content type="html"><![CDATA[<p>Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.</p>
+<p>The SynthDef used for the workshop <a href="https://www.madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/">can be downloaded here.</a></p>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/11/herlev-2019.pdf">Download slides here.</a></p>
+<p><!-- raw HTML omitted -->herlev-2019<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>How to change the default synth in SuperCollider</title>
+            <link>localhost/how-to-change-the-default-synth-in-supercollider/</link>
+            <pubDate>Fri, 18 Oct 2019 12:42:12 +0000</pubDate>
+            
+            <guid>localhost/how-to-change-the-default-synth-in-supercollider/</guid>
+            <description>The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
+A nice alternative: A triangle wave synth with a low pass filter Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth.</description>
+            <content type="html"><![CDATA[<p>The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="a-nice-alternative-a-triangle-wave-synth-with-a-low-pass-filter">A nice alternative: A triangle wave synth with a low pass filter</h2>
+<p>Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth. Well that world is here and now.</p>
+<p>Overwriting the default is actually easy. All you have to do is write a new SynthDef called <code>\default</code>. Evaluate this piece of code:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-smalltalk" data-lang="smalltalk"><span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#a6e22e">A</span> <span style="color:#a6e22e">simple</span> <span style="color:#a6e22e">triangle</span> <span style="color:#a6e22e">wave</span> <span style="color:#a6e22e">synth</span> <span style="color:#a6e22e">in</span> <span style="color:#a6e22e">stereo</span> 
+(
+<span style="color:#a6e22e">SynthDef</span>.new(<span style="color:#960050;background-color:#1e0010">\</span>default<span style="color:#a6e22e">,</span> {
+arg <span style="color:#a6e22e">dur,</span> attack<span style="color:#a6e22e">=</span><span style="color:#ae81ff">0.01</span><span style="color:#a6e22e">,</span> release<span style="color:#a6e22e">=</span><span style="color:#ae81ff">1.0</span><span style="color:#a6e22e">,</span>
+t_gate<span style="color:#a6e22e">=</span><span style="color:#ae81ff">1</span><span style="color:#a6e22e">,</span> out<span style="color:#a6e22e">,</span> freq<span style="color:#a6e22e">=</span><span style="color:#ae81ff">442</span><span style="color:#a6e22e">,</span> cutoff<span style="color:#a6e22e">=</span><span style="color:#ae81ff">5500</span><span style="color:#a6e22e">,</span>
+rq<span style="color:#a6e22e">=</span><span style="color:#ae81ff">1</span><span style="color:#a6e22e">,</span> pan<span style="color:#a6e22e">=</span><span style="color:#ae81ff">0.0</span><span style="color:#a6e22e">,</span> amp<span style="color:#a6e22e">=</span><span style="color:#ae81ff">0.5</span>;
+
+<span style="color:#a6e22e">var</span> <span style="color:#a6e22e">env</span> <span style="color:#a6e22e">=</span> <span style="color:#a6e22e">EnvGen</span>.kr(
+	<span style="color:#a6e22e">Env</span>.perc(attack<span style="color:#a6e22e">,</span> release)<span style="color:#a6e22e">,</span> 
+	t_gate<span style="color:#a6e22e">,</span> 
+	<span style="color:#a6e22e">timeScale:</span> dur<span style="color:#960050;background-color:#1e0010">,</span> 
+	<span style="color:#a6e22e">doneAction:</span> 2
+);
+<span style="color:#a6e22e">var</span> <span style="color:#a6e22e">sig</span> <span style="color:#a6e22e">=</span> <span style="color:#a6e22e">DPW3Tri</span>.ar(<span style="color:#a6e22e">freq:</span> freq<span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">mul:</span> env);
+<span style="color:#a6e22e">sig</span> <span style="color:#a6e22e">=</span> <span style="color:#a6e22e">RLPF</span>.ar(sig<span style="color:#a6e22e">,</span> cutoff.clip(<span style="color:#ae81ff">20.0</span><span style="color:#a6e22e">,</span> <span style="color:#ae81ff">20000.0</span>)<span style="color:#a6e22e">,</span> rq.clip(<span style="color:#ae81ff">0.0</span><span style="color:#a6e22e">,</span><span style="color:#ae81ff">1.0</span>));
+<span style="color:#a6e22e">sig</span> <span style="color:#a6e22e">=</span> <span style="color:#a6e22e">Pan2</span>.ar(sig<span style="color:#a6e22e">,</span> pan);
+<span style="color:#a6e22e">Out</span>.ar(out<span style="color:#a6e22e">,</span> sig <span style="color:#a6e22e">*</span> amp);
+}).add;
+)
+</code></pre></div><p>Try this new default synth out by playing the default event again:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-smalltalk" data-lang="smalltalk">().play;
+</code></pre></div><p>Isn’t that much better?</p>
+<p>Now, let us try it with patterns:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="make-this-the-default-synth-permanently">Make this the default synth permanently</h2>
+<p>To make this change permanent we need to edit the startup file for SuperCollider. This is a regular SuperCollider file that is evaluated on startup. It is a good place to keep settings and defaults. Here is how to access it:</p>
+<ol>
+<li>
+<p>Open the SuperCollider IDE<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>In the top menu, click “File”</p>
+</li>
+<li>
+<p>In the drop down click “Open startup file”</p>
+</li>
+</ol>
+<p>Now, if we just paste the code from above here, it will still get overwritten by the default synth when booting the server. To get around this, we need to add our synth after the server has booted. We do this by wrapping our SynthDef in a server function called doWhenBooted (<code>s.doWhenBooted{/* paste code here*/}</code>):</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Here is what the default synth should now sound like (with a bit of reverb of course)</p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/10/new-default-synth.mp4">https://www.madskjeldgaard.dk/wp-content/uploads/2019/10/new-default-synth.mp4</a><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+]]></content>
+        </item>
+        
+        <item>
+            <title>Introduction to SuperCollider, Notam 2019</title>
+            <link>localhost/scintro-notam-2019/</link>
+            <pubDate>Sun, 01 Sep 2019 12:54:46 +0000</pubDate>
+            
+            <guid>localhost/scintro-notam-2019/</guid>
+            <description>Here you will find the material for the introductory workshop held at Notam, Oslo in late summer 2019.
+The slides may be used as a sort of cheatsheet as well as notes for remembering the topics covered:
+• An overview: What is SuperCollider and what can you do with it?
+• The design and architecture of SuperCollider
+• Language basics: syntax, variables, expressions and functions
+• Learning resources: How to proceed from here</description>
+            <content type="html"><![CDATA[<!-- raw HTML omitted -->
+<p>Here you will find the material for the introductory workshop held at Notam, Oslo in late summer 2019.</p>
+<p>The slides may be used as a sort of cheatsheet as well as notes for remembering the topics covered:</p>
+<p>• An overview: What is SuperCollider and what can you do with it?</p>
+<p>• The design and architecture of SuperCollider</p>
+<p>• Language basics: syntax, variables, expressions and functions</p>
+<p>• Learning resources: How to proceed from here</p>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/09/supercollider-introduction-notam-2019-slides-3.pdf">Download the slides here.</a></p>
+<p><!-- raw HTML omitted -->supercollider-introduction-notam-2019-slides-3<!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins</title>
+            <link>localhost/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</link>
+            <pubDate>Thu, 22 Aug 2019 08:56:36 +0000</pubDate>
+            
+            <guid>localhost/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</guid>
+            <description>Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
+Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
+In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.</description>
+            <content type="html"><![CDATA[<p><a href="https://abaskind.github.io/hedrot/">Hedrot</a> is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a <a href="https://www.pjrc.com/teensy/">Teensy</a>) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.</p>
+<p>Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.</p>
+<p>In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.</p>
+<p>The goal is to setup IEM’s SceneRotator plugin at the end of our ambisonic signal just before an instance of IEM’s BinauralDecoder plugin. We will then connect the SceneRotator to our head tracker to move the ambisonic sound field, as we move our head.</p>
+<p>PS. Like most things ambisonics, I was introduced to this trick by <a href="https://github.com/balintlaczko">Bálint Laczkó</a>.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we begin, make sure you have the following software installed:</p>
+<ul>
+<li><a href="http://reaper.fm">Reaper</a></li>
+<li><a href="https://plugins.iem.at/">IEM Plugins</a></li>
+<li><a href="https://github.com/abaskind/hedrot">Hedrot</a></li>
+</ul>
+<p>Unfortunately, at the moment Hedrot only works on Windows and MacOS. Albeit if you feel adventurous and want to develop a Hedrot app for Linux, the source code is <a href="https://github.com/abaskind/hedrot">available here</a> .</p>
+<p>You will also need a pair of studio headphones (not in-ear ones) and  <a href="https://github.com/abaskind/hedrot">a built Hedrot tracker</a> .</p>
+<p>It is not necessary but advisable that you also read through and follow the <a href="https://plugins.iem.at/docs/tutorial_basicrouting/">Basic Routing tutorial</a>.</p>
+<h2 id="setting-up-the-hedrotreceiver-application">Setting up the hedrotReceiver application</h2>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/hedrotReceiver.png"><!-- raw HTML omitted --></a></p>
+<p>To get information from the head tracker you need to first connect it to your computer using a usb cable and then open up the hedrotReceiver application.</p>
+<p>If it’s the first time you are using the headtracker, click on “Headtracker Settings”. In the new window, click on “reset all headtracker settings”</p>
+<p>Then, press the “HEADTRACKER IS OFF” button to activate the head tracker. Make sure autodetect is on. You should now see the white box at the top of the app display a path to your headtracker.</p>
+<p>Before setting anything up, you have to calibrate your head tracker. Click the “CALIBRATION” button on the main screen to enter the calibration settings.</p>
+<h3 id="calibration">Calibration</h3>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/calibrationScreen.png"><!-- raw HTML omitted --></a></p>
+<p>At the bottom of this screen, you can see how well your head tracker is performing. The normalized magnetometer and accelerometer readings in the bottom of the screen should ideally be somewhere around the center but they probably aren’t. If this is the first time you are using your head tracker, then you need to calibrate the accelerometer (only needed this one time) by clicking the “CALIBRATE ACCELEROMETER” button. Follow the steps written there and return to the calibration screen. Verify that the reading in the bottom middle of the screen is now somewhere around the middle.</p>
+<p>Next, click the “CALIBRATE MAGNETOMETER” button to calibrate the magnetometer. Follow the steps in the next screen and return to the main calibration screen when you are done. Verify that the readings in the bottom left are now also around the middle, like your accelerometer.</p>
+<p>Every time you attach your headrotator to a new pair of headphones, you need to recalibrate the magnetometer. The accelerometer only needs to be calibrated this one time (normally). That said, make it a happen to check the calibration every time you use the head tracker, often the magnetometer needs to be calibrated even though it hasn’t left the headphones.</p>
+<h3 id="osc-settings">OSC settings</h3>
+<p>Now it’s time to send the tracker’s data to Reaper. Click the “OSC settings” button on the main screen of hedrotReceiver.</p>
+<p>The first thing we need to do, is figure where we are sending the data and modify the OSC patterns accordingly in hedrot.</p>
+<p>The target for this data will be an instance of IEM’s SceneRotator plugin which you can <a href="https://plugins.iem.at/docs/osc/">control using OSC</a>. Change the yaw, pitch and roll OSC patterns to the following:</p>
+<ul>
+<li>yaw: <code>/SceneRotator/yaw</code></li>
+<li>pitch: <code>/SceneRotator/pitch</code></li>
+<li>roll: <code>/SceneRotator/roll</code></li>
+</ul>
+<p>There is no need to change the scaling/order setting in hedrot, because – as <a href="https://plugins.iem.at/docs/osc/">we can see in the IEM documentation</a> – SceneRotator expects values from -180 to 180 degrees, which is what hedrot puts out normally.</p>
+<p>You can ignore the quaternion values in hedrot, as we won’t be using these.</p>
+<p><em>Don’t change the port number just yet.</em></p>
+<h2 id="setting-up-reaper">Setting up Reaper</h2>
+<p>As mentioned at the beginning of this tutorial, it is recommended to follow the <a href="https://plugins.iem.at/docs/tutorial_basicrouting/">basic routing in Reaper tutorial</a>.</p>
+<p>If you’re impatient though, just scroll to the bottom of that tutorial and download the Reaper templates.</p>
+<p>Open up one of the Reaper templates ( in my case I’ve opened the third order template ). Now click the <code>Headphones</code> track and open it’s fx chain. Here you will find a BinauralDecoder instance. Choose headphone equalization here, if you need it.</p>
+<p>Add an instance of SceneRotator to the <code>Headphones</code> just before the BinauralDecoder.</p>
+<h3 id="set-up-scenerotator">Set up SceneRotator</h3>
+<p>In your SceneRotator plugin instance, click the bottom OSC button to set up and open the network port that will receive the data from hedrotReceiver. Set it to 1234 or some other number you like. Click “open” to open this port. If you get a “Connection could not be established!” error, the port is probably used for something else. Try setting it to a different number and click open again.</p>
+<p><em>Note: It is advised to always open the port in the plugin before setting it up in hedrot, as this will block the port.</em></p>
+<h3 id="start-sending-osc-data-from-hedrot">Start sending OSC data from hedrot</h3>
+<p>Back to hedrot. Open the OSC settings again and set the port number to 1234 or whatever number you put in as the port in SceneRotator. Click the red “do not transmit” buttons to activate transmission. Verify that you see values changing on the right side of your OSC settings window.</p>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/transmitting.png"><!-- raw HTML omitted --></a></p>
+<h2 id="conclusion">Conclusion</h2>
+<p>That’s it actually. Now you can play ambisonic material on one of the tracks in the <code>Ambisonic Bus</code> folder track. If you don’t have any on hand, you can add the Reaper JS plugin “Pink Noise Generator” and a StereoEncoder instance to one of those tracks and play around with it’s placement.</p>
+<p>To save yourself the pain of repeating this laborous setup process, you can save your hedrot settings as a preset file in the hedrotReceiver application. You can also save the SceneRotator’s settings to make things easier. And finally, save your Reaper Project as a new template that now includes a head rotator.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>SuperCollider tutorial: Mass producing SynthDefs</title>
+            <link>localhost/supercollider-tutorial-mass-producing-synthdefs/</link>
+            <pubDate>Mon, 19 Aug 2019 10:36:35 +0000</pubDate>
+            
+            <guid>localhost/supercollider-tutorial-mass-producing-synthdefs/</guid>
+            <description>In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
+But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
+This becomes annoying when working with UGens that want to know the exact number of channels used, eg.</description>
+            <content type="html"><![CDATA[<p>In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.</p>
+<p>But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).</p>
+<p>This becomes annoying when working with UGens that want to know the exact number of channels used, eg. <a href="http://doc.sccode.org/Classes/PlayBuf.html">PlayBuf</a>, when defining the Synth.</p>
+<p>These kinds of UGEN arguments cannot be changed from the outside like other UGEN arguments, and so if you want to make a synth based on the PlayBuf buffer player UGEN, you have to make seperate versions for mono and stereo buffers because the <strong>numChannels</strong> argument is fixed on definition.</p>
+<p>In the following, you will see how to mass producing SynthDefs in two different ways: One for simple multichannel enumeration (which can be seen used in the wild in projects such as <a href="https://github.com/musikinformatik/SuperDirt">SuperDirt</a>]) and another for more complex variations in patches.</p>
+<p>These are techniques that I use extensively myself to help me organize my synth library (see <a href="https://github.com/madskjeldgaard/kmodules">KModules</a>) and they can help you unclutter and shrink your own library as well.</p>
+<h1 id="first-technique-multichannel-enumeration">First technique: Multichannel enumeration</h1>
+<p>When you need to create synths and you want it to be flexible in terms of the number of channels involved, a nice way of doing it involves the almighty <em>do</em> function.</p>
+<p>The trick here is basically to put the SynthDef inside of a do function, which will repeat 64 times. We will then use the index from the do process to append to the SynthDef’s name and set the ugens to the appropriate amount of channels.</p>
+<p>Let’s start by making the function to be used inside of the SynthDef:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>As you can see, the synth function is wrapped in an outer function which takes one argument: the number of channels. The function returns the actual synth function we need to put inside of a SynthDef.</p>
+<p>Using the numchans argument, the PlayBuf UGEN is set to appropriate channel number (and the Out UGEN is smart enough to adjust to this).</p>
+<p>The next step is to put this function inside of a SynthDef and call it 64 times. One time for each number of channels we want to have:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Now, whenever you need to use this synthdef, you can call it by it’s basename (“bufplayer” in this case) plus the number of channels. For example: A 33 channel buffer player would then look like <code>Synth(\bufplayer33, [\buffer, b])</code>.</p>
+<h1 id="second-technique-synthdefwrap">Second technique: SynthDef.wrap</h1>
+<p>In the beginning of this blog post I mentioned that the architecture of a SynthDef needs to be fixed upon definition. But there is a way around this which involves an amazing method in the SynthDef class called <a href="http://doc.sccode.org/Overviews/Methods.html#wrap">wrap</a>.</p>
+<p>It may seem a bit hard to understand how it works at first, but once you have gotten the hold of it, wrap has mind blowing potential for quasi-dynamically making SynthDefs. In other words: semi-automatic sound patching.</p>
+<p>Let us say we want to build a Synth which is a basic sawtooth based oscillator with a filter at the end. Now, SuperCollider contains a lot of different filters. Let us make a few different versions of this synth, all containing different filters.</p>
+<p>We will organize the filter functions in an Event (which is a sort of Dictionary). When putting them in a data structure like this, we can easily get all of them using iteration.</p>
+<p>Then, we will use a sort of do-function called <code>keysValuesDo</code> to get the filter names and functions and then for each of them create a SynthDef containing that particular filter.</p>
+<h1 id="the-wrap-function-and-it8217s-arguments">The wrap function and it’s arguments</h1>
+<p>When you add a function to your synthdef using .wrap like this, the outer SynthDef gets the arguments you defined in the filter functions. You do not have to define them with the freq argument of the synthdef itself because <strong>they will automatically be added to your synthdef</strong>. So our SynthDef will get a <code>cutoff</code> argument when we use SynthDef.wrap inside of it with our functions.</p>
+<p>The signal of our Saw oscillator is passed into the filter using the wrap-argument <em>prependArgs</em>.</p>
+<p>This part of SynthDef.wrap is very important and a bit confusing too. Anything you pass in to the prependArgs argument will be put into the first argument(s) of the function used in the wrap-method.</p>
+<p>The argument in question (in our case the <em>in</em> argument) will then be removed from the outer function’s list of arguments. The prepended argument is in other words overwritten and becomes unavailable to the outside SynthDef argument list.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Now, let us test these synths:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Once you have gotten into the habit of using SynthDef.wrap it really is a flexible and powerful way of making Synths which takes care of a lot of the plumbing you otherwise need to do whenever you write a SynthDef, and it allows you to really experiment with different patching ideas.</p>
+<p>Note that, in the example above, whenever you add a filter function to the dictionary at the top, it will automatically be added as another SynthDef.</p>
+<p>Another cool thing about SynthDef.wrap is that you can actually use it inside of NodeProxies and Ndefs as well when livecoding.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>SuperCollider tutorial: Easily render generative compositions as sound files using NRT</title>
+            <link>localhost/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
+            <pubDate>Mon, 05 Aug 2019 17:46:09 +0000</pubDate>
+            
+            <guid>localhost/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
+            <description>One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
+NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.</description>
+            <content type="html"><![CDATA[<p><img src="/wp-content/uploads/2019/08/supercollider-laptop-room-e1566211773173.jpg" alt="alt"></p>
+<p>One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called <a href="http://doc.sccode.org/Guides/Non-Realtime-Synthesis.html">Non-Realtime Synthesis (NRT)</a>. NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.</p>
+<p>NRT works like this (normally): First you write a list of server OSC messages (stored in a <a href="http://doc.sccode.org/Classes/Score.html">Score</a> usually) which will tell the (offline) server what to do at what point in time when you decide to render it. These are in the format [beat, [osc_command]]. An example: Making a Synth using synthdef \boring_sine at beat number 2 looks like this in such a OSC form: [2.0, [\s_new, \boring_sine, 1001, 0, 0]]</p>
+<p>All of the possible server osc message commands are documented here: <a href="http://doc.sccode.org/Reference/Server-Command-Reference.html">Server Command Reference</a></p>
+<p>Creating such a list manually is naturally time consuming and does not feel very smart. It is also a very awkward way of writing music.</p>
+<p>Fortunately, there are ways of doing this in a more efficient and musical way.</p>
+<h1 id="recording-event-patterns">Recording event patterns</h1>
+<p>One of my favourite techniques is to simply convert Event Patterns (such as Pbind, Pmono, etc.) to scores using the .asScore method.</p>
+<p>The process can be divided into the following steps:</p>
+<ol>
+<li>
+<p>Make a SynthDef and store it on your system using .store</p>
+</li>
+<li>
+<p>Write an event pattern</p>
+</li>
+<li>
+<p>Convert the event pattern to a Score object using .asScore</p>
+</li>
+<li>
+<p>Render the Score to a sound file on your system</p>
+</li>
+</ol>
+<p>First step is to make a SynthDef. SynthDefs are sort of recipes for sound patches that the server uses to make sound. In this case, it will be a very boring sine, aptly named \boring_sine. Note the use of the .store method here. This will save the synthdef as a file on your system and make it available to the NRT process later on.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>We will keep the pattern super simple: Random scale degrees played using our \boring_sine synth, each of which a quarter of beat in duration.</p>
+<p>The total duration of the pattern will be infinite for now (the length of this will automatically be truncated by the Score conversion process).</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>And now, let us convert this to a score:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Finally, we render the score</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h1 id="lets-make-this-interesting-iteration">Lets make this interesting: Iteration</h1>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/sc-render-chopped2.png"><!-- raw HTML omitted --></a></p>
+<p>Rendering one random melody is quite nice, but let us exploit the fact that our pattern chooses random scale degrees every time we play it and combine that functionality with iteration to make 10 (or any number) of rendered random melodies.</p>
+<p>First, let us wrap what we wrote up until this point in a function that we can call as often as we want.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Let us keep the pattern as is</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>And then render 10 versions of it</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+]]></content>
+        </item>
+        
+    </channel>
+</rss>
