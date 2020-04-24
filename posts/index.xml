@@ -277,24 +277,24 @@ A nice alternative: A triangle wave synth with a low pass filter Imagine a utopi
 <h2 id="a-nice-alternative-a-triangle-wave-synth-with-a-low-pass-filter">A nice alternative: A triangle wave synth with a low pass filter</h2>
 <p>Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth. Well that world is here and now.</p>
 <p>Overwriting the default is actually easy. All you have to do is write a new SynthDef called <code>\default</code>. Evaluate this piece of code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-smalltalk" data-lang="smalltalk"><span style="color:#960050;background-color:#1e0010">//</span> <span style="color:#a6e22e">A</span> <span style="color:#a6e22e">simple</span> <span style="color:#a6e22e">triangle</span> <span style="color:#a6e22e">wave</span> <span style="color:#a6e22e">synth</span> <span style="color:#a6e22e">in</span> <span style="color:#a6e22e">stereo</span> 
-(
-<span style="color:#a6e22e">SynthDef</span>.new(<span style="color:#960050;background-color:#1e0010">\</span>default<span style="color:#a6e22e">,</span> {
-arg <span style="color:#a6e22e">dur,</span> attack<span style="color:#a6e22e">=</span><span style="color:#ae81ff">0.01</span><span style="color:#a6e22e">,</span> release<span style="color:#a6e22e">=</span><span style="color:#ae81ff">1.0</span><span style="color:#a6e22e">,</span>
-t_gate<span style="color:#a6e22e">=</span><span style="color:#ae81ff">1</span><span style="color:#a6e22e">,</span> out<span style="color:#a6e22e">,</span> freq<span style="color:#a6e22e">=</span><span style="color:#ae81ff">442</span><span style="color:#a6e22e">,</span> cutoff<span style="color:#a6e22e">=</span><span style="color:#ae81ff">5500</span><span style="color:#a6e22e">,</span>
-rq<span style="color:#a6e22e">=</span><span style="color:#ae81ff">1</span><span style="color:#a6e22e">,</span> pan<span style="color:#a6e22e">=</span><span style="color:#ae81ff">0.0</span><span style="color:#a6e22e">,</span> amp<span style="color:#a6e22e">=</span><span style="color:#ae81ff">0.5</span>;
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// A simple triangle wave synth in stereo 
+</span><span style="color:#75715e"></span>(
+<span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">default</span>, {
+<span style="color:#a6e22e">arg</span> <span style="color:#a6e22e">dur</span>, <span style="color:#a6e22e">attack</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, <span style="color:#a6e22e">release</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>,
+<span style="color:#a6e22e">t_gate</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">out</span>, <span style="color:#a6e22e">freq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">442</span>, <span style="color:#a6e22e">cutoff</span><span style="color:#f92672">=</span><span style="color:#ae81ff">5500</span>,
+<span style="color:#a6e22e">rq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">pan</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>, <span style="color:#a6e22e">amp</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>;
 
-<span style="color:#a6e22e">var</span> <span style="color:#a6e22e">env</span> <span style="color:#a6e22e">=</span> <span style="color:#a6e22e">EnvGen</span>.kr(
-	<span style="color:#a6e22e">Env</span>.perc(attack<span style="color:#a6e22e">,</span> release)<span style="color:#a6e22e">,</span> 
-	t_gate<span style="color:#a6e22e">,</span> 
-	<span style="color:#a6e22e">timeScale:</span> dur<span style="color:#960050;background-color:#1e0010">,</span> 
-	<span style="color:#a6e22e">doneAction:</span> 2
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">EnvGen</span>.<span style="color:#a6e22e">kr</span>(
+	<span style="color:#a6e22e">Env</span>.<span style="color:#a6e22e">perc</span>(<span style="color:#a6e22e">attack</span>, <span style="color:#a6e22e">release</span>), 
+	<span style="color:#a6e22e">t_gate</span>, 
+	<span style="color:#a6e22e">timeScale</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">dur</span>, 
+	<span style="color:#a6e22e">doneAction</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
 );
-<span style="color:#a6e22e">var</span> <span style="color:#a6e22e">sig</span> <span style="color:#a6e22e">=</span> <span style="color:#a6e22e">DPW3Tri</span>.ar(<span style="color:#a6e22e">freq:</span> freq<span style="color:#960050;background-color:#1e0010">,</span> <span style="color:#a6e22e">mul:</span> env);
-<span style="color:#a6e22e">sig</span> <span style="color:#a6e22e">=</span> <span style="color:#a6e22e">RLPF</span>.ar(sig<span style="color:#a6e22e">,</span> cutoff.clip(<span style="color:#ae81ff">20.0</span><span style="color:#a6e22e">,</span> <span style="color:#ae81ff">20000.0</span>)<span style="color:#a6e22e">,</span> rq.clip(<span style="color:#ae81ff">0.0</span><span style="color:#a6e22e">,</span><span style="color:#ae81ff">1.0</span>));
-<span style="color:#a6e22e">sig</span> <span style="color:#a6e22e">=</span> <span style="color:#a6e22e">Pan2</span>.ar(sig<span style="color:#a6e22e">,</span> pan);
-<span style="color:#a6e22e">Out</span>.ar(out<span style="color:#a6e22e">,</span> sig <span style="color:#a6e22e">*</span> amp);
-}).add;
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">DPW3Tri</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">freq</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">freq</span>, <span style="color:#a6e22e">mul</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">env</span>);
+<span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">RLPF</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">sig</span>, <span style="color:#a6e22e">cutoff</span>.<span style="color:#a6e22e">clip</span>(<span style="color:#ae81ff">20.0</span>, <span style="color:#ae81ff">20000.0</span>), <span style="color:#a6e22e">rq</span>.<span style="color:#a6e22e">clip</span>(<span style="color:#ae81ff">0.0</span>,<span style="color:#ae81ff">1.0</span>));
+<span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Pan2</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">sig</span>, <span style="color:#a6e22e">pan</span>);
+<span style="color:#a6e22e">Out</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">out</span>, <span style="color:#a6e22e">sig</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">amp</span>);
+}).<span style="color:#a6e22e">add</span>;
 )
 </code></pre></div><p>Try this new default synth out by playing the default event again:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-smalltalk" data-lang="smalltalk">().play;
