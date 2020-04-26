@@ -248,17 +248,15 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <h2 id="install-clang-formatting">Install clang formatting</h2>
 <p>On Arch Linux I had to install clang to make this work: <code>sudo pacman -Syu clang</code></p>
 <p>There’s some really nice autoformatting plugins from Google. Add these to your init.vim and install:</p>
-<pre><code>&quot; Code formatting (for c++)
-Plug 'google/vim-maktaba'
-Plug 'google/vim-codefmt'
-Plug 'google/vim-glaive'
-</code></pre>
-<p>This should now automatically fix your code automatically with the following in your init.vim:</p>
-<pre><code>&quot; CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE
-&quot; Code formatting
-autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
-</code></pre>
-<h2 id="ctags">Ctags</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Code formatting (for c++)</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;google/vim-maktaba&#39;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;google/vim-codefmt&#39;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;google/vim-glaive&#39;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>This should now automatically fix your code automatically with the following in your init.vim:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">&#34; Code formatting</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">cpp</span>,<span style="color:#a6e22e">proto</span>,<span style="color:#a6e22e">javascript</span> <span style="color:#a6e22e">AutoFormatBuffer</span> <span style="color:#a6e22e">clang</span>-<span style="color:#a6e22e">format</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h2 id="ctags">Ctags</h2>
 <p>Ctags makes it possible to autocomplete source code when you are writing code and with the power of YCM it should also make it possible to work with methods of classes in a nice way.</p>
 <p>First, install Ctags</p>
 <p>Arch: <code>sudo pacman -Syu ctags</code></p>
@@ -274,104 +272,98 @@ autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
 <p>Following this installation guide thoroughly <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Full-Installation-Guide">installation guide</a></p>
 <p>Especially make sure you have <a href="https://clangd.llvm.org/installation.html">clangd</a> installed. On arch, this was installed automatically for me with the <code>clang</code> package but you can verify this on the command line by running <code>which clangd</code> which should return a path to the binary, otherwise you need to install it.</p>
 <p>It’s especially important to add this line to your init.vim file:</p>
-<pre><code>&lt;br /&gt;let g:ycm_clangd_binary_path = &quot;/path/to/clangd&quot;
-</code></pre>
-<p><code>/path/to/clangd</code> can be replaced by the output of the command <code>which clangd</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_clangd_binary_path</span> = <span style="color:#e6db74">&#34;/path/to/clangd&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p><code>/path/to/clangd</code> can be replaced by the output of the command <code>which clangd</code></p>
 <p>Now you should have automatic debugging and autocomplete suggestions.</p>
 <p>Try opening up a openframeworks, run the <code>compiledb -n make</code> command and move to <code>ofApp.cpp</code> and inside the setup function add the following:</p>
 <p><code>auto rect = ofRectangle(0, 0, 250, 250);</code></p>
 <p>This will make a rectangle object. Now, in the next line, write <code>rect.</code> – by the <code>.</code> you should now see a list of suggested methods to use that are native to the ofRectangle class.</p>
 <h2 id="keybindings">Keybindings</h2>
 <p>Most of the relevant keymappings I use, I got from <a href="http://roosnaflak.com/tech-and-research/openframeworks-nvim-archlinux/">Kenneth Flak’s blogpost about the same</a>. These will setup vim to compile your oF program when you press ctrl-e (this is convenient since this is the same shortcut we use in <a href="https://github.com/davidgranstrom/scnvim">SCNVim</a>):</p>
-<pre><code>augroup c
-autocmd!
-autocmd FileType c,cpp,h,hpp,glsl call MakeRun()
-augroup end
-
-function! MakeRun()
-nnoremap :terminal make -j8 &amp;&amp; make run
-inoremap :terminal make -j8 &amp;&amp; make run
-endfunction
-</code></pre>
-<p>And then some nice keybindings to work with YouCompleteMe:</p>
-<pre><code>&quot; Find definition
-au FileType cpp nnoremap si :YcmCompleter GoToDefinition
-
-&quot; Reboot Ycm server
-au FileType cpp nnoremap sk :YcmRestartServer
-
-&quot; Fix thing under cursor
-au FileType cpp nnoremap :YcmCompleter FixIt
-
-&quot; Regenerate tags file
-au FileType cpp nnoremap :!compiledb -n make
-
-&quot; Go to documentation
-au FileType cpp nnoremap K :YcmCompleter GetDoc
-
-&quot; Echo the type/arguments of class
-au FileType cpp nnoremap ; :YcmCompleter GetType
-
-&quot; new split with alternate file
-nnoremap mv :AV
-&quot; switch in same window
-nnoremap ma :A
-</code></pre>
-<h1 id="snippets">Snippets</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">c</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span>!<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">cpp</span>,<span style="color:#a6e22e">h</span>,<span style="color:#a6e22e">hpp</span>,<span style="color:#a6e22e">glsl</span> <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">MakeRun</span>()<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">end</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">function</span>! <span style="color:#a6e22e">MakeRun</span>()<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">nnoremap</span> :<span style="color:#a6e22e">terminal</span> <span style="color:#a6e22e">make</span> -<span style="color:#a6e22e">j8</span> &amp;&amp; <span style="color:#a6e22e">make</span> <span style="color:#a6e22e">run</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">inoremap</span> :<span style="color:#a6e22e">terminal</span> <span style="color:#a6e22e">make</span> -<span style="color:#a6e22e">j8</span> &amp;&amp; <span style="color:#a6e22e">make</span> <span style="color:#a6e22e">run</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endfunction</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>And then some nice keybindings to work with YouCompleteMe:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Find definition</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">au</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">cpp</span> <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">si</span> :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">GoToDefinition</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; Reboot Ycm server</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">au</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">cpp</span> <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">sk</span> :<span style="color:#a6e22e">YcmRestartServer</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; Fix thing under cursor</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">au</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">cpp</span> <span style="color:#a6e22e">nnoremap</span> :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">FixIt</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; Regenerate tags file</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">au</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">cpp</span> <span style="color:#a6e22e">nnoremap</span> :!<span style="color:#a6e22e">compiledb</span> -<span style="color:#a6e22e">n</span> <span style="color:#a6e22e">make</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; Go to documentation</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">au</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">cpp</span> <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">K</span> :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">GetDoc</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; Echo the type/arguments of class</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">au</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">cpp</span> <span style="color:#a6e22e">nnoremap</span> ; :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">GetType</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; new split with alternate file</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">mv</span> :<span style="color:#a6e22e">AV</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">&#34; switch in same window</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">ma</span> :<span style="color:#a6e22e">A</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h1 id="snippets">Snippets</h1>
 <p><img src="/img/gif/of-snippets.gif" alt="open frameworks + vim"></p>
-<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/04/of-snippets.gif"><!-- raw HTML omitted --></a></p>
 <p>Another really nice feature in this dev environment is the addition of snippets. I use UltiSnips for this. When I set this up, I read varying reports about how well UltiSnips works with YCM, but for me it works fine.</p>
 <p>Install <a href="https://github.com/SirVer/ultisnips">UltiSnips</a> and then add these to your init.vim:</p>
-<pre><code>&quot; YouCompleteMe and UltiSnips compatibility.
-let g:ycm_use_ultisnips_completer = 1
-let g:ycm_key_list_select_completion=[]
-let g:ycm_key_list_previous_completion=[]
-
-&quot; Expand snippets from UltiSnips with tab
-let g:UltiSnipsExpandTrigger=&quot;&quot;
-let g:UltiSnipsJumpForwardTrigger=&quot;&quot;
-let g:UltiSnipsJumpBackwardTrigger=&quot;&quot;
-
-&quot; Where the different snippet directories are stored
-let g:UltiSnipsSnippetDirectories = ['UltiSnips', 'scnvim-data', 'plugged/vim-snippets']
-</code></pre>
-<p>I’d also recommend installing <a href="github.com/honza/vim-snippets/">vim-snippets</a> which contains extra snippets.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YouCompleteMe and UltiSnips compatibility.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_use_ultisnips_completer</span> = <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_select_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_previous_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; Expand snippets from UltiSnips with tab</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">UltiSnipsExpandTrigger</span>=<span style="color:#e6db74">&#34;&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">UltiSnipsJumpForwardTrigger</span>=<span style="color:#e6db74">&#34;&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">UltiSnipsJumpBackwardTrigger</span>=<span style="color:#e6db74">&#34;&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; Where the different snippet directories are stored</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">UltiSnipsSnippetDirectories</span> = [<span style="color:#e6db74">&#39;UltiSnips&#39;</span>, <span style="color:#e6db74">&#39;scnvim-data&#39;</span>, <span style="color:#e6db74">&#39;plugged/vim-snippets&#39;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>I’d also recommend installing <a href="github.com/honza/vim-snippets/">vim-snippets</a> which contains extra snippets.</p>
 <p>Now, when for example you type <code>if</code> in a <code>.cpp</code> or <code>.h</code> file you can hit tab to expand it to get the full code for an if-statement. If you want, you can even add your own custom snippets using Ultisnips powerful capabilities ( execute <code>:h snippets</code> in Vim for more info about this ). Below I have defined two snippets. One which will expand when typing <code>ofclass</code> and one when typing <code>ofheader</code>. The first will create a sensible class and the latter a sensible header. Hit tab to cycle through the arguments.</p>
 <p>To use these snippets, add these to the file (which you can create if it doesn’t exist yet) <code>~/.vim/UltiSnips/cpp.snippets</code></p>
-<pre><code>snippet ofclass &quot;Class for open frameworks&quot;
-#include &quot;${1:`!p snip.rv = snip.basename`}.h&quot;
-
-$1::$1(){}
-
-void $1::setup(){${2:}}
-
-void $1::update(){${3:}}
-
-void $1::draw(){${4:}}
-endsnippet
-
-snippet ofheader &quot;Header for open frameworks class&quot;
-#ifndef ${1:`!p snip.rv = &quot;_&quot; + snip.basename.upper()`}
-#define $1
-#include &quot;ofMain.h&quot;
-class ${2:`!p snip.rv = snip.basename`} {
-
-public:
-
-void setup();
-void update();
-void draw();
-
-$2(); // constructor
-
-${0}
-
-private:
-};
-#endif
-endsnippet
-</code></pre>
-]]></content>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">snippet</span> <span style="color:#a6e22e">ofclass</span> <span style="color:#e6db74">&#34;Class for open frameworks&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>#<span style="color:#a6e22e">include</span> <span style="color:#e6db74">&#34;${1:`!p snip.rv = snip.basename`}.h&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>$<span style="color:#ae81ff">1</span>::$<span style="color:#ae81ff">1</span>(){}<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">void</span> $<span style="color:#ae81ff">1</span>::<span style="color:#a6e22e">setup</span>(){${<span style="color:#ae81ff">2</span>:}}<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">void</span> $<span style="color:#ae81ff">1</span>::<span style="color:#a6e22e">update</span>(){${<span style="color:#ae81ff">3</span>:}}<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">void</span> $<span style="color:#ae81ff">1</span>::<span style="color:#a6e22e">draw</span>(){${<span style="color:#ae81ff">4</span>:}}<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">endsnippet</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">snippet</span> <span style="color:#a6e22e">ofheader</span> <span style="color:#e6db74">&#34;Header for open frameworks class&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>#<span style="color:#a6e22e">ifndef</span> ${<span style="color:#ae81ff">1</span>:`!<span style="color:#a6e22e">p</span> <span style="color:#a6e22e">snip</span>.<span style="color:#a6e22e">rv</span> = <span style="color:#e6db74">&#34;_&#34;</span> + <span style="color:#a6e22e">snip</span>.<span style="color:#a6e22e">basename</span>.<span style="color:#a6e22e">upper</span>()`}<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>#<span style="color:#a6e22e">define</span> $<span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>#<span style="color:#a6e22e">include</span> <span style="color:#e6db74">&#34;ofMain.h&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">class</span> ${<span style="color:#ae81ff">2</span>:`!<span style="color:#a6e22e">p</span> <span style="color:#a6e22e">snip</span>.<span style="color:#a6e22e">rv</span> = <span style="color:#a6e22e">snip</span>.<span style="color:#a6e22e">basename</span>`} {<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">public</span>:<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">void</span> <span style="color:#a6e22e">setup</span>();<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">void</span> <span style="color:#a6e22e">update</span>();<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">void</span> <span style="color:#a6e22e">draw</span>();<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>$<span style="color:#ae81ff">2</span>(); <span style="color:#e6db74">//</span> <span style="color:#a6e22e">constructor</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>${<span style="color:#ae81ff">0</span>}<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">private</span>:<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>};<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>#<span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">endsnippet</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div>]]></content>
         </item>
         
         <item>
