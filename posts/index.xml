@@ -1,19 +1,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Mads Kjeldgaard</title>
-        <link>madskjeldgaard.dk/posts/</link>
+        <link>https://madskjeldgaard.dk/posts/</link>
         <description>Recent content on Mads Kjeldgaard</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-uk</language>
         <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate>
-        <atom:link href="madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
+        <atom:link href="https://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
             <title>SoX tutorial: SoX on Android</title>
-            <link>madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</link>
+            <link>https://madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</link>
             <pubDate>Sun, 26 Apr 2020 10:21:42 +0200</pubDate>
             
-            <guid>madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</guid>
+            <guid>https://madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</guid>
             <description>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.
 Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.
 Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</description>
@@ -68,10 +68,10 @@ Basically it is a command line interface for your Android device and works like 
         
         <item>
             <title>SoX tutorial: Batch processing audio on the command line</title>
-            <link>madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</link>
+            <link>https://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</link>
             <pubDate>Sun, 26 Apr 2020 10:07:25 +0200</pubDate>
             
-            <guid>madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</guid>
+            <guid>https://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</guid>
             <description>To make full use of SoX&amp;rsquo; potential for batch processing we will be using a bit of command line wizardry.
 The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&amp;rsquo;s full path and ls to see the folder&amp;rsquo;s contents.</description>
             <content type="html"><![CDATA[<p>To make full use of SoX&rsquo; potential for batch processing we will be using a bit of command line wizardry.</p>
@@ -104,10 +104,10 @@ The idea is to put our sox command inside of a for-loop which iterates over all 
         
         <item>
             <title>SoX tutorial: Split by silence</title>
-            <link>madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/</link>
+            <link>https://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/</link>
             <pubDate>Sun, 26 Apr 2020 01:07:33 +0200</pubDate>
             
-            <guid>madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/</guid>
+            <guid>https://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/</guid>
             <description>SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.
 Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts.</description>
             <content type="html"><![CDATA[<p>SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.</p>
@@ -149,10 +149,10 @@ Let us say you have a sound file containing many different sounds seperated by a
         
         <item>
             <title>SoX tutorial: Command line tape music (an introduction)</title>
-            <link>madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/</link>
+            <link>https://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/</link>
             <pubDate>Sun, 26 Apr 2020 00:00:44 +0200</pubDate>
             
-            <guid>madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/</guid>
+            <guid>https://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/</guid>
             <description>SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&amp;rsquo;s you perform powerful audio operations by typing just a few words in your computer&amp;rsquo;s terminal.
 I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg.</description>
             <content type="html"><![CDATA[<p>SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&rsquo;s you perform powerful audio operations by typing just a few words in your computer&rsquo;s terminal.</p>
@@ -232,10 +232,10 @@ I came across SoX via the live coding community where it is a popular tool for c
         
         <item>
             <title>NeoVim setup for c&#43;&#43; and openFrameworks development</title>
-            <link>madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/</link>
+            <link>https://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/</link>
             <pubDate>Mon, 06 Apr 2020 15:44:23 +0000</pubDate>
             
-            <guid>madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/</guid>
+            <guid>https://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/</guid>
             <description>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
 This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
 I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
@@ -376,10 +376,10 @@ endsnippet
         
         <item>
             <title>SuperCollider workshop at Notam, january 2020: Algorithmic composition using patterns</title>
-            <link>madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</link>
+            <link>https://madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</link>
             <pubDate>Thu, 23 Jan 2020 21:18:29 +0000</pubDate>
             
-            <guid>madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</guid>
+            <guid>https://madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</guid>
             <description>Here are the slides for the SuperCollider workshop at Notam, january 2020.
 Download slides
  Algorithmic composition using patterns Notam, january 2020  About me  Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)   Notam  Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others), see website notam.no Studios / 3D sound / VR / Visuals / Electronics Courses   My practice  Computer music / livecoding Concrete music Cybernetic / systemic music   Contact info  mail: mail@madskjeldgaard.</description>
@@ -827,10 +827,10 @@ Supercollider</a></p>
         
         <item>
             <title>Pattern workshop, Herlev Bibliotek 2019</title>
-            <link>madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/</link>
+            <link>https://madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/</link>
             <pubDate>Wed, 06 Nov 2019 11:22:54 +0000</pubDate>
             
-            <guid>madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/</guid>
+            <guid>https://madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/</guid>
             <description>Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.
 The SynthDef used for the workshop [can be downloaded here.][1]
 Download slides here.
@@ -1291,10 +1291,10 @@ Supercollider</a></p>
         
         <item>
             <title>How to change the default synth in SuperCollider</title>
-            <link>madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/</link>
+            <link>https://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/</link>
             <pubDate>Fri, 18 Oct 2019 12:42:12 +0000</pubDate>
             
-            <guid>madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/</guid>
+            <guid>https://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/</guid>
             <description>The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
 A nice alternative: A triangle wave synth with a low pass filter Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth.</description>
             <content type="html"><![CDATA[<p>The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:</p>
@@ -1353,10 +1353,10 @@ A nice alternative: A triangle wave synth with a low pass filter Imagine a utopi
         
         <item>
             <title>Introduction to SuperCollider, Notam 2019</title>
-            <link>madskjeldgaard.dk/scintro-notam-2019/</link>
+            <link>https://madskjeldgaard.dk/scintro-notam-2019/</link>
             <pubDate>Sun, 01 Sep 2019 12:54:46 +0000</pubDate>
             
-            <guid>madskjeldgaard.dk/scintro-notam-2019/</guid>
+            <guid>https://madskjeldgaard.dk/scintro-notam-2019/</guid>
             <description>Here you will find the material for the introductory workshop held at Notam, Oslo in late summer 2019.
 The slides may be used as a sort of cheatsheet as well as notes for remembering the topics covered:
 • An overview: What is SuperCollider and what can you do with it?
@@ -1782,10 +1782,10 @@ Supercollider</a></p>
         
         <item>
             <title>Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins</title>
-            <link>madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</link>
+            <link>https://madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</link>
             <pubDate>Thu, 22 Aug 2019 08:56:36 +0000</pubDate>
             
-            <guid>madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</guid>
+            <guid>https://madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</guid>
             <description>Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
 Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
 In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.</description>
@@ -1846,10 +1846,10 @@ In this tutorial we will cover how to set up the Hedrot application to send it�
         
         <item>
             <title>SuperCollider tutorial: Mass producing SynthDefs</title>
-            <link>madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</link>
+            <link>https://madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</link>
             <pubDate>Mon, 19 Aug 2019 10:36:35 +0000</pubDate>
             
-            <guid>madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</guid>
+            <guid>https://madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</guid>
             <description>In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
 But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
 This becomes annoying when working with UGens that want to know the exact number of channels used, eg.</description>
@@ -1895,10 +1895,10 @@ This becomes annoying when working with UGens that want to know the exact number
         
         <item>
             <title>SuperCollider tutorial: Easily render generative compositions as sound files using NRT</title>
-            <link>madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
+            <link>https://madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
             <pubDate>Mon, 05 Aug 2019 17:46:09 +0000</pubDate>
             
-            <guid>madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
+            <guid>https://madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
             <description>One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
 NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.</description>
             <content type="html"><![CDATA[<p><img src="/wp-content/uploads/2019/08/supercollider-laptop-room-e1566211773173.jpg" alt="alt"></p>

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Mads Kjeldgaard</title>
-    <link>madskjeldgaard.dk/pages/</link>
+    <link>https://madskjeldgaard.dk/pages/</link>
     <description>Recent content in Pages on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate>
     
-	<atom:link href="madskjeldgaard.dk/pages/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://madskjeldgaard.dk/pages/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>About</title>
-      <link>madskjeldgaard.dk/pages/about/</link>
+      <link>https://madskjeldgaard.dk/pages/about/</link>
       <pubDate>Tue, 14 Apr 2020 10:41:44 +0200</pubDate>
       
-      <guid>madskjeldgaard.dk/pages/about/</guid>
+      <guid>https://madskjeldgaard.dk/pages/about/</guid>
       <description>Bio Mads Kjeldgaard (b. 1988 Horsens, Denmark) is an electronic music composer.
 He has studied Electronic Music Composition at the Danish Institute of Electronic Music (DIEM) at the Royal Academy of Music and has a degree in journalism from the Danish School of Media and Journalism.
 He works at The Norwegian Center for Arts and Technology (aka Notam) in Oslo and is part of nyMusikk’s Composer Group.
@@ -25,10 +25,10 @@ As a developer, he contributes to various open source software projects related 
     
     <item>
       <title>Concerts</title>
-      <link>madskjeldgaard.dk/pages/concerts/</link>
+      <link>https://madskjeldgaard.dk/pages/concerts/</link>
       <pubDate>Tue, 14 Apr 2020 10:41:44 +0200</pubDate>
       
-      <guid>madskjeldgaard.dk/pages/concerts/</guid>
+      <guid>https://madskjeldgaard.dk/pages/concerts/</guid>
       <description>Past concerts:
 September 20th-21st, Ultima Festival @ Sentralen. World premiere of 3D audio piece &amp;ldquo;I solens flint 1000 floder&amp;rdquo; + ambisonic remixes of classic works of Else Marie Pade, Bernard Parmegiani and Edgar(d) Varése.
 June 17th, SCOslo community concert @ Notam.
@@ -39,10 +39,10 @@ December 6th, 2018, Cappelens Forslag, Oslo, Norway @ Hollow Body Timbals releas
     
     <item>
       <title>contact</title>
-      <link>madskjeldgaard.dk/pages/contact/</link>
+      <link>https://madskjeldgaard.dk/pages/contact/</link>
       <pubDate>Tue, 14 Apr 2020 10:41:44 +0200</pubDate>
       
-      <guid>madskjeldgaard.dk/pages/contact/</guid>
+      <guid>https://madskjeldgaard.dk/pages/contact/</guid>
       <description>Email: mail ☻ madskjeldgaard.dk
 Github: madskjeldgaard
 Instagram: @mads_kjeldgaard
