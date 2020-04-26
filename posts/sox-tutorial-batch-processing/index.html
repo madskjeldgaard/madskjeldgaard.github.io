@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="To make full use of SoX&amp;rsquo; potential for batch processing we will be using a bit of command line wizardry.
+The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&amp;rsquo;s full path and ls to see the folder&amp;rsquo;s contents." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux, sox" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="https://madskjeldgaard.github.io/posts/sox-tutorial-batch-processing/" />
+
+
+    <title>
+        
+            SoX tutorial: SoX tutorial: Batch processing audio on the command line :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.753fac8f03736f0edc9be411eb20cee875dd7bb8e73c8155fbf6a629c863f4ca.css">
+
+
+
+
+
+
+<meta itemprop="name" content="SoX tutorial: SoX tutorial: Batch processing audio on the command line">
+<meta itemprop="description" content="To make full use of SoX&rsquo; potential for batch processing we will be using a bit of command line wizardry.
+The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&rsquo;s full path and ls to see the folder&rsquo;s contents.">
+<meta itemprop="datePublished" content="2020-04-26T10:07:25&#43;02:00" />
+<meta itemprop="dateModified" content="2020-04-26T10:07:25&#43;02:00" />
+<meta itemprop="wordCount" content="567">
+<meta itemprop="image" content="https://madskjeldgaard.github.io/static/pr-photos/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
+
+
+
+<meta itemprop="keywords" content="sox," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://madskjeldgaard.github.io/static/pr-photos/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
+
+<meta name="twitter:title" content="SoX tutorial: SoX tutorial: Batch processing audio on the command line"/>
+<meta name="twitter:description" content="To make full use of SoX&rsquo; potential for batch processing we will be using a bit of command line wizardry.
+The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&rsquo;s full path and ls to see the folder&rsquo;s contents."/>
+
+
+
+    <meta property="og:title" content="SoX tutorial: SoX tutorial: Batch processing audio on the command line" />
+<meta property="og:description" content="To make full use of SoX&rsquo; potential for batch processing we will be using a bit of command line wizardry.
+The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&rsquo;s full path and ls to see the folder&rsquo;s contents." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://madskjeldgaard.github.io/posts/sox-tutorial-batch-processing/" />
+<meta property="og:image" content="https://madskjeldgaard.github.io/static/pr-photos/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
+<meta property="article:published_time" content="2020-04-26T10:07:25+02:00" />
+<meta property="article:modified_time" content="2020-04-26T10:07:25+02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-04-26 10:07:25 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="https://madskjeldgaard.github.io/pages/about">About</a></li><li><a href="https://madskjeldgaard.github.io/posts">Blog</a></li><li><a href="https://madskjeldgaard.github.io/pages/contact">Contact</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>3 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="https://madskjeldgaard.github.io/posts/sox-tutorial-batch-processing/">SoX tutorial: SoX tutorial: Batch processing audio on the command line</a>
+            </h1>
+                <hr />
+                <aside id="toc">
+                <div class="toc-title">Table of Contents</div>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#normalize">Normalize</a></li>
+    <li><a href="#channel-conversion">Channel conversion</a></li>
+    <li><a href="#convert-to-48khz-sample-rate">Convert to 48khz sample rate</a></li>
+    <li><a href="#convert-to-16bit">Convert to 16bit</a></li>
+  </ul>
+</nav>
+                </aside>
+                <hr />
+
+            
+
+            <div class="post-content">
+                <p>To make full use of SoX&rsquo; potential for batch processing we will be using a bit of command line wizardry.</p>
+<p>The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write <code>pwd</code> to see it&rsquo;s full path and <code>ls</code> to see the folder&rsquo;s contents.</p>
+<h1 id="for-loop">For-loop</h1>
+<p>The structure of our for-loop-command will look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> command $file; <span style="color:#66d9ef">done</span>
+</code></pre></div><p>This needs a bit of explanation. What we see here is shell scripting where commands (or lines of code you could say) are seperated by semi colons.</p>
+<p>The first bit of this command (<code>for file in *.wav</code>) will find all files in the current directory containing the suffix <code>.wav</code>. Note that this is case-sensitive, so if you want WAV files to be converted change it to <code>*.WAV</code>, and so on. The smart thing about this is that each file inside of the for-loop will accessible as the variable <code>$file</code>.</p>
+<p>The second bit of the command is the meat of it. Here we execute our sox command like we have done previously in this tutorial, with the main difference being we put <code>do</code> in front of it - this is a way to tell our for loop that this is supposed to happen on each file we find.</p>
+<p>The third bit is self-explanatory: <code>done</code>.</p>
+<p>We will be operating on .wav-files here, but you can easily change the commands to target .aiff files or some other supported file format.</p>
+<h1 id="batch-processing-examples">Batch processing examples</h1>
+<h2 id="normalize">Normalize</h2>
+<p>To normalize a file in SoX we need to apply the <code>norm</code> effect which only takes one parameter which is the sound level to normalize to. A reasonable normalization level is -0.1 dB so let us use that in our conversion process.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;n_</span>$file<span style="color:#e6db74">&#34;</span> norm -0.1; <span style="color:#66d9ef">done</span>
+</code></pre></div><p>Notice that what we do here is non-destructive. The normalized files produced by this process have the same file names as the input files but with a &ldquo;n_&rdquo; at the beginning to signify that it has been normalized.</p>
+<h2 id="channel-conversion">Channel conversion</h2>
+<p>Another useful effect included with SoX is <code>channels</code>, this makes it possible for us to specify the number of channels in the output file. This is useful if for example you need to convert a folder of files to mono, this can be done in a manner similar to the above:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;mono_</span>$file<span style="color:#e6db74">&#34;</span> channels 1; <span style="color:#66d9ef">done</span>
+</code></pre></div><h2 id="convert-to-48khz-sample-rate">Convert to 48khz sample rate</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;48khz_</span>$file<span style="color:#e6db74">&#34;</span> rate 48k; <span style="color:#66d9ef">done</span>
+</code></pre></div><h2 id="convert-to-16bit">Convert to 16bit</h2>
+<p>Now, this is slightly different because when converting bit-depth we need to use a command line flag instead of an effect. Normally, SoX will use the detected bit-depth of the input file as the bit-depth of the output file, but you can force SoX to change it to something else (like 16 bit) by adding a <code>-b 16</code> in between the file names (or <code>-b 24</code> for 24 bit).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> -b <span style="color:#ae81ff">16</span> <span style="color:#e6db74">&#34;16bit_</span>$file<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span>
+</code></pre></div><h1 id="where-to-go-from-here">Where to go from here?</h1>
+<p>I would highly encourage you to go back and read the SoX manual (<code>man sox</code>, remember?) because there really is a plethora of fun and useful things you can do with SoX in a for-loop.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="https://madskjeldgaard.github.io/tags/sox">sox</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>567 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-26 10:07 &#43;0200</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="https://madskjeldgaard.github.io/posts/sox-tutorial-sox-on-android/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">SoX tutorial: SoX on Android</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="https://madskjeldgaard.github.io/posts/sox-tutorial-split-by-silence/">
+                                <span class="button__text">SoX tutorial: Split by silence</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            <span></span>
+            <span> <a href="https://madskjeldgaard.github.io/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.4a69500057d68129e88f497d354afe68422eb56de6d15e45dbe2190858ea5a76bfcb096406f992984b241db45f47388ac57ab0376e3b32125bef7a8a6d0f06c4.js" integrity="sha512-SmlQAFfWgSnoj0l9NUr&#43;aEIutW3m0V5F2&#43;IZCFjqWna/ywlkBvmSmEskHbRfRziKxXqwN247MhJb73qKbQ8GxA=="></script>
+
+
+
+    </body>
+</html>

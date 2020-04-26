@@ -9,6 +9,225 @@
         <atom:link href="https://madskjeldgaard.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>SoX tutorial: SoX on Android</title>
+            <link>https://madskjeldgaard.github.io/posts/sox-tutorial-sox-on-android/</link>
+            <pubDate>Sun, 26 Apr 2020 10:21:42 +0200</pubDate>
+            
+            <guid>https://madskjeldgaard.github.io/posts/sox-tutorial-sox-on-android/</guid>
+            <description>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.
+Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.
+Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</description>
+            <content type="html"><![CDATA[<p>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.</p>
+<p>Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.</p>
+<p>Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</p>
+<h2 id="setup">Setup</h2>
+<p>The first think you need to do is install <a href="https://termux.com/">termux</a> on your phone. It can be installed either via PlayStore or F-Droid.</p>
+<p>Before continuing, it may be a good idea to make sure Termux has the proper storage permissions.</p>
+<p>According to the <a href="https://wiki.termux.com/wiki/Termux-setup-storage">termux wiki</a>:</p>
+<p>“It is necessary to grant storage permission for Termux on Android 6 and higher. Use ‘Settings&gt;Apps&gt;Termux&gt;Permissions&gt;Storage’ and set to true.”</p>
+<h2 id="installing-sox">Installing sox</h2>
+<p>To install a package, first update the information available about the package repos</p>
+<pre><code>pkg update
+</code></pre>
+<p>And then install SoX by executing</p>
+<pre><code>pkg install sox
+</code></pre>
+<p>Hopefully, you now have sox installed on your Android device.</p>
+<p>You can verify this using the <code>which</code> command, if it returns nothing, something is wrong, if it returns a path, you should be good.</p>
+<pre><code>which sox
+</code></pre>
+<h2 id="audio-input">Audio input</h2>
+<p>To use your Android device’s internal microphone, you need to tweak a few things.</p>
+<p>By default, Sox uses the pulseaudio driver to get sound in and out of Termux but the audio input is not activated by default.</p>
+<p>Let’s fix this.</p>
+<p>First, kill pulseaudio if you have it running.</p>
+<pre><code>pulseaudio -k
+</code></pre>
+<p>Then, restart pulseaudio and load the “module-sles-source” module.</p>
+<p>The <code>-D</code> flag will daemonise/background pulseaudio.</p>
+<pre><code>pulseaudio -L &quot;module-sles-source&quot; -D
+</code></pre>
+<p>That’s it, now you can record sound using sox.</p>
+<p>Let’s test it by recording 5 seconds of audio, you should see the “meter” on the right react when you make noise.</p>
+<pre><code>rec yay.wav trim 00:00 00:05
+</code></pre>
+<p>And then play it back</p>
+<pre><code>play yay.wav
+</code></pre>
+<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/03/IMG_2430.jpg"><!-- raw HTML omitted --></a></p>
+<hr>
+<p>This tutorial is part of series of tutorials:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p> </p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>SoX tutorial: SoX tutorial: Batch processing audio on the command line</title>
+            <link>https://madskjeldgaard.github.io/posts/sox-tutorial-batch-processing/</link>
+            <pubDate>Sun, 26 Apr 2020 10:07:25 +0200</pubDate>
+            
+            <guid>https://madskjeldgaard.github.io/posts/sox-tutorial-batch-processing/</guid>
+            <description>To make full use of SoX&amp;rsquo; potential for batch processing we will be using a bit of command line wizardry.
+The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&amp;rsquo;s full path and ls to see the folder&amp;rsquo;s contents.</description>
+            <content type="html"><![CDATA[<p>To make full use of SoX&rsquo; potential for batch processing we will be using a bit of command line wizardry.</p>
+<p>The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write <code>pwd</code> to see it&rsquo;s full path and <code>ls</code> to see the folder&rsquo;s contents.</p>
+<h1 id="for-loop">For-loop</h1>
+<p>The structure of our for-loop-command will look something like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> command $file; <span style="color:#66d9ef">done</span>
+</code></pre></div><p>This needs a bit of explanation. What we see here is shell scripting where commands (or lines of code you could say) are seperated by semi colons.</p>
+<p>The first bit of this command (<code>for file in *.wav</code>) will find all files in the current directory containing the suffix <code>.wav</code>. Note that this is case-sensitive, so if you want WAV files to be converted change it to <code>*.WAV</code>, and so on. The smart thing about this is that each file inside of the for-loop will accessible as the variable <code>$file</code>.</p>
+<p>The second bit of the command is the meat of it. Here we execute our sox command like we have done previously in this tutorial, with the main difference being we put <code>do</code> in front of it - this is a way to tell our for loop that this is supposed to happen on each file we find.</p>
+<p>The third bit is self-explanatory: <code>done</code>.</p>
+<p>We will be operating on .wav-files here, but you can easily change the commands to target .aiff files or some other supported file format.</p>
+<h1 id="batch-processing-examples">Batch processing examples</h1>
+<h2 id="normalize">Normalize</h2>
+<p>To normalize a file in SoX we need to apply the <code>norm</code> effect which only takes one parameter which is the sound level to normalize to. A reasonable normalization level is -0.1 dB so let us use that in our conversion process.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;n_</span>$file<span style="color:#e6db74">&#34;</span> norm -0.1; <span style="color:#66d9ef">done</span>
+</code></pre></div><p>Notice that what we do here is non-destructive. The normalized files produced by this process have the same file names as the input files but with a &ldquo;n_&rdquo; at the beginning to signify that it has been normalized.</p>
+<h2 id="channel-conversion">Channel conversion</h2>
+<p>Another useful effect included with SoX is <code>channels</code>, this makes it possible for us to specify the number of channels in the output file. This is useful if for example you need to convert a folder of files to mono, this can be done in a manner similar to the above:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;mono_</span>$file<span style="color:#e6db74">&#34;</span> channels 1; <span style="color:#66d9ef">done</span>
+</code></pre></div><h2 id="convert-to-48khz-sample-rate">Convert to 48khz sample rate</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;48khz_</span>$file<span style="color:#e6db74">&#34;</span> rate 48k; <span style="color:#66d9ef">done</span>
+</code></pre></div><h2 id="convert-to-16bit">Convert to 16bit</h2>
+<p>Now, this is slightly different because when converting bit-depth we need to use a command line flag instead of an effect. Normally, SoX will use the detected bit-depth of the input file as the bit-depth of the output file, but you can force SoX to change it to something else (like 16 bit) by adding a <code>-b 16</code> in between the file names (or <code>-b 24</code> for 24 bit).</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> -b <span style="color:#ae81ff">16</span> <span style="color:#e6db74">&#34;16bit_</span>$file<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span>
+</code></pre></div><h1 id="where-to-go-from-here">Where to go from here?</h1>
+<p>I would highly encourage you to go back and read the SoX manual (<code>man sox</code>, remember?) because there really is a plethora of fun and useful things you can do with SoX in a for-loop.</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>SoX tutorial: Split by silence</title>
+            <link>https://madskjeldgaard.github.io/posts/sox-tutorial-split-by-silence/</link>
+            <pubDate>Sun, 26 Apr 2020 01:07:33 +0200</pubDate>
+            
+            <guid>https://madskjeldgaard.github.io/posts/sox-tutorial-split-by-silence/</guid>
+            <description>SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.
+Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts.</description>
+            <content type="html"><![CDATA[<p>SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.</p>
+<p>Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts.</p>
+<p>In SoX we can approach this problem quite simply: Split the input file (the long file containing many different sounds in sequence) by detecting the silence in between the sounds.</p>
+<p>To do this we need to use the <code>silence</code> effect in SoX, which I will explain in a bit more detail since it is an important one and it&rsquo;s syntax is a bit esoteric to say the least.</p>
+<h2 id="what-is-silence">What is silence</h2>
+<p>In the manual, <code>silence</code> is defined like this:</p>
+<p>&ldquo;Removes silence from the beginning, middle, or end of the audio. &lsquo;Silence&rsquo; is determined by a specified threshold.&rdquo;</p>
+<p><code>silence</code> takes a range of optional arguments but we will only use the first three of them:</p>
+<p>• above-periods - indicate if audio should be trimmed at the begnning of the audio. 0 = no silence trimmed from beginning, 1 = trim silence from beginning
+• duration - amount of time in seconds that non-silence must be detected before it stops trimming audio
+• threshold - audio threshold, we will indicate this in percentages</p>
+<p>The parameters are stringed together after the <code>silence</code> keyword in the sox command like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence above-periods duration threshold
+</code></pre></div><h2 id="trimming-silence-from-beginning-and-end-of-one-file">Trimming silence from beginning and end of one file</h2>
+<p>To trim the beginning of a file until the audio is above 1% in volume for more than 0.1 seconds, you would write a command like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1%
+</code></pre></div><p>To trim the ending as well, we basically repeat the parameters like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1%
+</code></pre></div><h2 id="chaining-pseudo-effects">Chaining (pseudo) effects</h2>
+<p>This is all good and well, but we want to produce a sample bank from one input audio file. To do this we need to make use of SoX&rsquo; ability to chain effects chains after eachother and enter into &ldquo;multiple output file mode&rdquo;.</p>
+<p>From the manual: &ldquo;In multiple output mode, a new file is created when the effects prior to the &lsquo;newfile&rsquo; indicate they are done. The effects chain listed after &lsquo;newfile&rsquo; is then started up and its output is saved to the new file.&rdquo;</p>
+<p>An effects chain can thus be chained after another using a colon <code>:</code>. Now instead of manually writing out the silence effect and it&rsquo;s parameters for each bit we want to extract from the sound file, we can make the process automatically restart each time it has detected a bit of sound by silence</p>
+<p>To do this we need to chain the <code>restart</code> pseudoeffect at the end of our command. This will make the process create a new file from the bit it detected by silence, then restart the process from where it left off and repeat until it reaches the end of the file. Kind of like slicing off bits of a (sound) sausage from left to right.</p>
+<p>Our final command for chopping files by silence will then end up looking like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1% : newfile : restart
+</code></pre></div><h2 id="chopping-three-bursts">Chopping three bursts</h2>
+<p>As an example of the above, let us have a look at a sound file containing three short noise bursts.</p>
+<p>The sound file is called threebursts.wav and can be <a href="/audio/threebursts.wav">downloaded here</a>.</p>
+<p>To split the soundfile into three seperate files containing the bursts (without the silence in between), we simply execute the command</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox threebursts.wav burst_num.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1% : newfile : restart
+</code></pre></div><p>which will produce sound files called &ldquo;burst_num001.wav&rdquo;, &ldquo;burst_num002.wav&rdquo; etc.</p>
+<p>Now this works very well for our very unnatural example here, but I encourage you to mess around with the parameters when you do this on your own with your own files. Change the threshold to 5% for example if it&rsquo;s noisy or set the duration to something higher if it results in too many small files.</p>
+<p>Note: Sometimes on some systems this command will produce an extra audio file containing nothing. I honestly have no idea why. Just delete the file (or send me an email if you have a solution to this problem)</p>
+]]></content>
+        </item>
+        
+        <item>
+            <title>SoX tutorial: Command line tape music (an introduction)</title>
+            <link>https://madskjeldgaard.github.io/posts/sox-tutorial-cli-tape-music/</link>
+            <pubDate>Sun, 26 Apr 2020 00:00:44 +0200</pubDate>
+            
+            <guid>https://madskjeldgaard.github.io/posts/sox-tutorial-cli-tape-music/</guid>
+            <description>SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&amp;rsquo;s you perform powerful audio operations by typing just a few words in your computer&amp;rsquo;s terminal.
+I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg.</description>
+            <content type="html"><![CDATA[<p>SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&rsquo;s you perform powerful audio operations by typing just a few words in your computer&rsquo;s terminal.</p>
+<p>I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg. normalizing and entire folder of drum sounds in a matter of seconds). It is a very trustworhy and flexible solution ̣̣- and can even be used for DJ&rsquo;ing.</p>
+<p>But the commands for SoX are dense and sometimes slightly obscure so getting started is not always easy.</p>
+<p>Hopefully, this tutorial will sort out those problems.</p>
+<h2 id="installing-sox">Installing SoX</h2>
+<h3 id="macos">MacOS</h3>
+<p>Using the Homebrew package manager:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install sox
+</code></pre></div><h3 id="windows">Windows</h3>
+<p>Using the Chocolatey package manager</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">choco install sox.portable
+</code></pre></div><h3 id="ubuntu">Ubuntu</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install sox
+</code></pre></div><h3 id="arch--manjaro">Arch / Manjaro</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S sox
+</code></pre></div><h2 id="whats-included">What&rsquo;s included</h2>
+<h3 id="the-manual">The manual</h3>
+<p>To read the manual, open up a terminal and type <code>man sox</code>.</p>
+<p>The manual is the best place to find information and example usages for SoX.</p>
+<p>To search the manual press <code>/</code> followed by your search query. By pressing <code>n</code> while searching, the cursor will jump to the next instance of the query you searched for. By pressing <code>N</code> the cursor will jump to the previous instance.</p>
+<p>Scroll forward one page by pressing <code>ctrl-f</code></p>
+<p>And backwards one page by pressing <code>ctrl-b</code></p>
+<p>Exit the manual by pressing <code>q</code></p>
+<h3 id="audio-recorder">Audio recorder</h3>
+<p>SoX includes a very handy way of recording audio using the <code>rec</code> command.</p>
+<p>The simplest use is to type <code>rec filename</code> which will start recording from the default input until you stop it by pressing <code>ctrl-c</code> in the terminal window.</p>
+<p>Example use:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec hello.wav
+</code></pre></div><p>You can specify a predefined length of the recording like this: <code>rec hello.wav trim 0 30:00</code> which will record for 30 minutes and then automatically stop</p>
+<h3 id="audio-player">Audio player</h3>
+<p>Similarly, playing audio is also possible using the command <code>play</code></p>
+<p>Example use:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav
+</code></pre></div><p>Note that both play and rec can be used with SoX&rsquo;s many included effects.</p>
+<p>Playing the above example at half speed with a flanger at the end is as simple as</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav speed 0.5 flanger
+</code></pre></div><h2 id="command-line-basics">Command line basics</h2>
+<p>You do not have to have a lot of command line experience to use SoX but there is a few basic commands that will make it easier for you to navigate your computer in the command line.</p>
+<p>• <code>pwd</code> - see path to directory you are currently in
+• <code>ls</code> - see files in current directory
+• <code>cd /some/path</code> - move to <strong>/some/path</strong>
+• <code>cd ..</code> - move up one folder
+• <code>cd ~</code> - move to home folder</p>
+<p>As well as commands, here are some essential keyboard shortcuts:
+• up/down - scroll through previous commands (easy way to see / reuse previous work)
+• ctrl-c - cancel/abort the program (a sort of panic button)</p>
+<p>Sometimes, a simple way of using <code>cd</code> is to drag and drop a folder from your computer onto your terminal, this will in most cases paste the full path.</p>
+<h2 id="the-sox-command">The sox command</h2>
+<p>Our main interface for sox in this tutorial will be the <code>sox</code> command. The basic usage of this includes specifying an input file path, an output file path and then optionally some effects followed by an optional series of parameters.</p>
+<p>The basic command we will use will thus look like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox inputfile outputfile effect parameters
+</code></pre></div><p>If your input or output file contains spaces in the file name, you should wrap the path to it in quotation marks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox <span style="color:#e6db74">&#34;/some folder/containg/a sound.wav&#34;</span> <span style="color:#e6db74">&#34;outputfolder/a new sound.wav&#34;</span> effect param1
+</code></pre></div><p>Like other command line tools, sox executes from the context of the folder that you are currently in (which can be found by typing <code>pwd</code>) and as such you do not need to type out the entire path to a file if it is in the same folder as the one you are executing sox from.</p>
+<h2 id="command-line-tape-music">Command line tape music</h2>
+<p>Tape music artists of the 60&rsquo;s and 70&rsquo;s had very rudimentary tools at their disposal - mostly they did their work using reel-to-reel tape recorders and simple effects. But you would be surprised by the incredible sonic possibilities available in a tool as simple as this, using basic techniques of recording, reversing, adding effects, changing playback speed, etc. you can get a long way towards making interesting music.</p>
+<p>Let us explore some of SoX&rsquo; basic commands a bit by doing some command line audio manipulations reminiscent of classic tape music techniques.</p>
+<p>First of all, we need some audio to operate on. I would recommend recording a quick bit from your computer&rsquo;s microphone. If you have an instrument around, maybe use that for this exercise or simply (like me) whistle like an idiot in front of your computer.</p>
+<p>Record to the file idiot.wav for 10 seconds:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec idiot.wav trim 0:0 0:10
+</code></pre></div><p>Once SoX is done recording, it will post a &ldquo;done&rdquo; message.</p>
+<p>Moving on, let us test the file we just recorded</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play idiot.wav
+</code></pre></div><p>You should now hear yourself doing something silly in front of your computer a few seconds ago.</p>
+<p>To convert this to something else, we need to invoke the <code>sox</code> command now, providing it with an input file name, an output file name and a chain of effects. In this example, I will add a silly effects chain consisting of reversing the audio -&gt; flanger (2ms delay) -&gt; playback speed 50% (0.5) -&gt; reverb. The output of this operation will be saved in the file <code>art.wav</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox idiot.wav art.wav reverse flanger <span style="color:#ae81ff">2</span> speed 0.5 reverb
+</code></pre></div><p>If you execute the command <code>ls</code> now, you should in your directory see both the files idiot.wav (the original) and the manipulated file art.wav.</p>
+<p>Just to be sure, we can test our output file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play art.wav
+</code></pre></div><p>Now, we would not be proper command line tape musicians if we felt satisfied after 1 manipulation to the original recording, so let us continue our sonic journey by transforming the <code>art.wav</code> file further, this time we will time stretch to twice the length (factor 2), reverse the audio again and add some reverb. Just to make sure we do not lose too much of our audio level, we will normalize the output to -0.1db as well finally saving the result in the file <code>art2.wav</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox art.wav art2.wav stretch <span style="color:#ae81ff">2</span> reverse reverb norm -0.1
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
             <title>NeoVim setup for c&#43;&#43; and openFrameworks development</title>
             <link>https://madskjeldgaard.github.io/neovim-setup-for-c-and-openframeworks-development/</link>
             <pubDate>Mon, 06 Apr 2020 15:44:23 +0000</pubDate>
@@ -146,77 +365,6 @@ private:
 #endif
 endsnippet
 </code></pre>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Quarantine Live Stream #1: Livecoding using Ndefs in SuperCollider</title>
-            <link>https://madskjeldgaard.github.io/quarantine-live-stream-1/</link>
-            <pubDate>Sat, 14 Mar 2020 18:06:01 +0000</pubDate>
-            
-            <guid>https://madskjeldgaard.github.io/quarantine-live-stream-1/</guid>
-            <description>A live stream covering how to live code using Ndefs in SuperCollider.
- </description>
-            <content type="html"><![CDATA[<p>A live stream covering how to live code using Ndefs in SuperCollider.</p>
-<!-- raw HTML omitted -->
-<p> </p>
-]]></content>
-        </item>
-        
-        <item>
-            <title>SoX tutorial: SoX on Android (using Termux)</title>
-            <link>https://madskjeldgaard.github.io/sox-tutorial-using-sox-on-android-using-termux/</link>
-            <pubDate>Mon, 09 Mar 2020 14:24:51 +0000</pubDate>
-            
-            <guid>https://madskjeldgaard.github.io/sox-tutorial-using-sox-on-android-using-termux/</guid>
-            <description>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.
-Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.
-Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</description>
-            <content type="html"><![CDATA[<p>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.</p>
-<p>Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.</p>
-<p>Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</p>
-<h2 id="setup">Setup</h2>
-<p>The first think you need to do is install <a href="https://termux.com/">termux</a> on your phone. It can be installed either via PlayStore or F-Droid.</p>
-<p>Before continuing, it may be a good idea to make sure Termux has the proper storage permissions.</p>
-<p>According to the <a href="https://wiki.termux.com/wiki/Termux-setup-storage">termux wiki</a>:</p>
-<p>“It is necessary to grant storage permission for Termux on Android 6 and higher. Use ‘Settings&gt;Apps&gt;Termux&gt;Permissions&gt;Storage’ and set to true.”</p>
-<h1 id="installing-sox">Installing sox</h1>
-<p>To install a package, first update the information available about the package repos</p>
-<pre><code>pkg update
-</code></pre>
-<p>And then install SoX by executing</p>
-<pre><code>pkg install sox
-</code></pre>
-<p>Hopefully, you now have sox installed on your Android device.</p>
-<p>You can verify this using the <code>which</code> command, if it returns nothing, something is wrong, if it returns a path, you should be good.</p>
-<pre><code>which sox
-</code></pre>
-<h2 id="audio-input">Audio input</h2>
-<p>To use your Android device’s internal microphone, you need to tweak a few things.</p>
-<p>By default, Sox uses the pulseaudio driver to get sound in and out of Termux but the audio input is not activated by default.</p>
-<p>Let’s fix this.</p>
-<p>First, kill pulseaudio if you have it running.</p>
-<pre><code>pulseaudio -k
-</code></pre>
-<p>Then, restart pulseaudio and load the “module-sles-source” module.</p>
-<p>The <code>-D</code> flag will daemonise/background pulseaudio.</p>
-<pre><code>pulseaudio -L &quot;module-sles-source&quot; -D
-</code></pre>
-<p>That’s it, now you can record sound using sox.</p>
-<p>Let’s test it by recording 5 seconds of audio, you should see the “meter” on the right react when you make noise.</p>
-<pre><code>rec yay.wav trim 00:00 00:05
-</code></pre>
-<p>And then play it back</p>
-<pre><code>play yay.wav
-</code></pre>
-<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/03/IMG_2430.jpg"><!-- raw HTML omitted --></a></p>
-<hr>
-<p>This tutorial is part of series of tutorials:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p> </p>
 ]]></content>
         </item>
         
