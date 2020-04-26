@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>workshop-material on Mads Kjeldgaard</title>
+    <link>madskjeldgaard.dk/tags/workshop-material/</link>
+    <description>Recent content in workshop-material on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Thu, 23 Jan 2020 21:18:29 +0000</lastBuildDate>
+    
+	<atom:link href="madskjeldgaard.dk/tags/workshop-material/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>SuperCollider workshop at Notam, january 2020: Algorithmic composition using patterns</title>
+      <link>madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</link>
+      <pubDate>Thu, 23 Jan 2020 21:18:29 +0000</pubDate>
+      
+      <guid>madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</guid>
+      <description>Here are the slides for the SuperCollider workshop at Notam, january 2020.
+Download slides
+ Algorithmic composition using patterns Notam, january 2020  About me  Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)   Notam  Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others), see website notam.no Studios / 3D sound / VR / Visuals / Electronics Courses   My practice  Computer music / livecoding Concrete music Cybernetic / systemic music   Contact info  mail: mail@madskjeldgaard.</description>
+    </item>
+    
+    <item>
+      <title>Pattern workshop, Herlev Bibliotek 2019</title>
+      <link>madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/</link>
+      <pubDate>Wed, 06 Nov 2019 11:22:54 +0000</pubDate>
+      
+      <guid>madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/</guid>
+      <description>Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.
+The SynthDef used for the workshop [can be downloaded here.][1]
+Download slides here.
+ SuperCollider workshop Herlev Bibliotek, Denmark, 2019  About me  Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)    Notam  Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others) Studios / 3D sound / VR / Visuals Courses   My practice  Computer music / livecoding Field recording 3D sound composition Sound environments   Contact info  mail: mail@madskjeldgaard.</description>
+    </item>
+    
+    <item>
+      <title>Introduction to SuperCollider, Notam 2019</title>
+      <link>madskjeldgaard.dk/scintro-notam-2019/</link>
+      <pubDate>Sun, 01 Sep 2019 12:54:46 +0000</pubDate>
+      
+      <guid>madskjeldgaard.dk/scintro-notam-2019/</guid>
+      <description>Here you will find the material for the introductory workshop held at Notam, Oslo in late summer 2019.
+The slides may be used as a sort of cheatsheet as well as notes for remembering the topics covered:
+• An overview: What is SuperCollider and what can you do with it?
+• The design and architecture of SuperCollider
+• Language basics: syntax, variables, expressions and functions
+• Learning resources: How to proceed from here</description>
+    </item>
+    
+  </channel>
+</rss>

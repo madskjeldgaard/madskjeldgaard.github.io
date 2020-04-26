@@ -146,7 +146,8 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
             
 
             <div class="post-content">
-                <p>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.</p>
+                <p><img src="/img/small/of-vim.png" alt="open frameworks + vim"></p>
+<p>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.</p>
 <p>This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.</p>
 <p>I got a lot of pointers for this setup from <a href="https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE">Chendi Xue’s blogpost about Vim/CPP development</a>.</p>
 <p>So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.</p>
@@ -174,6 +175,7 @@ autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
 <p><code>compiledb -n make</code></p>
 <p>This will output a file called <code>compile_commands.json</code> containing the tags.</p>
 <h2 id="youcompleteme">YouCompleteMe</h2>
+<p><img src="/img/gif/of-ycm.gif" alt="open frameworks + vim"></p>
 <p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/04/of-ycm.gif"><!-- raw HTML omitted --></a></p>
 <p>Following this installation guide thoroughly <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Full-Installation-Guide">installation guide</a></p>
 <p>Especially make sure you have <a href="https://clangd.llvm.org/installation.html">clangd</a> installed. On arch, this was installed automatically for me with the <code>clang</code> package but you can verify this on the command line by running <code>which clangd</code> which should return a path to the binary, otherwise you need to install it.</p>
@@ -222,6 +224,7 @@ nnoremap mv :AV
 nnoremap ma :A
 </code></pre>
 <h1 id="snippets">Snippets</h1>
+<p><img src="/img/gif/of-snippets.gif" alt="open frameworks + vim"></p>
 <p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/04/of-snippets.gif"><!-- raw HTML omitted --></a></p>
 <p>Another really nice feature in this dev environment is the addition of snippets. I use UltiSnips for this. When I set this up, I read varying reports about how well UltiSnips works with YCM, but for me it works fine.</p>
 <p>Install <a href="https://github.com/SirVer/ultisnips">UltiSnips</a> and then add these to your init.vim:</p>

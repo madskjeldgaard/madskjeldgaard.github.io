@@ -158,13 +158,13 @@ In this tutorial we will cover how to set up the Hedrot application to send it�
 <p>You will also need a pair of studio headphones (not in-ear ones) and  <a href="https://github.com/abaskind/hedrot">a built Hedrot tracker</a> .</p>
 <p>It is not necessary but advisable that you also read through and follow the <a href="https://plugins.iem.at/docs/tutorial_basicrouting/">Basic Routing tutorial</a>.</p>
 <h2 id="setting-up-the-hedrotreceiver-application">Setting up the hedrotReceiver application</h2>
-<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/hedrotReceiver.png"><!-- raw HTML omitted --></a></p>
+<p><img src="/img/small/hedrotReceiver.png" alt="receiver"></p>
 <p>To get information from the head tracker you need to first connect it to your computer using a usb cable and then open up the hedrotReceiver application.</p>
 <p>If it’s the first time you are using the headtracker, click on “Headtracker Settings”. In the new window, click on “reset all headtracker settings”</p>
 <p>Then, press the “HEADTRACKER IS OFF” button to activate the head tracker. Make sure autodetect is on. You should now see the white box at the top of the app display a path to your headtracker.</p>
 <p>Before setting anything up, you have to calibrate your head tracker. Click the “CALIBRATION” button on the main screen to enter the calibration settings.</p>
 <h3 id="calibration">Calibration</h3>
-<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/calibrationScreen.png"><!-- raw HTML omitted --></a></p>
+<p><img src="/img/small/calibrationScreen.png" alt="calibration"></p>
 <p>At the bottom of this screen, you can see how well your head tracker is performing. The normalized magnetometer and accelerometer readings in the bottom of the screen should ideally be somewhere around the center but they probably aren’t. If this is the first time you are using your head tracker, then you need to calibrate the accelerometer (only needed this one time) by clicking the “CALIBRATE ACCELEROMETER” button. Follow the steps written there and return to the calibration screen. Verify that the reading in the bottom middle of the screen is now somewhere around the middle.</p>
 <p>Next, click the “CALIBRATE MAGNETOMETER” button to calibrate the magnetometer. Follow the steps in the next screen and return to the main calibration screen when you are done. Verify that the readings in the bottom left are now also around the middle, like your accelerometer.</p>
 <p>Every time you attach your headrotator to a new pair of headphones, you need to recalibrate the magnetometer. The accelerometer only needs to be calibrated this one time (normally). That said, make it a happen to check the calibration every time you use the head tracker, often the magnetometer needs to be calibrated even though it hasn’t left the headphones.</p>
@@ -190,7 +190,7 @@ In this tutorial we will cover how to set up the Hedrot application to send it�
 <p><em>Note: It is advised to always open the port in the plugin before setting it up in hedrot, as this will block the port.</em></p>
 <h3 id="start-sending-osc-data-from-hedrot">Start sending OSC data from hedrot</h3>
 <p>Back to hedrot. Open the OSC settings again and set the port number to 1234 or whatever number you put in as the port in SceneRotator. Click the red “do not transmit” buttons to activate transmission. Verify that you see values changing on the right side of your OSC settings window.</p>
-<p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/transmitting.png"><!-- raw HTML omitted --></a></p>
+<p><img src="/img/small/transmitting.png" alt="transmitting"></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>That’s it actually. Now you can play ambisonic material on one of the tracks in the <code>Ambisonic Bus</code> folder track. If you don’t have any on hand, you can add the Reaper JS plugin “Pink Noise Generator” and a StereoEncoder instance to one of those tracks and play around with it’s placement.</p>
 <p>To save yourself the pain of repeating this laborous setup process, you can save your hedrot settings as a preset file in the hedrotReceiver application. You can also save the SceneRotator’s settings to make things easier. And finally, save your Reaper Project as a new template that now includes a head rotator.</p>

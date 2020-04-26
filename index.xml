@@ -45,7 +45,7 @@ Basically it is a command line interface for your Android device and works like 
     </item>
     
     <item>
-      <title>SoX tutorial: SoX tutorial: Batch processing audio on the command line</title>
+      <title>SoX tutorial: Batch processing audio on the command line</title>
       <link>madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</link>
       <pubDate>Sun, 26 Apr 2020 10:07:25 +0200</pubDate>
       
@@ -125,23 +125,14 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
     </item>
     
     <item>
-      <title>How to generate SuperCollider files containing random patterns</title>
-      <link>madskjeldgaard.dk/how-to-generate-supercollider-files-containing-random-patterns/</link>
-      <pubDate>Sun, 01 Mar 2020 13:50:52 +0000</pubDate>
-      
-      <guid>madskjeldgaard.dk/how-to-generate-supercollider-files-containing-random-patterns/</guid>
-      <description>Today I tested out this simple but powerful idea: To generate SuperCollider files containing small generative compositions. The idea is to at some point use this to save the states of generative patterns that I am working on in real time.
-See this gist for a code example.</description>
-    </item>
-    
-    <item>
       <title>SuperCollider workshop at Notam, january 2020: Algorithmic composition using patterns</title>
       <link>madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</link>
       <pubDate>Thu, 23 Jan 2020 21:18:29 +0000</pubDate>
       
       <guid>madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</guid>
       <description>Here are the slides for the SuperCollider workshop at Notam, january 2020.
-Download slides</description>
+Download slides
+ Algorithmic composition using patterns Notam, january 2020  About me  Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)   Notam  Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others), see website notam.no Studios / 3D sound / VR / Visuals / Electronics Courses   My practice  Computer music / livecoding Concrete music Cybernetic / systemic music   Contact info  mail: mail@madskjeldgaard.</description>
     </item>
     
     <item>
@@ -151,8 +142,9 @@ Download slides</description>
       
       <guid>madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/</guid>
       <description>Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.
-The SynthDef used for the workshop can be downloaded here.
-Download slides here.</description>
+The SynthDef used for the workshop [can be downloaded here.][1]
+Download slides here.
+ SuperCollider workshop Herlev Bibliotek, Denmark, 2019  About me  Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)    Notam  Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others) Studios / 3D sound / VR / Visuals Courses   My practice  Computer music / livecoding Field recording 3D sound composition Sound environments   Contact info  mail: mail@madskjeldgaard.</description>
     </item>
     
     <item>

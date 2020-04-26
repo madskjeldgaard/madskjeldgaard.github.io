@@ -182,6 +182,7 @@ Let us say you have a sound file containing many different sounds seperated by a
 <p>Our final command for chopping files by silence will then end up looking like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1% : newfile : restart
 </code></pre></div><h2 id="chopping-three-bursts">Chopping three bursts</h2>
+<p><img src="/img/small/threebursts.png" alt="alt"></p>
 <p>As an example of the above, let us have a look at a sound file containing three short noise bursts.</p>
 <p>The sound file is called threebursts.wav and can be <a href="/audio/threebursts.wav">downloaded here</a>.</p>
 <p>To split the soundfile into three seperate files containing the bursts (without the silence in between), we simply execute the command</p>
@@ -217,7 +218,7 @@ Let us say you have a sound file containing many different sounds seperated by a
                         <span class="button previous">
                             <a href="madskjeldgaard.dk/posts/sox-tutorial-batch-processing/">
                                 <span class="button__icon">←</span>
-                                <span class="button__text">SoX tutorial: SoX tutorial: Batch processing audio on the command line</span>
+                                <span class="button__text">SoX tutorial: Batch processing audio on the command line</span>
                             </a>
                         </span>
                     
