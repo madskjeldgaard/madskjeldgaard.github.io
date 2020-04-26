@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sox on Mads Kjeldgaard</title>
-    <link>https://madskjeldgaard.dk/tags/sox/</link>
+    <link>http://madskjeldgaard.dk/tags/sox/</link>
     <description>Recent content in sox on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
     <lastBuildDate>Sun, 26 Apr 2020 10:21:42 +0200</lastBuildDate>
     
-	<atom:link href="https://madskjeldgaard.dk/tags/sox/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://madskjeldgaard.dk/tags/sox/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SoX tutorial: SoX on Android</title>
-      <link>https://madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</link>
+      <link>http://madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</link>
       <pubDate>Sun, 26 Apr 2020 10:21:42 +0200</pubDate>
       
-      <guid>https://madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</guid>
+      <guid>http://madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</guid>
       <description>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.
 Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.
 Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</description>
@@ -24,30 +24,30 @@ Basically it is a command line interface for your Android device and works like 
     
     <item>
       <title>SoX tutorial: Batch processing audio on the command line</title>
-      <link>https://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</link>
+      <link>http://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</link>
       <pubDate>Sun, 26 Apr 2020 10:07:25 +0200</pubDate>
       
-      <guid>https://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</guid>
+      <guid>http://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</guid>
       <description>To make full use of SoX&amp;rsquo; potential for batch processing we will be using a bit of command line wizardry.
 The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&amp;rsquo;s full path and ls to see the folder&amp;rsquo;s contents.</description>
     </item>
     
     <item>
       <title>SoX tutorial: Split by silence</title>
-      <link>https://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/</link>
+      <link>http://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/</link>
       <pubDate>Sun, 26 Apr 2020 01:07:33 +0200</pubDate>
       
-      <guid>https://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/</guid>
+      <guid>http://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/</guid>
       <description>SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.
 Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts.</description>
     </item>
     
     <item>
       <title>SoX tutorial: Command line tape music (an introduction)</title>
-      <link>https://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/</link>
+      <link>http://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/</link>
       <pubDate>Sun, 26 Apr 2020 00:00:44 +0200</pubDate>
       
-      <guid>https://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/</guid>
+      <guid>http://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/</guid>
       <description>SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&amp;rsquo;s you perform powerful audio operations by typing just a few words in your computer&amp;rsquo;s terminal.
 I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg.</description>
     </item>
