@@ -3,7 +3,27 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://madskjeldgaard.dk/tags/creative-coding/</loc>
+    <lastmod>2020-04-26T15:02:49+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/posts/nannou-osc-guides/</loc>
+    <lastmod>2020-04-26T15:02:49+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/rust/</loc>
+    <lastmod>2020-04-26T15:02:49+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2020-04-26T15:02:49+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/tutorial/</loc>
     <lastmod>2020-04-26T15:02:49+02:00</lastmod>
   </url>
   
@@ -29,11 +49,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</loc>
-    <lastmod>2020-04-26T10:21:42+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2020-04-26T10:21:42+02:00</lastmod>
   </url>
   

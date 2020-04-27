@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tutorial on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/tutorial/</link>
+    <description>Recent content in tutorial on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Sun, 26 Apr 2020 15:02:49 +0200</lastBuildDate>
+    
+	<atom:link href="http://madskjeldgaard.dk/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>On Rust, OSC and creative coding in nannou</title>
+      <link>http://madskjeldgaard.dk/posts/nannou-osc-guides/</link>
+      <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/nannou-osc-guides/</guid>
+      <description>Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.
+A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
+The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust.</description>
+    </item>
+    
+  </channel>
+</rss>

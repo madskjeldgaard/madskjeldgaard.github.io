@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 26 Apr 2020 10:21:42 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 26 Apr 2020 15:02:49 +0200</lastBuildDate>
     
 	<atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>creative-coding</title>
+      <link>http://madskjeldgaard.dk/tags/creative-coding/</link>
+      <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/creative-coding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust</title>
+      <link>http://madskjeldgaard.dk/tags/rust/</link>
+      <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>http://madskjeldgaard.dk/tags/tutorial/</link>
+      <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/tutorial/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>sox</title>
