@@ -35,6 +35,16 @@ Download slides here.
     </item>
     
     <item>
+      <title>How to change the default synth in SuperCollider</title>
+      <link>http://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/</link>
+      <pubDate>Fri, 18 Oct 2019 12:42:12 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/</guid>
+      <description>The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
+A nice alternative: A triangle wave synth with a low pass filter Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth.</description>
+    </item>
+    
+    <item>
       <title>Introduction to SuperCollider, Notam 2019</title>
       <link>http://madskjeldgaard.dk/scintro-notam-2019/</link>
       <pubDate>Sun, 01 Sep 2019 12:54:46 +0000</pubDate>
@@ -46,6 +56,27 @@ The slides may be used as a sort of cheatsheet as well as notes for remembering 
 • The design and architecture of SuperCollider
 • Language basics: syntax, variables, expressions and functions
 • Learning resources: How to proceed from here</description>
+    </item>
+    
+    <item>
+      <title>SuperCollider tutorial: Mass producing SynthDefs</title>
+      <link>http://madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</link>
+      <pubDate>Mon, 19 Aug 2019 10:36:35 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</guid>
+      <description>In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
+But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
+This becomes annoying when working with UGens that want to know the exact number of channels used, eg.</description>
+    </item>
+    
+    <item>
+      <title>SuperCollider tutorial: Easily render generative compositions as sound files using NRT</title>
+      <link>http://madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
+      <pubDate>Mon, 05 Aug 2019 17:46:09 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
+      <description>One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
+NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.</description>
     </item>
     
   </channel>

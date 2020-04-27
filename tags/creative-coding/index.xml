@@ -22,5 +22,17 @@ A creative coding framework usually consists of a cluster of tools for working c
 The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust.</description>
     </item>
     
+    <item>
+      <title>NeoVim setup for c&#43;&#43; and openFrameworks development</title>
+      <link>http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/</link>
+      <pubDate>Mon, 06 Apr 2020 15:44:23 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/</guid>
+      <description>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
+This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
+I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.</description>
+    </item>
+    
   </channel>
 </rss>
