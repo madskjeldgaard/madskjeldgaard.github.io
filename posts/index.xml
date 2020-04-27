@@ -9,7 +9,7 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Tutorials on Rust, OSC and creative coding in nannou</title>
+            <title>On Rust, OSC and creative coding in nannou</title>
             <link>http://madskjeldgaard.dk/posts/nannou-osc-guides/</link>
             <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
             
@@ -30,6 +30,7 @@ The great thing about nannou is that it is a framework making use of the cool ne
 <li><a href="https://guide.nannou.cc/tutorials/osc/osc-introduction.html">An intro to OSC</a></li>
 <li><a href="https://guide.nannou.cc/tutorials/osc/osc-sender.html">Sending OSC</a></li>
 </ul>
+<p>If you are curious about my own experiments, a lot of my nannou sketches <a href="https://github.com/madskjeldgaard/nannou-sketches">can be found here</a>.</p>
 ]]></content>
         </item>
         
