@@ -12,13 +12,13 @@
     
     
     <item>
-      <title>Rust-based creative coding using OSC and nannou</title>
+      <title>Tutorials on Rust, OSC and creative coding in nannou</title>
       <link>http://madskjeldgaard.dk/posts/nannou-osc-guides/</link>
       <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/nannou-osc-guides/</guid>
-      <description>I have recently become involved in the nannou project.
-Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder. A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
+      <description>Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.
+A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
 The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust.</description>
     </item>
     

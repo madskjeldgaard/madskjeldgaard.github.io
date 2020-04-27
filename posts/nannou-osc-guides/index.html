@@ -5,8 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="I have recently become involved in the nannou project.
-Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder. A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
+<meta name="description" content="Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.
+A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
 The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust." />
 <meta name="keywords" content="computer music, supercollider, rust, vim, linux" />
 <meta name="robots" content="noodp" />
@@ -16,7 +16,7 @@ The great thing about nannou is that it is a framework making use of the cool ne
 
     <title>
         
-            Rust-based creative coding using OSC and nannou :: Mads Kjeldgaard  — Composer and developer
+            Tutorials on Rust, OSC and creative coding in nannou :: Mads Kjeldgaard  — Composer and developer
         
     </title>
 
@@ -34,13 +34,13 @@ The great thing about nannou is that it is a framework making use of the cool ne
 
 
 
-<meta itemprop="name" content="Rust-based creative coding using OSC and nannou">
-<meta itemprop="description" content="I have recently become involved in the nannou project.
-Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder. A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
+<meta itemprop="name" content="Tutorials on Rust, OSC and creative coding in nannou">
+<meta itemprop="description" content="Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.
+A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
 The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust.">
 <meta itemprop="datePublished" content="2020-04-26T15:02:49&#43;02:00" />
 <meta itemprop="dateModified" content="2020-04-26T15:02:49&#43;02:00" />
-<meta itemprop="wordCount" content="137">
+<meta itemprop="wordCount" content="228">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
@@ -49,16 +49,16 @@ The great thing about nannou is that it is a framework making use of the cool ne
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
-<meta name="twitter:title" content="Rust-based creative coding using OSC and nannou"/>
-<meta name="twitter:description" content="I have recently become involved in the nannou project.
-Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder. A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
+<meta name="twitter:title" content="Tutorials on Rust, OSC and creative coding in nannou"/>
+<meta name="twitter:description" content="Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.
+A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
 The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust."/>
 
 
 
-    <meta property="og:title" content="Rust-based creative coding using OSC and nannou" />
-<meta property="og:description" content="I have recently become involved in the nannou project.
-Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder. A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
+    <meta property="og:title" content="Tutorials on Rust, OSC and creative coding in nannou" />
+<meta property="og:description" content="Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.
+A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
 The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/nannou-osc-guides/" />
@@ -132,7 +132,7 @@ The great thing about nannou is that it is a framework making use of the cool ne
     <main class="post">
 
         <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>One minute
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2 minutes
 
             
 
@@ -141,18 +141,25 @@ The great thing about nannou is that it is a framework making use of the cool ne
 
         <article>
             <h1 class="post-title">
-                <a href="http://madskjeldgaard.dk/posts/nannou-osc-guides/">Rust-based creative coding using OSC and nannou</a>
+                <a href="http://madskjeldgaard.dk/posts/nannou-osc-guides/">Tutorials on Rust, OSC and creative coding in nannou</a>
             </h1>
 
             
 
             <div class="post-content">
                 <p><img src="/img/small/nannou-psych-square1.png" alt="alt"></p>
-<p>I have recently become involved in the <a href="https://nannou.cc">nannou</a> project.</p>
-<p>Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder. A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.</p>
-<p>The great thing about nannou is that it is a framework making use of the cool new systems programming language <a href="https://www.rust-lang.org/">Rust</a>. Rust is an effective and safe new language that is a both fast and safe alternative to c++ and c.</p>
-<p>I have contributed a few tutorials to the nannou project covering subjects of animation and open sound control (OSC) for how to use the framework with other software (like <a href="supercollider.sourceforge.net/">supercollider</a>).</p>
-<p><a href="https://guide.nannou.cc/">Go check it out in the nannou guide.</a></p>
+<p><a href="https://nannou.cc">Nannou</a> is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.</p>
+<p>A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.</p>
+<p>The great thing about nannou is that it is a framework making use of the cool new systems programming language <a href="https://www.rust-lang.org/">Rust</a>.</p>
+<p>Rust is both extremely effective and has memory safety by design. This is great and makes it a fantastic choice for programming digital art. One of my favourite features of the programming language is the very strict compiler which makes it very hard for you to compile code containing errors. That, and an easy to use packaging system sort of like NPM and really good documentation engines makes it a lot of fun to explore ideas in code and easy to share those ideas as well.</p>
+<p>I have recently become involved in the nannou project which makes it a lot easier to harness the power of Rust for creative purposes.</p>
+<p>I have contributed a few tutorials to the project, covering subjects of animation, open sound control (OSC) and how to use the framework with other software (like <a href="supercollider.sourceforge.net/">supercollider</a>) via the latter.</p>
+<p><a href="https://guide.nannou.cc/">Go check it out in the nannou guide.</a>:</p>
+<ul>
+<li><a href="https://guide.nannou.cc/tutorials/draw/animating-a-circle.html">Animating a circle</a></li>
+<li><a href="https://guide.nannou.cc/tutorials/osc/osc-introduction.html">An intro to OSC</a></li>
+<li><a href="https://guide.nannou.cc/tutorials/osc/osc-sender.html">Sending OSC</a></li>
+</ul>
 
             </div>
         </article>
@@ -161,7 +168,7 @@ The great thing about nannou is that it is a framework making use of the cool ne
 
         <div class="post-info">
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>137 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>228 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-26 15:02 &#43;0200</p>
         </div>

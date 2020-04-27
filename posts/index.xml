@@ -9,20 +9,27 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Rust-based creative coding using OSC and nannou</title>
+            <title>Tutorials on Rust, OSC and creative coding in nannou</title>
             <link>http://madskjeldgaard.dk/posts/nannou-osc-guides/</link>
             <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
             
             <guid>http://madskjeldgaard.dk/posts/nannou-osc-guides/</guid>
-            <description>I have recently become involved in the nannou project.
-Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder. A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
+            <description>Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.
+A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
 The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust.</description>
             <content type="html"><![CDATA[<p><img src="/img/small/nannou-psych-square1.png" alt="alt"></p>
-<p>I have recently become involved in the <a href="https://nannou.cc">nannou</a> project.</p>
-<p>Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder. A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.</p>
-<p>The great thing about nannou is that it is a framework making use of the cool new systems programming language <a href="https://www.rust-lang.org/">Rust</a>. Rust is an effective and safe new language that is a both fast and safe alternative to c++ and c.</p>
-<p>I have contributed a few tutorials to the nannou project covering subjects of animation and open sound control (OSC) for how to use the framework with other software (like <a href="supercollider.sourceforge.net/">supercollider</a>).</p>
-<p><a href="https://guide.nannou.cc/">Go check it out in the nannou guide.</a></p>
+<p><a href="https://nannou.cc">Nannou</a> is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.</p>
+<p>A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.</p>
+<p>The great thing about nannou is that it is a framework making use of the cool new systems programming language <a href="https://www.rust-lang.org/">Rust</a>.</p>
+<p>Rust is both extremely effective and has memory safety by design. This is great and makes it a fantastic choice for programming digital art. One of my favourite features of the programming language is the very strict compiler which makes it very hard for you to compile code containing errors. That, and an easy to use packaging system sort of like NPM and really good documentation engines makes it a lot of fun to explore ideas in code and easy to share those ideas as well.</p>
+<p>I have recently become involved in the nannou project which makes it a lot easier to harness the power of Rust for creative purposes.</p>
+<p>I have contributed a few tutorials to the project, covering subjects of animation, open sound control (OSC) and how to use the framework with other software (like <a href="supercollider.sourceforge.net/">supercollider</a>) via the latter.</p>
+<p><a href="https://guide.nannou.cc/">Go check it out in the nannou guide.</a>:</p>
+<ul>
+<li><a href="https://guide.nannou.cc/tutorials/draw/animating-a-circle.html">Animating a circle</a></li>
+<li><a href="https://guide.nannou.cc/tutorials/osc/osc-introduction.html">An intro to OSC</a></li>
+<li><a href="https://guide.nannou.cc/tutorials/osc/osc-sender.html">Sending OSC</a></li>
+</ul>
 ]]></content>
         </item>
         
