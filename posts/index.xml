@@ -17,7 +17,8 @@
             <description>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
 I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
 It is presumed that you have installed Raspbian on an sd card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</description>
-            <content type="html"><![CDATA[<p>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running <a href="supercollider.sourceforge.net/">SuperCollider programs for interactive installations</a>.</p>
+            <content type="html"><![CDATA[<p><img src="/img/small/raspi4-quad2.jpg" alt="raspberry pi 4 setup with fireface ucx and quad speakers"></p>
+<p>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running <a href="supercollider.sourceforge.net/">SuperCollider programs for interactive installations</a>.</p>
 <p>I used <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a> for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).</p>
 <p>It is presumed that you have installed Raspbian on an sd card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</p>
 <p>When logged in to the Pi via ssh, we can setup everything from the command line fairly quickly.</p>
