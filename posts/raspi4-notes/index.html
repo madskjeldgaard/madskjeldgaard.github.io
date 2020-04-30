@@ -40,7 +40,7 @@ I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in 
 It is presumed that you have installed Raspbian on an sd card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.">
 <meta itemprop="datePublished" content="2020-04-30T16:07:22&#43;02:00" />
 <meta itemprop="dateModified" content="2020-04-30T16:07:22&#43;02:00" />
-<meta itemprop="wordCount" content="830">
+<meta itemprop="wordCount" content="908">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
@@ -132,7 +132,7 @@ It is presumed that you have installed Raspbian on an sd card, with ssh enabled 
     <main class="post">
 
         <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>4 minutes
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>5 minutes
 
             
 
@@ -242,7 +242,11 @@ card 1: UCX23906524 [Fireface UCX (23906524)], device 0: USB Audio [USB Audio]
 </code></pre></div><p>Then reboot, and run <code>aplay -l</code> to verify it isn&rsquo;t there anymore.</p>
 <h2 id="install-a-realtime-kernel">Install a realtime kernel</h2>
 <p>One of the most important things you can do to improve any linux system&rsquo;s audio performance is installing a realtime-kernel. On the Raspberry Pi, you need to compile this kernel yourself. <a href="https://lemariva.com/blog/2018/07/raspberry-pi-preempt-rt-patching-tutorial-for-kernel-4-14-y">There are instructions for doing so here</a>.</p>
-<p>Follow the instructions, then reboot the pi by executing <code>sudo reboot</code>, wait few minutes and then ssh into the pi again.</p>
+<p>Compiling a kernel takes a lot of time, but my colleague at <a href="https://notam.no">Notam</a>, Thom Johansen, has built a <a href="lolpuma.kunst.no/~thomj/rt-kernel.tar.gz">great RT-kernel that you can download here</a>. In the guide linked above you can skip to the last bit where you install the kernel.</p>
+<p>If you are using Thom&rsquo;s kernel, when adding the kernel as a boot option, use the name of the .img file in the <code>lib</code> folder in the kernel package.</p>
+<p>Add the following to your <code>/boot/config.txt</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">kernel<span style="color:#f92672">=</span>kernel7l
+</code></pre></div><p>Follow the instructions, then reboot the pi by executing <code>sudo reboot</code>, wait few minutes and then ssh into the pi again.</p>
 <p>If you then run <code>uname -a</code> you should get a result along these lines:</p>
 <pre><code>Linux raspberrypi 4.19.71-rt24-v7l+ #2 SMP PREEMPT RT Sat Apr 25 22:04:08
 UTC 2020 armv7l GNU/Linux 
@@ -275,7 +279,7 @@ perl ./realTimeConfigQuickScan.pl
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/raspberrypi">raspberrypi</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>830 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>908 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-30 16:07 &#43;0200</p>
         </div>
