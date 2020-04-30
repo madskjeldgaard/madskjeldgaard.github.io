@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Work</title>
+      <link>http://madskjeldgaard.dk/pages/work/</link>
+      <pubDate>Thu, 30 Apr 2020 12:48:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/pages/work/</guid>
+      <description>3D audio Verdenskværnen
+I solens flint 1000 floder
+Releases      </description>
+    </item>
+    
+    <item>
       <title>On Rust, OSC and creative coding in nannou</title>
       <link>http://madskjeldgaard.dk/posts/nannou-osc-guides/</link>
       <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>

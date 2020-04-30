@@ -6,10 +6,21 @@
     <description>Recent content in Pages on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2020 12:48:40 +0200</lastBuildDate>
     
 	<atom:link href="http://madskjeldgaard.dk/pages/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Work</title>
+      <link>http://madskjeldgaard.dk/pages/work/</link>
+      <pubDate>Thu, 30 Apr 2020 12:48:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/pages/work/</guid>
+      <description>3D audio Verdenskværnen
+I solens flint 1000 floder
+Releases      </description>
+    </item>
     
     <item>
       <title>About</title>

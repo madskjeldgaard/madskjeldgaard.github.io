@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://madskjeldgaard.dk/pages/</loc>
+    <lastmod>2020-04-30T12:48:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/pages/work/</loc>
+    <lastmod>2020-04-30T12:48:40+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/tags/creative-coding/</loc>
     <lastmod>2020-04-26T15:02:49+02:00</lastmod>
   </url>
@@ -89,11 +99,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/</loc>
-    <lastmod>2020-04-14T10:41:44+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/pages/</loc>
     <lastmod>2020-04-14T10:41:44+02:00</lastmod>
   </url>
   
