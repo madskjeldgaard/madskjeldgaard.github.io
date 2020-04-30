@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>raspberrypi on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/raspberrypi/</link>
+    <description>Recent content in raspberrypi on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Thu, 30 Apr 2020 16:07:22 +0200</lastBuildDate>
+    
+	<atom:link href="http://madskjeldgaard.dk/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Notes for setting up a Raspberry Pi 4 for audio work</title>
+      <link>http://madskjeldgaard.dk/posts/raspi4-notes/</link>
+      <pubDate>Thu, 30 Apr 2020 16:07:22 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/raspi4-notes/</guid>
+      <description>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
+It is presumed that you have installed Raspbian on an sd card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</description>
+    </item>
+    
+  </channel>
+</rss>

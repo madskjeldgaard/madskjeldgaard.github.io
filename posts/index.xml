@@ -9,6 +9,112 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Notes for setting up a Raspberry Pi 4 for audio work</title>
+            <link>http://madskjeldgaard.dk/posts/raspi4-notes/</link>
+            <pubDate>Thu, 30 Apr 2020 16:07:22 +0200</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/raspi4-notes/</guid>
+            <description>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
+It is presumed that you have installed Raspbian on an sd card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</description>
+            <content type="html"><![CDATA[<p>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running <a href="supercollider.sourceforge.net/">SuperCollider programs for interactive installations</a>.</p>
+<p>I used <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a> for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).</p>
+<p>It is presumed that you have installed Raspbian on an sd card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</p>
+<p>When logged in to the Pi via ssh, we can setup everything from the command line fairly quickly.</p>
+<h2 id="tuning-the-system">Tuning the system</h2>
+<p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh raspbian installation.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install utils for cpu freq</span>
+sudo apt-get install cpufrequtils
+
+sudo cpufreq-set -r -g performance
+
+sudo echo <span style="color:#e6db74">&#34;ENABLE=&#34;</span>true<span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">GOVERNOR=&#34;</span>performance<span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">MAX_SPEED=&#34;</span>0<span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">MIN_SPEED=&#34;</span>0<span style="color:#e6db74">&#34; &#34;</span> | sudo tee -a /etc/default/cpufrequtils
+
+<span style="color:#75715e"># Set realtime priority and memlock</span>
+sudo echo <span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">@audio nice -15 
+</span><span style="color:#e6db74">@audio - rtprio 90       # maximum realtime priority
+</span><span style="color:#e6db74">@audio - memlock unlimited  # maximum locked-in-memory address space (KB)
+</span><span style="color:#e6db74">&#34;</span> | sudo tee -a /etc/security/limits.conf
+
+<span style="color:#75715e"># Set swappiness</span>
+<span style="color:#75715e"># This setting changes the so-called swappiness of your system,</span> 
+<span style="color:#75715e"># or in other words, the moment when your system starts to use its swap partition.</span> 
+sudo echo <span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">vm.swappiness = 10
+</span><span style="color:#e6db74">fs.inotify.max_user_watches = 524288
+</span><span style="color:#e6db74">&#34;</span> | sudo tee /etc/sysctl.conf
+
+<span style="color:#75715e"># Install other useful tools</span>
+sudo apt-get install htop git perl
+</code></pre></div><h2 id="install-and-setup-jack">Install and setup jack</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install jack</span>
+sudo apt-get install jackd2
+
+<span style="color:#75715e"># Create config file in home folder called .jackdrc</span>
+echo /usr/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p512 -n3 &gt; ~/.jackdrc
+
+
+</code></pre></div><p><a href="https://www.fredrikolofsson.com">Fredrik Olofsson</a> pointed out to me that it can be useful to use the <code>-p</code>-flag to restrict the number of possible ports for jack to connect to, this reduces the amount of ram used, which is why the SuperCollider readme recommends adding the <code>-p16</code> flag to the jack command in <code>.jackdrc</code>.</p>
+<h3 id="changing-audio-interface">Changing audio interface</h3>
+<p>Never use the built in audio jack on a Rasbperry Pi for anything serious. Instead, you can use any class compliant usb audio interface. These range from cheap 1$ chinese ones to top-of-the-line RME Fireface UCX. I use and like both of these for different situations.</p>
+<p>To see which audio interfaces are available on the pi:
+<code>aplay -l</code></p>
+<p>With a USB-interface plugged in, the output should something like this:</p>
+<pre><code>**** List of PLAYBACK Hardware Devices ****
+card 0: ALSA [bcm2835 ALSA], device 0: bcm2835 ALSA [bcm2835 ALSA]  Subdevices: 7/7
+  Subdevice #0: subdevice #0
+  Subdevice #1: subdevice #1
+  Subdevice #2: subdevice #2
+  Subdevice #3: subdevice #3
+  Subdevice #4: subdevice #4
+  Subdevice #5: subdevice #5
+  Subdevice #6: subdevice #6
+card 0: ALSA [bcm2835 ALSA], device 1: bcm2835 IEC958/HDMI [bcm2835 IEC958/HDMI]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: ALSA [bcm2835 ALSA], device 2: bcm2835 IEC958/HDMI1 [bcm2835 IEC958/HDMI1]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: UCX23906524 [Fireface UCX (23906524)], device 0: USB Audio [USB Audio]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+</code></pre><p>Note the card number. Card 0 is the trashy jack on the pi. Card 1 is the usb audio interface.</p>
+<h3 id="disable-the-onboard-audio-output">Disable the onboard audio output</h3>
+<p>To disable the useless on board jack output on the raspberry pi open up the boot config file</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nano /boot/config.txt
+</code></pre></div><p>Find the line that says <code>dtparam=audio=on</code> and comment it out so that it looks like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#dtparam=audio=on</span>
+</code></pre></div><p>Then reboot, and run <code>aplay -l</code> to verify it isn&rsquo;t there anymore.</p>
+<h2 id="install-a-realtime-kernel">Install a realtime kernel</h2>
+<p>One of the most important things you can do to improve any linux system&rsquo;s audio performance is installing a realtime-kernel. On the Raspberry Pi, you need to compile this kernel yourself. <a href="https://lemariva.com/blog/2018/07/raspberry-pi-preempt-rt-patching-tutorial-for-kernel-4-14-y">There are instructions for doing so here</a>.</p>
+<p>Follow the instructions, then reboot the pi by executing <code>sudo reboot</code>, wait few minutes and then ssh into the pi again.</p>
+<p>If you then run <code>uname -a</code> you should get a result along these lines:</p>
+<pre><code>Linux raspberrypi 4.19.71-rt24-v7l+ #2 SMP PREEMPT RT Sat Apr 25 22:04:08
+UTC 2020 armv7l GNU/Linux 
+</code></pre><h2 id="check-your-systems-configuration">Check your system&rsquo;s configuration</h2>
+<p><a href="https://github.com/raboof/realtimeconfigquickscan">realTimeConfigQuickScan</a> is a really nice script that you can use to see if your system is setup correctly. Download and run it like this:</p>
+<pre><code># Scan system 
+git clone git://github.com/raboof/realtimeconfigquickscan.git
+cd realtimeconfigquickscan
+perl ./realTimeConfigQuickScan.pl
+</code></pre><h2 id="download-and-compile-latest-version-of-supercollider">Download, and compile latest version of SuperCollider</h2>
+<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailorfit to a headless Raspberry Pi install:</p>
+<script type="application/javascript" src="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908.js"></script>
+
+<h2 id="links-for-further-information">Links for further information</h2>
+<ul>
+<li><a href="https://github.com/supercollider/supercollider/blob/develop/README_RASPBERRY_PI.md">Raspberry Pi readme in the SuperCollider repo</a></li>
+<li><a href="https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0">Headless Raspberry Pi setup</a></li>
+<li><a href="https://raspberrypihq.com/how-to-connect-your-raspberry-pi-to-wifi/">How to automatically connect to wifi on startup</a></li>
+</ul>
+]]></content>
+        </item>
+        
+        <item>
             <title>Awesome SuperCollider: A curated list</title>
             <link>http://madskjeldgaard.dk/posts/awesome-sc/</link>
             <pubDate>Thu, 30 Apr 2020 12:57:31 +0200</pubDate>

@@ -6,15 +6,24 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Thu, 30 Apr 2020 12:57:31 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2020 16:07:22 +0200</lastBuildDate>
     
 	<atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
+      <title>raspberrypi</title>
+      <link>http://madskjeldgaard.dk/tags/raspberrypi/</link>
+      <pubDate>Thu, 30 Apr 2020 16:07:22 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/raspberrypi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>supercollider</title>
       <link>http://madskjeldgaard.dk/tags/supercollider/</link>
-      <pubDate>Thu, 30 Apr 2020 12:57:31 +0200</pubDate>
+      <pubDate>Thu, 30 Apr 2020 16:07:22 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
       <description></description>
