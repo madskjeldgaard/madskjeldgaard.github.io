@@ -64,7 +64,7 @@ echo /usr/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p512 -n3 &gt; ~/.jackdrc
 <p>Never use the built in audio jack on a Rasbperry Pi for anything serious. Instead, you can use any class compliant usb audio interface. These range from cheap 1$ chinese ones to top-of-the-line RME Fireface UCX. I use and like both of these for different situations.</p>
 <p>To see which audio interfaces are available on the pi:
 <code>aplay -l</code></p>
-<p>With a USB-interface plugged in, the output should something like this:</p>
+<p>With a USB-interface plugged in, the output should look something like this:</p>
 <pre><code>**** List of PLAYBACK Hardware Devices ****
 card 0: ALSA [bcm2835 ALSA], device 0: bcm2835 ALSA [bcm2835 ALSA]  Subdevices: 7/7
   Subdevice #0: subdevice #0
@@ -109,7 +109,7 @@ perl ./realTimeConfigQuickScan.pl
 </code></pre><h2 id="download-and-compile-latest-version-of-supercollider">Download, and compile latest version of SuperCollider</h2>
 <p>You can run many different kinds of software on the Raspberry Pi headless: Pure Data, Csound and SuperCollider are a few free and open source options.</p>
 <p>I personally prefer SuperCollider so that&rsquo;s what I&rsquo;m going to use here.</p>
-<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailorfit to a headless Raspberry Pi install:</p>
+<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailorfit to a headless Raspberry Pi install:</p>
 <script type="application/javascript" src="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908.js"></script>
 
 <h2 id="links-for-further-information">Links for further information</h2>
