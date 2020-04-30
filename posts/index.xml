@@ -102,6 +102,8 @@ git clone git://github.com/raboof/realtimeconfigquickscan.git
 cd realtimeconfigquickscan
 perl ./realTimeConfigQuickScan.pl
 </code></pre><h2 id="download-and-compile-latest-version-of-supercollider">Download, and compile latest version of SuperCollider</h2>
+<p>You can run many different kinds of software on the Raspberry Pi headless: Pure Data, Csound and SuperCollider are a few free and open source options.</p>
+<p>I personally prefer SuperCollider so that&rsquo;s what I&rsquo;m going to use here.</p>
 <p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailorfit to a headless Raspberry Pi install:</p>
 <script type="application/javascript" src="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908.js"></script>
 
