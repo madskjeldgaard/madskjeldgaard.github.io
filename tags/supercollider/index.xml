@@ -6,10 +6,20 @@
     <description>Recent content in supercollider on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Thu, 23 Jan 2020 21:18:29 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2020 12:57:31 +0200</lastBuildDate>
     
 	<atom:link href="http://madskjeldgaard.dk/tags/supercollider/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Awesome SuperCollider: A curated list</title>
+      <link>http://madskjeldgaard.dk/posts/awesome-sc/</link>
+      <pubDate>Thu, 30 Apr 2020 12:57:31 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/awesome-sc/</guid>
+      <description>A while ago I started compiling a list of links to SuperCollider based things that I found interesting and wanted to save for later.
+The list grew and at one point I organized it all in one public repository where the SuperCollider community could help curate links to awesome SuperCollider things and it has since then become a truly rich resource for things like tutorials, reading material, nice projects and tools.</description>
+    </item>
     
     <item>
       <title>SuperCollider workshop at Notam, january 2020: Algorithmic composition using patterns</title>

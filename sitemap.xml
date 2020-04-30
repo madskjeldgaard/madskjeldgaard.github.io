@@ -3,6 +3,21 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://madskjeldgaard.dk/posts/awesome-sc/</loc>
+    <lastmod>2020-04-30T12:57:31+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
+    <lastmod>2020-04-30T12:57:31+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2020-04-30T12:57:31+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/pages/</loc>
     <lastmod>2020-04-30T12:48:40+02:00</lastmod>
   </url>
@@ -24,11 +39,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/tags/rust/</loc>
-    <lastmod>2020-04-26T15:02:49+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2020-04-26T15:02:49+02:00</lastmod>
   </url>
   
@@ -115,11 +125,6 @@
   <url>
     <loc>http://madskjeldgaard.dk/tags/openframeworks/</loc>
     <lastmod>2020-04-06T15:44:23+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
-    <lastmod>2020-01-23T21:18:29+00:00</lastmod>
   </url>
   
   <url>

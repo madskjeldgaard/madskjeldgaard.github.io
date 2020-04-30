@@ -6,10 +6,19 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 26 Apr 2020 15:02:49 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 30 Apr 2020 12:57:31 +0200</lastBuildDate>
     
 	<atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>supercollider</title>
+      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
+      <pubDate>Thu, 30 Apr 2020 12:57:31 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>creative-coding</title>
@@ -62,15 +71,6 @@
       <pubDate>Mon, 06 Apr 2020 15:44:23 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/openframeworks/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>supercollider</title>
-      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
-      <pubDate>Thu, 23 Jan 2020 21:18:29 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
       <description></description>
     </item>
     

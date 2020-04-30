@@ -12,6 +12,16 @@
     
     
     <item>
+      <title>Awesome SuperCollider: A curated list</title>
+      <link>http://madskjeldgaard.dk/posts/awesome-sc/</link>
+      <pubDate>Thu, 30 Apr 2020 12:57:31 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/awesome-sc/</guid>
+      <description>A while ago I started compiling a list of links to SuperCollider based things that I found interesting and wanted to save for later.
+The list grew and at one point I organized it all in one public repository where the SuperCollider community could help curate links to awesome SuperCollider things and it has since then become a truly rich resource for things like tutorials, reading material, nice projects and tools.</description>
+    </item>
+    
+    <item>
       <title>Work</title>
       <link>http://madskjeldgaard.dk/pages/work/</link>
       <pubDate>Thu, 30 Apr 2020 12:48:40 +0200</pubDate>

@@ -9,6 +9,22 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Awesome SuperCollider: A curated list</title>
+            <link>http://madskjeldgaard.dk/posts/awesome-sc/</link>
+            <pubDate>Thu, 30 Apr 2020 12:57:31 +0200</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/awesome-sc/</guid>
+            <description>A while ago I started compiling a list of links to SuperCollider based things that I found interesting and wanted to save for later.
+The list grew and at one point I organized it all in one public repository where the SuperCollider community could help curate links to awesome SuperCollider things and it has since then become a truly rich resource for things like tutorials, reading material, nice projects and tools.</description>
+            <content type="html"><![CDATA[<p><img src="/img/small/chaos-algo.png" alt="chaos algo"></p>
+<p>A while ago I started compiling a list of links to SuperCollider based things that I found interesting and wanted to save for later.</p>
+<p>The list grew and at one point I organized it all in one public repository where the SuperCollider community could help curate links to <em>awesome SuperCollider things</em> and it has since then become a truly rich resource for things like tutorials, reading material, nice projects and tools.</p>
+<p>Have a look, and do add to it if you feel like it:</p>
+<p><a href="https://github.com/madskjeldgaard/awesome-supercollider">Awesome SuperCollider</a></p>
+]]></content>
+        </item>
+        
+        <item>
             <title>On Rust, OSC and creative coding in nannou</title>
             <link>http://madskjeldgaard.dk/posts/nannou-osc-guides/</link>
             <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
