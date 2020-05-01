@@ -317,7 +317,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs <span style="
 
 <span style="color:#75715e"># Open nvim and install the scnvim plugin</span>
 nvim -c <span style="color:#e6db74">&#34;:PlugInstall&#34;</span>
-</code></pre></div><p>Exit neovim when it&rsquo;s done install the plugin, then finish the scnvim integration by symlinking the SuperCollider classes that came with the plugin to the extensions folder of SC:</p>
+</code></pre></div><p>Exit neovim when it&rsquo;s done installing the plugin, then finish the scnvim integration by symlinking the SuperCollider classes that came with the plugin to the extensions folder of SC:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/.local/share/SuperCollider/Extensions/scide_scvim
 ln -sf /home/pi/.config/nvim/plugged/scnvim/sc /home/pi/.local/share/SuperCollider/Extensions/scide_scvim
 </code></pre></div><p>You should now be good to go. Open up the <code>test.scd</code> file from before and edit it:</p>
