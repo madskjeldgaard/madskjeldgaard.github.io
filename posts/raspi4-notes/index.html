@@ -40,7 +40,7 @@ I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in 
 It is presumed that you have installed Raspbian on an sd card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.">
 <meta itemprop="datePublished" content="2020-04-30T16:07:22&#43;02:00" />
 <meta itemprop="dateModified" content="2020-04-30T16:07:22&#43;02:00" />
-<meta itemprop="wordCount" content="1513">
+<meta itemprop="wordCount" content="1549">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
@@ -304,7 +304,6 @@ cd ..
 rm -rf neovim
 </code></pre></div><p>Now, verify that NeoVim is installed by running the following command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim --version
-
 </code></pre></div><p>If you get any output from that command, you are good to go and can proceed to install <a href="https://github.com/davidgranstrom/scnvim">scnvim</a> by following the instructions on the project&rsquo;s github repo.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file</span> 
 mkdir ~/.config/nvim
@@ -321,6 +320,9 @@ nvim -c <span style="color:#e6db74">&#34;:PlugInstall&#34;</span>
 </code></pre></div><p>Exit neovim when it&rsquo;s done install the plugin, then finish the scnvim integration by symlinking the SuperCollider classes that came with the plugin to the extensions folder of SC:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/.local/share/SuperCollider/Extensions/scide_scvim
 ln -sf /home/pi/.config/nvim/plugged/scnvim/sc /home/pi/.local/share/SuperCollider/Extensions/scide_scvim
+</code></pre></div><p>You should now be good to go. Open up the <code>test.scd</code> file from before and edit it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Open a SuperCollider file and start SCNvim on startup (by running the :SCNvimStart command)</span>
+nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 </code></pre></div><h2 id="links-for-further-information">Links for further information</h2>
 <ul>
 <li><a href="https://github.com/supercollider/supercollider/blob/develop/README_RASPBERRY_PI.md">Raspberry Pi readme in the SuperCollider repo</a></li>
@@ -338,7 +340,7 @@ ln -sf /home/pi/.config/nvim/plugged/scnvim/sc /home/pi/.local/share/SuperCollid
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/raspberrypi">raspberrypi</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1513 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1549 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-30 16:07 &#43;0200</p>
         </div>

@@ -148,7 +148,6 @@ cd ..
 rm -rf neovim
 </code></pre></div><p>Now, verify that NeoVim is installed by running the following command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim --version
-
 </code></pre></div><p>If you get any output from that command, you are good to go and can proceed to install <a href="https://github.com/davidgranstrom/scnvim">scnvim</a> by following the instructions on the project&rsquo;s github repo.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file</span> 
 mkdir ~/.config/nvim
@@ -165,6 +164,9 @@ nvim -c <span style="color:#e6db74">&#34;:PlugInstall&#34;</span>
 </code></pre></div><p>Exit neovim when it&rsquo;s done install the plugin, then finish the scnvim integration by symlinking the SuperCollider classes that came with the plugin to the extensions folder of SC:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/.local/share/SuperCollider/Extensions/scide_scvim
 ln -sf /home/pi/.config/nvim/plugged/scnvim/sc /home/pi/.local/share/SuperCollider/Extensions/scide_scvim
+</code></pre></div><p>You should now be good to go. Open up the <code>test.scd</code> file from before and edit it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Open a SuperCollider file and start SCNvim on startup (by running the :SCNvimStart command)</span>
+nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 </code></pre></div><h2 id="links-for-further-information">Links for further information</h2>
 <ul>
 <li><a href="https://github.com/supercollider/supercollider/blob/develop/README_RASPBERRY_PI.md">Raspberry Pi readme in the SuperCollider repo</a></li>
