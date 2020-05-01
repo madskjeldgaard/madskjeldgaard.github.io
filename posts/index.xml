@@ -141,11 +141,30 @@ git clone https://github.com/neovim/neovim <span style="color:#f92672">&amp;&amp
 
 <span style="color:#75715e"># Build and install</span>
 make -j4 <span style="color:#f92672">&amp;&amp;</span> sudo make install
+
+<span style="color:#75715e"># Remove source files</span>
+cd ..
+rm -rf neovim
 </code></pre></div><p>Now, verify that NeoVim is installed by running the following command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim --version
 
-</code></pre></div><p>If you get any output from that command, you are godo to go and can proceed to install <a href="https://github.com/davidgranstrom/scnvim">scnvim</a> by following the instructions on the project&rsquo;s github repo.</p>
-<h2 id="links-for-further-information">Links for further information</h2>
+</code></pre></div><p>If you get any output from that command, you are good to go and can proceed to install <a href="https://github.com/davidgranstrom/scnvim">scnvim</a> by following the instructions on the project&rsquo;s github repo.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file</span> 
+mkdir ~/.config/nvim
+echo <span style="color:#e6db74">&#34;call plug#begin()
+</span><span style="color:#e6db74">Plug &#39;davidgranstrom/scnvim&#39;
+</span><span style="color:#e6db74">call plug#end()&#34;</span> &gt; ~/.config/nvim/init.vim
+
+<span style="color:#75715e"># Install the vim-plug plugin manager</span>
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+<span style="color:#75715e"># Open nvim and install the scnvim plugin</span>
+nvim -c <span style="color:#e6db74">&#34;:PlugInstall&#34;</span>
+</code></pre></div><p>Exit neovim when it&rsquo;s done install the plugin, then finish the scnvim integration by symlinking the SuperCollider classes that came with the plugin to the extensions folder of SC:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/.local/share/SuperCollider/Extensions/scide_scvim
+ln -sf /home/pi/.config/nvim/plugged/scnvim/sc /home/pi/.local/share/SuperCollider/Extensions/scide_scvim
+</code></pre></div><h2 id="links-for-further-information">Links for further information</h2>
 <ul>
 <li><a href="https://github.com/supercollider/supercollider/blob/develop/README_RASPBERRY_PI.md">Raspberry Pi readme in the SuperCollider repo</a></li>
 <li><a href="https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0">Headless Raspberry Pi setup</a></li>
