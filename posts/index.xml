@@ -52,14 +52,22 @@ sudo echo <span style="color:#e6db74">&#34;
 <span style="color:#75715e"># Install other useful tools</span>
 sudo apt-get install htop git perl
 </code></pre></div><h2 id="install-and-setup-jack">Install and setup jack</h2>
+<p>Jack is used to patch audio throughout your audio system on Linux. Mostly in this case we will use it to patch audio from software to the hardware output.</p>
+<p>Let&rsquo;s install and setup jack:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install jack</span>
 sudo apt-get install jackd2
-
-<span style="color:#75715e"># Create config file in home folder called .jackdrc</span>
+</code></pre></div><p>Jack has a configuration file in <code>~/.jackdrc</code> that we will set up on installation, but you can edit this anytime to tune the system&rsquo;s settings using a text editor by running <code>nano ~/.jackdrc</code> for example or <code>vi ~/.jackdrc</code>. The config file consists of a <code>jackd</code> command which will be run by SuperCollider when we boot the audio server in there.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create config file in home folder called .jackdrc</span>
 echo /usr/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p512 -n3 &gt; ~/.jackdrc
-
-
-</code></pre></div><p><a href="https://www.fredrikolofsson.com">Fredrik Olofsson</a> pointed out to me that it can be useful to use the <code>-p</code>-flag to restrict the number of possible ports for jack to connect to, this reduces the amount of ram used, which is why the SuperCollider readme recommends adding the <code>-p16</code> flag to the jack command in <code>.jackdrc</code>.</p>
+</code></pre></div><p>Explanations of the flags used here:</p>
+<ul>
+<li><code>-P75</code> - the realtime priority of the audio</li>
+<li><code>-dhw:1</code> signifies the device number used to connect to jack. You can get a list of available devices to choose from using <code>aplay -l</code> then change the number <code>1</code> to whatever you like. 1 is usually the usb card.</li>
+<li><code>-r44100</code> is the sample rate.</li>
+<li><code>-p512</code> is the number of frames. This can be tuned to achieve lower latency. Must be power of two.</li>
+<li><code>-n3</code> - jack&rsquo;s buffer periods. Jack recommends using 3 here for usb devices.</li>
+</ul>
+<p>Additionally, <a href="https://www.fredrikolofsson.com">Fredrik Olofsson</a> pointed out to me that it can be useful to use the <code>-p</code>-flag to restrict the number of possible ports for jack to connect to, this reduces the amount of ram used, which is why the SuperCollider readme recommends adding the <code>-p16</code> flag to the jack command in <code>.jackdrc</code>.</p>
 <h3 id="changing-audio-interface">Changing audio interface</h3>
 <p>Never use the built in audio jack on a Rasbperry Pi for anything serious. Instead, you can use any class compliant usb audio interface. These range from cheap 1$ chinese ones to top-of-the-line RME Fireface UCX. I use and like both of these for different situations.</p>
 <p>To see which audio interfaces are available on the pi:
