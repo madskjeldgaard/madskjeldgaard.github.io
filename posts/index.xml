@@ -180,6 +180,7 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 </code></pre></div><p>Now, if you&rsquo;ve setup your well tuned Raspberry Pi in an installation at a fancy gallery and you want to keep tweaking it&rsquo;s performance, you may retreat to the bathroom, log into it via ssh and manipulate it from there while the gallery guests drink white wine and enjoy hors d&rsquo;oeuvres and marvel at your Raspberry Pi work.</p>
 <h2 id="links-for-further-information">Links for further information</h2>
 <ul>
+<li><a href="https://medium.com/swlh/make-your-raspberry-pi-file-system-read-only-raspbian-buster-c558694de79">Make your Raspberry Pi file system read-only </a></li>
 <li><a href="https://github.com/supercollider/supercollider/blob/develop/README_RASPBERRY_PI.md">Raspberry Pi readme in the SuperCollider repo</a></li>
 <li><a href="https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0">Headless Raspberry Pi setup</a></li>
 <li><a href="https://raspberrypihq.com/how-to-connect-your-raspberry-pi-to-wifi/">How to automatically connect to wifi on startup</a></li>
