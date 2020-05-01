@@ -118,7 +118,14 @@ perl ./realTimeConfigQuickScan.pl
 <p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailorfit to a headless Raspberry Pi install:</p>
 <script type="application/javascript" src="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908.js"></script>
 
-<h2 id="links-for-further-information">Links for further information</h2>
+<h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
+<p>We can create a simple SuperCollider test file to see if the installation went well.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing.</span> 
+echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5)!2} }&#34;</span> &gt;&gt; test.scd
+
+<span style="color:#75715e"># This will boot the server and play white noise in 2 channels</span>
+sclang test.scd
+</code></pre></div><h2 id="links-for-further-information">Links for further information</h2>
 <ul>
 <li><a href="https://github.com/supercollider/supercollider/blob/develop/README_RASPBERRY_PI.md">Raspberry Pi readme in the SuperCollider repo</a></li>
 <li><a href="https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0">Headless Raspberry Pi setup</a></li>
