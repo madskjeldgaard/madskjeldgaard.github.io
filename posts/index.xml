@@ -130,6 +130,7 @@ sclang test.scd
 <p>As shown above, you can run any SuperSollider file by passing it as an argument to <code>sclang</code> on the command line.</p>
 <p>If you just have a finished SuperCollider-file that you want to run, then this is probably fine. You can use any text editor to make small edits to your files (<code>vi</code>, <code>nano</code>, <code>vim</code>/<code>nvim</code> or <code>emacs</code> are popular choices).</p>
 <p>But, really, this isn&rsquo;t a great way of working.</p>
+<h3 id="neovim-and-scnvim">NeoVim and scnvim</h3>
 <p>My preferred way of working (on any computer, single board or not) is using a combination of NeoVim and the <a href="https://github.com/davidgranstrom/scnvim">scnvim plugin</a>.</p>
 <p>To get this combination to work properly, unfortunately you cannot just install neovim using raspbian&rsquo;s package manager since we need a fairly new version of NeoVim to get it to work (and raspbian/debian typically has pretty old &ldquo;stable&rdquo; versions in it&rsquo;s package manager).</p>
 <p>Follow <a href="https://github.com/neovim/neovim/wiki/Building-Neovim">the instructions here</a> (look for <code>debian</code> things, this should be the same on raspbian) to build NeoVim from source. The neovim wiki is the best place to find instructions on this, but I will condense the commands I used to build neovim on raspbian below:</p>
