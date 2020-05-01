@@ -69,7 +69,7 @@ echo /usr/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p512 -n3 &gt; ~/.jackdrc
 <li><code>-P75</code> - the realtime priority of the audio</li>
 <li><code>-dhw:1</code> signifies the device number used to connect to jack. You can get a list of available devices to choose from using <code>aplay -l</code> then change the number <code>1</code> to whatever you like. 1 is usually the usb card.</li>
 <li><code>-r44100</code> is the sample rate.</li>
-<li><code>-p512</code> is the number of frames. This can be tuned to achieve lower latency. Must be power of two.</li>
+<li><code>-p512</code> is the blocksize. This can be tuned to achieve lower latency. Must be power of two. I get latencies around 3-4ms with this set to <code>-p64</code>.</li>
 <li><code>-n3</code> - jack&rsquo;s buffer periods. Jack recommends using 3 here for usb devices.</li>
 </ul>
 <p>Additionally, <a href="https://www.fredrikolofsson.com">Fredrik Olofsson</a> pointed out to me that it can be useful to use the <code>-p</code>-flag to restrict the number of possible ports for jack to connect to, this reduces the amount of ram used, which is why the SuperCollider readme recommends adding the <code>-p16</code> flag to the jack command in <code>.jackdrc</code>.</p>
