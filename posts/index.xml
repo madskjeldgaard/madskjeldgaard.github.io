@@ -256,7 +256,7 @@ perl ./realTimeConfigQuickScan.pl
 <h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
 <p>Let&rsquo;s create a simple SuperCollider test file which will boot the audio server (and automatically start and connect Jack) to see if the installation went well and we are getting sound out of the pi.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing.</span> 
-echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5)!2} }&#34;</span> &gt;&gt; test.scd
+echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5).dup(2)} }&#34;</span> &gt;&gt; test.scd
 
 <span style="color:#75715e"># This will boot the server and play white noise in 2 channels</span>
 <span style="color:#75715e"># Stop it by hitting Ctrl+d on your keyboard</span>
