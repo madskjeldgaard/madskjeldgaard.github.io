@@ -111,7 +111,7 @@ Receiving.
 </code></pre><h3 id="patch-the-network-input-to-your-speakers">Patch the network input to your speakers</h3>
 <p>Open up your jack patcher - either carla, catia or qjackctl if you are using a graphical patcher - and patch the zita object on the graph to your system&rsquo;s output.</p>
 <h2 id="bringing-it-all-together-in-a-script">Bringing it all together in a script</h2>
-<p>These steps may seem like a bit of mouthful but they are easily automated.</p>
+<p>These steps may seem like a bit of a mouthful but they are easily automated.</p>
 <p>As mentioned in the beginning, to be able to run multiple processes in the command line (and be able to see them), we may use <code>tmux</code>.</p>
 <p>Tmux isn&rsquo;t exactly an easy program to use for beginners, but by default you may navigate it using the prefix command <code>Ctrl-b</code> followed by something else. <code>Ctrl-b 1</code> will move you to window 1, <code>Ctrl-b 2</code> window 2, etc..</p>
 <p>Apart from solving the obvious problem of not being able to see multiple processes at the same time, Tmux is great for automation. We can set up and launch programs in Tmux automatically. This means we can bring together all commands from above in a setup script to be launched on the Pi. With this, we only need to launch this on the pi and it will transmit sound on the network.</p>
