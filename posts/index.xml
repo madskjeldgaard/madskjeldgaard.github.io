@@ -102,6 +102,7 @@ Both IPv4 and IPv6 are supported.</p>
 jack_connect SuperCollider:out_2 zita-j2n:in_2
 </code></pre></div><p>Make sure these commands don&rsquo;t output any errors before continuing.</p>
 <h2 id="on-the-laptop">On the laptop</h2>
+<p><img src="/img/small/qjackctl-zita.png" alt="success - this is what it should look like on your host computer"></p>
 <p>Then start receiving sound from zita. Note that this is the same ip and port as typed into the command in the Raspberry Pi, but the command itself is slightly different</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-n2j 10.0.1.5 <span style="color:#ae81ff">1234</span>
 </code></pre></div><p>This should result in a message like:</p>
@@ -110,8 +111,7 @@ Resampler filter delay is 48.
 Syncing...
 Receiving.
 </code></pre><h3 id="patch-the-network-input-to-your-speakers">Patch the network input to your speakers</h3>
-<p><img src="/img/small/qjackctl-zita.png" alt="success - this is what it should look like on your host computer">
-Open up your jack patcher - either carla, catia or qjackctl if you are using a graphical patcher - and patch the zita object on the graph to your system&rsquo;s output.</p>
+<p>Open up your jack patcher - either carla, catia or qjackctl if you are using a graphical patcher - and patch the zita object on the graph to your system&rsquo;s output.</p>
 <h2 id="bringing-it-all-together-in-a-script">Bringing it all together in a script</h2>
 <p>These steps may seem like a bit of mouthful but they are easily automated.</p>
 <p>As mentioned in the beginning, to be able to run multiple processes in the command line (and be able to see them), we may use <code>tmux</code>.</p>
