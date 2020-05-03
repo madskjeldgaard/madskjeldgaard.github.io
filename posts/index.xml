@@ -62,7 +62,7 @@ the audio stream(s) to its local sample rate.</p>
 <p>At the end of this post I will get back to <code>tmux</code> and how to launch these commands simultaneously in a terminal, but for now let&rsquo;s go through each command needed.</p>
 <p>First, install dependencies:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install tmux zita-njbridge
-</code></pre></div><p>Let&rsquo;s start jack on the pi using some sensible settings. Assuming your Pi has a USB audio interface connected, the hardware number (this is the <code>-dhw:1</code> bit below) should be 1. If you are using (which you should&rsquo;t) the internal interface on the Pi, change this to 0.</p>
+</code></pre></div><p>Let&rsquo;s start jack on the pi using some sensible settings. Assuming your Pi has a USB audio interface connected, the hardware number (this is the <code>-dhw:1</code> bit below) should be 1. If you are using (which you shouldn&rsquo;t) the internal interface on the Pi, change this to 0.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Launch jack using card 0, 48khz sample rate and block size of 256</span>
 /usr/bin/jackd -dalsa -dhw:1 -r48000 -p256 -n2
 </code></pre></div><p>Once jack is up and running, the next step is to run zita-njbridge.</p>
@@ -78,8 +78,8 @@ the audio stream(s) to its local sample rate.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-j2n 10.0.1.5 <span style="color:#ae81ff">1234</span>
 </code></pre></div><p>Note, this command doesn&rsquo;t output anything, so don&rsquo;t freak out if you don&rsquo;t see anything happen in the terminal when you execute this.</p>
 <h3 id="start-supercollider">Start SuperCollider</h3>
-<p>As mentioned, in this example we will be using SuperCollider but any software that can run headlessly on the Pi may be used.</p>
-<p>From the command line, you can create a simple SuperCollider testfile which will make the SuperCollider server boot and then play a stereo sine wave.</p>
+<p>As mentioned, in this example we will be using SuperCollider but any software that can run in headless mode on the Pi may be used.</p>
+<p>From the command line, you can create a simple SuperCollider test file which will make the SuperCollider server boot and then play a stereo sine wave.</p>
 <p>Using <code>echo</code> we can create a small test file in your home directory called <code>test.scd</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;
 </span><span style="color:#e6db74">		// Boot server and play stereo sine wave
