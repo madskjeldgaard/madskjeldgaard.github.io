@@ -180,7 +180,7 @@ To quote from the manual on zita-njbridge:
             <div class="post-content">
                 <p><img src="/img/small/raspi-and-cheap-usb-interface.jpg" alt="raspberry pi with a 1$ usb sound interface"></p>
 <p><a href="https://jackaudio.org/">Jack</a> is an incredibly flexible piece of software for making audio connections. It&rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.</p>
-<p>This is exploited to it&rsquo;s fullest in the <a href="https://directory.fsf.org/wiki/Zita-njbridge">zita-njbridge</a> package.</p>
+<p>This is exploited to it&rsquo;s fullest in the <a href="https://packages.debian.org/jessie/sound/zita-njbridge">zita-njbridge</a> package.</p>
 <p>To quote from the manual on zita-njbridge:</p>
 <blockquote>
 <p>The  zita-j2n (sender) and zita-n2j (receiver) applications allow to
@@ -194,7 +194,7 @@ Both IPv4 and IPv6 are supported.</p>
 </blockquote>
 <p>With this tiny piece of extra software you can make audio connections between computers across a network. This way, it&rsquo;s possible to stream full quality audio from one computer to another for networked audio projects. I have previously used this technique to connect my linux laptop to a Windows audio server <a href="https://notam.no">in Notam&rsquo;s 3D-audio studio</a> to work around the problem of missing drivers for good multichannel audio interfaces on Linux and instead stream the audio over the network to a computer that is able to connect to an interface.</p>
 <p>I have - quite surprisingly - had great results with this (working with 25 channels of audio) so I have been really curious about what can be done on the powerful Raspberry Pi 4 in this regard.</p>
-<p>Note, this post exemplies how to do this with a Raspberry Pi but it could be any two (or more) computers that have jack installed.</p>
+<p>Note, this post examplifies how to do this with a Raspberry Pi but it could be any two (or more) computers that have jack installed.</p>
 <p><strong>Important:</strong> Do not try this over wifi. Wifi will cause significant dropouts in the audio. To get good results, a wired ethernet connection is mandatory (on both the Raspberry Pi and the laptop). Also, make sure that the laptop receiving the audio is not running on wifi concurrently with the wired ethernet connection.</p>
 <p><img src="/img/small/usb-ethernet.jpg" alt="usb ethernet dongle">
 <em>If your computer doesn&rsquo;t have an ethernet port you can buy cheap usb adapters that will give you one.</em></p>
