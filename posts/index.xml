@@ -124,7 +124,7 @@ git clone https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd7594
 </span><span style="color:#ae81ff"></span>	chmod +x njstart
 </code></pre></div><p>Using it is fairly simple. You run the script like so:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./njstart &lt;ipaddress&gt; &lt;port&gt; &lt;supercolliderfile&gt;
-</code></pre></div><p>It has three arguments. The ip address and port of the receiving computer (your laptop) and an optional third argument for a SuperCollider file to be launched. If the third argument isn&rsquo;t supplied it will use the file in <code>~/test.scd</code> if it exists or create on if it doesn&rsquo;t.</p>
+</code></pre></div><p>It has three arguments. The ip address and port of the receiving computer (your laptop) and an optional third argument for a SuperCollider file to be launched. If the third argument isn&rsquo;t supplied it will use the file in <code>~/test.scd</code> if it exists or create one if it doesn&rsquo;t.</p>
 <p>Then, using the same ip address and port, run <code>zita-n2j</code> on the receiving computer to receive the audio from the Pi.</p>
 <p>This is the full script:</p>
 <script type="application/javascript" src="https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd75946.js"></script>
