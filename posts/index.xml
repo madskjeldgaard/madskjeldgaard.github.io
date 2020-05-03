@@ -62,7 +62,7 @@ the audio stream(s) to its local sample rate.</p>
 <h2 id="setting-up-the-raspberry-pi">Setting up the Raspberry Pi</h2>
 <p>At the end of this post I will get back to <code>tmux</code> and how to launch these commands simultaneously in a terminal, but for now let&rsquo;s go through each command needed.</p>
 <p>First, install dependencies:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install tmux zita-njbridge
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install tmux zita-njbridge jackd2
 </code></pre></div><p>Let&rsquo;s start jack on the pi using some sensible settings. Assuming your Pi has a USB audio interface connected, the hardware number (this is the <code>-dhw:1</code> bit below) should be 1. If you are using (which you shouldn&rsquo;t) the internal interface on the Pi, change this to 0.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Launch jack using card 0, 48khz sample rate and block size of 256</span>
 /usr/bin/jackd -dalsa -dhw:1 -r48000 -p256 -n2
