@@ -306,6 +306,8 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 <p>To access your Raspberry Pi using your phone: Install <a href="https://wiki.termux.com/wiki/Main_Page">termux</a>. It is a terminal emulator for the phone. Run <code>pkg install openssh</code> to install ssh and then you can log in to your raspberry pi and livecode SuperCollider or tweak settings using your phone by running the command using the address of the pi on your local network.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh pi@10.0.1.51
 </code></pre></div><p>Now, if you&rsquo;ve setup your well tuned Raspberry Pi in an installation at a fancy gallery and you want to keep tweaking it&rsquo;s performance, you may retreat to the bathroom, log into it via ssh and manipulate it from there while the gallery guests drink white wine and enjoy hors d&rsquo;oeuvres and marvel at your Raspberry Pi work.</p>
+<h2 id="using-the-raspberry-pi-for-networked-audio">Using the Raspberry Pi for networked audio</h2>
+<p><a href="/posts/raspi-zita-njbridge">This blog post</a> describes a way to use the Raspberry Pi in a networked audio configuration.</p>
 <h2 id="links-for-further-information">Links for further information</h2>
 <ul>
 <li><a href="https://medium.com/swlh/make-your-raspberry-pi-file-system-read-only-raspbian-buster-c558694de79">Make your Raspberry Pi file system read-only </a></li>
