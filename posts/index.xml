@@ -101,7 +101,7 @@ Both IPv4 and IPv6 are supported.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jack_connect SuperCollider:out_1 zita-j2n:in_1 
 jack_connect SuperCollider:out_2 zita-j2n:in_2
 </code></pre></div><p>Make sure these commands don&rsquo;t output any errors before continuing.</p>
-<h2 id="on-the-laptop">On the laptop</h2>
+<h2 id="on-the-receiving-computer">On the receiving computer</h2>
 <p><img src="/img/small/qjackctl-zita.png" alt="success - this is what it should look like on your host computer"></p>
 <p>Then start receiving sound from zita. Note that this is the same ip and port as typed into the command in the Raspberry Pi, but the command itself is slightly different</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-n2j 10.0.1.5 <span style="color:#ae81ff">1234</span>
