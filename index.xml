@@ -12,6 +12,18 @@
     
     
     <item>
+      <title>Networked audio on the Raspberry Pi (zita-njbridge and SuperCollider)</title>
+      <link>http://madskjeldgaard.dk/posts/raspi-zita-njbridge/</link>
+      <pubDate>Sun, 03 May 2020 10:17:27 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/raspi-zita-njbridge/</guid>
+      <description>Jack is an incredibly flexible piece of software for making audio connections. It&amp;rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
+This is exploited to it&amp;rsquo;s fullest in the zita-njbridge package.
+To quote from the manual on zita-njbridge:
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server.</description>
+    </item>
+    
+    <item>
       <title>Notes for setting up a Raspberry Pi 4 for audio work</title>
       <link>http://madskjeldgaard.dk/posts/raspi4-notes/</link>
       <pubDate>Thu, 30 Apr 2020 16:07:22 +0200</pubDate>

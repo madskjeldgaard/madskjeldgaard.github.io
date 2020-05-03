@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="Jack is an incredibly flexible piece of software for making audio connections. It&amp;rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
+This is exploited to it&amp;rsquo;s fullest in the zita-njbridge package.
+To quote from the manual on zita-njbridge:
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux, supercollider, raspberrypi, zita-njbridge" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://madskjeldgaard.dk/posts/raspi-zita-njbridge/" />
+
+
+    <title>
+        
+            Networked audio on the Raspberry Pi (zita-njbridge and SuperCollider) :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.753fac8f03736f0edc9be411eb20cee875dd7bb8e73c8155fbf6a629c863f4ca.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Networked audio on the Raspberry Pi (zita-njbridge and SuperCollider)">
+<meta itemprop="description" content="Jack is an incredibly flexible piece of software for making audio connections. It&rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
+This is exploited to it&rsquo;s fullest in the zita-njbridge package.
+To quote from the manual on zita-njbridge:
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server.">
+<meta itemprop="datePublished" content="2020-05-03T10:17:27&#43;02:00" />
+<meta itemprop="dateModified" content="2020-05-03T10:17:27&#43;02:00" />
+<meta itemprop="wordCount" content="1509">
+<meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
+
+
+
+<meta itemprop="keywords" content="supercollider,raspberrypi,zita-njbridge," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
+
+<meta name="twitter:title" content="Networked audio on the Raspberry Pi (zita-njbridge and SuperCollider)"/>
+<meta name="twitter:description" content="Jack is an incredibly flexible piece of software for making audio connections. It&rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
+This is exploited to it&rsquo;s fullest in the zita-njbridge package.
+To quote from the manual on zita-njbridge:
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server."/>
+
+
+
+    <meta property="og:title" content="Networked audio on the Raspberry Pi (zita-njbridge and SuperCollider)" />
+<meta property="og:description" content="Jack is an incredibly flexible piece of software for making audio connections. It&rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
+This is exploited to it&rsquo;s fullest in the zita-njbridge package.
+To quote from the manual on zita-njbridge:
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/raspi-zita-njbridge/" />
+<meta property="og:image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
+<meta property="article:published_time" content="2020-05-03T10:17:27+02:00" />
+<meta property="article:modified_time" content="2020-05-03T10:17:27+02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-05-03 10:17:27 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/work">work</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>8 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="http://madskjeldgaard.dk/posts/raspi-zita-njbridge/">Networked audio on the Raspberry Pi (zita-njbridge and SuperCollider)</a>
+            </h1>
+                <hr />
+                <aside id="toc">
+                <div class="toc-title">Table of Contents</div>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#workflow-overview">Workflow overview</a>
+      <ul>
+        <li><a href="#necessary-steps">Necessary steps</a></li>
+      </ul>
+    </li>
+    <li><a href="#setting-up-the-raspberry-pi">Setting up the Raspberry Pi</a>
+      <ul>
+        <li><a href="#start-supercollider">Start SuperCollider</a></li>
+        <li><a href="#connect-jack">Connect jack</a></li>
+      </ul>
+    </li>
+    <li><a href="#on-the-laptop">On the laptop</a>
+      <ul>
+        <li><a href="#patch-the-network-input-to-your-speakers">Patch the network input to your speakers</a></li>
+      </ul>
+    </li>
+    <li><a href="#bringing-it-all-together-in-a-script">Bringing it all together in a script</a></li>
+    <li><a href="#further-information">Further information</a></li>
+  </ul>
+</nav>
+                </aside>
+                <hr />
+
+            
+
+            <div class="post-content">
+                <p><img src="/img/small/raspi-and-cheap-usb-interface.jpg" alt="raspberry pi with a 1$ usb sound interface"></p>
+<p><a href="https://jackaudio.org/">Jack</a> is an incredibly flexible piece of software for making audio connections. It&rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.</p>
+<p>This is exploited to it&rsquo;s fullest in the <a href="https://directory.fsf.org/wiki/Zita-njbridge">zita-njbridge</a> package.</p>
+<p>To quote from the manual on zita-njbridge:</p>
+<blockquote>
+<p>The  zita-j2n (sender) and zita-n2j (receiver) applications allow to
+exchange up to 64 channels of full-quality uncompressed audio streams between
+two or more systems running the Jack audio server. Sender and receiver(s)
+can each have their own sample rate and period size, and no word clock sync
+between them is assumed. The receiver uses adaptive resam‐ pling to convert
+the audio stream(s) to its local sample rate.
+Zita-njbridge can be used in two ways: one-to-one, or one-to-many.<br>
+Both IPv4 and IPv6 are supported.</p>
+</blockquote>
+<p>With this tiny piece of extra software you can make audio connections between computers across a network. This way, it&rsquo;s possible to stream full quality audio from one computer to another for networked audio projects. I have previously used this technique to connect my linux laptop to a Windows audio server <a href="https://notam.no">in Notam&rsquo;s 3D-audio studio</a> to work around the problem of missing drivers for good multichannel audio interfaces on Linux and instead stream the audio over the network to a computer that is able to connect to an interface.</p>
+<p>I have - quite surprisingly - had great results with this (working with 25 channels of audio) so I have been really curious about what can be done on the powerful Raspberry Pi 4 in this regard.</p>
+<p>Note, this post exemplies how to do this with a Raspberry Pi but it could be any two (or more) computers that have jack installed.</p>
+<p><strong>Important:</strong> Do not try this over wifi. Wifi will cause significant dropouts in the audio. To get good results, a wired ethernet connection is mandatory (on both the Raspberry Pi and the laptop). Also, make sure that the laptop receiving the audio is not running on wifi concurrently with the wired ethernet connection.</p>
+<p><img src="/img/small/usb-ethernet.jpg" alt="usb ethernet dongle">
+<em>If your computer doesn&rsquo;t have an ethernet port you can buy cheap usb adapters that will give you one.</em></p>
+<h2 id="workflow-overview">Workflow overview</h2>
+<p>I am doing this on a Raspberry Pi 4 with both the Pi and my laptop connected to the same network using an ethernet cable.</p>
+<p>You need the ip address of your laptop (or whatever computer is receiving the audio on the network). I won&rsquo;t go into details on how to do this because it varies wildly from operating system to operating system, but I will assume you know the local ip address of your receiving computer.</p>
+<p>We will be working with the Pi running in headless mode using Raspbian Lite. For more information on how to setup that up, <a href="/posts/raspi4-notes">see this post</a>.</p>
+<p>Running the Pi in headless mode poses a problem (which we will solve): We need to run multiple pieces of software at the same time on the command line. I solve this using <a href="https://github.com/tmux/tmux/wiki">tmux</a> which is a &ldquo;terminal multiplexer&rdquo;, meaning: This let&rsquo;s you run multiple windows and panes in the terminal as you would be able to in a desktop environment more or less.</p>
+<h3 id="necessary-steps">Necessary steps</h3>
+<p>Let&rsquo;s first take a look at the steps necessary to make this work. We&rsquo;ll go through each step below in a bit more detail and then finish off with a setup script for the Pi which does most of this for us.</p>
+<h4 id="steps-on-the-raspberry-pi">Steps on the Raspberry Pi</h4>
+<ol>
+<li>Install dependencies</li>
+<li>Launch <code>tmux</code></li>
+<li>Launch <code>jack</code></li>
+<li>Launch <code>zita-j2n</code> (jack 2 network)</li>
+<li>Launch something that can output sound to Jack (SuperCollider in this case but might as well be Csound, Pure Data or something else)</li>
+<li>Connect the virtual patch cords of your sound process&rsquo; (SuperCollider) output to the zita-j2n output.</li>
+</ol>
+<h4 id="steps-on-the-laptop--pc">Steps on the laptop / pc</h4>
+<ol>
+<li>Launch <code>jack</code></li>
+<li>Launch <code>zita-n2j</code> (network 2 jack)</li>
+<li>Connect input from <code>zita-n2j</code> to system output to be able to listen to it.</li>
+</ol>
+<h2 id="setting-up-the-raspberry-pi">Setting up the Raspberry Pi</h2>
+<p>At the end of this post I will get back to <code>tmux</code> and how to launch these commands simultaneously in a terminal, but for now let&rsquo;s go through each command needed.</p>
+<p>First, install dependencies:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install tmux zita-njbridge jack
+</code></pre></div><p>Let&rsquo;s start jack on the pi using some sensible settings. Assuming your Pi has a USB audio interface connected, the hardware number (this is the <code>-dhw:1</code> bit below) should be 1. If you are using (which you should&rsquo;t) the internal interface on the Pi, change this to 0.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Launch jack using card 0, 48khz sample rate and block size of 256</span>
+/usr/bin/jackd -dalsa -dhw:1 -r48000 -p256 -n2
+</code></pre></div><p>Once jack is up and running, the next step is to run zita-njbridge.</p>
+<p>zita-njbridge contains two commands:</p>
+<ul>
+<li><code>zita-j2n</code> - transmit audio from jack to the network (hence &ldquo;j2n&rdquo; = jack2net)</li>
+<li><code>zita-n2j</code> - receive audio from the network to jack (hence &ldquo;n2j&rdquo; = net2jack)</li>
+</ul>
+<p>On both ends of the connection, these commands take the same arguments: an ip address and a port number.</p>
+<p>Both of these commands should be the ip address and port of the receiving computer (for more information, read the manual by executing <code>man zita-njbridge</code>).</p>
+<p>My laptop, which is the computer receiving the audio, has the local ip address <code>10.0.1.5</code> and for the port number, we can just make up something, how about <code>1234</code>?</p>
+<p>With these two bits of information, we can launch <code>zita-j2n</code> on the Pi:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-j2n 10.0.1.5 <span style="color:#ae81ff">1234</span>
+</code></pre></div><p>Note, this command doesn&rsquo;t output anything, so don&rsquo;t freak out if you don&rsquo;t see anything happen in the terminal when you execute this.</p>
+<h3 id="start-supercollider">Start SuperCollider</h3>
+<p>As mentioned, in this example we will be using SuperCollider but any software that can run headlessly on the Pi may be used.</p>
+<p>From the command line, you can create a simple SuperCollider testfile which will make the SuperCollider server boot and then play a stereo sine wave.</p>
+<p>Using <code>echo</code> we can create a small test file in your home directory called <code>test.scd</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;
+</span><span style="color:#e6db74">		// Boot server and play stereo sine wave
+</span><span style="color:#e6db74">		s.waitForBoot{
+</span><span style="color:#e6db74">		play{
+</span><span style="color:#e6db74">		SinOsc.ar([440, 441], mul: 0.5).poll(1)
+</span><span style="color:#e6db74">	}
+</span><span style="color:#e6db74">	}&#34;</span> &gt; <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/test.scd&#34;</span>
+</code></pre></div><p>And then launch that same file using the SuperCollider language:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sclang $HOME/test.scd
+</code></pre></div><h3 id="connect-jack">Connect jack</h3>
+<p>Open up a terminal and type <code>jack_lsp</code> to see the available connections in jack.</p>
+<p>These are the connections for our virtual patch cords.</p>
+<p>We can connect these on the command line using the <code>jack_connect</code> command.</p>
+<p>If zita-njbridge and SuperCollider are running, you should see the output of <code>jack_lsp</code> contain connection points for both of these.</p>
+<p>Execute these commands to connect output 1 and 2 of SuperCollider to inputs 1 and 2 of <code>zita-j2n</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jack_connect SuperCollider:out_1 zita-j2n:in_1 
+jack_connect SuperCollider:out_2 zita-j2n:in_2
+</code></pre></div><p>Make sure these commands don&rsquo;t output any errors before continuing.</p>
+<h2 id="on-the-laptop">On the laptop</h2>
+<p>Then start receiving sound from zita. Note that this is the same ip and port as typed into the command in the Raspberry Pi, but the command itself is slightly different</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-n2j 10.0.1.5 <span style="color:#ae81ff">1234</span>
+</code></pre></div><p>This should result in a message like:</p>
+<pre><code>From 10.0.1.50 : 2 chan, 44100 Hz
+Resampler filter delay is 48.
+Syncing...
+Receiving.
+</code></pre><h3 id="patch-the-network-input-to-your-speakers">Patch the network input to your speakers</h3>
+<p><img src="/img/small/qjackctl-zita.png" alt="success - this is what it should look like on your host computer">
+Open up your jack patcher - either carla, catia or qjackctl if you are using a graphical patcher - and patch the zita object on the graph to your system&rsquo;s output.</p>
+<h2 id="bringing-it-all-together-in-a-script">Bringing it all together in a script</h2>
+<p>These steps may seem like a bit of mouthful but they are easily automated.</p>
+<p>As mentioned in the beginning, to be able to run multiple processes in the command line (and be able to see them), we may use <code>tmux</code>.</p>
+<p>Tmux isn&rsquo;t exactly an easy program to use for beginners, but by default you may navigate it using the prefix command <code>Ctrl-b</code> followed by something else. <code>Ctrl-b 1</code> will move you to window 1, <code>Ctrl-b 2</code> window 2, etc..</p>
+<p>Apart from solving the obvious problem of not being able to see multiple processes at the same time, Tmux is great for automation. We can set up and launch programs in Tmux automatically. This means we can bring together all commands from above in a setup script to be launched on the Pi. With this, we only need to launch this on the pi and it will transmit sound on the network.</p>
+<p>I&rsquo;ve written a full script for this which is <a href="https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd75946">available here</a>.</p>
+<p>You can download this on your Pi by executing this command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Get startup script and make it executable</span>
+git clone https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd75946 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	mv 1a1e58a36f2d7526cd28524f5fd75946/njstart . <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	rm -rf 1a1e58a36f2d7526cd28524f5fd75946 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>	chmod +x njstart
+</code></pre></div><p>Using it is fairly simple. You run the script like so:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./njstart &lt;ipaddress&gt; &lt;port&gt; &lt;supercolliderfile&gt;
+</code></pre></div><p>It has three arguments. The ip address and port of the receiving computer (your laptop) and an optional third argument for a SuperCollider file to be launched. If the third argument isn&rsquo;t supplied it will use the file in <code>~/test.scd</code> if it exists or create on if it doesn&rsquo;t.</p>
+<p>Then, using the same ip address and port, run <code>zita-n2j</code> on the receiving computer to receive the audio from the Pi.</p>
+<p>This is the full script:</p>
+<script type="application/javascript" src="https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd75946.js"></script>
+
+<h2 id="further-information">Further information</h2>
+<ul>
+<li><a href="https://youtu.be/ZjIbCVujQFE">Unfa video on zita-njbridge</a></li>
+</ul>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/raspberrypi">raspberrypi</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/zita-njbridge">zita-njbridge</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1509 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-05-03 10:17 &#43;0200</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+
+                    
+                        <span class="button next">
+                            <a href="http://madskjeldgaard.dk/posts/raspi4-notes/">
+                                <span class="button__text">Notes for setting up a Raspberry Pi 4 for audio work</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            <span></span>
+            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.4a69500057d68129e88f497d354afe68422eb56de6d15e45dbe2190858ea5a76bfcb096406f992984b241db45f47388ac57ab0376e3b32125bef7a8a6d0f06c4.js" integrity="sha512-SmlQAFfWgSnoj0l9NUr&#43;aEIutW3m0V5F2&#43;IZCFjqWna/ywlkBvmSmEskHbRfRziKxXqwN247MhJb73qKbQ8GxA=="></script>
+
+
+
+    </body>
+</html>
