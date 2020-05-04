@@ -79,7 +79,7 @@ the audio stream(s) to its local sample rate.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-j2n 10.0.1.5 <span style="color:#ae81ff">1234</span>
 </code></pre></div><p>Note, this command doesn&rsquo;t output anything, so don&rsquo;t freak out if you don&rsquo;t see anything happen in the terminal when you execute this.</p>
 <h3 id="start-supercollider">Start SuperCollider</h3>
-<p>As mentioned, in this example we will be using SuperCollider but any software that can run in headless mode on the Pi may be used.</p>
+<p>As mentioned, in this example we will be using SuperCollider but any software that can run in headless mode on the Pi may be used. If you haven&rsquo;t installed it already, there are <a href="/posts/raspi4-notes">scripts for doing so here</a>.</p>
 <p>From the command line, you can create a simple SuperCollider test file which will make the SuperCollider server boot and then play a stereo sine wave.</p>
 <p>Using <code>echo</code> we can create a small test file in your home directory called <code>test.scd</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;
