@@ -109,7 +109,8 @@ jack_connect SuperCollider:out_2 zita-j2n:in_2
 Resampler filter delay is 48.
 Syncing...
 Receiving.
-</code></pre><h3 id="patch-the-network-input-to-your-speakers">Patch the network input to your speakers</h3>
+</code></pre><p>If this isn&rsquo;t working, consider taking a look at your system&rsquo;s firewall to open up the port (<code>1234</code> in the example above) used here.</p>
+<h3 id="patch-the-network-input-to-your-speakers">Patch the network input to your speakers</h3>
 <p>Open up your jack patcher - either carla, catia or qjackctl if you are using a graphical patcher - and patch the zita object on the graph to your system&rsquo;s output.</p>
 <h2 id="bringing-it-all-together-in-a-script">Bringing it all together in a script</h2>
 <p>These steps may seem like a bit of a mouthful but they are easily automated.</p>
