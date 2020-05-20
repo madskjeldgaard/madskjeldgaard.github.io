@@ -319,6 +319,7 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 <li><a href="https://raspberrypihq.com/how-to-connect-your-raspberry-pi-to-wifi/">How to automatically connect to wifi on startup</a></li>
 <li><a href="http://fredrikolofsson.com/f0blog/?q=node/630">PureData on headless Raspberry Pi</a></li>
 <li><a href="http://fredrikolofsson.com/f0blog/?q=node/672">building supercollider for piCore linux</a></li>
+<li><a href="http://roosnaflak.com/tech-and-research/setting-up-arch-arm-raspberry-pi-4/">Setting up Arch Arm on Raspberry Pi 4</a></li>
 </ul>
 ]]></content>
         </item>
