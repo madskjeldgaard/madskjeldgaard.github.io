@@ -40,7 +40,7 @@ It is inspired by reel to reel tape recorders, cybernetic and feedback music as 
 At it&rsquo;s core it has a complex web of sound processes divided in voices, all of them interconnected in feedback paths and outputting their sound to digital looping varispeed tape reels.">
 <meta itemprop="datePublished" content="2020-05-22T10:56:16&#43;02:00" />
 <meta itemprop="dateModified" content="2020-05-22T10:56:16&#43;02:00" />
-<meta itemprop="wordCount" content="1214">
+<meta itemprop="wordCount" content="1243">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
@@ -147,6 +147,7 @@ At it&rsquo;s core it has a complex web of sound processes divided in voices, al
     <li><a href="#design-goals">Design goals</a></li>
     <li><a href="#technical-details">Technical details</a>
       <ul>
+        <li><a href="#source-code">Source code</a></li>
         <li><a href="#controlling-vortex">Controlling vortex</a></li>
         <li><a href="#multiplexing-control-data-vortexflux">Multiplexing control data: VortexFlux</a></li>
         <li><a href="#the-tape-machine-vortexvoice">The tape machine: VortexVoice</a></li>
@@ -186,6 +187,8 @@ For years I&rsquo;ve been fascinated with the music and ideas of cybernetic musi
 <p><img src="https://raw.githubusercontent.com/madskjeldgaard/vortex/master/documentation/vortex_controllers.JPG" alt="controllers"></p>
 <p>Vortex itself is an interface for controlling several VortexVoices. It allows to set these voices up in feedback loops, interconnect them and maintain a common control input for them all.</p>
 <p>In other words: It is designed as an API.</p>
+<h3 id="source-code">Source code</h3>
+<p>Vortex is completely open source. It is written using the SuperCollider programming language and may easily be forked and instrospected. You can <a href="github.com/madskjeldgaard/vortex">find the source code here</a>.</p>
 <h3 id="controlling-vortex">Controlling vortex</h3>
 <p>Vortex may be controlled by live coding with it or using physical controllers like MIDI controllers, OSC devices and HID devices.</p>
 
