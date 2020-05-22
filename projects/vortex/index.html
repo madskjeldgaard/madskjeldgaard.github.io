@@ -40,7 +40,7 @@ It is inspired by reel to reel tape recorders, cybernetic and feedback music as 
 At it&rsquo;s core it has a complex web of sound processes divided in voices, all of them interconnected in feedback paths and outputting their sound to digital looping varispeed tape reels.">
 <meta itemprop="datePublished" content="2020-05-22T10:56:16&#43;02:00" />
 <meta itemprop="dateModified" content="2020-05-22T10:56:16&#43;02:00" />
-<meta itemprop="wordCount" content="1257">
+<meta itemprop="wordCount" content="1976">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
@@ -173,8 +173,15 @@ For years I&rsquo;ve been fascinated with the music and ideas of cybernetic musi
 <iframe style="border: 0; width: 100%; height: 120px;" src="https://bandcamp.com/EmbeddedPlayer/album=1070203104/size=large/bgcol=ffffff/linkcol=0687f5/tracklist=false/artwork=small/transparent=true/" seamless></iframe>
 
 <p>This resonated deeply with me along with a want for a system that would be able to programmatically generate such small and large scale structures in composition and performance from simple gestures in sound and control. Or even better: To have a system which seems to have a will of it&rsquo;s own, a vibrating structure which may be affected or disturbed by the performer (me) but never fully controlled, leading to a range of surprises. In my piece <a href="https://shop.conditional.club/album/states-of-emergency">States of Emergency</a> I achieved this somewhat by manually performing recursive sound effect transformations controlled by complex low frequency oscillators - iterating over the results for days on end in a DAW, this process became laborous and I started dreaming of automating this process to be able to setup and define such systems more easily.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/238351530" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+ </div>
+
 <p>A few years later I participated in a workshop with <a href="https://www.youtube.com/watch?v=pnZ55jQe8jA">Jérôme Noetinger who works with reel to reel tape machines as instruments</a> for improvisation by setting up tape loops, (re)injecting sounds into them and varying their playback speed. Working with the materiality of the sound in this way really fascinated me and so this core concept of a digital varispeed tape loop is at the center of the Vortex system. Other inspirations for this part of the project are <a href="https://youtu.be/C_3Fu8YfSdI">Eliane Radigue&rsquo;s feedback works</a>, <a href="https://vimeo.com/238351530">Giovanni Lami&rsquo;s outdoors tape loop sessions</a> as well as <a href="https://www.youtube.com/watch?v=J7nDhTk705s">Valerio Tricoli&rsquo;s tape loop live performances</a>.</p>
+<p>With these inspirations in mind, the question becomes: Is it possible to design a system which allows to work on both small and large scale sonic structures, incorporating extreme sound processing that is easily influenced but impossible to control?</p>
 <h2 id="design-goals">Design goals</h2>
+<p><img src="https://raw.githubusercontent.com/madskjeldgaard/vortex/master/documentation/vortex_controllers.JPG" alt="controllers"></p>
 <ul>
 <li><strong>You will never master this instrument</strong>: Each time the system is used, it is reconfigured in a new and slightly random way making it necessary to relearn it and find new sweet spots.</li>
 <li><strong>Gestures have unforeseable consequences</strong>: Whatever gesture you put into the system (through code or controllers) should have consequences that are neither random nor predictable, like a <a href="https://en.wikipedia.org/wiki/Lorenz_system">Lorenz system</a>.</li>
@@ -186,16 +193,57 @@ For years I&rsquo;ve been fascinated with the music and ideas of cybernetic musi
 <li><strong>Extremely dynamic</strong>: The whole system may be reconfigured and repatched by executing a command or pushing a button.</li>
 </ul>
 <h2 id="technical-details">Technical details</h2>
-<p><img src="https://raw.githubusercontent.com/madskjeldgaard/vortex/master/documentation/vortex_controllers.JPG" alt="controllers"></p>
-<p>Vortex itself is an interface for controlling several VortexVoices. It allows to set these voices up in feedback loops, interconnect them and maintain a common control input for them all.</p>
-<p>In other words: It is designed as an API.</p>
+
+
+<script async src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+
+<div class="mermaid">
+  
+graph TB
+
+subgraph vortex
+Voice1 --> Voice2
+Voice1 --> Voice3
+
+Voice2 --> Voice1
+Voice2 --> Voice3
+
+Voice3 --> Voice1
+Voice3 --> Voice2
+end
+
+SI{SoundIn}
+
+SI --> Voice1
+SI --> Voice2
+SI --> Voice3
+
+C[control input]
+C -.-> Voice1
+C -.-> Voice2
+C -.-> Voice3
+
+SO{SoundOut}
+Voice1 --> SO
+Voice2 --> SO
+Voice3 --> SO
+
+
+</div>
+
+<p>Vortex itself is an interface for controlling several VortexVoices. It allows to set these voices up in feedback loops, interconnect them and maintain a common control interface for them all.</p>
+<p>Each VortexVoice can be thought of as a varispeed tape loop with extreme processing, feedback and an esoteric control interface.</p>
 <h3 id="source-code">Source code</h3>
-<p>Vortex is completely open source. It is written using the SuperCollider programming language and may easily be forked and instrospected. You can <a href="github.com/madskjeldgaard/vortex">find the source code here</a>.</p>
+<p>Vortex is designed as an API so it is easy to interact with.</p>
+<p>It is completely open source. It is written using the SuperCollider programming language and may easily be forked and instrospected. You can <a href="github.com/madskjeldgaard/vortex">find the source code here</a>.</p>
+<p>It is <a href="https://github.com/madskjeldgaard/vortex/blob/master/LICENSE.md">licensed under GPL3.0 like SuperCollider itself</a>.</p>
 <h3 id="controlling-vortex">Controlling vortex</h3>
 <p>Vortex may be controlled by live coding with it or using physical controllers like MIDI controllers, OSC devices and HID devices.</p>
+<p>Controlling it using controllers is made easy thanks to the <a href="https://github.com/ModalityTeam/Modality-toolkit">Modality-toolkit project</a>.</p>
+<p>Vortex may also be controlled by livecoding the voices or using custom event types for SuperCollider patterns (work in progress).</p>
 
 
-<script async src="https://unpkg.com/mermaid@8.2.3/dist/mermaid.min.js"></script>
+<script async src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
 
 <div class="mermaid">
   
@@ -210,16 +258,12 @@ end
 B --> D(multiplexer)
 C --> D
 
-D --> E(vortex)
+D --> E(vortex voice)
 D --> E
 D --> E
 D --> E
 D --> E
 D --> E
-
-style E fill:#BD1E2E
-style G fill:#8BCEF0
-style F fill:#8BCEF0
 
 E --> F{sound out}
 
@@ -227,47 +271,180 @@ E --> F{sound out}
 
 <h3 id="multiplexing-control-data-vortexflux">Multiplexing control data: VortexFlux</h3>
 <p>Input data is multiplexed by an algorithm called VortexFlux (based on Alberto de Campo&rsquo;s Influx package) which makes one or a few inputs become many outputs (the exact number may be decided upon initialization).</p>
+<p>For more info on this approach and Influx, <a href="https://www.3dmin.org/research/open-development-and-design/influx/">this article explains the idea nicely</a>.</p>
 <p>It then passes those many outputs through further data warping algorithms to increase the complexity of the control data and further distance them from the gesture put in to the system.</p>
 <p>The steps are :</p>
 <ol>
 <li>Weighting: Multiply the input with a random weight</li>
 <li>Envelopes: Use the input of the previous as an index into a random envelope. This works sort of like a control rate wavetable.</li>
-<li>LFO: The input of the previous is used to control a network of lfos. This step is optional. Additionally, the lfo network may be configured in a feedback mode with the individual lfo&rsquo;s in the network controlling eachother&rsquo;s frequency alongside the control input.</li>
-<li>Map the mulitplexed control data to the parameters of a VortexVoice.</li>
+<li>LFO: The input of the previous is used to control a network of lfos. This step is optional. Additionally, the lfo network may be configured in a feedback mode with the individual lfos in the network controlling each other&rsquo;s frequency alongside the control input.</li>
+<li>Map the multiplexed control data to the parameters of a VortexVoice.</li>
 </ol>
 
 
-<script async src="https://unpkg.com/mermaid@8.2.3/dist/mermaid.min.js"></script>
+<script async src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
 
 <div class="mermaid">
   
-graph TB
+graph LR
 
-F((control)) --> A
-A((multiplexer)) --> B((in * w))
-A --> C((in * w))
-A --> D((in * w))
-A --> E((in * w))
+M((multiplexer)) 
+C((control)) 
 
-B --> G((env))
-C --> H((env))
-D --> I((env))
-E --> J((env))
+W1((in * w))
+W2((in * w))
+W3((in * w))
+W4((in * w))
 
+E1((env))
+E2((env))
+E3((env))
+E4((env))
 
-G -.-> K((lfo))
-H -.-> L((lfo))
-I -.-> M((lfo))
-J -.-> N((lfo))
+L1((lfo))
+L2((lfo))
+L3((lfo))
+L4((lfo))
 
-K -.-> O{voice}
-L -.-> O{voice}
-M -.-> O{voice}
-N -.-> O{voice}
+O{voice}
+
+C --> M
+M --> W1 --> E1 --> L1
+M --> W2 --> E2 --> L2
+M --> W3 --> E3 --> L3
+M --> W4 --> E4 --> L4
+
+subgraph "optional: lfos in feedback network"
+L1 -.-> L4
+L2 -.-> L1
+L3 -.-> L2
+L4 -.-> L3
+end
+
+L1 --> O
+L2 --> O
+L3 --> O
+L4 --> O
+
 
 </div>
 
-<p>For more info on this approach and Influx, <a href="https://www.3dmin.org/research/open-development-and-design/influx/">this article explains the idea nicely</a>.</p>
+<h4 id="example-of-lfo-feedback-network">Example of LFO feedback network</h4>
+<p>This example illustrates an lfo feedback network in a VortexVoice. In this example there are 32 lfos, each matching up with the output of a VortexFlux instance.</p>
+
+
+<script async src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+
+<div class="mermaid">
+  
+flowchart TB
+LFO0 -. width .-> LFO17
+LFO1 -. width .-> LFO5
+LFO2 -. width .-> LFO20
+LFO3 -. width .-> LFO8
+LFO4 -. width .-> LFO17
+LFO5 -. width .-> LFO28
+LFO6 -. width .-> LFO21
+LFO7 -. width .-> LFO29
+LFO8 -. width .-> LFO9
+LFO9 -. width .-> LFO23
+LFO10 -. width .-> LFO20
+LFO11 -. width .-> LFO29
+LFO12 -. width .-> LFO11
+LFO13 -. width .-> LFO14
+LFO14 -. width .-> LFO13
+LFO15 -. width .-> LFO1
+LFO16 -. width .-> LFO10
+LFO17 -. width .-> LFO24
+LFO18 -. width .-> LFO26
+LFO19 -. width .-> LFO22
+LFO20 -. width .-> LFO5
+LFO21 -. width .-> LFO5
+LFO22 -. width .-> LFO23
+LFO23 -. width .-> LFO10
+LFO24 -. width .-> LFO9
+LFO25 -. width .-> LFO13
+LFO26 -. width .-> LFO15
+LFO27 -. width .-> LFO2
+LFO28 -. width .-> LFO2
+LFO29 -. width .-> LFO23
+LFO30 -. width .-> LFO5
+LFO31 -. width .-> LFO23
+
+</div>
+
+<h4 id="example-of-lfo-network-patched-to-voice">Example of lfo network patched to voice</h4>
+<p>With the same network above, we can illustrate how it is patched to the input parameters of a VortexVoice.</p>
+<p>If there are more voice parameters than lfos, the lfos will wrap around and some of them control several parameters.</p>
+
+
+<script async src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+
+<div class="mermaid">
+  
+flowchart LR
+LFO0 -. wet100 .-> VOICE
+LFO1 -. ringf100 .-> VOICE
+LFO2 -. wet101 .-> VOICE
+LFO3 -. delay101 .-> VOICE
+LFO4 -. delayfb101 .-> VOICE
+LFO5 -. decaytime101 .-> VOICE
+LFO6 -. delaywidth101 .-> VOICE
+LFO7 -. modFreq101 .-> VOICE
+LFO8 -. modAmount101 .-> VOICE
+LFO9 -. fblowcut101 .-> VOICE
+LFO10 -. wet102 .-> VOICE
+LFO11 -. winsize102 .-> VOICE
+LFO12 -. pitch102 .-> VOICE
+LFO13 -. pd102 .-> VOICE
+LFO14 -. td102 .-> VOICE
+LFO15 -. wet103 .-> VOICE
+LFO16 -. ringf103 .-> VOICE
+LFO17 -. wet104 .-> VOICE
+LFO18 -. chpredelay104 .-> VOICE
+LFO19 -. chrate104 .-> VOICE
+LFO20 -. chdepth104 .-> VOICE
+LFO21 -. chphasediff104 .-> VOICE
+LFO22 -. wet105 .-> VOICE
+LFO23 -. delay105 .-> VOICE
+LFO24 -. delayfb105 .-> VOICE
+LFO25 -. decaytime105 .-> VOICE
+LFO26 -. delaywidth105 .-> VOICE
+LFO27 -. modFreq105 .-> VOICE
+LFO28 -. modAmount105 .-> VOICE
+LFO29 -. fblowcut105 .-> VOICE
+LFO30 -. wet106 .-> VOICE
+LFO31 -. freq106 .-> VOICE
+LFO0 -. phase106 .-> VOICE
+LFO1 -. wet107 .-> VOICE
+LFO2 -. phaserrate107 .-> VOICE
+LFO3 -. phaserdepth107 .-> VOICE
+LFO4 -. wet108 .-> VOICE
+LFO5 -. freq108 .-> VOICE
+LFO6 -. res108 .-> VOICE
+LFO7 -. gain108 .-> VOICE
+LFO8 -. type108 .-> VOICE
+LFO9 -. wet109 .-> VOICE
+LFO10 -. ringf109 .-> VOICE
+LFO11 -. wet110 .-> VOICE
+LFO12 -. delay110 .-> VOICE
+LFO13 -. delayfb110 .-> VOICE
+LFO14 -. decaytime110 .-> VOICE
+LFO15 -. delaywidth110 .-> VOICE
+LFO16 -. modFreq110 .-> VOICE
+LFO17 -. modAmount110 .-> VOICE
+LFO18 -. fblowcut110 .-> VOICE
+LFO19 -. wet1000 .-> VOICE
+LFO20 -. offset1000 .-> VOICE
+LFO21 -. reclvl1000 .-> VOICE
+LFO22 -. prelvl1000 .-> VOICE
+LFO23 -. timerate1000 .-> VOICE
+LFO24 -. fb1000 .-> VOICE
+LFO25 -. jumpToStart1000 .-> VOICE
+LFO26 -. pan1005 .-> VOICE
+
+</div>
+
 <h3 id="the-tape-machine-vortexvoice">The tape machine: VortexVoice</h3>
 <p>The Vortex system consists of several interconnected voices.
 These voices are controlled using the multiplexer described above.</p>
@@ -285,48 +462,53 @@ This and the specific sound effect algorithms are organized externally in the <a
 <h5 id="example-of-a-vortexvoice">Example of a VortexVoice</h5>
 
 
-<script async src="https://unpkg.com/mermaid@8.2.3/dist/mermaid.min.js"></script>
+<script async src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
 
 <div class="mermaid">
   
 graph TB
 
-W[control input]
-W --> I
+C[control input]
+M[multiplexer]
+C --> M
 
-I[multiplexer]
-I -.-> B
-I -.-> C
-I -.-> D
-I -.-> E
-I -.-> F
-I -.-> G
+M -.-> FX1
+M -.-> FX2
+M -.-> FX3
+M -.-> FX4
+M -.-> FX5
+M -.-> VAR
+M -.-> MIX
+
+SI(SoundIn)
+SI --> MIX
 
 
-A(SoundIn)
-A --> B
+FX1[Delay]
+FX2[Reverb]
+FX3[PitchShift]
+FX4[FreqShift]
+FX5[Ring Modulation]
 
 subgraph FXCHAIN
-B((Delay))
-C((Pitchshift))
-D((Reverb))
-E((FreqShift))
-
-B --> C
-C --> D
-D --> E
+FX1 --> FX2 --> FX3 --> FX4 --> FX5
 end
+
+MIX((Mixer))
+OV1((Other voice))
+OV2((Other voice))
 
 subgraph MIXING
-H((Other voice)) --> F
-Z((Other voice)) --> F
-E --> F(Mixer)
+OV1 --> MIX
+OV2 --> MIX
+MIX --> FX1
 end
 
-G --> H
-F --> G(Varispeed Loop)
-G --> Z
-G --> SoundOut
+VAR[Varispeed looper]
+SO(SoundOut)
+
+FX5 --> VAR --> SO
+VAR --> MIX
 
 
 </div>
