@@ -12,6 +12,26 @@
     
     
     <item>
+      <title>Vortex</title>
+      <link>http://madskjeldgaard.dk/projects/vortex/</link>
+      <pubDate>Fri, 22 May 2020 10:56:16 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/projects/vortex/</guid>
+      <description>Vortex is an open source computer music system by Mads Kjeldgaard for improvisation and composition. It is written as a package for the SuperCollider programming environment.
+It is inspired by reel to reel tape recorders, cybernetic and feedback music as well as more contemporary generative systems.
+At it&amp;rsquo;s core it has a complex web of sound processes divided in voices, all of them interconnected in feedback paths and outputting their sound to digital looping varispeed tape reels.</description>
+    </item>
+    
+    <item>
+      <title>Test Mermaid</title>
+      <link>http://madskjeldgaard.dk/posts/test-mermaid/</link>
+      <pubDate>Fri, 22 May 2020 09:49:35 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/test-mermaid/</guid>
+      <description>  graph TD; A--B; A--C; B--D; C--D;  </description>
+    </item>
+    
+    <item>
       <title>Networked audio using Raspberry Pi 4 (zita-njbridge and SuperCollider)</title>
       <link>http://madskjeldgaard.dk/posts/raspi-zita-njbridge/</link>
       <pubDate>Sun, 03 May 2020 10:17:27 +0200</pubDate>
