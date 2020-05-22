@@ -9,30 +9,6 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Test Mermaid</title>
-            <link>http://madskjeldgaard.dk/posts/test-mermaid/</link>
-            <pubDate>Fri, 22 May 2020 09:49:35 +0200</pubDate>
-            
-            <guid>http://madskjeldgaard.dk/posts/test-mermaid/</guid>
-            <description>  graph TD; A--B; A--C; B--D; C--D;  </description>
-            <content type="html"><![CDATA[
-
-<script async src="https://unpkg.com/mermaid@8.2.3/dist/mermaid.min.js"></script>
-
-<div class="mermaid">
-  
-graph TD;
-  A-->B;
-  A-->C;
-  B-->D;
-  C-->D;
-
-</div>
-
-]]></content>
-        </item>
-        
-        <item>
             <title>Networked audio using Raspberry Pi 4 (zita-njbridge and SuperCollider)</title>
             <link>http://madskjeldgaard.dk/posts/raspi-zita-njbridge/</link>
             <pubDate>Sun, 03 May 2020 10:17:27 +0200</pubDate>
