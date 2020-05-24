@@ -14,10 +14,10 @@
             <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
             
             <guid>http://madskjeldgaard.dk/posts/hemisphere/</guid>
-            <description>I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.
-But recently, I built the Ornament &amp;amp; Crime eurorack module and have been very satisfied using it as a midi-cv interface with four cv inputs and four cv outputs.
-  This method has some advantages: The module and the firmware are both open source - this makes it a very sustainable choice because the community is constantly improving and expanding the possibilities with this module.</description>
-            <content type="html"><![CDATA[<p><img src="/img/small/oc_frontside.jpg" alt="oc"></p>
+            <description>My Ornament &amp;amp; Crime build (the Mini OC version). The USB connector on the Teensy on the back of the module has been rewired to a Neutrik USB connector attached to a panel next to it (the grey panel).
+I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.</description>
+            <content type="html"><![CDATA[<p><img src="/img/small/oc_frontside.jpg" alt="oc">
+<em>My Ornament &amp; Crime build (the Mini OC version). The USB connector on the Teensy on the back of the module has been rewired to a Neutrik USB connector attached to a panel next to it (the grey panel).</em></p>
 <p>I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.</p>
 <p>But recently, I built the <a href="https://ornament-and-cri.me/">Ornament &amp; Crime</a> eurorack module and have been very satisfied using it as a midi-cv interface with four cv inputs and four cv outputs.</p>
 
