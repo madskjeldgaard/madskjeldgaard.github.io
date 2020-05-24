@@ -6,10 +6,55 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 03 May 2020 10:17:27 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 24 May 2020 10:10:40 +0200</lastBuildDate>
     
 	<atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>eurorack</title>
+      <link>http://madskjeldgaard.dk/tags/eurorack/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/eurorack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>modular-synthesis</title>
+      <link>http://madskjeldgaard.dk/tags/modular-synthesis/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/modular-synthesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open-source</title>
+      <link>http://madskjeldgaard.dk/tags/open-source/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ornament-and-crime</title>
+      <link>http://madskjeldgaard.dk/tags/ornament-and-crime/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/ornament-and-crime/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>supercollider</title>
+      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>raspberrypi</title>
@@ -17,15 +62,6 @@
       <pubDate>Sun, 03 May 2020 10:17:27 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/raspberrypi/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>supercollider</title>
-      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
-      <pubDate>Sun, 03 May 2020 10:17:27 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
       <description></description>
     </item>
     

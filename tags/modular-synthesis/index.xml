@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>modular-synthesis on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/modular-synthesis/</link>
+    <description>Recent content in modular-synthesis on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Sun, 24 May 2020 10:10:40 +0200</lastBuildDate>
+    
+	<atom:link href="http://madskjeldgaard.dk/tags/modular-synthesis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Control voltage and SuperCollider: Using the open source module Ornament &amp; Crime as a midi-cv interface</title>
+      <link>http://madskjeldgaard.dk/posts/hemisphere/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/hemisphere/</guid>
+      <description>My Ornament &amp;amp; Crime build (the Mini OC version). The USB connector on the Teensy on the back of the module has been rewired to a Neutrik USB connector attached to a panel next to it (the grey panel).
+I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.</description>
+    </item>
+    
+  </channel>
+</rss>
