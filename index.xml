@@ -12,6 +12,17 @@
     
     
     <item>
+      <title>Control voltage and SuperCollider: Using the open source module Ornament &amp; Crime as a midi-cv interface</title>
+      <link>http://madskjeldgaard.dk/posts/hemisphere/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/hemisphere/</guid>
+      <description>I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.
+But recently, I built the Ornament &amp;amp; Crime eurorack module and have been very satisfied using it as a midi-cv interface with four cv inputs and four cv outputs.
+  This method has some advantages: The module and the firmware are both open source - this makes it a very sustainable choice because the community is constantly improving and expanding the possibilities with this module.</description>
+    </item>
+    
+    <item>
       <title>Vortex</title>
       <link>http://madskjeldgaard.dk/projects/vortex/</link>
       <pubDate>Fri, 22 May 2020 10:56:16 +0200</pubDate>
