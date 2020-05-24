@@ -36,12 +36,13 @@ I have tried quite a few different approaches to integrating my modular synthesi
 <p><img src="/img/small/oc_backside.jpg" alt="oc"></p>
 <p>Note: Make sure you have at least v.1.8A installed - the previous versions of Captain MIDI had a nasty buffer overflow bug making the module crash at high load.</p>
 <h2 id="controlling-the-module-with-supercollider">Controlling the module with SuperCollider</h2>
-<p>Since the module is now recognized as a midi controller by the computer, we can address it as such in SuperCollider. I use <a href="https://github.com/ModalityTeam/Modality-toolkit">The Modality Toolkit</a> for all of my SuperCollider work involving controllers. The Modality package is basically a large library and framework for doing amazing things with controllers by using them in a <em>modal</em> way making interface setup and reconfiguration fairly easy. It comes with support for a bunch of controllers which is constantly growing.</p>
+<p>Since the module is now recognized as a midi controller by the computer, we can address it as such in SuperCollider. I use <a href="https://github.com/ModalityTeam/Modality-toolkit">The Modality Toolkit</a> for all of my SuperCollider work involving controllers. The Modality package is basically a large library and framework for doing amazing things with controllers by using them in a <em>modal</em> way making interface setup and reconfiguration fairly easy. It comes with support for a bunch of controllers, and the list of supported ones is constantly growing.</p>
 <p>I added support for the Ornament &amp; Crime module with the Hemisphere Suite installed.</p>
 <p>To use it, install or update Modality in SuperCollider:</p>
 <pre><code>Quarks.gui;
-</code></pre><h3 id="setting-up-hemisphere">Setting up Hemisphere</h3>
-<p>The Hemisphere description in Modality assumes that you are using it with 4 Mod midi signals going in and out. Set this up on the module like so:</p>
+</code></pre><h3 id="setting-up-captain-midi-on-the-hemisphere">Setting up Captain MIDI on the Hemisphere</h3>
+<p>On the module, open up the app &ldquo;Captain MIDI&rdquo; and enter the setup screen.</p>
+<p>The Hemisphere/Captain MIDI description in Modality assumes that you are using it with 4 Mod midi signals going in and out. Set this up on the module like so:</p>
 <p>In the screen that says &ldquo;MIDI Assign&rdquo; at the top, change parameters to this:</p>
 <pre><code>Screen: MIDI Assign
 MIDI &gt; A 	Mod
