@@ -40,7 +40,7 @@ It is inspired by reel to reel tape recorders, cybernetic and feedback music as 
 At it&rsquo;s core it has a complex web of sound processes divided in voices, all of them interconnected in feedback paths and outputting their sound to digital looping varispeed tape reels.">
 <meta itemprop="datePublished" content="2020-05-22T10:56:16&#43;02:00" />
 <meta itemprop="dateModified" content="2020-05-22T10:56:16&#43;02:00" />
-<meta itemprop="wordCount" content="1633">
+<meta itemprop="wordCount" content="1761">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
@@ -150,6 +150,9 @@ At it&rsquo;s core it has a complex web of sound processes divided in voices, al
         <li><a href="#source-code">Source code</a></li>
         <li><a href="#controlling-vortex">Controlling vortex</a></li>
         <li><a href="#multiplexing-control-data-vortexflux">Multiplexing control data: VortexFlux</a></li>
+        <li><a href="#closeup-of-lfo-mapping">Closeup of LFO mapping</a></li>
+        <li><a href="#todo-preset-scaling">TODO: preset scaling</a></li>
+        <li><a href="#example-of-lfo-feedback-network">Example of LFO feedback network</a></li>
         <li><a href="#the-tape-machine-vortexvoice">The tape machine: VortexVoice</a></li>
       </ul>
     </li>
@@ -278,6 +281,7 @@ E --> F{sound out}
 <li>Weighting: Multiply the input with a random weight</li>
 <li>Envelopes: Use the input of the previous as an index into a random envelope. This works sort of like a control rate wavetable.</li>
 <li>LFO: The input of the previous is used to control a network of lfos. This step is optional. Additionally, the lfo network may be configured in a feedback mode with the individual lfos in the network controlling each other&rsquo;s frequency alongside the control input.</li>
+<li>Scale the data using presets to center around sweet spots.</li>
 <li>Map the multiplexed control data to the parameters of a VortexVoice.</li>
 </ol>
 
@@ -286,7 +290,7 @@ E --> F{sound out}
 
 <div class="mermaid">
   
-graph LR
+graph TB
 
 M((multiplexer)) 
 C((control)) 
@@ -306,6 +310,12 @@ L2((lfo))
 L3((lfo))
 L4((lfo))
 
+P((Preset))
+SC1((scale))
+SC2((scale))
+SC3((scale))
+SC4((scale))
+
 O{voice}
 
 C --> M
@@ -314,22 +324,80 @@ M --> W2 --> E2 --> L2
 M --> W3 --> E3 --> L3
 M --> W4 --> E4 --> L4
 
-subgraph "optional: lfos in feedback network"
+subgraph "optional: lfo network"
 L1 -.-> L4
 L2 -.-> L1
 L3 -.-> L2
 L4 -.-> L3
 end
 
-L1 --> O
-L2 --> O
-L3 --> O
-L4 --> O
+subgraph "Scale using preset center points and bandwidth"
+P -.-> SC1
+P -.-> SC2
+P -.-> SC3
+P -.-> SC4
+end
+
+L1 --> SC1 --> O
+L2 --> SC2 --> O
+L3 --> SC3 --> O
+L4 --> SC4 --> O
 
 
 </div>
 
-<h4 id="example-of-lfo-feedback-network">Example of LFO feedback network</h4>
+<h3 id="closeup-of-lfo-mapping">Closeup of LFO mapping</h3>
+
+
+<script async src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+
+<div class="mermaid">
+  
+graph TB
+IN[Control]
+INX[Xfade amount]
+X[Crossfade control]
+FB[LFO Feedback]
+OUT
+OSC[VarSaw]
+SC[Scale]
+
+
+IN -- 0.0-1.0 --> SC -- 0.001-100.0hz: Frequency --> OSC
+INX -. 0.0-1.0 .-> X
+FB -. 0.0-1.0: Shape .-> OSC 
+OSC -- 0.0-1.0 --> X
+IN --> X --> OUT
+
+</div>
+
+<h3 id="todo-preset-scaling">TODO: preset scaling</h3>
+
+
+<script async src="https://unpkg.com/mermaid@8.5.1/dist/mermaid.min.js"></script>
+
+<div class="mermaid">
+  
+graph TD
+IN[Control]
+OUT
+
+P(Preset)
+
+C[ctrl: Center point]
+BW[ctrl: Bandwidth]
+S[Scaler]
+P -.-> C
+P -.-> BW
+C-- 0.33 --> S
+BW-- 0.1 --> S
+
+S -- range: 0.23-0.43 --> OUT
+IN -- range:0.0-1.0 --> S
+
+</div>
+
+<h3 id="example-of-lfo-feedback-network">Example of LFO feedback network</h3>
 <p>This example illustrates an lfo feedback network in a VortexVoice. In this example there are 32 lfos, each matching up with the output of a VortexFlux instance.</p>
 
 
