@@ -40,7 +40,7 @@ I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in 
 It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.">
 <meta itemprop="datePublished" content="2020-04-30T16:07:22&#43;02:00" />
 <meta itemprop="dateModified" content="2020-04-30T16:07:22&#43;02:00" />
-<meta itemprop="wordCount" content="2288">
+<meta itemprop="wordCount" content="2336">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
@@ -242,7 +242,9 @@ network<span style="color:#f92672">={</span>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
 </code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
 <h3 id="nice-packages-to-have-installed">Nice packages to have installed</h3>
-<p><code>sudo apt-get install git vim</code></p>
+<p><code>sudo apt-get install git vim htop perl tmux</code></p>
+<p><code>sudo sed -i 's/exit 0/sudo cpufreq-set -r -g performance/g' /etc/rc.local</code>
+<code>sudo echo &quot;exit 0&quot; | sudo tee -a /etc/rc.local</code></p>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
@@ -315,10 +317,10 @@ perl ./realTimeConfigQuickScan.pl
 </code></pre><h2 id="download-and-compile-latest-version-of-supercollider">Download, and compile latest version of SuperCollider</h2>
 <p>You can run many different kinds of software on the Raspberry Pi headless: <a href="http://fredrikolofsson.com/f0blog/?q=node/630">Pure Data</a>, Csound and SuperCollider are a few free and open source options.</p>
 <p>I personally prefer SuperCollider so that&rsquo;s what I&rsquo;m going to use here.</p>
-<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailor fit to a headless Raspberry Pi install:</p>
-<script type="application/javascript" src="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908.js"></script>
-
-<h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
+<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailor fit to a headless Raspberry Pi install.</p>
+<p>Run these scripts by executing this massive oneliner:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908 <span style="color:#f92672">&amp;&amp;</span> mv 10ab025993d5b77d235819d56c4cc908 scbuildscripts <span style="color:#f92672">&amp;&amp;</span> cd scbuildscripts <span style="color:#f92672">&amp;&amp;</span> chmod +x *.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc4pi.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc3-plugins-pi.sh
+</code></pre></div><h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
 <p>Let&rsquo;s create a simple SuperCollider test file which will boot the audio server (and automatically start and connect Jack) to see if the installation went well and we are getting sound out of the pi.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing.</span> 
 echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5).dup(2)} }&#34;</span> &gt;&gt; test.scd
@@ -404,7 +406,7 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/raspberrypi">raspberrypi</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/termux">termux</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2288 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2336 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-30 16:07 &#43;0200</p>
         </div>

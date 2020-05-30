@@ -297,7 +297,9 @@ network<span style="color:#f92672">={</span>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
 </code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
 <h3 id="nice-packages-to-have-installed">Nice packages to have installed</h3>
-<p><code>sudo apt-get install git vim</code></p>
+<p><code>sudo apt-get install git vim htop perl tmux</code></p>
+<p><code>sudo sed -i 's/exit 0/sudo cpufreq-set -r -g performance/g' /etc/rc.local</code>
+<code>sudo echo &quot;exit 0&quot; | sudo tee -a /etc/rc.local</code></p>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
@@ -370,10 +372,10 @@ perl ./realTimeConfigQuickScan.pl
 </code></pre><h2 id="download-and-compile-latest-version-of-supercollider">Download, and compile latest version of SuperCollider</h2>
 <p>You can run many different kinds of software on the Raspberry Pi headless: <a href="http://fredrikolofsson.com/f0blog/?q=node/630">Pure Data</a>, Csound and SuperCollider are a few free and open source options.</p>
 <p>I personally prefer SuperCollider so that&rsquo;s what I&rsquo;m going to use here.</p>
-<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailor fit to a headless Raspberry Pi install:</p>
-<script type="application/javascript" src="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908.js"></script>
-
-<h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
+<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailor fit to a headless Raspberry Pi install.</p>
+<p>Run these scripts by executing this massive oneliner:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908 <span style="color:#f92672">&amp;&amp;</span> mv 10ab025993d5b77d235819d56c4cc908 scbuildscripts <span style="color:#f92672">&amp;&amp;</span> cd scbuildscripts <span style="color:#f92672">&amp;&amp;</span> chmod +x *.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc4pi.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc3-plugins-pi.sh
+</code></pre></div><h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
 <p>Let&rsquo;s create a simple SuperCollider test file which will boot the audio server (and automatically start and connect Jack) to see if the installation went well and we are getting sound out of the pi.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing.</span> 
 echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5).dup(2)} }&#34;</span> &gt;&gt; test.scd
