@@ -40,7 +40,7 @@ I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in 
 It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.">
 <meta itemprop="datePublished" content="2020-04-30T16:07:22&#43;02:00" />
 <meta itemprop="dateModified" content="2020-04-30T16:07:22&#43;02:00" />
-<meta itemprop="wordCount" content="2317">
+<meta itemprop="wordCount" content="2347">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
@@ -132,7 +132,7 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
     <main class="post">
 
         <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>11 minutes
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>12 minutes
 
             
 
@@ -156,7 +156,7 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
         <li><a href="#ssh-log-in-to-your-raspbian-lite-remotely">ssh: Log in to your Raspbian Lite remotely</a></li>
         <li><a href="#expand-file-system">Expand file system</a></li>
         <li><a href="#special-note-for-kitty-users">Special note for kitty users</a></li>
-        <li><a href="#nice-packages-to-have-installed">Nice packages to have installed</a></li>
+        <li><a href="#important-packages-and-dependencies">Important packages and dependencies</a></li>
       </ul>
     </li>
     <li><a href="#tuning-the-system">Tuning the system</a></li>
@@ -241,8 +241,8 @@ network<span style="color:#f92672">={</span>
 <p>I made an alias for this so that I can just type <code>kssh</code>. If you want an alias on your system, add this to your <code>$HOME/.bashrc</code> file (if using bash as your main shell) or <code>$HOME/.zshrc</code> (if using zsh as your main shell):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
 </code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
-<h3 id="nice-packages-to-have-installed">Nice packages to have installed</h3>
-<p><code>sudo apt-get install git vim htop perl tmux</code></p>
+<h3 id="important-packages-and-dependencies">Important packages and dependencies</h3>
+<p><code>sudo apt update &amp;&amp; sudo apt install git vim htop perl tmux</code></p>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
@@ -295,18 +295,19 @@ card 1: UCX23906524 [Fireface UCX (23906524)], device 0: USB Audio [USB Audio]
 </code></pre><p>Note the card number. Card 0 is the trashy jack on the pi. Card 1 is the USB audio interface.</p>
 <h3 id="disable-the-on-board-audio-output">Disable the on-board audio output</h3>
 <p>To disable the useless on board jack output on the raspberry pi open up the boot config file</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nano /boot/config.txt
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vi /boot/config.txt
 </code></pre></div><p>Find the line that says <code>dtparam=audio=on</code> and comment it out so that it looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#dtparam=audio=on</span>
 </code></pre></div><p>Then reboot, and run <code>aplay -l</code> to verify it isn&rsquo;t there anymore.</p>
 <h2 id="install-a-real-time-kernel">Install a real-time kernel</h2>
 <p>One of the most important things you can do to improve any Linux system&rsquo;s audio performance is installing a real-time-kernel. On the Raspberry Pi, you need to compile this kernel yourself. <a href="https://lemariva.com/blog/2018/07/raspberry-pi-preempt-rt-patching-tutorial-for-kernel-4-14-y">There are instructions for doing so here</a>.</p>
 <p>Compiling a kernel takes a lot of time, but my colleague at <a href="https://notam.no">Notam</a>, Thom Johansen, has built a <a href="https://users.notam.no/~thomj/rt-kernel.tar.gz">great RT-kernel that you can download here</a>. In the guide linked above you can skip to the last bit where you install the kernel.</p>
-<p>Follow the instructions, then reboot the pi by executing <code>sudo reboot</code>, wait few minutes and then ssh into the pi again.</p>
+<p>Follow the instructions, then reboot the pi by executing <code>sudo reboot</code>, wait a few minutes and then ssh into the pi again.</p>
 <p>If you then run <code>uname -a</code> you should get a result along these lines:</p>
 <pre><code>Linux raspberrypi 4.19.71-rt24-v7l+ #2 SMP PREEMPT RT Sat Apr 25 22:04:08
 UTC 2020 armv7l GNU/Linux 
 </code></pre><h2 id="check-your-systems-configuration">Check your system&rsquo;s configuration</h2>
+<p>If you haven&rsquo;t rebooted yet, go ahead and <code>sudo reboot</code>. And then wait for the Pi to power back up again before ssh&rsquo;ing in to continue.</p>
 <p><a href="https://github.com/raboof/realtimeconfigquickscan">realTimeConfigQuickScan</a> is a really nice script that you can use to see if your system is setup correctly. Download and run it like this:</p>
 <pre><code># Scan system 
 git clone git://github.com/raboof/realtimeconfigquickscan.git
@@ -404,7 +405,7 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/raspberrypi">raspberrypi</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/termux">termux</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2317 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2347 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-30 16:07 &#43;0200</p>
         </div>

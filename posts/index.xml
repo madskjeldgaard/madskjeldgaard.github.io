@@ -296,8 +296,8 @@ network<span style="color:#f92672">={</span>
 <p>I made an alias for this so that I can just type <code>kssh</code>. If you want an alias on your system, add this to your <code>$HOME/.bashrc</code> file (if using bash as your main shell) or <code>$HOME/.zshrc</code> (if using zsh as your main shell):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
 </code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
-<h3 id="nice-packages-to-have-installed">Nice packages to have installed</h3>
-<p><code>sudo apt-get install git vim htop perl tmux</code></p>
+<h3 id="important-packages-and-dependencies">Important packages and dependencies</h3>
+<p><code>sudo apt update &amp;&amp; sudo apt install git vim htop perl tmux</code></p>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
@@ -350,18 +350,19 @@ card 1: UCX23906524 [Fireface UCX (23906524)], device 0: USB Audio [USB Audio]
 </code></pre><p>Note the card number. Card 0 is the trashy jack on the pi. Card 1 is the USB audio interface.</p>
 <h3 id="disable-the-on-board-audio-output">Disable the on-board audio output</h3>
 <p>To disable the useless on board jack output on the raspberry pi open up the boot config file</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nano /boot/config.txt
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vi /boot/config.txt
 </code></pre></div><p>Find the line that says <code>dtparam=audio=on</code> and comment it out so that it looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#dtparam=audio=on</span>
 </code></pre></div><p>Then reboot, and run <code>aplay -l</code> to verify it isn&rsquo;t there anymore.</p>
 <h2 id="install-a-real-time-kernel">Install a real-time kernel</h2>
 <p>One of the most important things you can do to improve any Linux system&rsquo;s audio performance is installing a real-time-kernel. On the Raspberry Pi, you need to compile this kernel yourself. <a href="https://lemariva.com/blog/2018/07/raspberry-pi-preempt-rt-patching-tutorial-for-kernel-4-14-y">There are instructions for doing so here</a>.</p>
 <p>Compiling a kernel takes a lot of time, but my colleague at <a href="https://notam.no">Notam</a>, Thom Johansen, has built a <a href="https://users.notam.no/~thomj/rt-kernel.tar.gz">great RT-kernel that you can download here</a>. In the guide linked above you can skip to the last bit where you install the kernel.</p>
-<p>Follow the instructions, then reboot the pi by executing <code>sudo reboot</code>, wait few minutes and then ssh into the pi again.</p>
+<p>Follow the instructions, then reboot the pi by executing <code>sudo reboot</code>, wait a few minutes and then ssh into the pi again.</p>
 <p>If you then run <code>uname -a</code> you should get a result along these lines:</p>
 <pre><code>Linux raspberrypi 4.19.71-rt24-v7l+ #2 SMP PREEMPT RT Sat Apr 25 22:04:08
 UTC 2020 armv7l GNU/Linux 
 </code></pre><h2 id="check-your-systems-configuration">Check your system&rsquo;s configuration</h2>
+<p>If you haven&rsquo;t rebooted yet, go ahead and <code>sudo reboot</code>. And then wait for the Pi to power back up again before ssh&rsquo;ing in to continue.</p>
 <p><a href="https://github.com/raboof/realtimeconfigquickscan">realTimeConfigQuickScan</a> is a really nice script that you can use to see if your system is setup correctly. Download and run it like this:</p>
 <pre><code># Scan system 
 git clone git://github.com/raboof/realtimeconfigquickscan.git
