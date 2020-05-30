@@ -296,36 +296,16 @@ network<span style="color:#f92672">={</span>
 <p>I made an alias for this so that I can just type <code>kssh</code>. If you want an alias on your system, add this to your <code>$HOME/.bashrc</code> file (if using bash as your main shell) or <code>$HOME/.zshrc</code> (if using zsh as your main shell):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
 </code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
+<h3 id="nice-packages-to-have-installed">Nice packages to have installed</h3>
+<p><code>sudo apt-get install git vim</code></p>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install utils for cpu freq</span>
-sudo apt-get install cpufrequtils
+<p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e <span style="color:#f92672">&amp;&amp;</span> mv c5731e95bc5be9b3e2789b14b1149b6e raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> cd raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> chmod +x raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> ./raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> cd ~ rm -rf raspiaudiotune
+</code></pre></div><p>This is the full script:</p>
+<script type="application/javascript" src="https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e.js"></script>
 
-sudo cpufreq-set -r -g performance
-
-sudo echo <span style="color:#e6db74">&#34;ENABLE=&#34;</span>true<span style="color:#e6db74">&#34;
-</span><span style="color:#e6db74">GOVERNOR=&#34;</span>performance<span style="color:#e6db74">&#34;
-</span><span style="color:#e6db74">MAX_SPEED=&#34;</span>0<span style="color:#e6db74">&#34;
-</span><span style="color:#e6db74">MIN_SPEED=&#34;</span>0<span style="color:#e6db74">&#34; &#34;</span> | sudo tee -a /etc/default/cpufrequtils
-
-<span style="color:#75715e"># Set realtime priority and memlock</span>
-sudo echo <span style="color:#e6db74">&#34;
-</span><span style="color:#e6db74">@audio nice -15 
-</span><span style="color:#e6db74">@audio - rtprio 90       # maximum realtime priority
-</span><span style="color:#e6db74">@audio - memlock unlimited  # maximum locked-in-memory address space (KB)
-</span><span style="color:#e6db74">&#34;</span> | sudo tee -a /etc/security/limits.conf
-
-<span style="color:#75715e"># Set swappiness</span>
-<span style="color:#75715e"># This setting changes the so-called swappiness of your system,</span> 
-<span style="color:#75715e"># or in other words, the moment when your system starts to use its swap partition.</span> 
-sudo echo <span style="color:#e6db74">&#34;
-</span><span style="color:#e6db74">vm.swappiness = 10
-</span><span style="color:#e6db74">fs.inotify.max_user_watches = 524288
-</span><span style="color:#e6db74">&#34;</span> | sudo tee /etc/sysctl.conf
-
-<span style="color:#75715e"># Install other useful tools</span>
-sudo apt-get install htop git perl
-</code></pre></div><p>To make these changes take effect, the pi must be rebooted</p>
+<p>To make these changes take effect, the pi must be rebooted</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo reboot
 </code></pre></div><h2 id="install-and-setup-jack">Install and setup jack</h2>
 <p>Jack is used to patch audio throughout your audio system on Linux. In this case we will mostly use it to patch audio from software to the hardware output.</p>
