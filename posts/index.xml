@@ -251,6 +251,51 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
   <iframe src="https://player.vimeo.com/video/414061680" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
  </div>
 
+<h2 id="installing-raspbian-lite">Installing Raspbian Lite</h2>
+<p>To install Raspbian Lite on an SD card, plug the card in to your computer.</p>
+<p>Then download the <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite image.</a></p>
+<p>Next, flash it onto your SD card. The easiest way to do this is by using <a href="https://www.balena.io/etcher/">Balena Etcher</a>. With this program you can open up the image for Raspbian Lite, choose the SD card and click flash.</p>
+<p>Note: On some Linux systems you may need to start Balena Etcher using sudo to allow it access to the SD card.</p>
+<h2 id="preparing-the-pi">Preparing the Pi</h2>
+<p>You may skip this step if you already have a Raspberry Pi setup with ssh and you are logged into it. Otherwise, here are the steps needed to get access to a fresh Raspbian Lite installation from another computer.</p>
+<h3 id="enable-ssh">Enable ssh</h3>
+<p>With the flashed SD card containing your Raspbian Lite installation still in your computer, find the <code>boot</code> folder on it. Create an empty file here called <code>ssh</code>.</p>
+<p>This will enable ssh upon boot and allow us to control the Raspberry Pi remotely.</p>
+<h3 id="setup-default-wifi-network">Setup default WIFI-network</h3>
+<p>To automatically connect to your WIFI network on startup, you need to add another file to the <code>boot</code> folder.</p>
+<p>This one should be named <code>wpa_supplicant.conf</code> which will contain information about your network.</p>
+<p>You can copy and paste the snippet below into this file, but make sure you do the following edits to it:</p>
+<ol>
+<li>Replace the string in the <code>ssid</code> line with the name of your network.</li>
+<li>Replace the string  in the <code>psk</code> line with the password your network.</li>
+<li>Replace the country code in the <code>country=NO</code> line (I am in Norway = NO).</li>
+</ol>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ctrl_interface<span style="color:#f92672">=</span>DIR<span style="color:#f92672">=</span>/var/run/wpa_supplicant GROUP<span style="color:#f92672">=</span>netdev
+update_config<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+ap_scan<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+fast_reauth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+country<span style="color:#f92672">=</span>NO
+
+network<span style="color:#f92672">={</span>
+	ssid<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your network&#39;s SSID&#34;</span>
+	psk<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your network&#39;s password/psk&#34;</span>
+	id_str<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span>
+	priority<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Save the file, put the SD card back into your Pi and plug the power cord into it to boot it. Wait a few minutes for it to boot.</p>
+<h3 id="ssh-log-in-to-your-raspbian-lite-remotely">ssh: Log in to your Raspbian Lite remotely</h3>
+<p>If you followed the steps above, your Pi should now be connected to the same network as your computer.</p>
+<p>To do this, you need the IP address of the Pi. See <a href="https://www.raspberrypi.org/documentation/remote-access/ip-address.md">this article which contains some nice ideas on how to do this.</a></p>
+<p>Once found, you can log in from your computer by opening up a terminal and executing <code>ssh pi@address</code>, replacing &ldquo;address&rdquo; with the actual IP address. If succesful you should now be prompted for the password of the <code>pi</code> user which by default is <code>raspberry</code>.</p>
+<h3 id="expand-file-system">Expand file system</h3>
+<p>Once logged in to your pi it is a good idea to expand the file system. This (and other nice Pi configuration things) is done using the command <code>sudo raspi-config</code>.</p>
+<p>Once in raspi-config, find the &ldquo;Advanced options&rdquo; and choose expand file system.</p>
+<h3 id="special-note-for-kitty-users">Special note for kitty users</h3>
+<p>If on your host computer you are using <a href="https://sw.kovidgoyal.net/kitty/">kitty</a> as your terminal emulator you may experience some annoyances if you ssh using the normal <code>ssh</code> command. This is because the Pi isn&rsquo;t recognizing your terminal type.</p>
+<p>You can fix this by ssh&rsquo;ing using <code>kitty +kitten ssh</code> instead.</p>
+<p>I made an alias for this so that I can just type <code>kssh</code>. If you want an alias on your system, add this to your <code>$HOME/.bashrc</code> file (if using bash as your main shell) or <code>$HOME/.zshrc</code> (if using zsh as your main shell):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
+</code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install utils for cpu freq</span>
