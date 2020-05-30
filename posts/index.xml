@@ -356,8 +356,23 @@ card 1: UCX23906524 [Fireface UCX (23906524)], device 0: USB Audio [USB Audio]
 </code></pre></div><p>Then reboot, and run <code>aplay -l</code> to verify it isn&rsquo;t there anymore.</p>
 <h2 id="install-a-real-time-kernel">Install a real-time kernel</h2>
 <p>One of the most important things you can do to improve any Linux system&rsquo;s audio performance is installing a real-time-kernel. On the Raspberry Pi, you need to compile this kernel yourself. <a href="https://lemariva.com/blog/2018/07/raspberry-pi-preempt-rt-patching-tutorial-for-kernel-4-14-y">There are instructions for doing so here</a>.</p>
-<p>Compiling a kernel takes a lot of time, but my colleague at <a href="https://notam.no">Notam</a>, Thom Johansen, has built a <a href="https://users.notam.no/~thomj/rt-kernel.tar.gz">great RT-kernel that you can download here</a>. In the guide linked above you can skip to the last bit where you install the kernel.</p>
-<p>Follow the instructions, then reboot the pi by executing <code>sudo reboot</code>, wait a few minutes and then ssh into the pi again.</p>
+<p>Compiling a kernel takes a lot of time, but my colleague at <a href="https://notam.no">Notam</a>, Thom Johansen, has built a <a href="https://users.notam.no/~thomj/rt-kernel.tar.gz">great RT-kernel for the Raspberry Pi 4 that you can download here</a>. For any other kind of Raspberry Pi, you are on your own (see the link above which has a guide for how to to do this).</p>
+<p>If you are on a Pi 4, then proceed by executing these commands to download the kernel:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir rtkernel <span style="color:#f92672">&amp;&amp;</span> cd rtkernel
+wget https://users.notam.no/~thomj/rt-kernel.tar.gz
+tar xzf rt-kernel.tar.gz
+cd boot
+sudo cp -rd * /boot/
+cd ../lib
+sudo cp -dr * /lib/
+cd ../overlays
+sudo cp -d * /boot/overlays
+cd ..
+sudo cp -d bcm* /boot/
+</code></pre></div><p>and then add the following lines to <code>/boot/config.txt</code>:</p>
+<pre><code>[all]
+kernel=kernel7l
+</code></pre><p>Then reboot the pi by executing <code>sudo reboot</code>, wait a few minutes and then ssh into the pi again.</p>
 <p>If you then run <code>uname -a</code> you should get a result along these lines:</p>
 <pre><code>Linux raspberrypi 4.19.71-rt24-v7l+ #2 SMP PREEMPT RT Sat Apr 25 22:04:08
 UTC 2020 armv7l GNU/Linux 
