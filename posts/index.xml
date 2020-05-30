@@ -360,8 +360,7 @@ card 1: UCX23906524 [Fireface UCX (23906524)], device 0: USB Audio [USB Audio]
 <p><em>A big fat warning</em>: It&rsquo;s a good idea to back up your sd card at this point, if you have important data on it. Screwing up the kernel installation can get you in a complicated situation.</p>
 <p>If you are on a Pi 4, then proceed by executing these commands to download and install the kernel:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir rtkernel <span style="color:#f92672">&amp;&amp;</span> cd rtkernel
-wget https://users.notam.no/~thomj/rt-kernel.tar.gz
-tar xzf rt-kernel.tar.gz
+wget https://users.notam.no/~thomj/rt-kernel.tar.gz <span style="color:#f92672">&amp;&amp;</span> tar xzf rt-kernel.tar.gz
 cd boot
 sudo cp -rd * /boot/
 cd ../lib
