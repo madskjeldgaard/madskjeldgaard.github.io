@@ -298,8 +298,6 @@ network<span style="color:#f92672">={</span>
 </code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
 <h3 id="nice-packages-to-have-installed">Nice packages to have installed</h3>
 <p><code>sudo apt-get install git vim htop perl tmux</code></p>
-<p><code>sudo sed -i 's/exit 0/sudo cpufreq-set -r -g performance/g' /etc/rc.local</code>
-<code>sudo echo &quot;exit 0&quot; | sudo tee -a /etc/rc.local</code></p>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
