@@ -3,6 +3,16 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://madskjeldgaard.dk/pages/movies/</loc>
+    <lastmod>2020-05-27T22:25:05+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/pages/</loc>
+    <lastmod>2020-05-27T22:25:05+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/posts/hemisphere/</loc>
     <lastmod>2020-05-24T10:10:40+02:00</lastmod>
   </url>
@@ -75,11 +85,6 @@
   <url>
     <loc>http://madskjeldgaard.dk/posts/awesome-sc/</loc>
     <lastmod>2020-04-30T12:57:31+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/pages/</loc>
-    <lastmod>2020-04-30T12:48:40+02:00</lastmod>
   </url>
   
   <url>

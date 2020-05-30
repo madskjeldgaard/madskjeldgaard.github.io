@@ -240,11 +240,11 @@ git clone https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd7594
             <guid>http://madskjeldgaard.dk/posts/raspi4-notes/</guid>
             <description>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
 I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
-It is presumed that you have installed Raspbian on an sd card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</description>
+It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</description>
             <content type="html"><![CDATA[<p><img src="/img/small/raspi4-quad2.jpg" alt="raspberry pi 4 setup with fireface ucx and quad speakers"></p>
 <p>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running <a href="https://supercollider.sourceforge.net/">SuperCollider programs for interactive installations</a>.</p>
-<p>I used <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite</a> for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).</p>
-<p>It is presumed that you have installed Raspbian on an sd card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</p>
+<p>I used <a href="https://www.raspberrypi.org/downloads/Raspbian/">Raspbian Lite</a> for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).</p>
+<p>It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</p>
 <p>When logged in to the Pi via ssh, we can setup everything from the command line fairly quickly.</p>
 
 <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
@@ -252,7 +252,7 @@ It is presumed that you have installed Raspbian on an sd card, with ssh enabled 
  </div>
 
 <h2 id="tuning-the-system">Tuning the system</h2>
-<p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh raspbian installation.</p>
+<p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install utils for cpu freq</span>
 sudo apt-get install cpufrequtils
 
@@ -292,15 +292,15 @@ sudo apt-get install jackd2
 echo /usr/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p512 -n3 &gt; ~/.jackdrc
 </code></pre></div><p>Explanations of the flags used here:</p>
 <ul>
-<li><code>-P75</code> - the realtime priority of the audio</li>
-<li><code>-dhw:1</code> signifies the device number used to connect to jack. You can get a list of available devices to choose from using <code>aplay -l</code> then change the number <code>1</code> to whatever you like. 1 is usually the usb card.</li>
+<li><code>-P75</code> - the real-time priority of the audio</li>
+<li><code>-dhw:1</code> signifies the device number used to connect to jack. You can get a list of available devices to choose from using <code>aplay -l</code> then change the number <code>1</code> to whatever you like. 1 is usually the USB card.</li>
 <li><code>-r44100</code> is the sample rate.</li>
-<li><code>-p512</code> is the blocksize. This can be tuned to achieve lower latency. Must be power of two. I get latencies around 3-4ms with this set to <code>-p64</code>.</li>
-<li><code>-n3</code> - jack&rsquo;s buffer periods. Jack recommends using 3 here for usb devices.</li>
+<li><code>-p512</code> is the block size. This can be tuned to achieve lower latency. Must be power of two. I get latencies around 3-4ms with this set to <code>-p64</code>.</li>
+<li><code>-n3</code> - jack&rsquo;s buffer periods. Jack recommends using 3 here for USB devices.</li>
 </ul>
 <p>Additionally, <a href="https://www.fredrikolofsson.com">Fredrik Olofsson</a> pointed out to me that it can be useful to use the <code>-p</code>-flag to restrict the number of possible ports for jack to connect to, this reduces the amount of ram used, which is why the SuperCollider readme recommends adding the <code>-p16</code> flag to the jack command in <code>.jackdrc</code>.</p>
 <h3 id="changing-audio-interface">Changing audio interface</h3>
-<p>Never use the built in audio jack on a Rasbperry Pi for anything serious. Instead, you can use any class compliant usb audio interface. These range from cheap 1$ chinese ones to top-of-the-line RME Fireface UCX. I use and like both of these for different situations.</p>
+<p>Never use the built in audio jack on a Raspberry Pi for anything serious. Instead, you can use any class compliant USB audio interface. These range from cheap 1$ Chinese ones to top-of-the-line RME Fireface UCX. I use and like both of these for different situations.</p>
 <p>To see which audio interfaces are available on the pi:
 <code>aplay -l</code></p>
 <p>With a USB-interface plugged in, the output should look something like this:</p>
@@ -322,15 +322,15 @@ card 0: ALSA [bcm2835 ALSA], device 2: bcm2835 IEC958/HDMI1 [bcm2835 IEC958/HDMI
 card 1: UCX23906524 [Fireface UCX (23906524)], device 0: USB Audio [USB Audio]
   Subdevices: 1/1
   Subdevice #0: subdevice #0
-</code></pre><p>Note the card number. Card 0 is the trashy jack on the pi. Card 1 is the usb audio interface.</p>
-<h3 id="disable-the-onboard-audio-output">Disable the onboard audio output</h3>
+</code></pre><p>Note the card number. Card 0 is the trashy jack on the pi. Card 1 is the USB audio interface.</p>
+<h3 id="disable-the-on-board-audio-output">Disable the on-board audio output</h3>
 <p>To disable the useless on board jack output on the raspberry pi open up the boot config file</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo nano /boot/config.txt
 </code></pre></div><p>Find the line that says <code>dtparam=audio=on</code> and comment it out so that it looks like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#dtparam=audio=on</span>
 </code></pre></div><p>Then reboot, and run <code>aplay -l</code> to verify it isn&rsquo;t there anymore.</p>
-<h2 id="install-a-realtime-kernel">Install a realtime kernel</h2>
-<p>One of the most important things you can do to improve any linux system&rsquo;s audio performance is installing a realtime-kernel. On the Raspberry Pi, you need to compile this kernel yourself. <a href="https://lemariva.com/blog/2018/07/raspberry-pi-preempt-rt-patching-tutorial-for-kernel-4-14-y">There are instructions for doing so here</a>.</p>
+<h2 id="install-a-real-time-kernel">Install a real-time kernel</h2>
+<p>One of the most important things you can do to improve any Linux system&rsquo;s audio performance is installing a real-time-kernel. On the Raspberry Pi, you need to compile this kernel yourself. <a href="https://lemariva.com/blog/2018/07/raspberry-pi-preempt-rt-patching-tutorial-for-kernel-4-14-y">There are instructions for doing so here</a>.</p>
 <p>Compiling a kernel takes a lot of time, but my colleague at <a href="https://notam.no">Notam</a>, Thom Johansen, has built a <a href="https://users.notam.no/~thomj/rt-kernel.tar.gz">great RT-kernel that you can download here</a>. In the guide linked above you can skip to the last bit where you install the kernel.</p>
 <p>Follow the instructions, then reboot the pi by executing <code>sudo reboot</code>, wait few minutes and then ssh into the pi again.</p>
 <p>If you then run <code>uname -a</code> you should get a result along these lines:</p>
@@ -345,7 +345,7 @@ perl ./realTimeConfigQuickScan.pl
 </code></pre><h2 id="download-and-compile-latest-version-of-supercollider">Download, and compile latest version of SuperCollider</h2>
 <p>You can run many different kinds of software on the Raspberry Pi headless: <a href="http://fredrikolofsson.com/f0blog/?q=node/630">Pure Data</a>, Csound and SuperCollider are a few free and open source options.</p>
 <p>I personally prefer SuperCollider so that&rsquo;s what I&rsquo;m going to use here.</p>
-<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailorfit to a headless Raspberry Pi install:</p>
+<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailor fit to a headless Raspberry Pi install:</p>
 <script type="application/javascript" src="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908.js"></script>
 
 <h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
@@ -357,13 +357,13 @@ echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5).dup(
 <span style="color:#75715e"># Stop it by hitting Ctrl+d on your keyboard</span>
 sclang test.scd
 </code></pre></div><h3 id="editing-supercollider-files">Editing SuperCollider files</h3>
-<p>As shown above, you can run any SuperSollider file by passing it as an argument to <code>sclang</code> on the command line.</p>
+<p>As shown above, you can run any SuperCollider file by passing it as an argument to <code>sclang</code> on the command line.</p>
 <p>If you just have a finished SuperCollider-file that you want to run, then this is probably fine. You can use any text editor to make small edits to your files (<code>vi</code>, <code>nano</code>, <code>vim</code>/<code>nvim</code> or <code>emacs</code> are popular choices).</p>
 <p>But, really, this isn&rsquo;t a great way of working.</p>
 <h3 id="neovim-and-scnvim">NeoVim and scnvim</h3>
 <p>My preferred way of working (on any computer, single board or not) is using a combination of NeoVim and the <a href="https://github.com/davidgranstrom/scnvim">scnvim plugin</a>.</p>
-<p>To get this combination to work properly, unfortunately you cannot just install neovim using raspbian&rsquo;s package manager since we need a fairly new version of NeoVim to get it to work (and raspbian/debian typically has pretty old &ldquo;stable&rdquo; versions in it&rsquo;s package manager).</p>
-<p>Follow <a href="https://github.com/neovim/neovim/wiki/Building-Neovim">the instructions here</a> (look for <code>debian</code> things, this should be the same on raspbian) to build NeoVim from source. The neovim wiki is the best place to find instructions on this, but I will condense the commands I used to build neovim on raspbian below:</p>
+<p>To get this combination to work properly, unfortunately you cannot just install NeoVim using Raspbian&rsquo;s package manager since we need a fairly new version of NeoVim to get it to work (and Raspbian/Debian typically has pretty old &ldquo;stable&rdquo; versions in it&rsquo;s package manager).</p>
+<p>Follow <a href="https://github.com/neovim/neovim/wiki/Building-Neovim">the instructions here</a> (look for <code>Debian</code> things, this should be the same on Raspbian) to build NeoVim from source. The neovim wiki is the best place to find instructions on this, but I will condense the commands I used to build neovim on Raspbian below:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Dependencies</span>
 sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 
@@ -399,15 +399,23 @@ ln -sf /home/pi/.config/nvim/plugged/scnvim/sc /home/pi/.local/share/SuperCollid
 nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 </code></pre></div><h2 id="controlling-the-pi-using-a-phone">Controlling the pi using a phone</h2>
 <p>If you installed ssh on your Raspberry Pi you can access it from any computer using the <code>ssh</code> program.</p>
-<p>A fun thing about this is that if you have an android phone you can also use that to access your Pi. I have no idea why you would do that but it&rsquo;s not up to me to judge.</p>
-<p>To access your Raspberry Pi using your phone: Install <a href="https://wiki.termux.com/wiki/Main_Page">termux</a>. It is a terminal emulator for the phone. Run <code>pkg install openssh</code> to install ssh and then you can log in to your raspberry pi and livecode SuperCollider or tweak settings using your phone by running the command using the address of the pi on your local network.</p>
+<p>A fun thing about this is that if you have an Android phone you can also use that to access your Pi. <del>I have no idea why you would do that but it&rsquo;s not up to me to judge.</del></p>
+<p><img src="/img/small/termux-ssh-arm.jpg" alt="broken arm and termux"></p>
+<p><em>My friend actually used this trick to livecode SuperCollider on his Raspberry Pi while recovering from a broken arm.</em></p>
+<p>To access your Raspberry Pi using your Android phone follow these steps:</p>
+<p><strong>On your phone:</strong></p>
+<ol>
+<li>Install <a href="https://wiki.termux.com/wiki/Main_Page">termux</a>.</li>
+<li>Open up Termux, type and run the following command: <code>pkg install openssh</code>. This will install ssh and let you log in to your Raspberry Pi from your phone.</li>
+<li>Find the address of your Pi on the network and ssh into it in Termux using this command (change the IP to whatever the ip of your pi is):</li>
+</ol>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh pi@10.0.1.51
-</code></pre></div><p>Now, if you&rsquo;ve setup your well tuned Raspberry Pi in an installation at a fancy gallery and you want to keep tweaking it&rsquo;s performance, you may retreat to the bathroom, log into it via ssh and manipulate it from there while the gallery guests drink white wine and enjoy hors d&rsquo;oeuvres and marvel at your Raspberry Pi work.</p>
+</code></pre></div><p>And now you&rsquo;re in your Pi on your phone and can do everything you would be able to with a computer ssh&rsquo;d into your Pi.</p>
 <h2 id="using-the-raspberry-pi-for-networked-audio">Using the Raspberry Pi for networked audio</h2>
 <p><a href="/posts/raspi-zita-njbridge">This blog post</a> describes a way to use the Raspberry Pi in a networked audio configuration.</p>
 <h2 id="links-for-further-information">Links for further information</h2>
 <ul>
-<li><a href="https://medium.com/swlh/make-your-raspberry-pi-file-system-read-only-raspbian-buster-c558694de79">Make your Raspberry Pi file system read-only </a></li>
+<li><a href="https://medium.com/swlh/make-your-raspberry-pi-file-system-read-only-Raspbian-buster-c558694de79">Make your Raspberry Pi file system read-only </a></li>
 <li><a href="https://github.com/supercollider/supercollider/blob/develop/README_RASPBERRY_PI.md">Raspberry Pi readme in the SuperCollider repo</a></li>
 <li><a href="https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0">Headless Raspberry Pi setup</a></li>
 <li><a href="https://raspberrypihq.com/how-to-connect-your-raspberry-pi-to-wifi/">How to automatically connect to wifi on startup</a></li>
