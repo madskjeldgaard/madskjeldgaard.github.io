@@ -252,8 +252,8 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
  </div>
 
 <h2 id="preconfigured-images">Preconfigured images</h2>
-<p><a href="https://oddodd.org/">Niklas Adam</a> has done us all a favour and made preconfigured images available which are already setup. So if you don&rsquo;t feel like going through the setup, you can simply download one of them and flash them to a card and you are good to go.</p>
-<p><a href="https://oddodd.org/lib/rpi_images/images/?dir=arch-arm">Download the images here.</a></p>
+<p><a href="https://oddodd.org/">Niklas Adam</a> has done us all a favour and made preconfigured images available which are already setup for audio work. So if you don&rsquo;t feel like going through this setup process, you can simply download one of them and flash them to a card and you are good to go.</p>
+<p><a href="https://oddodd.org/lib/rpi_images/images/">Download the images here.</a></p>
 <p>Among other things, there are <a href="https://oddodd.org/lib/rpi_images/images/?dir=arch-arm">preconfigured images for Arch Arm </a>!</p>
 <h2 id="preparing-the-pi">Preparing the Pi</h2>
 <p>You may skip this step if you already have a Raspberry Pi setup with ssh and you are logged into it. Otherwise, here are the steps needed to get access to a fresh Raspbian Lite installation from another computer.</p>
