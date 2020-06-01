@@ -287,9 +287,6 @@ network<span style="color:#f92672">={</span>
 <p>If you followed the steps above, your Pi should now be connected to the same network as your computer.</p>
 <p>To do this, you need the IP address of the Pi. See <a href="https://www.raspberrypi.org/documentation/remote-access/ip-address.md">this article which contains some nice ideas on how to do this.</a></p>
 <p>Once found, you can log in from your computer by opening up a terminal and executing <code>ssh pi@address</code>, replacing &ldquo;address&rdquo; with the actual IP address. If succesful you should now be prompted for the password of the <code>pi</code> user which by default is <code>raspberry</code>.</p>
-<h3 id="expand-file-system">Expand file system</h3>
-<p>Once logged in to your pi it is a good idea to expand the file system. This (and other nice Pi configuration things) is done using the command <code>sudo raspi-config</code>.</p>
-<p>Once in raspi-config, find the &ldquo;Advanced options&rdquo; and choose expand file system.</p>
 <h2 id="special-note-for-kitty-users">Special note for kitty users</h2>
 <p>If on your host computer you are using <a href="https://sw.kovidgoyal.net/kitty/">kitty</a> as your terminal emulator you may experience some annoyances if you ssh using the normal <code>ssh</code> command. This is because the Pi isn&rsquo;t recognizing your terminal type.</p>
 <p>You can fix this by from your computer ssh&rsquo;ing using <code>kitty +kitten ssh</code> instead.</p>
