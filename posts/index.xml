@@ -290,14 +290,17 @@ network<span style="color:#f92672">={</span>
 <h3 id="expand-file-system">Expand file system</h3>
 <p>Once logged in to your pi it is a good idea to expand the file system. This (and other nice Pi configuration things) is done using the command <code>sudo raspi-config</code>.</p>
 <p>Once in raspi-config, find the &ldquo;Advanced options&rdquo; and choose expand file system.</p>
-<h3 id="special-note-for-kitty-users">Special note for kitty users</h3>
+<h2 id="special-note-for-kitty-users">Special note for kitty users</h2>
 <p>If on your host computer you are using <a href="https://sw.kovidgoyal.net/kitty/">kitty</a> as your terminal emulator you may experience some annoyances if you ssh using the normal <code>ssh</code> command. This is because the Pi isn&rsquo;t recognizing your terminal type.</p>
-<p>You can fix this by ssh&rsquo;ing using <code>kitty +kitten ssh</code> instead.</p>
-<p>I made an alias for this so that I can just type <code>kssh</code>. If you want an alias on your system, add this to your <code>$HOME/.bashrc</code> file (if using bash as your main shell) or <code>$HOME/.zshrc</code> (if using zsh as your main shell):</p>
+<p>You can fix this by from your computer ssh&rsquo;ing using <code>kitty +kitten ssh</code> instead.</p>
+<p>I made an alias for this so that I can just type <code>kssh</code>. If you want an alias on your system, add this to your <code>$HOME/.bashrc</code> file on your computer (not the Pi) if you are using bash as your main shell or <code>$HOME/.zshrc</code> (if using zsh as your main shell):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
 </code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
-<h3 id="important-packages-and-dependencies">Important packages and dependencies</h3>
-<p><code>sudo apt update &amp;&amp; sudo apt install git vim htop perl tmux</code></p>
+<h2 id="important-packages-and-dependencies">Important packages and dependencies</h2>
+<p>Run this command to install git and perl which are important packages you will need later on.</p>
+<p><code>sudo apt update &amp;&amp; sudo apt install git perl</code></p>
+<p>Optionally you can install these programs as well which are nice (vim is a text editor, htop is for monitoring system resources and tmux is for multiple terminal windows). They are optional but I always use them.</p>
+<p><code>sudo apt update &amp;&amp; sudo apt install vim htop tmux</code></p>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
