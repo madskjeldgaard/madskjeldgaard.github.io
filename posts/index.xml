@@ -439,7 +439,7 @@ ln -sf /home/pi/.config/nvim/plugged/scnvim/sc /home/pi/.local/share/SuperCollid
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Open a SuperCollider file and start SCNvim on startup (by running the :SCNvimStart command)</span>
 nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 </code></pre></div><h2 id="controlling-the-pi-using-a-phone">Controlling the pi using a phone</h2>
-<p><img src="/img/small/raspi-termux.png" alt="raspi termux"></p>
+<p><img src="/img/full/raspi-termux.png" alt="raspi termux"></p>
 <p>If you installed ssh on your Raspberry Pi you can access it from any computer using the <code>ssh</code> program.</p>
 <p>A fun thing about this is that if you have an Android phone you can also use that to access your Pi. <del>I have no idea why you would do that but it&rsquo;s not up to me to judge.</del></p>
 <p><img src="/img/small/termux-ssh-arm.jpg" alt="broken arm and termux"></p>
