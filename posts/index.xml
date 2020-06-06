@@ -9,6 +9,20 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Interview with Passive/Aggressive</title>
+            <link>http://madskjeldgaard.dk/posts/interview-pa-2020/</link>
+            <pubDate>Sat, 06 Jun 2020 14:11:05 +0200</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/interview-pa-2020/</guid>
+            <description>At the beginning of the Covid-19 crisis the Danish artist Claus Haxholm reached out to me to do an interview by email. It turned out to be a lengthy email exchange which resulted in an interview available on the Danish music website Passive/Aggressive.
+In the interview (which is in Danish unfortunately) I talk about the brain, morphology, Norway, time and different speculative subjects related to computer music, as well as my Vortex system.</description>
+            <content type="html"><![CDATA[<p>At the beginning of the Covid-19 crisis the Danish artist Claus Haxholm reached out to me to do an interview by email. It turned out to be a lengthy email exchange which resulted in an interview available on the Danish music website <a href="http://passiveaggressive.dk">Passive/Aggressive</a>.</p>
+<p>In the interview (which is in Danish unfortunately) I talk about the brain, morphology, Norway, time and different speculative subjects related to computer music, as well as my Vortex system.</p>
+<p>Read the interview <a href="http://passiveaggressive.dk/feature/mads-kjeldgaard-claus-haxholm-en-korrespondance/">here</a>.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>Control voltage and SuperCollider: Using the open source module Ornament &amp; Crime as a midi-cv interface</title>
             <link>http://madskjeldgaard.dk/posts/hemisphere/</link>
             <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
