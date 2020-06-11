@@ -9,6 +9,98 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Setting up Vim and YouCompleteMe for Rust development</title>
+            <link>http://madskjeldgaard.dk/posts/rust-ycm/</link>
+            <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/rust-ycm/</guid>
+            <description>These are notes for setting up YouCompleteMe - a program for autocompletion, code linting and debugging in the text editor Vim - for developing Rust programs. I find this program vital to my Rust workflow because it allows me to more easily explore code and correct mistakes before they reach the compiler. YouCompleteMe will tell you if there are syntactic mistakes in your code, it will tell you about unused variables and code and it will often suggest changes to problematic code.</description>
+            <content type="html"><![CDATA[<p>These are notes for setting up <a href="https://github.com/ycm-core/YouCompleteMe">YouCompleteMe</a> - a program for autocompletion, code linting and debugging in the text editor Vim - for developing Rust programs. I find this program vital to my Rust workflow because it allows me to more easily explore code and correct mistakes before they reach the compiler. YouCompleteMe will tell you if there are syntactic mistakes in your code, it will tell you about unused variables and code and it will often suggest changes to problematic code.</p>
+<h2 id="install-the-plugin">Install the plugin</h2>
+<p>I am assuming here that you have both <code>git</code> and Vundle installed for NVim.</p>
+<p>In Nvim, install YouCompleteMe by adding the plugin to your init.vim-file by executing <code>:e $MYVIMRC</code>.</p>
+<p>Then, after <code>call plug#begin()</code> and before  <code>call plug#end()</code> add this line:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;ycm-core/YouCompleteMe&#39;</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><p>Then re-source the init file by running the command <code>:source $MYVIMRC</code> and then install the plugin using <code>:PlugInstall</code>.</p>
+<h2 id="install-completion">Install completion</h2>
+<p>Next up we need to install the completion engines needed. You can cherry-pick the engines you need or do not need but I honestly just install it all.</p>
+<p>This is done by going into the plugin folder of YouCompleteMe in a terminal, again assuming you are using Vundle for your plugins this will probably be:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd ~/.vim/plugged/YouCompleteMe/
+./install.py --all
+</code></pre></div><p>This will take a while to install.</p>
+<p>Once that&rsquo;s done, there is a final step which is quite strange and hopefully it will change in the future. According to <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Full-Installation-Guide">the full installation guide</a>, you need to install <a href="https://www.rustup.rs">rustup</a> if you haven&rsquo;t already.</p>
+<p>Then we need to get toolchains and add them to YouCompleteMe.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Temporarily redirect rustup to be able to extract the source</span>
+RUSTUP_HOME<span style="color:#f92672">=</span>~/rusttmp
+
+<span style="color:#75715e"># Get the tools</span>
+rustup toolchain install nightly
+rustup default nightly
+rustup component add rls rust-analysis rust-src
+cd $RUSTUP_HOME/toolchains
+</code></pre></div><p>Now you should be in the toolchains folder that you just downloaded. There should be a folder there named something depending on your system (on mine it&rsquo;s <code>nightly-x86_64-unknown-linux-gnu</code> because I&rsquo;m on linux). Move into it using <code>cd &lt;folder_name&gt;</code>.</p>
+<p>Then, move the contents of the folder of your YouCompleteMe installation <code>~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/rls</code>.</p>
+<p>Check that you did it correctly by seeing the contents:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ls ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/rls
+</code></pre></div><p>This should return something like
+<code>bin  etc  lib  share</code></p>
+<h2 id="extra-configuration">Extra configuration</h2>
+<p>I am actually not sure this is necessary anymore but I read somewhere that you need to enable Rust features in YouCompleteMe&rsquo;s extra configuration file.</p>
+<p>Do this by adding this line to your <code>init.vim</code> file:</p>
+<p><code>let g:ycm_global_ycm_extra_conf = '~/.config/nvim/global_extra_conf.py'</code></p>
+<p>Then edit the config file in NVim by executing <code>:tabnew ~/.config/nvim/global_extra_conf.py</code>.</p>
+<p>Here is what mine looks like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Settings</span>(<span style="color:#f92672">**</span>kwargs):
+    <span style="color:#66d9ef">if</span> kwargs[<span style="color:#e6db74">&#39;language&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;rust&#39;</span>:
+        <span style="color:#66d9ef">return</span> {
+            <span style="color:#e6db74">&#39;ls&#39;</span>: {
+                <span style="color:#e6db74">&#39;rust&#39;</span>: {
+                    <span style="color:#75715e"># &#39;features&#39;: [&#39;http2&#39;, &#39;spnego&#39;],</span>
+                    <span style="color:#e6db74">&#39;all_features&#39;</span>: True,
+                    <span style="color:#e6db74">&#39;racer_completion&#39;</span>: True,
+                    <span style="color:#75715e"># &#39;all_targets&#39;: False,</span>
+                    <span style="color:#75715e"># &#39;wait_to_build&#39;: 1500,</span>
+                }
+            }
+        }
+</code></pre></div><h2 id="keybindings">Keybindings</h2>
+<p>Here are the keybindings I use for Rust/YouCompleteMe:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YCM KEYBINDINGS</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">function</span>! <span style="color:#a6e22e">YcmStuff</span>() <span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">si</span> :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">GoToDefinition</span>&lt;<span style="color:#a6e22e">cr</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">sk</span> :<span style="color:#a6e22e">YcmRestartServer</span>&lt;<span style="color:#a6e22e">cr</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">F1</span>&gt; :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">FixIt</span>&lt;<span style="color:#a6e22e">cr</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">K</span> :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">GetDoc</span>&lt;<span style="color:#a6e22e">cr</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">nnoremap</span> ; :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">GetType</span>&lt;<span style="color:#a6e22e">cr</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endfunction</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">function</span>! <span style="color:#a6e22e">Rusty</span>()<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">nnoremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">e</span>&gt; :<span style="color:#a6e22e">terminal</span> <span style="color:#a6e22e">cargo</span> <span style="color:#a6e22e">run</span>&lt;<span style="color:#a6e22e">cr</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">inoremap</span> &lt;<span style="color:#a6e22e">C</span>-<span style="color:#a6e22e">e</span>&gt; &lt;<span style="color:#a6e22e">esc</span>&gt;:<span style="color:#a6e22e">terminal</span> <span style="color:#a6e22e">cargo</span> <span style="color:#a6e22e">run</span>&lt;<span style="color:#a6e22e">cr</span>&gt;<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endfunction</span> <span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">rust</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">autocmd</span>!<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">rust</span> <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">Rusty</span>()<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span>	<span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">rust</span> <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">YcmStuff</span>()<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">end</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div><h2 id="ultisnips">UltiSnips</h2>
+<p>I use these configuration lines to make UltiSnips work with YouCompleteMe to be able to use snippets as well as autocompletion.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YouCompleteMe and UltiSnips compatibility.</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_use_ultisnips_completer</span> = <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_select_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_previous_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
+</span><span style="color:#75715e">&#34; Expand snippets from UltiSnips with tab</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">UltiSnipsExpandTrigger</span>=<span style="color:#e6db74">&#34;&lt;Tab&gt;&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">UltiSnipsJumpForwardTrigger</span>=<span style="color:#e6db74">&#34;&lt;Tab&gt;&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">UltiSnipsJumpBackwardTrigger</span>=<span style="color:#e6db74">&#34;&lt;c-tab&gt;&#34;</span><span style="color:#960050;background-color:#1e0010">
+</span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">UltiSnipsSnippetDirectories</span> = [<span style="color:#e6db74">&#39;UltiSnips&#39;</span>]<span style="color:#960050;background-color:#1e0010">
+</span></code></pre></div>]]></content>
+        </item>
+        
+        <item>
             <title>Interview with Passive/Aggressive</title>
             <link>http://madskjeldgaard.dk/posts/interview-pa-2020/</link>
             <pubDate>Sat, 06 Jun 2020 14:11:05 +0200</pubDate>

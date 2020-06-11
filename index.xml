@@ -12,6 +12,15 @@
     
     
     <item>
+      <title>Setting up Vim and YouCompleteMe for Rust development</title>
+      <link>http://madskjeldgaard.dk/posts/rust-ycm/</link>
+      <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/rust-ycm/</guid>
+      <description>These are notes for setting up YouCompleteMe - a program for autocompletion, code linting and debugging in the text editor Vim - for developing Rust programs. I find this program vital to my Rust workflow because it allows me to more easily explore code and correct mistakes before they reach the compiler. YouCompleteMe will tell you if there are syntactic mistakes in your code, it will tell you about unused variables and code and it will often suggest changes to problematic code.</description>
+    </item>
+    
+    <item>
       <title>Interview with Passive/Aggressive</title>
       <link>http://madskjeldgaard.dk/posts/interview-pa-2020/</link>
       <pubDate>Sat, 06 Jun 2020 14:11:05 +0200</pubDate>

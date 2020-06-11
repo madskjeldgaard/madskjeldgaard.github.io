@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://madskjeldgaard.dk/tags/nvim/</loc>
+    <lastmod>2020-06-11T11:07:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/rust/</loc>
+    <lastmod>2020-06-11T11:07:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/posts/rust-ycm/</loc>
+    <lastmod>2020-06-11T11:07:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2020-06-11T11:07:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/vim/</loc>
+    <lastmod>2020-06-11T11:07:41+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/posts/interview-pa-2020/</loc>
     <lastmod>2020-06-06T14:11:05+02:00</lastmod>
   </url>
@@ -44,11 +69,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
-    <lastmod>2020-05-24T10:10:40+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2020-05-24T10:10:40+02:00</lastmod>
   </url>
   
@@ -104,11 +124,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/posts/nannou-osc-guides/</loc>
-    <lastmod>2020-04-26T15:02:49+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/rust/</loc>
     <lastmod>2020-04-26T15:02:49+02:00</lastmod>
   </url>
   
