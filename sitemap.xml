@@ -3,22 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://madskjeldgaard.dk/pages/</loc>
+    <lastmod>2020-06-19T09:30:50+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/pages/software/</loc>
+    <lastmod>2020-06-19T09:30:50+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/osc/</loc>
+    <lastmod>2020-06-11T16:49:29+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</loc>
+    <lastmod>2020-06-11T16:49:29+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/raspberrypi/</loc>
+    <lastmod>2020-06-11T16:49:29+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/rust/</loc>
+    <lastmod>2020-06-11T16:49:29+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2020-06-11T16:49:29+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/tags/nvim/</loc>
     <lastmod>2020-06-11T11:07:41+02:00</lastmod>
   </url>
   
   <url>
-    <loc>http://madskjeldgaard.dk/tags/rust/</loc>
-    <lastmod>2020-06-11T11:07:41+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://madskjeldgaard.dk/posts/rust-ycm/</loc>
-    <lastmod>2020-06-11T11:07:41+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2020-06-11T11:07:41+02:00</lastmod>
   </url>
   
@@ -34,11 +59,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/pages/movies/</loc>
-    <lastmod>2020-05-27T22:25:05+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/pages/</loc>
     <lastmod>2020-05-27T22:25:05+02:00</lastmod>
   </url>
   
@@ -84,11 +104,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/posts/raspi-zita-njbridge/</loc>
-    <lastmod>2020-05-03T10:17:27+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/raspberrypi/</loc>
     <lastmod>2020-05-03T10:17:27+02:00</lastmod>
   </url>
   

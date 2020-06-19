@@ -6,10 +6,20 @@
     <description>Recent content in raspberrypi on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 03 May 2020 10:17:27 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jun 2020 16:49:29 +0200</lastBuildDate>
     
 	<atom:link href="http://madskjeldgaard.dk/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Raspberry Pi 4: Simple Button to OSC example in Rust</title>
+      <link>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</link>
+      <pubDate>Thu, 11 Jun 2020 16:49:29 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</guid>
+      <description>Today I did a small experiment with my Raspberry Pi 4: I wanted to poll the GPIO data pins and use data from them in SuperCollider. This is best done by polling the pins in a separate program and then sending that data to SuperCollider via OSC.
+I have done this in Python before but I much prefer doing this kind of thing in Rust since the latter is fast and safe (and just generally: I love Rust!</description>
+    </item>
     
     <item>
       <title>Networked audio using Raspberry Pi 4 (zita-njbridge and SuperCollider)</title>

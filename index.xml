@@ -12,6 +12,25 @@
     
     
     <item>
+      <title>Software</title>
+      <link>http://madskjeldgaard.dk/pages/software/</link>
+      <pubDate>Fri, 19 Jun 2020 09:30:50 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/pages/software/</guid>
+      <description>Instruments / Systems  vortex - A system for turbulent tape music akkorder - This repo contains the code used to generate the pieces for the release &amp;ldquo;Akkorder&amp;rdquo; by Mads Kjeldgaard.  Command line tools  osccli - OSC Communication on the command line. Written in fast and safe Rust. cookiecutter quark - A cookiecutter template to help you automatically generate a SuperCollider Quark (package) sox-tricks - Command line tools that make batch processing, editing and organization of audio files a fast and painless task.</description>
+    </item>
+    
+    <item>
+      <title>Raspberry Pi 4: Simple Button to OSC example in Rust</title>
+      <link>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</link>
+      <pubDate>Thu, 11 Jun 2020 16:49:29 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</guid>
+      <description>Today I did a small experiment with my Raspberry Pi 4: I wanted to poll the GPIO data pins and use data from them in SuperCollider. This is best done by polling the pins in a separate program and then sending that data to SuperCollider via OSC.
+I have done this in Python before but I much prefer doing this kind of thing in Rust since the latter is fast and safe (and just generally: I love Rust!</description>
+    </item>
+    
+    <item>
       <title>Setting up Vim and YouCompleteMe for Rust development</title>
       <link>http://madskjeldgaard.dk/posts/rust-ycm/</link>
       <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>

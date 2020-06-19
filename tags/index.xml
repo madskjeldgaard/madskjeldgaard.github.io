@@ -6,10 +6,37 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Thu, 11 Jun 2020 11:07:41 +0200</lastBuildDate>
+    <lastBuildDate>Thu, 11 Jun 2020 16:49:29 +0200</lastBuildDate>
     
 	<atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>osc</title>
+      <link>http://madskjeldgaard.dk/tags/osc/</link>
+      <pubDate>Thu, 11 Jun 2020 16:49:29 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/osc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raspberrypi</title>
+      <link>http://madskjeldgaard.dk/tags/raspberrypi/</link>
+      <pubDate>Thu, 11 Jun 2020 16:49:29 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/raspberrypi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust</title>
+      <link>http://madskjeldgaard.dk/tags/rust/</link>
+      <pubDate>Thu, 11 Jun 2020 16:49:29 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/rust/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>nvim</title>
@@ -17,15 +44,6 @@
       <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/nvim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>rust</title>
-      <link>http://madskjeldgaard.dk/tags/rust/</link>
-      <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/rust/</guid>
       <description></description>
     </item>
     
@@ -80,15 +98,6 @@
       <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>raspberrypi</title>
-      <link>http://madskjeldgaard.dk/tags/raspberrypi/</link>
-      <pubDate>Sun, 03 May 2020 10:17:27 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/raspberrypi/</guid>
       <description></description>
     </item>
     

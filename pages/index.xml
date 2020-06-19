@@ -6,10 +6,19 @@
     <description>Recent content in Pages on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Wed, 27 May 2020 22:25:05 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 19 Jun 2020 09:30:50 +0200</lastBuildDate>
     
 	<atom:link href="http://madskjeldgaard.dk/pages/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Software</title>
+      <link>http://madskjeldgaard.dk/pages/software/</link>
+      <pubDate>Fri, 19 Jun 2020 09:30:50 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/pages/software/</guid>
+      <description>Instruments / Systems  vortex - A system for turbulent tape music akkorder - This repo contains the code used to generate the pieces for the release &amp;ldquo;Akkorder&amp;rdquo; by Mads Kjeldgaard.  Command line tools  osccli - OSC Communication on the command line. Written in fast and safe Rust. cookiecutter quark - A cookiecutter template to help you automatically generate a SuperCollider Quark (package) sox-tricks - Command line tools that make batch processing, editing and organization of audio files a fast and painless task.</description>
+    </item>
     
     <item>
       <title>Movies</title>
