@@ -38,14 +38,15 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
 <meta itemprop="description" content="These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
 I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
 It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.">
-<meta itemprop="datePublished" content="2020-04-30T16:07:22&#43;02:00" />
-<meta itemprop="dateModified" content="2020-04-30T16:07:22&#43;02:00" />
-<meta itemprop="wordCount" content="2560">
+<meta itemprop="datePublished" content="2020-04-30T16:07:22+02:00" />
+<meta itemprop="dateModified" content="2020-04-30T16:07:22+02:00" />
+<meta itemprop="wordCount" content="2740">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
 
 <meta itemprop="keywords" content="supercollider,raspberrypi,termux," />
+
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
@@ -176,6 +177,7 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
     </li>
     <li><a href="#controlling-the-pi-using-a-phone">Controlling the pi using a phone</a></li>
     <li><a href="#using-the-raspberry-pi-for-networked-audio">Using the Raspberry Pi for networked audio</a></li>
+    <li><a href="#watchdog">Watchdog</a></li>
     <li><a href="#preconfigured-images">Preconfigured images</a></li>
     <li><a href="#links-for-further-information">Links for further information</a></li>
   </ul>
@@ -400,6 +402,22 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 </code></pre></div><p>And now you&rsquo;re in your Pi on your phone and can do everything you would be able to with a computer ssh&rsquo;d into your Pi.</p>
 <h2 id="using-the-raspberry-pi-for-networked-audio">Using the Raspberry Pi for networked audio</h2>
 <p><a href="/posts/raspi-zita-njbridge">This blog post</a> describes a way to use the Raspberry Pi in a networked audio configuration.</p>
+<h2 id="watchdog">Watchdog</h2>
+<p>If you are using your Pi for an installation, setting up a watchdog can be a good idea. If your Pi gets overexcited or crashes, the watchdog will reboot the system (which as a consequence will trigger whatever startup script you have installed, if any).</p>
+<pre><code>sudo apt install watchdog
+</code></pre><p>Open up the config file for the watchdog: <code>/etc/watchdog.conf</code></p>
+<p>And uncomment/add the following:</p>
+<pre><code>max-load-1 = 24
+min-memory = 1
+watchdog-device = /dev/watchdog
+watchdog-timeout=15
+</code></pre><p>The watchdog can be run and activated automatically using systemd. This is done using the following commands:</p>
+<pre><code>sudo systemctl enable watchdog
+sudo systemctl start watchdog
+</code></pre><p>To test if the watchdog is doing it&rsquo;s job, you can stress the system by creating a so-called fork bomb which will make the system crash by recursively calling a function until the Pi chokes up.</p>
+<p>On the pi (not your main computer!), execute the following fork bomb:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">forkbomb<span style="color:#f92672">(){</span> forkbomb | forkbomb &amp; <span style="color:#f92672">}</span>; forkbomb
+</code></pre></div><p>Wait a bit and then see your pi crash. After choking up, it should automatically reboot itself. If it does this, your watchdog is doing it&rsquo;s job.</p>
 <h2 id="preconfigured-images">Preconfigured images</h2>
 <p><a href="https://oddodd.org/">Niklas Adam</a> has done us all a favour and made preconfigured images available which are already setup for audio work. So if you don&rsquo;t feel like going through this setup process, you can simply download one of them and flash them to a card and you are good to go.</p>
 <p><a href="https://oddodd.org/lib/rpi_images/images/">Download the images here.</a></p>
@@ -425,7 +443,7 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/raspberrypi">raspberrypi</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/termux">termux</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2560 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2740 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-30 16:07 &#43;0200</p>
         </div>

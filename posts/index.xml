@@ -576,6 +576,22 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 </code></pre></div><p>And now you&rsquo;re in your Pi on your phone and can do everything you would be able to with a computer ssh&rsquo;d into your Pi.</p>
 <h2 id="using-the-raspberry-pi-for-networked-audio">Using the Raspberry Pi for networked audio</h2>
 <p><a href="/posts/raspi-zita-njbridge">This blog post</a> describes a way to use the Raspberry Pi in a networked audio configuration.</p>
+<h2 id="watchdog">Watchdog</h2>
+<p>If you are using your Pi for an installation, setting up a watchdog can be a good idea. If your Pi gets overexcited or crashes, the watchdog will reboot the system (which as a consequence will trigger whatever startup script you have installed, if any).</p>
+<pre><code>sudo apt install watchdog
+</code></pre><p>Open up the config file for the watchdog: <code>/etc/watchdog.conf</code></p>
+<p>And uncomment/add the following:</p>
+<pre><code>max-load-1 = 24
+min-memory = 1
+watchdog-device = /dev/watchdog
+watchdog-timeout=15
+</code></pre><p>The watchdog can be run and activated automatically using systemd. This is done using the following commands:</p>
+<pre><code>sudo systemctl enable watchdog
+sudo systemctl start watchdog
+</code></pre><p>To test if the watchdog is doing it&rsquo;s job, you can stress the system by creating a so-called fork bomb which will make the system crash by recursively calling a function until the Pi chokes up.</p>
+<p>On the pi (not your main computer!), execute the following fork bomb:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">forkbomb<span style="color:#f92672">(){</span> forkbomb | forkbomb &amp; <span style="color:#f92672">}</span>; forkbomb
+</code></pre></div><p>Wait a bit and then see your pi crash. After choking up, it should automatically reboot itself. If it does this, your watchdog is doing it&rsquo;s job.</p>
 <h2 id="preconfigured-images">Preconfigured images</h2>
 <p><a href="https://oddodd.org/">Niklas Adam</a> has done us all a favour and made preconfigured images available which are already setup for audio work. So if you don&rsquo;t feel like going through this setup process, you can simply download one of them and flash them to a card and you are good to go.</p>
 <p><a href="https://oddodd.org/lib/rpi_images/images/">Download the images here.</a></p>
