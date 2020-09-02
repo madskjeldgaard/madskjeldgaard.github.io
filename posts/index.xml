@@ -172,18 +172,19 @@ website</a></p>
 <hr>
 <h3 id="introducing-the-allmighty-pbind">Introducing the allmighty Pbind</h3>
 <p>Arguably the most important pattern class in SuperCollider</p>
-<hr>
-<h3 id="pbind-data">Pbind data</h3>
-<p>Pbind simply consists of a list of key/value pairs</p>
-<hr>
+<p>A Pbind simply consists of a list of key/value pairs:</p>
+<pre><code class="language-supercollider" data-lang="supercollider">// Play quarter notes (try changing the 0 to another integer)
+Pbind(
+	\dur, 1/4,
+	\degree, 0
+).play
+</code></pre><hr>
 <h3 id="keys-correspond-to-synth-arguments">Keys correspond to Synth arguments</h3>
 <p>Most often, keys correspond to a Synth&rsquo;s arguments.</p>
 <p>Example: If a SynthDef has the argument cutoff, we can access that
 argument in a Pbind using <code>\cutoff</code>.</p>
 <hr>
-<h3 id="some-keys-are-special">Some keys are special</h3>
-<hr>
-<h3 id="dur">dur</h3>
+<h3 id="important-note-on-the-dur-key">Important note on the \dur key</h3>
 <p><code>\dur </code>is used in most SynthDefs to specify the duration of a
 note/event.</p>
 <p>Make sure this key never gets the value 0.</p>

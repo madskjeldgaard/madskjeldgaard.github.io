@@ -42,7 +42,7 @@ Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$&#43;sh
 Became free open source software in 2002 and is now cross platform and is now maintained by a wonderful group of developers.">
 <meta itemprop="datePublished" content="2020-09-01T15:32:13+02:00" />
 <meta itemprop="dateModified" content="2020-09-01T15:32:13+02:00" />
-<meta itemprop="wordCount" content="1549">
+<meta itemprop="wordCount" content="1566">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-nordmarka-2019-small.jpg"/>
 
 
@@ -187,10 +187,8 @@ Became free open source software in 2002 and is now cross platform and is now ma
         <li><a href="#what-does-an-event-look-like">What does an Event look like?</a></li>
         <li><a href="#changing-the-default-synth">Changing the default synth</a></li>
         <li><a href="#introducing-the-allmighty-pbind">Introducing the allmighty Pbind</a></li>
-        <li><a href="#pbind-data">Pbind data</a></li>
         <li><a href="#keys-correspond-to-synth-arguments">Keys correspond to Synth arguments</a></li>
-        <li><a href="#some-keys-are-special">Some keys are special</a></li>
-        <li><a href="#dur">dur</a></li>
+        <li><a href="#important-note-on-the-dur-key">Important note on the \dur key</a></li>
         <li><a href="#when-does-a-pbind-end">When does a Pbind end?</a></li>
         <li><a href="#live-coding-pdef">Live coding: Pdef</a></li>
       </ul>
@@ -395,18 +393,19 @@ website</a></p>
 <hr>
 <h3 id="introducing-the-allmighty-pbind">Introducing the allmighty Pbind</h3>
 <p>Arguably the most important pattern class in SuperCollider</p>
-<hr>
-<h3 id="pbind-data">Pbind data</h3>
-<p>Pbind simply consists of a list of key/value pairs</p>
-<hr>
+<p>A Pbind simply consists of a list of key/value pairs:</p>
+<pre><code class="language-supercollider" data-lang="supercollider">// Play quarter notes (try changing the 0 to another integer)
+Pbind(
+	\dur, 1/4,
+	\degree, 0
+).play
+</code></pre><hr>
 <h3 id="keys-correspond-to-synth-arguments">Keys correspond to Synth arguments</h3>
 <p>Most often, keys correspond to a Synth&rsquo;s arguments.</p>
 <p>Example: If a SynthDef has the argument cutoff, we can access that
 argument in a Pbind using <code>\cutoff</code>.</p>
 <hr>
-<h3 id="some-keys-are-special">Some keys are special</h3>
-<hr>
-<h3 id="dur">dur</h3>
+<h3 id="important-note-on-the-dur-key">Important note on the \dur key</h3>
 <p><code>\dur </code>is used in most SynthDefs to specify the duration of a
 note/event.</p>
 <p>Make sure this key never gets the value 0.</p>
@@ -638,7 +637,7 @@ forums or make bug reports</li>
 
         <div class="post-info">
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1549 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1566 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-09-01 15:32 &#43;0200</p>
         </div>
