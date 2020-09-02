@@ -170,15 +170,17 @@ Patterns</a></li>
 <p>More info on <a href="https://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/">my
 website</a></p>
 <hr>
-<h3 id="introducing-the-allmighty-pbind">Introducing the allmighty Pbind</h3>
+<h3 id="introducing-the-almighty-pbind">Introducing the almighty Pbind</h3>
 <p>Arguably the most important pattern class in SuperCollider</p>
-<p>A Pbind simply consists of a list of key/value pairs:</p>
+<p>A Pbind simply consists of a list of key/value pairs.</p>
+<p>In this example, the keys are on the left side ( <code>\dur</code> and <code>\degree</code> ) and the values on the right ( <code>1/4</code> and <code>0</code> ).</p>
 <pre><code class="language-supercollider" data-lang="supercollider">// Play quarter notes (try changing the 0 to another integer)
 Pbind(
 	\dur, 1/4,
 	\degree, 0
 ).play
-</code></pre><hr>
+</code></pre><p>Note the commas: This is what makes it a list.</p>
+<hr>
 <h3 id="keys-correspond-to-synth-arguments">Keys correspond to Synth arguments</h3>
 <p>Most often, keys correspond to a Synth&rsquo;s arguments.</p>
 <p>Example: If a SynthDef has the argument cutoff, we can access that
