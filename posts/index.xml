@@ -15,11 +15,12 @@
             
             <guid>http://madskjeldgaard.dk/posts/pattern-workshop-sept-2020/</guid>
             <description>These are workshop notes for the online introductory SuperCollider workshop put on by Notam in September 2020. It covers the basics of using the pattern library in SuperCollider
+You can download the notes here: workshop-notes
 Design  Short history of SuperCollider SC was designed by James McCartney as closed source proprietary software
-Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$+shipping and could only run on PowerMacs.
-Became free open source software in 2002 and is now cross platform and is now maintained by a wonderful group of developers.</description>
+Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$+shipping and could only run on PowerMacs.</description>
             <content type="html"><![CDATA[<p><em>These are workshop notes for the online introductory SuperCollider workshop put on by <a href="https://notam.no">Notam</a> in September 2020.
 It covers the basics of using the pattern library in SuperCollider</em></p>
+<p>You can download the notes here: <a href="/pdf/pattern-workshop-sept-2020.pdf">workshop-notes</a></p>
 <h2 id="design">Design</h2>
 <hr>
 <h3 id="short-history-of-supercollider">Short history of SuperCollider</h3>
@@ -186,7 +187,7 @@ Pbind(
 <p>Example: If a SynthDef has the argument cutoff, we can access that
 argument in a Pbind using <code>\cutoff</code>.</p>
 <hr>
-<h3 id="important-note-on-the-dur-key">Important note on the \dur key</h3>
+<h3 id="important-note-on-the-dur-key">Important note on the dur key</h3>
 <p><code>\dur </code>is used in most SynthDefs to specify the duration of a
 note/event.</p>
 <p>Make sure this key never gets the value 0.</p>

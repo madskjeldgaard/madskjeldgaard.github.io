@@ -18,9 +18,9 @@
       
       <guid>http://madskjeldgaard.dk/posts/pattern-workshop-sept-2020/</guid>
       <description>These are workshop notes for the online introductory SuperCollider workshop put on by Notam in September 2020. It covers the basics of using the pattern library in SuperCollider
+You can download the notes here: workshop-notes
 Design  Short history of SuperCollider SC was designed by James McCartney as closed source proprietary software
-Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$+shipping and could only run on PowerMacs.
-Became free open source software in 2002 and is now cross platform and is now maintained by a wonderful group of developers.</description>
+Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$+shipping and could only run on PowerMacs.</description>
     </item>
     
     <item>
