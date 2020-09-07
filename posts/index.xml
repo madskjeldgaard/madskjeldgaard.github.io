@@ -1052,8 +1052,7 @@ nvme0n1
 └─nvme0n1p3
      259:3    0     8G  0 part [SWAP]
 </code></pre><p>Then, using the information that the <code>mmcblk0</code> partition is the sd card, we can run the following command to first create an image from the partition and then compress it into a tarball ( warning: the resulting files may be quite large, depending on the size of the sd card! ):</p>
-<p>If it is on <code>sdb</code> (as I said, on my Arch Linux machine it&rsquo;s <code>mmcblk0</code>, please verify for yourself before running this command)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo dd bs<span style="color:#f92672">=</span>4M <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/sdb | gzip &gt; mega-badass-pi-image.img.gz
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo dd bs<span style="color:#f92672">=</span>4M <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/mmcblk0 | gzip &gt; mega-badass-pi-image.img.gz
 </code></pre></div><h2 id="preconfigured-images">Preconfigured images</h2>
 <p><a href="https://oddodd.org/">Niklas Adam</a> has done us all a favour and made preconfigured images available which are already setup for audio work. So if you don&rsquo;t feel like going through this setup process, you can simply download one of them and flash them to a card and you are good to go.</p>
 <p><a href="https://oddodd.org/lib/rpi_images/images/">Download the images here.</a></p>
