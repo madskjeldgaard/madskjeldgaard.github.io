@@ -1028,31 +1028,31 @@ sudo systemctl start watchdog
 <p>Then plug in the sd card from the Pi into the computer and repeat the command above and see which partition was added.
 This is your sd card. Look at the size to verify that it matches your sd card.</p>
 <p>Normally this is called something like <code>sda</code> or <code>sdb</code> but on my Arch Linux computer it looks like this, where the <code>mmcblk0</code> is the sd card:</p>
-<pre><code>NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 mmcblk0
-│    179:0    0  29,7G  0 disk
+│    179:0    <span style="color:#ae81ff">0</span>  29,7G  <span style="color:#ae81ff">0</span> disk
 ├─mmcblk0p1
-│    179:1    0 440,6M  0 part
+│    179:1    <span style="color:#ae81ff">0</span> 440,6M  <span style="color:#ae81ff">0</span> part
 ├─mmcblk0p2
-│    179:2    0     1K  0 part
+│    179:2    <span style="color:#ae81ff">0</span>     1K  <span style="color:#ae81ff">0</span> part
 ├─mmcblk0p5
-│    179:5    0    32M  0 part /run/media
+│    179:5    <span style="color:#ae81ff">0</span>    32M  <span style="color:#ae81ff">0</span> part /run/media
 ├─mmcblk0p6
-│    179:6    0   256M  0 part /run/media
+│    179:6    <span style="color:#ae81ff">0</span>   256M  <span style="color:#ae81ff">0</span> part /run/media
 ├─mmcblk0p7
-│    179:7    0  19,5G  0 part /run/media
+│    179:7    <span style="color:#ae81ff">0</span>  19,5G  <span style="color:#ae81ff">0</span> part /run/media
 └─mmcblk0p8
-     259:4    0   9,5G  0 part /run/media
+     259:4    <span style="color:#ae81ff">0</span>   9,5G  <span style="color:#ae81ff">0</span> part /run/media
 nvme0n1
-│    259:0    0 238,5G  0 disk
+│    259:0    <span style="color:#ae81ff">0</span> 238,5G  <span style="color:#ae81ff">0</span> disk
 ├─nvme0n1p1
-│    259:1    0   512M  0 part
+│    259:1    <span style="color:#ae81ff">0</span>   512M  <span style="color:#ae81ff">0</span> part
 ├─nvme0n1p2
-│    259:2    0   230G  0 part /
+│    259:2    <span style="color:#ae81ff">0</span>   230G  <span style="color:#ae81ff">0</span> part /
 └─nvme0n1p3
-     259:3    0     8G  0 part [SWAP]
-</code></pre><p>Then, using the information that the <code>mmcblk0</code> partition is the sd card, we can run the following command to first create an image from the partition and then compress it into a tarball ( warning: the resulting files may be quite large, depending on the size of the sd card! ):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">sudo dd bs<span style="color:#f92672">=</span>4M <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/mmcblk0 | gzip &gt; mega-badass-pi-image.img.gz
+     259:3    <span style="color:#ae81ff">0</span>     8G  <span style="color:#ae81ff">0</span> part <span style="color:#f92672">[</span>SWAP<span style="color:#f92672">]</span>
+</code></pre></div><p>Then, using the information that the <code>mmcblk0</code> partition is the sd card, we can run the following command to first create an image from the partition and then compress it into a tarball ( warning: the resulting files may be quite large, depending on the size of the sd card! ):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dd bs<span style="color:#f92672">=</span>4M <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/mmcblk0 | gzip &gt; mega-badass-pi-image.img.gz
 </code></pre></div><h2 id="preconfigured-images">Preconfigured images</h2>
 <p><a href="https://oddodd.org/">Niklas Adam</a> has done us all a favour and made preconfigured images available which are already setup for audio work. So if you don&rsquo;t feel like going through this setup process, you can simply download one of them and flash them to a card and you are good to go.</p>
 <p><a href="https://oddodd.org/lib/rpi_images/images/">Download the images here.</a></p>
