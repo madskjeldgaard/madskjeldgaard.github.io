@@ -339,7 +339,7 @@ perl ./realTimeConfigQuickScan.pl
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908 <span style="color:#f92672">&amp;&amp;</span> mv 10ab025993d5b77d235819d56c4cc908 scbuildscripts <span style="color:#f92672">&amp;&amp;</span> cd scbuildscripts <span style="color:#f92672">&amp;&amp;</span> chmod +x *.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc4pi.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc3-plugins-pi.sh
 </code></pre></div><h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
 <p>Let&rsquo;s create a simple SuperCollider test file which will boot the audio server (and automatically start and connect Jack) to see if the installation went well and we are getting sound out of the pi.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing.</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing. </span>
 echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5).dup(2)} }&#34;</span> &gt;&gt; test.scd
 
 <span style="color:#75715e"># This will boot the server and play white noise in 2 channels</span>
@@ -368,7 +368,7 @@ rm -rf neovim
 </code></pre></div><p>Now, verify that NeoVim is installed by running the following command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim --version
 </code></pre></div><p>If you get any output from that command, you are good to go and can proceed to install <a href="https://github.com/davidgranstrom/scnvim">scnvim</a> by following the instructions on the project&rsquo;s github repo.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file </span>
 mkdir ~/.config/nvim
 echo <span style="color:#e6db74">&#34;call plug#begin()
 </span><span style="color:#e6db74">Plug &#39;davidgranstrom/scnvim&#39;

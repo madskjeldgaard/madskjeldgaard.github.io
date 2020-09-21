@@ -6,11 +6,7 @@
     <description>Recent content in Projects on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 22 May 2020 10:56:16 +0200</lastBuildDate>
-    
-	<atom:link href="http://madskjeldgaard.dk/projects/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 22 May 2020 10:56:16 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/projects/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Vortex: A system for turbulent tape music</title>
       <link>http://madskjeldgaard.dk/projects/vortex/</link>

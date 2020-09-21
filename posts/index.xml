@@ -693,7 +693,7 @@ the audio stream(s) to its local sample rate.</p>
 <li>Launch <code>jack</code></li>
 <li>Launch <code>zita-j2n</code> (jack 2 network)</li>
 <li>Launch something that can output sound to Jack (SuperCollider in this case but might as well be Csound, Pure Data or something else)</li>
-<li>Connect the virtual patch cords of your sound process&rsquo; (SuperCollider) output to the zita-j2n output.</li>
+<li>Connect the virtual patch cords of your sound process' (SuperCollider) output to the zita-j2n output.</li>
 </ol>
 <h4 id="steps-on-the-laptop--pc">Steps on the laptop / pc</h4>
 <ol>
@@ -939,7 +939,7 @@ perl ./realTimeConfigQuickScan.pl
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908 <span style="color:#f92672">&amp;&amp;</span> mv 10ab025993d5b77d235819d56c4cc908 scbuildscripts <span style="color:#f92672">&amp;&amp;</span> cd scbuildscripts <span style="color:#f92672">&amp;&amp;</span> chmod +x *.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc4pi.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc3-plugins-pi.sh
 </code></pre></div><h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
 <p>Let&rsquo;s create a simple SuperCollider test file which will boot the audio server (and automatically start and connect Jack) to see if the installation went well and we are getting sound out of the pi.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing.</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing. </span>
 echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5).dup(2)} }&#34;</span> &gt;&gt; test.scd
 
 <span style="color:#75715e"># This will boot the server and play white noise in 2 channels</span>
@@ -968,7 +968,7 @@ rm -rf neovim
 </code></pre></div><p>Now, verify that NeoVim is installed by running the following command:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim --version
 </code></pre></div><p>If you get any output from that command, you are good to go and can proceed to install <a href="https://github.com/davidgranstrom/scnvim">scnvim</a> by following the instructions on the project&rsquo;s github repo.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file</span> 
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file </span>
 mkdir ~/.config/nvim
 echo <span style="color:#e6db74">&#34;call plug#begin()
 </span><span style="color:#e6db74">Plug &#39;davidgranstrom/scnvim&#39;
@@ -1176,9 +1176,9 @@ Basically it is a command line interface for your Android device and works like 
             <pubDate>Sun, 26 Apr 2020 10:07:25 +0200</pubDate>
             
             <guid>http://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</guid>
-            <description>To make full use of SoX&amp;rsquo; potential for batch processing we will be using a bit of command line wizardry.
+            <description>To make full use of SoX&#39; potential for batch processing we will be using a bit of command line wizardry.
 The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&amp;rsquo;s full path and ls to see the folder&amp;rsquo;s contents.</description>
-            <content type="html"><![CDATA[<p>To make full use of SoX&rsquo; potential for batch processing we will be using a bit of command line wizardry.</p>
+            <content type="html"><![CDATA[<p>To make full use of SoX' potential for batch processing we will be using a bit of command line wizardry.</p>
 <p>The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write <code>pwd</code> to see it&rsquo;s full path and <code>ls</code> to see the folder&rsquo;s contents.</p>
 <h1 id="for-loop">For-loop</h1>
 <p>The structure of our for-loop-command will look something like this:</p>
@@ -1233,7 +1233,7 @@ Let us say you have a sound file containing many different sounds seperated by a
 </code></pre></div><p>To trim the ending as well, we basically repeat the parameters like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1%
 </code></pre></div><h2 id="chaining-pseudo-effects">Chaining (pseudo) effects</h2>
-<p>This is all good and well, but we want to produce a sample bank from one input audio file. To do this we need to make use of SoX&rsquo; ability to chain effects chains after eachother and enter into &ldquo;multiple output file mode&rdquo;.</p>
+<p>This is all good and well, but we want to produce a sample bank from one input audio file. To do this we need to make use of SoX' ability to chain effects chains after eachother and enter into &ldquo;multiple output file mode&rdquo;.</p>
 <p>From the manual: &ldquo;In multiple output mode, a new file is created when the effects prior to the &lsquo;newfile&rsquo; indicate they are done. The effects chain listed after &lsquo;newfile&rsquo; is then started up and its output is saved to the new file.&rdquo;</p>
 <p>An effects chain can thus be chained after another using a colon <code>:</code>. Now instead of manually writing out the silence effect and it&rsquo;s parameters for each bit we want to extract from the sound file, we can make the process automatically restart each time it has detected a bit of sound by silence</p>
 <p>To do this we need to chain the <code>restart</code> pseudoeffect at the end of our command. This will make the process create a new file from the bit it detected by silence, then restart the process from where it left off and repeat until it reaches the end of the file. Kind of like slicing off bits of a (sound) sausage from left to right.</p>
@@ -1316,7 +1316,7 @@ I came across SoX via the live coding community where it is a popular tool for c
 </code></pre></div><p>Like other command line tools, sox executes from the context of the folder that you are currently in (which can be found by typing <code>pwd</code>) and as such you do not need to type out the entire path to a file if it is in the same folder as the one you are executing sox from.</p>
 <h2 id="command-line-tape-music">Command line tape music</h2>
 <p>Tape music artists of the 60&rsquo;s and 70&rsquo;s had very rudimentary tools at their disposal - mostly they did their work using reel-to-reel tape recorders and simple effects. But you would be surprised by the incredible sonic possibilities available in a tool as simple as this, using basic techniques of recording, reversing, adding effects, changing playback speed, etc. you can get a long way towards making interesting music.</p>
-<p>Let us explore some of SoX&rsquo; basic commands a bit by doing some command line audio manipulations reminiscent of classic tape music techniques.</p>
+<p>Let us explore some of SoX' basic commands a bit by doing some command line audio manipulations reminiscent of classic tape music techniques.</p>
 <p>First of all, we need some audio to operate on. I would recommend recording a quick bit from your computer&rsquo;s microphone. If you have an instrument around, maybe use that for this exercise or simply (like me) whistle like an idiot in front of your computer.</p>
 <p>Record to the file idiot.wav for 10 seconds:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec idiot.wav trim 0:0 0:10

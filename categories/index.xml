@@ -5,10 +5,6 @@
     <link>http://madskjeldgaard.dk/categories/</link>
     <description>Recent content in Categories on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-uk</language>
-    
-	<atom:link href="http://madskjeldgaard.dk/categories/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-uk</language><atom:link href="http://madskjeldgaard.dk/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

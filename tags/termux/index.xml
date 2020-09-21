@@ -6,11 +6,7 @@
     <description>Recent content in termux on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Thu, 30 Apr 2020 16:07:22 +0200</lastBuildDate>
-    
-	<atom:link href="http://madskjeldgaard.dk/tags/termux/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 30 Apr 2020 16:07:22 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/termux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Notes for setting up a Raspberry Pi 4 for audio work</title>
       <link>http://madskjeldgaard.dk/posts/raspi4-notes/</link>

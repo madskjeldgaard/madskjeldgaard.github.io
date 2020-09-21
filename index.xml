@@ -6,11 +6,7 @@
     <description>Recent content on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate>
-    
-	<atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Workshop notes for SuperCollider pattern introduction workshop september 2020</title>
       <link>http://madskjeldgaard.dk/posts/pattern-workshop-sept-2020/</link>
@@ -196,7 +192,7 @@ Basically it is a command line interface for your Android device and works like 
       <pubDate>Sun, 26 Apr 2020 10:07:25 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/</guid>
-      <description>To make full use of SoX&amp;rsquo; potential for batch processing we will be using a bit of command line wizardry.
+      <description>To make full use of SoX&#39; potential for batch processing we will be using a bit of command line wizardry.
 The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&amp;rsquo;s full path and ls to see the folder&amp;rsquo;s contents.</description>
     </item>
     

@@ -6,11 +6,7 @@
     <description>Recent content in cpp on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Mon, 06 Apr 2020 15:44:23 +0000</lastBuildDate>
-    
-	<atom:link href="http://madskjeldgaard.dk/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Mon, 06 Apr 2020 15:44:23 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>NeoVim setup for c&#43;&#43; and openFrameworks development</title>
       <link>http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/</link>

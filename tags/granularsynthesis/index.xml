@@ -6,11 +6,7 @@
     <description>Recent content in granularsynthesis on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 21 Aug 2020 11:14:29 +0200</lastBuildDate>
-    
-	<atom:link href="http://madskjeldgaard.dk/tags/granularsynthesis/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 21 Aug 2020 11:14:29 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/granularsynthesis/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sketch for a granular cloud generator in SuperCollider</title>
       <link>http://madskjeldgaard.dk/posts/kloudgenerator-sketch/</link>

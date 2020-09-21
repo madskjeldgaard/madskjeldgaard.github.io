@@ -6,11 +6,7 @@
     <description>Recent content in osc on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Thu, 11 Jun 2020 16:49:29 +0200</lastBuildDate>
-    
-	<atom:link href="http://madskjeldgaard.dk/tags/osc/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 11 Jun 2020 16:49:29 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/osc/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Raspberry Pi 4: Simple Button to OSC example in Rust</title>
       <link>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</link>

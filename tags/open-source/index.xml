@@ -6,11 +6,7 @@
     <description>Recent content in open-source on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 24 May 2020 10:10:40 +0200</lastBuildDate>
-    
-	<atom:link href="http://madskjeldgaard.dk/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Sun, 24 May 2020 10:10:40 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/open-source/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Control voltage and SuperCollider: Using the open source module Ornament &amp; Crime as a midi-cv interface</title>
       <link>http://madskjeldgaard.dk/posts/hemisphere/</link>
