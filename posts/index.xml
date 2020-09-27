@@ -9,6 +9,146 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Aur Package Workflow</title>
+            <link>http://madskjeldgaard.dk/posts/aur-package-workflow/</link>
+            <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/aur-package-workflow/</guid>
+            <description>These are notes I have been taking while making packages for the Arch User Repository, a community based package repository for users of Arch Linux and it&amp;rsquo;s derivative operating systems. This isn&amp;rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.
+If you have a tolerance for YouTube videos, then maybe this video will be helpful to you.
+It is also recommend to read the official guide on how to create packages: Creating packages.</description>
+            <content type="html"><![CDATA[<p>These are notes I have been taking while making packages for the <a href="https://aur.archlinux.org">Arch User Repository</a>, a community based package repository for users of Arch Linux and it&rsquo;s derivative operating systems. This isn&rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.</p>
+<p>If you have a tolerance for YouTube videos, then maybe <a href="https://youtu.be/crnGzF43aoc">this video will be helpful to you</a>.</p>
+<p>It is also recommend to read the official guide on how to create packages: <a href="https://wiki.archlinux.org/index.php/Creating_packages">Creating packages</a>.</p>
+<h2 id="creating-a-repository">Creating a repository</h2>
+<p>This was one of the steps of creating an AUR package that confused me the most. How do you &ldquo;create a repository&rdquo; like you would on Github by logging in to the web interface and clicking a button that would create a repo?</p>
+<p>Well, the way to do it is:</p>
+<ol>
+<li>clone an empty repo from the AUR&rsquo;s git repository named after your package</li>
+<li>then adding your PKGBUILD and .SRCINFO to that and</li>
+<li>pushing it back to AUR.</li>
+</ol>
+<h2 id="step-0-setup-aur-user-account--ssh">Step 0: Setup AUR user account + ssh.</h2>
+<p>Before continuing, you need to create an account on <a href="https://aur.archlinux.org">aur.archlinux.org</a>.</p>
+<p>Then, you need to set up your ssh key pairs.</p>
+<p>See this <a href="https://wiki.archlinux.org/index.php/AUR_submission_guidelines#Authentication">link</a> on how to make the key pairs.</p>
+<p>Then add your public key to your aur user <a href="https://aur.archlinux.org/account/madskjeldgaard/edit/">here</a>.</p>
+<h2 id="step-1-clone-the-aur-repo">Step 1: Clone the AUR repo</h2>
+<p>The cloning/creating of the repository looks like this (change the <code>PKG_NAME</code> variable to contain the name of your package):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PKG_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wowzers&#34;</span>
+AUR_GIT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ssh://aur@aur.archlinux.org/</span>$PKG_NAME<span style="color:#e6db74">.git&#34;</span>
+git clone $AUR_GIT_URL
+git remote add origin $AUR_GIT_URL
+git fetch
+cd $PKG_NAME
+</code></pre></div><h2 id="step-15-avoid-messing-up-your-git-stuff">Step 1.5: Avoid messing up your git stuff</h2>
+<p>Inside of the folder that is about to contain your package, create a <code>.gitignore</code> file setup to ignore everything. This way you have to explicitly add and commit files to your package&rsquo;s git history to have them take effect.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Only add files explicitly using -f flag with git, eg git -f add &lt;file&gt;</span>
+echo <span style="color:#e6db74">&#34;*&#34;</span> &gt; .gitignore
+</code></pre></div><h2 id="step-2-write-a-pkgbuild">Step 2: Write a PKGBUILD</h2>
+<p>Write a <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a> file. This is a script describing the name of your package, it&rsquo;s source, dependencies and how to install it among other things.</p>
+<p>I won&rsquo;t cover how to write a PKGBUILD in detail here but you can copy a full PKGBUILD from your system like so:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /usr/share/pacman/PKGBUILD.proto PKGBUILD
+</code></pre></div><p>Be warned though that this is a full PKGBUILD containing tons of things you don&rsquo;t actually need to worry about.</p>
+<p><a href="https://wiki.archlinux.org/index.php/PKGBUILD">Here you can find an explanation</a> of all the PKGBUILD&rsquo;s keys and functions.</p>
+<p>But honestly, the best way to learn about the necessary things in a PKGBUILD is to search <a href="https://aur.archlinux.org">aur.archlinux.org</a> for a package similar to yours. Then click it and then find a link to &ldquo;VIEW PKGBUILD&rdquo;.</p>
+<p>Don&rsquo;t forget to add your PKGBUILD to your git repo:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add -f PKGBUILD
+</code></pre></div><h3 id="an-important-trick-using-the-install-command">An important trick: Using the install command</h3>
+<p>In the <code>package(){}</code> function of your PKGBUILD, you can use the <code>install</code> command to copy things into the system.</p>
+<p>A lot of packages are simply copying files (binaries, shared libraries and or documentation for example)  like this, and it is best done using the <code>install</code> command because it can copy the files and set it&rsquo;s permissions in one go.</p>
+<p>Some examples:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Copy package binary to system</span>
+install -Dm755 <span style="color:#e6db74">&#34;</span>$srcdir<span style="color:#e6db74">/package/amazingbinary&#34;</span> <span style="color:#e6db74">&#34;</span>$pkgdir<span style="color:#e6db74">/usr/bin/amazingbinary&#34;</span>
+
+<span style="color:#75715e"># Copy shared library to system</span>
+install -Dm755 <span style="color:#e6db74">&#34;</span>$srcdir<span style="color:#e6db74">/package/somesharedlibrary.so&#34;</span> <span style="color:#e6db74">&#34;</span>$pkgdir<span style="color:#e6db74">/usr/share/somesharedlibrary.so&#34;</span>
+
+<span style="color:#75715e"># Copy package license to system</span>
+install -Dm644 <span style="color:#e6db74">&#34;</span>$srcdir<span style="color:#e6db74">/package/LICENSE&#34;</span> <span style="color:#e6db74">&#34;</span>$pkgdir<span style="color:#e6db74">/usr/share/licenses/</span>$pkgname<span style="color:#e6db74">/LICENSE&#34;</span>
+
+<span style="color:#75715e"># Copy some documentation to the system</span>
+install -Dm644 <span style="color:#e6db74">&#34;</span>$srcdir<span style="color:#e6db74">/docs/explanatory-documentation.html&#34;</span> <span style="color:#e6db74">&#34;</span>$pkgdir<span style="color:#e6db74">/usr/share/doc/</span>$pkgname<span style="color:#e6db74">/explanatory-documentation.html&#34;</span>
+</code></pre></div><p>Also: If the system directory you are copying to does not exist, <code>install</code> will create it if you use the <code>-D</code> flag like the example above.</p>
+<p>For a full list of what to install where, <a href="https://wiki.archlinux.org/index.php/Arch_package_guidelines#Directories">see this wiki page</a>.</p>
+<h2 id="step-25-prepare-for-release">Step 2.5: Prepare for release</h2>
+<h3 id="making-the-package">Making the package</h3>
+<p>In the folder containing your PKGBUILD you can run the following command to make the package and install it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg -s
+</code></pre></div><p>This will download the sources, create a .tar file and a file/folder structure like in this example for <a href="https://aur.archlinux.org/packages/linvst3-bin/">linvst3-bin</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linvst3-bin
+├── LinVst3-2.1-Debian-rz.zip
+├── linvst3-bin-2.1-1-x86_64.pkg.tar.xz
+├── pkg
+│   └── linvst3-bin
+│       └── usr
+│           ├── bin
+│           │   ├── linvst3convert
+│           │   ├── linvst3converttree
+│           │   ├── lin-vst3-servertrack.exe
+│           │   └── lin-vst3-servertrack.exe.so
+│           └── share
+│               └── LinVst
+│                   └── linvst3.so
+├── PKGBUILD
+└── src
+    ├── LinVst3-2.1-Debian-rz
+    │   ├── convert
+    │   │   ├── linvst3convert
+    │   │   ├── linvst3converttree
+    │   │   └── ReadMe
+    │   ├── embedded
+    │   │   ├── lin-vst3-servertrack.exe
+    │   │   ├── lin-vst3-servertrack.exe.so
+    │   │   └── linvst3.so
+    │   ├── License
+    │   └── ReadMe
+    └── LinVst3-2.1-Debian-rz.zip -&gt; /home/mads/code/arch-packages/linvst3-bin/LinVst3-2.1-Debian-rz.zip
+
+<span style="color:#ae81ff">10</span> directories, <span style="color:#ae81ff">17</span> files
+</code></pre></div><p>Note: The <code>src</code> directory is available in your PKGBUILD script as the <code>$srcdir</code> variable.</p>
+<p>For more info on <a href="https://wiki.archlinux.org/index.php/Arch_package_guidelines#Makepkg_duties">the makepkg duties, see this.</a></p>
+<h3 id="clean-up-your-mess">Clean up your mess</h3>
+<p>When using <code>makepkg -s</code>, the package will actually be installed on your system. Make sure to clean them up afterwards. I&rsquo;m not suer what the smartest way of doing this is, but I have been manually removing them.</p>
+<h3 id="test">Test</h3>
+<p>Check sanity of package using the <code>namcap</code> tool (which you will need to install if you haven&rsquo;t already):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">namcap PKGBUILD <span style="color:#75715e"># If this returns nothing, it is okay</span>
+namcap name-of-pkg.pkg.tar.xz
+</code></pre></div><h3 id="update-checksums">Update checksums</h3>
+<p>Update package checksums. This will be inserted into the PKGBUILD file.
+<code>updpkgsums</code></p>
+<h3 id="create-srcinfo">Create .SRCINFO</h3>
+<p>Make the <code>.SRCINFO</code> file</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg --printsrcinfo &gt; .SRCINFO
+git add -f .SRCINFO
+</code></pre></div><h2 id="step-3-publish">Step 3: Publish</h2>
+<p>Do the final git stuff:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add -f .SRCINFO PKGBUILD
+git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;first commit&#34;</span>
+</code></pre></div><p>Then push:
+<code>git push</code></p>
+<h2 id="step-35-updating-a-package">Step 3.5: Updating a package</h2>
+<p>After updating a PKGBUILD, you need to regenerate the <code>.SRCINFO</code> file and then commit it with the PKGBUILD that was changed:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg --printsrcinfo &gt; .SRCINFO
+git add -f .SRCINFO PKGBUILD
+git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;important change&#34;</span>
+</code></pre></div><hr>
+<h2 id="random-notes">Random notes</h2>
+<p>Here are some random things I learned by doing them the wrong way on the AUR (and getting feedback from more experienced contributors).</p>
+<h3 id="make-flags-should-be-avoided">Make-flags should be avoided</h3>
+<p>You shouldn&rsquo;t use flags when <code>make</code>&lsquo;ing software in an AUR package. A common way to speed up the compilation process is to add the <code>-j4</code> flag for example to utilize 4 cores. On Arch that is done globally for packages in the <code>/etc/makepkg.conf</code> configuration file, eg.:</p>
+<pre><code>MAKEFLAGS=&quot;-j4&quot;
+</code></pre><h3 id="no-need-to-unzipuntar-sources">No need to unzip/untar sources</h3>
+<p>This is handled by the package system for you.</p>
+<h3 id="an-aur-package-cannot-touch-a-users-home-directory">An AUR package cannot touch a user&rsquo;s home directory</h3>
+<p>Some software needs to go into the home directory of the user. This is not allowed on the AUR.</p>
+<h3 id="dont-include-depencencies-covered-in-the-base-devel-group">Don&rsquo;t include depencencies covered in the <code>base-devel</code> group</h3>
+<p>Make sure the <code>makedepends=()</code> array does not contain things already covered in the <code>base-devel</code> group (like <code>gcc</code> and <code>make</code>):</p>
+<p><a href="https://wiki.archlinux.org/index.php/PKGBUILD#makedepends">https://wiki.archlinux.org/index.php/PKGBUILD#makedepends</a></p>
+]]></content>
+        </item>
+        
+        <item>
             <title>Workshop notes for SuperCollider pattern introduction workshop september 2020</title>
             <link>http://madskjeldgaard.dk/posts/pattern-workshop-sept-2020/</link>
             <pubDate>Tue, 01 Sep 2020 15:32:13 +0200</pubDate>
