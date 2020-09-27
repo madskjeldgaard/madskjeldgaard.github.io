@@ -32,7 +32,7 @@ It is also recommend to read the official guide on how to create packages: Creat
 <p>Before continuing, you need to create an account on <a href="https://aur.archlinux.org">aur.archlinux.org</a>.</p>
 <p>Then, you need to set up your ssh key pairs.</p>
 <p>See this <a href="https://wiki.archlinux.org/index.php/AUR_submission_guidelines#Authentication">link</a> on how to make the key pairs.</p>
-<p>Then add your public key to your aur user <a href="https://aur.archlinux.org/account/madskjeldgaard/edit/">here</a>.</p>
+<p>Then add your public key to your aur user <a href="https://aur.archlinux.org/account">here</a>.</p>
 <h2 id="step-1-clone-the-aur-repo">Step 1: Clone the AUR repo</h2>
 <p>The cloning/creating of the repository looks like this (change the <code>PKG_NAME</code> variable to contain the name of your package):</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PKG_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wowzers&#34;</span>
