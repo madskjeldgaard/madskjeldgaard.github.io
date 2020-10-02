@@ -3,6 +3,31 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://madskjeldgaard.dk/tags/arch/</loc>
+    <lastmod>2020-10-02T12:20:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/posts/vst-manager/</loc>
+    <lastmod>2020-10-02T12:20:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2020-10-02T12:20:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/vst/</loc>
+    <lastmod>2020-10-02T12:20:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/windows/</loc>
+    <lastmod>2020-10-02T12:20:40+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/posts/aur-package-workflow/</loc>
     <lastmod>2020-09-19T22:51:04+02:00</lastmod>
   </url>
@@ -24,11 +49,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
-    <lastmod>2020-08-21T11:14:29+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2020-08-21T11:14:29+02:00</lastmod>
   </url>
   

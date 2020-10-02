@@ -9,6 +9,70 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>How to install Windows VST Plugins on Arch Linux</title>
+            <link>http://madskjeldgaard.dk/posts/vst-manager/</link>
+            <pubDate>Fri, 02 Oct 2020 12:20:40 +0200</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/vst-manager/</guid>
+            <description>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the linvst VST plugin bridging software.</description>
+            <content type="html"><![CDATA[<p>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the <code>wine</code> Windows compatibility layer and the <code>linvst</code> VST plugin bridging software.</p>
+<p>The workflow for getting set up though was quite difficult before I switched to Arch based distributions than on other Linux distributions (thanks to the Arch User Repository), and even though it is significantly easier on Arch, it still has some quirks in the setup process which I have tried to collect here as a set of instructions and notes for getting started.</p>
+<p><strong>Disclaimer</strong>
+There may be licensing problems in doing this operation on some plugins. I talked to a commercial plugin developer about using their plugins on Linux and they said that it sounded interesting (because they developed everything on Linux anyway (but did not make releases for Linux)) but that I was probably in conflict with their licensing when doing so. I don&rsquo;t take responsibility for anyone breaking any laws here.</p>
+<h2 id="preparations">Preparations</h2>
+<h3 id="enable-32-bit-repositories">Enable 32 bit repositories</h3>
+<p>To install <code>wine</code> (and enable 32 bit support) you need to do enable the <code>multilib</code> repositories in your pacman configuration.</p>
+<p>By doing this, you get access to a range of 32 bit software that can be run on a 64 bit machine.</p>
+<p>Open up <code>/etc/pacman.conf</code> in your favourite text editor. E.g. in vim:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
+</code></pre></div><p>And then uncomment the multilib section:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>multilib<span style="color:#f92672">]</span>
+Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
+</code></pre></div><p>And then upgrade your system:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -Syuu
+</code></pre></div><p>See <a href="https://wiki.archlinux.org/index.php/Official_repositories#multilib">the arch wiki for more information</a>.</p>
+<h3 id="wine">wine</h3>
+<p>To be able to run Windows software on Linux, you need to install <code>wine</code>. Wine is a huge subject in itself (and I definitely do not master it at all), but it basically runs as a compatibility layer between windows software and your linux system.</p>
+<p>If you followed the previous step by enabling multilib, you should now be able to install wine like this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S wine
+</code></pre></div><h2 id="setting-up-linux-vst-compatibility">Setting up linux VST compatibility</h2>
+<p>The main software used to enable windows VST plugins is <a href="https://github.com/osxmidi/LinVst">linvst</a>. It is used to create bridges between the windows <code>.dll</code> files that VST plugins are delivered in and creates a Linux equivalent <code>.so</code> file. Managing this process can be complicated and a bit of a pain, but thankfully there is a program to do it all for us: <a href="linvstmanager">https://github.com/Goli4thus/linvstmanager</a>.</p>
+<p>Linvstmanager is the main program we use to keep track of vst plugins, where they are and if they are supported on our system.</p>
+<p>There are packages for linvstmanager and all of the linvst bridges on <a href="aur.archlinux.org">the AUR</a> that can be installed using <code>yay</code> or another aur helper system:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S linvstmanager-git linvst-bin linvst3-bin linvst-x-bin linvst3-x-bin
+</code></pre></div><h3 id="setting-linvstmanager-preferences">Setting linvstmanager preferences</h3>
+<p><img src="/img/small/linvstprefs.png" alt="linvstmanager preferences"></p>
+<p>Before we are able to use linvstmanager, we need to tell it where the vst bridges we installed along with it are in our system.</p>
+<p>If you used the packages from the AUR, they are probably in <code>/usr/share/LinVst</code>. Select and find them in your preferences.</p>
+<p>Next up you need to set a folder that will contain your plugins. This is the folder your DAW needs to read from when scanning for VST Plugins. I have put mine in a hidden folder called <code>.vst-win</code> in my user&rsquo;s home directory but you can put it anywhere.</p>
+<h2 id="installing-a-plugin">Installing a plugin</h2>
+<p>This is the workflow I use for downloading and installing a plugin. See the <a href="https://github.com/Goli4thus/linvstmanager">linvstmanager documentation</a> for a more thorough explanation.</p>
+<h3 id="part-1-install-the-plugin-to-your-wine-drive">Part 1: Install the plugin to your wine drive</h3>
+<ol>
+<li>Go to the developer&rsquo;s website and download the <code>.exe</code> file for installing the plugin on a Windows system.</li>
+<li>Open up a terminal and execute <code>wine path/to/plugin.exe</code></li>
+<li>Follow the install instructions of the vst plugins you are installing. Note where you are putting the <code>.dll</code> and/or <code>.vst3</code> files at the end of the installation.</li>
+</ol>
+<p>This will leave the plugin files in your wine installation&rsquo;s &ldquo;C&rdquo; drive which is probably in your home folder: <code>~/.wine/drive_c</code></p>
+<h3 id="part-2-find-and-enable-the-plugins-in-vstmanager">Part 2: Find and enable the plugins in vstmanager</h3>
+<p><img src="/img/small/linvstscan.png" alt="scan process"></p>
+<ol>
+<li>Open <code>linvstmanager</code> to create a bridge to your new plugin.</li>
+<li>Scan for your plugins (press <code>ALT+s</code> or go to the menu <code>Edit-&gt;Scan</code>)</li>
+<li>Choose the scan folder by clicking <code>select</code>. If you don&rsquo;t see any hidden folders (starting with a <code>.</code>), you can right click and choose <code>show hidden files</code>. Then go to <code>.wine</code> and <code>drive_c</code>.</li>
+<li>Once the scan is finished you should get a list of files. Find the ones you want to use and press <code>s</code> to select.</li>
+<li>Click <code>Add</code></li>
+</ol>
+<h3 id="part-3-enable-the-plugin">Part 3: Enable the plugin</h3>
+<p>In the main window of linvstmanager you should now see your plugin listed with a <code>no so</code> warning next to it.</p>
+<ol>
+<li>Update by pressing <code>u</code> or going to the menu <code>Edit-&gt;Update</code></li>
+<li>Right click on the plugin you just added and click enable. It should now turn green.</li>
+</ol>
+]]></content>
+        </item>
+        
+        <item>
             <title>Notes on creating packages for the Arch User Repository (AUR)</title>
             <link>http://madskjeldgaard.dk/posts/aur-package-workflow/</link>
             <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
