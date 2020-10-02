@@ -79,6 +79,8 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 Find the <code>VST</code> tab and add the <strong>Link folder</strong> path you set in linvstmanager.
 The syntax for this consists of full path names with semicolons (<code>;</code>) in between: <code>/a/full/path;/another/full/path</code></p>
 <p>After adding the path, click <code>re-scan</code>.</p>
+<h2 id="an-alternative-approach-using-carla">An alternative approach: Using Carla</h2>
+<p>An alternative approach is to use <a href="https://kx.studio/Applications:Carla">carla</a>, which has been <a href="http://blog.kindohm.com/posts/2020/2020-06-06-vsts-on-linux/">outlined nicely by kindohm / Mike Hodnick in this post</a>.</p>
 ]]></content>
         </item>
         
