@@ -44,7 +44,7 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 <p><img src="/img/small/linvstprefs.png" alt="linvstmanager preferences"></p>
 <p>Before we are able to use linvstmanager, we need to tell it where the vst bridges we installed along with it are in our system.</p>
 <p>If you used the packages from the AUR, they are probably in <code>/usr/share/LinVst</code>. Select and find them in your preferences.</p>
-<p>Next up you need to set a folder that will contain your plugins. This is the folder your DAW needs to read from when scanning for VST Plugins. I have put mine in a hidden folder called <code>.vst-win</code> in my user&rsquo;s home directory but you can put it anywhere.</p>
+<p>Next up you need to set a folder that will contain your plugins. This is called the <strong>Link folder</strong>. This is the folder your DAW needs to read from when scanning for VST Plugins. I have put mine in a hidden folder called <code>.vst-win</code> in my user&rsquo;s home directory but you can put it anywhere.</p>
 <h2 id="installing-a-plugin">Installing a plugin</h2>
 <p>This is the workflow I use for downloading and installing a plugin. See the <a href="https://github.com/Goli4thus/linvstmanager">linvstmanager documentation</a> for a more thorough explanation.</p>
 <h3 id="part-1-install-the-plugin-to-your-wine-drive">Part 1: Install the plugin to your wine drive</h3>
@@ -69,6 +69,16 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 <li>Update by pressing <code>u</code> or going to the menu <code>Edit-&gt;Update</code></li>
 <li>Right click on the plugin you just added and click enable. It should now turn green.</li>
 </ol>
+<h3 id="part-4-save-settings">Part 4: Save settings</h3>
+<p>Before finishing off, save the settings.</p>
+<p>Go to menu <code>File-&gt;Save</code> or press <code>Ctrl+s</code></p>
+<h2 id="scan-for-the-plugins-in-your-daw">Scan for the plugins in your DAW</h2>
+<p><img src="/img/small/linvst-reaper.png" alt="linvst settings in Reaper"></p>
+<p>You should now be able to use your newly bridged Windows VST plugins in your DAW. Point it to the link folder you set in your linvstmanager preferences and scan for the plugins.</p>
+<p>In <a href="http://reaper.fm/">Reaper</a> (which, by the way, has an amazing Linux native installation) for example, you can add the Link folder as a path in your Preferences.
+Find the <code>VST</code> tab and add the <strong>Link folder</strong> path you set in linvstmanager.
+The syntax for this consists of full path names with semicolons (<code>;</code>) in between: <code>/a/full/path;/another/full/path</code></p>
+<p>After adding the path, click <code>re-scan</code>.</p>
 ]]></content>
         </item>
         

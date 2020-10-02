@@ -16,5 +16,16 @@
       <description>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the linvst VST plugin bridging software.</description>
     </item>
     
+    <item>
+      <title>Notes on creating packages for the Arch User Repository (AUR)</title>
+      <link>http://madskjeldgaard.dk/posts/aur-package-workflow/</link>
+      <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/aur-package-workflow/</guid>
+      <description>These are notes I have been taking while making packages for the Arch User Repository, a community based package repository for users of Arch Linux and it&amp;rsquo;s derivative operating systems. This isn&amp;rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.
+If you have a tolerance for YouTube videos, then maybe this video will be helpful to you.
+It is also recommend to read the official guide on how to create packages: Creating packages.</description>
+    </item>
+    
   </channel>
 </rss>
