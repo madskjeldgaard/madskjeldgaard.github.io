@@ -93,7 +93,8 @@ The syntax for this consists of full path names with semicolons (<code>;</code>)
             <description>These are notes I have been taking while making packages for the Arch User Repository, a community based package repository for users of Arch Linux and it&amp;rsquo;s derivative operating systems. This isn&amp;rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.
 If you have a tolerance for YouTube videos, then maybe this video will be helpful to you.
 It is also recommend to read the official guide on how to create packages: Creating packages.</description>
-            <content type="html"><![CDATA[<p>These are notes I have been taking while making packages for the <a href="https://aur.archlinux.org">Arch User Repository</a>, a community based package repository for users of Arch Linux and it&rsquo;s derivative operating systems. This isn&rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.</p>
+            <content type="html"><![CDATA[<p><img src="/img/small/archlogo.png" alt="arch logo"></p>
+<p>These are notes I have been taking while making packages for the <a href="https://aur.archlinux.org">Arch User Repository</a>, a community based package repository for users of Arch Linux and it&rsquo;s derivative operating systems. This isn&rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.</p>
 <p>If you have a tolerance for YouTube videos, then maybe <a href="https://youtu.be/crnGzF43aoc">this video will be helpful to you</a>.</p>
 <p>It is also recommend to read the official guide on how to create packages: <a href="https://wiki.archlinux.org/index.php/Creating_packages">Creating packages</a>.</p>
 <h2 id="creating-a-repository">Creating a repository</h2>
