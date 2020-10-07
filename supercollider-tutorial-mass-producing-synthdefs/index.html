@@ -40,7 +40,7 @@ But when you write a SynthDef, the patch architecture cannot change after the de
 This becomes annoying when working with UGens that want to know the exact number of channels used, eg.">
 <meta itemprop="datePublished" content="2019-08-19T10:36:35+00:00" />
 <meta itemprop="dateModified" content="2019-08-19T10:36:35+00:00" />
-<meta itemprop="wordCount" content="871">
+<meta itemprop="wordCount" content="1079">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/mads-kjeldgaard-press-photo-2020-photo-cred-Sofie-Amalie-Klougart_9.jpg"/>
 
 
@@ -153,31 +153,85 @@ This becomes annoying when working with UGens that want to know the exact number
 <p>When you need to create synths and you want it to be flexible in terms of the number of channels involved, a nice way of doing it involves the almighty <em>do</em> function.</p>
 <p>The trick here is basically to put the SynthDef inside of a do function, which will repeat 64 times. We will then use the index from the do process to append to the SynthDef’s name and set the ugens to the appropriate amount of channels.</p>
 <p>Let’s start by making the function to be used inside of the SynthDef:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>As you can see, the synth function is wrapped in an outer function which takes one argument: the number of channels. The function returns the actual synth function we need to put inside of a SynthDef.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Function for buffer player synth defs
+</span><span style="color:#75715e"></span><span style="color:#f92672">~</span><span style="color:#a6e22e">bufplayerfunc</span> <span style="color:#f92672">=</span> {<span style="color:#f92672">|</span><span style="color:#a6e22e">numchans</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>
+   {<span style="color:#f92672">|</span><span style="color:#a6e22e">rate</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">buffer</span>, <span style="color:#a6e22e">trigger</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">start</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">loop</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">amp</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">out</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">|</span>
+
+      <span style="color:#75715e">// Buffer player
+</span><span style="color:#75715e"></span>      <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">PlayBuf</span>.<span style="color:#a6e22e">ar</span>(
+         <span style="color:#a6e22e">numchans</span>, <span style="color:#75715e">// Number of channels passed into the function from the outer function
+</span><span style="color:#75715e"></span>         <span style="color:#a6e22e">buffer</span>, 
+         <span style="color:#a6e22e">rate</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">BufRateScale</span>.<span style="color:#a6e22e">kr</span>(<span style="color:#a6e22e">buffer</span>),  
+         <span style="color:#a6e22e">trigger</span>,  
+         <span style="color:#a6e22e">start</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">BufDur</span>.<span style="color:#a6e22e">kr</span>(<span style="color:#a6e22e">buffer</span>),  
+         <span style="color:#a6e22e">loop</span>
+         );
+
+      <span style="color:#75715e">// Output
+</span><span style="color:#75715e"></span>      <span style="color:#a6e22e">Out</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">out</span>, <span style="color:#a6e22e">sig</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">amp</span>);
+   }
+};
+</code></pre></div><p>As you can see, the synth function is wrapped in an outer function which takes one argument: the number of channels. The function returns the actual synth function we need to put inside of a SynthDef.</p>
 <p>Using the numchans argument, the PlayBuf UGEN is set to appropriate channel number (and the Out UGEN is smart enough to adjust to this).</p>
 <p>The next step is to put this function inside of a SynthDef and call it 64 times. One time for each number of channels we want to have:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Now, whenever you need to use this synthdef, you can call it by it’s basename (“bufplayer” in this case) plus the number of channels. For example: A 33 channel buffer player would then look like <code>Synth(\bufplayer33, [\buffer, b])</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(<span style="color:#ae81ff">1..64</span>).<span style="color:#66d9ef">do</span>{<span style="color:#f92672">|</span><span style="color:#a6e22e">chanNum</span><span style="color:#f92672">|</span>
+   <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bufplayer&#34;</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">chanNum</span>;
+   <span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#a6e22e">name</span>, <span style="color:#f92672">~</span><span style="color:#a6e22e">bufplayerfunc</span>.<span style="color:#a6e22e">value</span>(<span style="color:#a6e22e">chanNum</span>)).<span style="color:#a6e22e">add</span>;
+};
+</code></pre></div><p>Now, whenever you need to use this synthdef, you can call it by it’s basename (“bufplayer” in this case) plus the number of channels. For example: A 33 channel buffer player would then look like <code>Synth(\bufplayer33, [\buffer, b])</code>.</p>
 <h1 id="second-technique-synthdefwrap">Second technique: SynthDef.wrap</h1>
 <p>In the beginning of this blog post I mentioned that the architecture of a SynthDef needs to be fixed upon definition. But there is a way around this which involves an amazing method in the SynthDef class called <a href="http://doc.sccode.org/Overviews/Methods.html#wrap">wrap</a>.</p>
 <p>It may seem a bit hard to understand how it works at first, but once you have gotten the hold of it, wrap has mind blowing potential for quasi-dynamically making SynthDefs. In other words: semi-automatic sound patching.</p>
 <p>Let us say we want to build a Synth which is a basic sawtooth based oscillator with a filter at the end. Now, SuperCollider contains a lot of different filters. Let us make a few different versions of this synth, all containing different filters.</p>
 <p>We will organize the filter functions in an Event (which is a sort of Dictionary). When putting them in a data structure like this, we can easily get all of them using iteration.</p>
 <p>Then, we will use a sort of do-function called <code>keysValuesDo</code> to get the filter names and functions and then for each of them create a SynthDef containing that particular filter.</p>
-<h1 id="the-wrap-function-and-it8217s-arguments">The wrap function and it’s arguments</h1>
+<h2 id="the-wrap-function-and-it8217s-arguments">The wrap function and it’s arguments</h2>
 <p>When you add a function to your synthdef using .wrap like this, the outer SynthDef gets the arguments you defined in the filter functions. You do not have to define them with the freq argument of the synthdef itself because <strong>they will automatically be added to your synthdef</strong>. So our SynthDef will get a <code>cutoff</code> argument when we use SynthDef.wrap inside of it with our functions.</p>
 <p>The signal of our Saw oscillator is passed into the filter using the wrap-argument <em>prependArgs</em>.</p>
 <p>This part of SynthDef.wrap is very important and a bit confusing too. Anything you pass in to the prependArgs argument will be put into the first argument(s) of the function used in the wrap-method.</p>
 <p>The argument in question (in our case the <em>in</em> argument) will then be removed from the outer function’s list of arguments. The prepended argument is in other words overwritten and becomes unavailable to the outside SynthDef argument list.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Now, let us test these synths:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Once you have gotten into the habit of using SynthDef.wrap it really is a flexible and powerful way of making Synths which takes care of a lot of the plumbing you otherwise need to do whenever you write a SynthDef, and it allows you to really experiment with different patching ideas.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Filter functions organized in a dictionary (Event)
+</span><span style="color:#75715e">// The signal of our synth will be passed in as the first argument
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> (
+    <span style="color:#a6e22e">hpf</span><span style="color:#f92672">:</span> { <span style="color:#f92672">|</span><span style="color:#66d9ef">in</span>, <span style="color:#a6e22e">cutoff</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">rq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>
+        <span style="color:#a6e22e">RHPF</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#66d9ef">in</span>, <span style="color:#a6e22e">cutoff</span>, <span style="color:#a6e22e">rq</span>)
+    },
+    <span style="color:#a6e22e">bpf</span><span style="color:#f92672">:</span> { <span style="color:#f92672">|</span><span style="color:#66d9ef">in</span>, <span style="color:#a6e22e">cutoff</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">rq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>
+        <span style="color:#a6e22e">BPF</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#66d9ef">in</span>, <span style="color:#a6e22e">cutoff</span>, <span style="color:#a6e22e">rq</span>)
+    },
+    <span style="color:#a6e22e">lpf</span><span style="color:#f92672">:</span> { <span style="color:#f92672">|</span><span style="color:#66d9ef">in</span>, <span style="color:#a6e22e">cutoff</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">rq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>
+        <span style="color:#a6e22e">RLPF</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#66d9ef">in</span>, <span style="color:#a6e22e">cutoff</span>, <span style="color:#a6e22e">rq</span>)
+    }
+);
+
+<span style="color:#75715e">// Iterate over all the filters we defined above and use them in a SynthDef
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">f</span>.<span style="color:#a6e22e">keysValuesDo</span>{<span style="color:#f92672">|</span><span style="color:#a6e22e">filtername</span>, <span style="color:#a6e22e">filterfunction</span><span style="color:#f92672">|</span> 
+    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">synthdefname</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;saw&#34;</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">filtername</span>.<span style="color:#a6e22e">asString</span>;
+
+    <span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#a6e22e">synthdefname</span>, { <span style="color:#f92672">|</span><span style="color:#a6e22e">freq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">220</span>, <span style="color:#a6e22e">out</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">|</span>
+        <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Saw</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">freq</span>, <span style="color:#a6e22e">mul</span><span style="color:#f92672">:</span><span style="color:#ae81ff">0.1</span>);
+
+        <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SynthDef</span>.<span style="color:#a6e22e">wrap</span>(
+            <span style="color:#a6e22e">filterfunction</span>,  
+            <span style="color:#a6e22e">prependArgs</span><span style="color:#f92672">:</span> [<span style="color:#a6e22e">sig</span>] <span style="color:#75715e">// Pass signal in to the filter
+</span><span style="color:#75715e"></span>            <span style="color:#75715e">// NOTE: prependArgs HAVE to be inside of []
+</span><span style="color:#75715e"></span>        ); 
+
+        <span style="color:#a6e22e">Out</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">out</span>, <span style="color:#a6e22e">sig</span>)
+    }).<span style="color:#a6e22e">add</span>;
+};
+
+)
+</code></pre></div><p>Now, let us test these synths:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Test low pass version
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Synth</span>(<span style="color:#e6db74">&#34;sawlpf&#34;</span>, [<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">freq</span>, <span style="color:#ae81ff">222</span>, <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">cutoff</span>, <span style="color:#ae81ff">100</span>]);
+
+<span style="color:#75715e">// Test high pass version
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Synth</span>(<span style="color:#e6db74">&#34;sawhpf&#34;</span>, [<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">freq</span>, <span style="color:#ae81ff">831</span>, <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">cutoff</span>, <span style="color:#ae81ff">1000</span>]);
+
+<span style="color:#75715e">// Test band pass version
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Synth</span>(<span style="color:#e6db74">&#34;sawbpf&#34;</span>, [<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">freq</span>, <span style="color:#ae81ff">323</span>, <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">cutoff</span>, <span style="color:#ae81ff">1000</span>]);
+</code></pre></div><p>Once you have gotten into the habit of using SynthDef.wrap it really is a flexible and powerful way of making Synths which takes care of a lot of the plumbing you otherwise need to do whenever you write a SynthDef, and it allows you to really experiment with different patching ideas.</p>
 <p>Note that, in the example above, whenever you add a filter function to the dictionary at the top, it will automatically be added as another SynthDef.</p>
 <p>Another cool thing about SynthDef.wrap is that you can actually use it inside of NodeProxies and Ndefs as well when livecoding.</p>
 
