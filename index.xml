@@ -346,10 +346,10 @@ In this tutorial we will cover how to set up the Hedrot application to send itâ€
     
     <item>
       <title>SuperCollider tutorial: Mass producing SynthDefs</title>
-      <link>http://madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</link>
+      <link>http://madskjeldgaard.dk/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/</link>
       <pubDate>Mon, 19 Aug 2019 10:36:35 +0000</pubDate>
       
-      <guid>http://madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</guid>
+      <guid>http://madskjeldgaard.dk/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/</guid>
       <description>In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
 But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
 This becomes annoying when working with UGens that want to know the exact number of channels used, eg.</description>
@@ -357,10 +357,10 @@ This becomes annoying when working with UGens that want to know the exact number
     
     <item>
       <title>SuperCollider tutorial: Easily render generative compositions as sound files using NRT</title>
-      <link>http://madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
+      <link>http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
       <pubDate>Mon, 05 Aug 2019 17:46:09 +0000</pubDate>
       
-      <guid>http://madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
+      <guid>http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
       <description>One of the many powerful features of SuperCollider is itâ€™s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
 NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.</description>
     </item>

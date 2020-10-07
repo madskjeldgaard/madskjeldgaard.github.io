@@ -3164,10 +3164,10 @@ In this tutorial we will cover how to set up the Hedrot application to send itâ€
         
         <item>
             <title>SuperCollider tutorial: Mass producing SynthDefs</title>
-            <link>http://madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</link>
+            <link>http://madskjeldgaard.dk/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/</link>
             <pubDate>Mon, 19 Aug 2019 10:36:35 +0000</pubDate>
             
-            <guid>http://madskjeldgaard.dk/supercollider-tutorial-mass-producing-synthdefs/</guid>
+            <guid>http://madskjeldgaard.dk/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/</guid>
             <description>In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
 But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
 This becomes annoying when working with UGens that want to know the exact number of channels used, eg.</description>
@@ -3267,10 +3267,10 @@ This becomes annoying when working with UGens that want to know the exact number
         
         <item>
             <title>SuperCollider tutorial: Easily render generative compositions as sound files using NRT</title>
-            <link>http://madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
+            <link>http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/</link>
             <pubDate>Mon, 05 Aug 2019 17:46:09 +0000</pubDate>
             
-            <guid>http://madskjeldgaard.dk/supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
+            <guid>http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
             <description>One of the many powerful features of SuperCollider is itâ€™s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
 NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.</description>
             <content type="html"><![CDATA[<p><img src="/wp-content/uploads/2019/08/supercollider-laptop-room-e1566211773173.jpg" alt="alt"></p>
@@ -3297,31 +3297,57 @@ NRT works like this (normally): First you write a list of server OSC messages (s
 </li>
 </ol>
 <p>First step is to make a SynthDef. SynthDefs are sort of recipes for sound patches that the server uses to make sound. In this case, it will be a very boring sine, aptly named \boring_sine. Note the use of the .store method here. This will save the synthdef as a file on your system and make it available to the NRT process later on.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>We will keep the pattern super simple: Random scale degrees played using our \boring_sine synth, each of which a quarter of beat in duration.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">boring_sine</span>, {<span style="color:#f92672">|</span><span style="color:#a6e22e">freq</span>, <span style="color:#a6e22e">dur</span><span style="color:#f92672">|</span>
+<span style="color:#75715e">// A percussive envelope
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">EnvGen</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">Env</span>.<span style="color:#a6e22e">perc</span>, <span style="color:#a6e22e">gate</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">timeScale</span><span style="color:#f92672">:</span><span style="color:#a6e22e">dur</span>);
+
+<span style="color:#75715e">// A sine wave
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">SinOsc</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">freq</span>);
+
+<span style="color:#75715e">// Apply envelope to sine wave and output
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">Out</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">env</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">sig</span>)
+}).<span style="color:#a6e22e">store</span>;
+</code></pre></div><p>We will keep the pattern super simple: Random scale degrees played using our \boring_sine synth, each of which a quarter of beat in duration.</p>
 <p>The total duration of the pattern will be infinite for now (the length of this will automatically be truncated by the Score conversion process).</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>And now, let us convert this to a score:</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Finally, we render the score</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<h1 id="lets-make-this-interesting-iteration">Lets make this interesting: Iteration</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Pbind</span>(
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">instrument</span>, <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">boring_sine</span>,
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">dur</span>, <span style="color:#ae81ff">0.25</span>,
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">degree</span>, <span style="color:#a6e22e">Pwhite</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>)
+);
+</code></pre></div><p>And now, let us convert this to a score:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">asScore</span>(<span style="color:#ae81ff">60</span>); <span style="color:#75715e">// Duration of 60 beats
+</span></code></pre></div><p>Finally, we render the score</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(
+<span style="color:#75715e">// Destination path and file name
+</span><span style="color:#75715e"></span><span style="color:#f92672">~</span><span style="color:#a6e22e">outFile</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;~/Desktop/yo.wav&#34;</span>;
+
+<span style="color:#75715e">// Render the score as wav file
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">recordNRT</span>(<span style="color:#a6e22e">outputFilePath</span><span style="color:#f92672">:</span> <span style="color:#f92672">~</span><span style="color:#a6e22e">outFile</span>.<span style="color:#a6e22e">asAbsolutePath</span>, <span style="color:#a6e22e">headerFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;WAV&#34;</span>);
+)
+</code></pre></div><h1 id="lets-make-this-interesting-iteration">Lets make this interesting: Iteration</h1>
 <p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/sc-render-chopped2.png"><!-- raw HTML omitted --></a></p>
 <p>Rendering one random melody is quite nice, but let us exploit the fact that our pattern chooses random scale degrees every time we play it and combine that functionality with iteration to make 10 (or any number) of rendered random melodies.</p>
 <p>First, let us wrap what we wrote up until this point in a function that we can call as often as we want.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>Let us keep the pattern as is</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>And then render 10 versions of it</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-]]></content>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">~</span><span style="color:#a6e22e">renderMelody</span> <span style="color:#f92672">=</span> { <span style="color:#f92672">|</span><span style="color:#a6e22e">pattern</span>, <span style="color:#a6e22e">destinationPath</span><span style="color:#f92672">|</span>
+
+<span style="color:#75715e">// Convert pattern to score
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">patscore</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pattern</span>.<span style="color:#a6e22e">asScore</span>(<span style="color:#ae81ff">60</span>); <span style="color:#75715e">// Duration of 60 beats
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// Render the score as a wav file
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">patscore</span>.<span style="color:#a6e22e">recordNRT</span>(<span style="color:#a6e22e">outputFilePath</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">destinationPath</span>.<span style="color:#a6e22e">asAbsolutePath</span>, <span style="color:#a6e22e">headerFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;WAV&#34;</span>);
+};
+</code></pre></div><p>Let us keep the pattern as is</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Pbind</span>(
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">instrument</span>, <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">boring_sine</span>,
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">dur</span>, <span style="color:#ae81ff">0.25</span>,
+<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">degree</span>, <span style="color:#a6e22e">Pwhite</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>)
+);
+</code></pre></div><p>And then render 10 versions of it</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Now make 10 different melodies and save them to your desktop as wave files
+</span><span style="color:#75715e"></span><span style="color:#ae81ff">10.</span><span style="color:#66d9ef">do</span>{<span style="color:#f92672">|</span><span style="color:#a6e22e">index</span><span style="color:#f92672">|</span>
+<span style="color:#f92672">~</span><span style="color:#a6e22e">renderMelody</span>.<span style="color:#a6e22e">value</span>(<span style="color:#a6e22e">p</span>, <span style="color:#e6db74">&#34;~/Desktop/boringMelody&#34;</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;.wav&#34;</span>);
+};
+</code></pre></div>]]></content>
         </item>
         
     </channel>
