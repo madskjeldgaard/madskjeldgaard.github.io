@@ -224,10 +224,12 @@ git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;important chang
 <p>This is handled by the package system for you.</p>
 <h3 id="an-aur-package-cannot-touch-a-users-home-directory">An AUR package cannot touch a user&rsquo;s home directory</h3>
 <p>Some software needs to go into the home directory of the user. This is not allowed on the AUR.</p>
-<h3 id="dont-include-depencencies-covered-in-the-base-devel-group">Don&rsquo;t include depencencies covered in the <code>base-devel</code> group</h3>
+<h3 id="do-not-include-dependencies-covered-in-the-base-devel-group">Do not include dependencies covered in the <code>base-devel</code> group</h3>
 <p>Make sure the <code>makedepends=()</code> array does not contain things already covered in the <code>base-devel</code> group (like <code>gcc</code> and <code>make</code>):</p>
 <p><a href="https://wiki.archlinux.org/index.php/PKGBUILD#makedepends">https://wiki.archlinux.org/index.php/PKGBUILD#makedepends</a></p>
-]]></content>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># List all packages in base-devel group</span>
+pacman -Sg base-devel
+</code></pre></div>]]></content>
         </item>
         
         <item>
