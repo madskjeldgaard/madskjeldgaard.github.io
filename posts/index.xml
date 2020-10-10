@@ -47,7 +47,7 @@ I have achieved this now using the awesome alma project. Alma is a tool for crea
 <pre><code>User: computer
 Password: music
 </code></pre><p>Flash it on to your drive, choose the drive as the boot device in your BIOS and start making noise.</p>
-<p><a href="http://users.notam02.no/~mads/archstuff/arch-computermusic-usb.img.gz">Download the preconfigured image here</a>.</p>
+<p><a href="http://users.notam02.no/~mads/archstuff/arch-computermusic-usb.img.gz">Download the preconfigured image here</a> (the deflated image file is 10GB so should fit on anything larger than that).</p>
 <h3 id="the-hard-way">The hard way</h3>
 <p><a href="https://github.com/madskjeldgaard/arch-linux-computermusic-usb">The full alma preset is available here including instructions for creating an image file</a>.</p>
 <p>See <a href="https://github.com/r-darwish/alma">the alma project</a> for information about installing it.</p>
