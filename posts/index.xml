@@ -19,7 +19,7 @@ I have achieved this now using the awesome alma project. Alma is a tool for crea
             <content type="html"><![CDATA[<p><img src="/img/full/archlive.jpg" alt="my usb"></p>
 <p><a href="http://jamesmcm.github.io/blog/2020/09/09/alma/#en">Inspired by this blog post</a>, I have been toying with a silly idea lately: A completely portable Arch Linux distribution set up properly for computer music, but flashed onto a USB thumb drive so that I may pop it into any computer, boot from the thumb drive and start creating music on whatever hardware is in front of me.</p>
 <p>I have achieved this now using the awesome <a href="https://github.com/r-darwish/alma">alma</a> project. Alma is a tool for creating persistent USB installations of Arch Linux using a series of configuration files and bash scripts called <em>presets</em>. See <a href="https://github.com/madskjeldgaard/arch-linux-computermusic-usb">my alma presets here</a>.</p>
-<p>The LiveUSB environment runs exactly like a native installation on your hard drive and it comes with <code>yay</code> installed, making it super easy to install new software from the <a href="aur.archlinux.org">aur</a>.</p>
+<p>The LiveUSB environment runs exactly like a native installation on your hard drive and it comes with <code>yay</code> installed, making it super easy to install new software from the <a href="https://aur.archlinux.org">aur</a>.</p>
 <p>The goal with this is to have a solid base for people to flash onto their drives and then let them install their own dotfiles and additional software as needed.</p>
 <h2 id="features">Features</h2>
 <p>My <a href="https://github.com/r-darwish/alma">alma</a> preset installs a fully usable and persistent Arch Linux system on a LiveUSB.</p>
@@ -29,11 +29,11 @@ I have achieved this now using the awesome alma project. Alma is a tool for crea
 <li>NeoVim</li>
 <li><a href="https://supercollider.github.io/">SuperCollider (with sc3-plugins)</a> (with <a href="https://github.com/davidgranstrom/scnvim">scnvim</a>)</li>
 <li><a href="http://csound.org/">Csound</a></li>
-<li><a href="tidalcycles.org/">tidal</a> (with <a href="https://github.com/tidalcycles/vim-tidal">tidalvim</a>)</li>
+<li><a href="https://tidalcycles.org/">tidal</a> (with <a href="https://github.com/tidalcycles/vim-tidal">tidalvim</a>)</li>
 <li><a href="https://puredata.info/">Pure Data</a></li>
-<li><a href="reaper.fm/">Reaper</a> (not including in the .img file below for licensing reasons but easily installed using <code>yay -S reaper-bin</code>)</li>
+<li><a href="https://reaper.fm/">Reaper</a> (not including in the .img file below for licensing reasons but easily installed using <code>yay -S reaper-bin</code>)</li>
 <li><a href="http://sox.sourceforge.net/">Sox</a></li>
-<li><a href="flucoma.org/">Flucoma</a></li>
+<li><a href="https://flucoma.org/">Flucoma</a></li>
 <li>Both the Sway and i3 tiling window managers (for Wayland and X, selectable on login)</li>
 <li>Jack (with both the GUI jack manager <code>qjackctl</code> and the terminal based <code>njconnect</code> patcher)</li>
 <li>Realtime kernel (and added realtime priviliges for your user)</li>
