@@ -8,6 +8,16 @@
     <language>en-uk</language>
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>A portable Arch Linux Computer Music system on a USB drive</title>
+      <link>http://madskjeldgaard.dk/posts/portable-arch-computermusic-distro-usb/</link>
+      <pubDate>Sat, 10 Oct 2020 17:17:22 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/portable-arch-computermusic-distro-usb/</guid>
+      <description>Inspired by this blog post, I have been toying with a silly idea lately: A completely portable Arch Linux distribution set up properly for computer music, but flashed onto a USB thumb drive so that I may pop it into any computer, boot from the thumb drive and start creating music on whatever hardware is in front of me.
+I have achieved this now using the awesome alma project. Alma is a tool for creating persistent USB installations of Arch Linux using a series of configuration files and bash scripts called presets.</description>
+    </item>
+    
+    <item>
       <title>How to install Windows VST Plugins on Arch Linux</title>
       <link>http://madskjeldgaard.dk/posts/vst-manager/</link>
       <pubDate>Fri, 02 Oct 2020 12:20:40 +0200</pubDate>

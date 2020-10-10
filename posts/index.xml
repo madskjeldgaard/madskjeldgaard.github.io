@@ -9,6 +9,58 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>A portable Arch Linux Computer Music system on a USB drive</title>
+            <link>http://madskjeldgaard.dk/posts/portable-arch-computermusic-distro-usb/</link>
+            <pubDate>Sat, 10 Oct 2020 17:17:22 +0200</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/portable-arch-computermusic-distro-usb/</guid>
+            <description>Inspired by this blog post, I have been toying with a silly idea lately: A completely portable Arch Linux distribution set up properly for computer music, but flashed onto a USB thumb drive so that I may pop it into any computer, boot from the thumb drive and start creating music on whatever hardware is in front of me.
+I have achieved this now using the awesome alma project. Alma is a tool for creating persistent USB installations of Arch Linux using a series of configuration files and bash scripts called presets.</description>
+            <content type="html"><![CDATA[<p><img src="/img/full/archlive.jpg" alt="my usb"></p>
+<p><a href="http://jamesmcm.github.io/blog/2020/09/09/alma/#en">Inspired by this blog post</a>, I have been toying with a silly idea lately: A completely portable Arch Linux distribution set up properly for computer music, but flashed onto a USB thumb drive so that I may pop it into any computer, boot from the thumb drive and start creating music on whatever hardware is in front of me.</p>
+<p>I have achieved this now using the awesome <a href="https://github.com/r-darwish/alma">alma</a> project. Alma is a tool for creating persistent USB installations of Arch Linux using a series of configuration files and bash scripts called <em>presets</em>. See <a href="https://github.com/madskjeldgaard/arch-linux-computermusic-usb">my alma presets here</a>.</p>
+<p>The LiveUSB environment runs exactly like a native installation on your hard drive and it comes with <code>yay</code> installed, making it super easy to install new software from the <a href="aur.archlinux.org">aur</a>.</p>
+<p>The goal with this is to have a solid base for people to flash onto their drives and then let them install their own dotfiles and additional software as needed.</p>
+<h2 id="features">Features</h2>
+<p>My <a href="https://github.com/r-darwish/alma">alma</a> preset installs a fully usable and persistent Arch Linux system on a LiveUSB.</p>
+<p>It is targeted at users of <a href="https://en.wikipedia.org/wiki/Tiling_window_manager">tiling window managers</a> and is set up with two of the most popular choices for these.</p>
+<p>Further, the preset contains a range of software preconfigured for computer music production and audio work including:</p>
+<ul>
+<li>NeoVim</li>
+<li><a href="https://supercollider.github.io/">SuperCollider (with sc3-plugins)</a> (with <a href="https://github.com/davidgranstrom/scnvim">scnvim</a>)</li>
+<li><a href="http://csound.org/">Csound</a></li>
+<li><a href="tidalcycles.org/">tidal</a> (with <a href="https://github.com/tidalcycles/vim-tidal">tidalvim</a>)</li>
+<li><a href="https://puredata.info/">Pure Data</a></li>
+<li><a href="reaper.fm/">Reaper</a> (not including in the .img file below for licensing reasons but easily installed using <code>yay -S reaper-bin</code>)</li>
+<li><a href="http://sox.sourceforge.net/">Sox</a></li>
+<li><a href="flucoma.org/">Flucoma</a></li>
+<li>Both the Sway and i3 tiling window managers (for Wayland and X, selectable on login)</li>
+<li>Jack (with both the GUI jack manager <code>qjackctl</code> and the terminal based <code>njconnect</code> patcher)</li>
+<li>Realtime kernel (and added realtime priviliges for your user)</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>There are two ways of installing and using this.</p>
+<h3 id="the-easy-way-flash-my-preconfigured-image-onto-your-drive">The easy way: Flash my preconfigured image onto your drive</h3>
+<p>Using something like <a href="https://www.balena.io/etcher/">balena etcher</a> or <code>dd</code> you can flash a <code>.img</code> file to a drive.</p>
+<p>I have made a preconfigured image file that you can download for that purpose.</p>
+<p>The image comes with a default user:</p>
+<pre><code>User: computer
+Password: music
+</code></pre><p>Flash it on to your drive, choose the drive as the boot device in your BIOS and start making noise.</p>
+<p><a href="http://users.notam02.no/~mads/archstuff/arch-computermusic-usb.img.gz">Download the preconfigured image here</a>.</p>
+<h3 id="the-hard-way">The hard way</h3>
+<p><a href="https://github.com/madskjeldgaard/arch-linux-computermusic-usb">The full alma preset is available here including instructions for creating an image file</a>.</p>
+<p>See <a href="https://github.com/r-darwish/alma">the alma project</a> for information about installing it.</p>
+<h2 id="logging-in-for-the-first-time">Logging in for the first time</h2>
+<p>At the login screen, in the top right corner you may choose between <code>i3</code> (X) and <code>sway</code> (Wayland) as your window manager.</p>
+<p>After choosing your window manager, type your credentials and log in.</p>
+<p>On first boot, open a terminal and run <code>topgrade</code> to upgrade everything on the system to latest version.</p>
+<h4 id="when-running-tidal-the-first-time">When running tidal the first time</h4>
+<p>Before running tidal cycles, open up a .scd file and run <code>Quarks.install(&quot;SuperDirt&quot;)</code> to get SuperDirt installed. The rest of the setup should work out of the box.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>How to install Windows VST Plugins on Arch Linux</title>
             <link>http://madskjeldgaard.dk/posts/vst-manager/</link>
             <pubDate>Fri, 02 Oct 2020 12:20:40 +0200</pubDate>
