@@ -149,7 +149,9 @@ It is also recommend to read the official guide on how to create packages: Creat
 <p>These are notes I have been taking while making packages for the <a href="https://aur.archlinux.org">Arch User Repository</a>, a community based package repository for users of Arch Linux and it&rsquo;s derivative operating systems. This isn&rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.</p>
 <p>If you have a tolerance for YouTube videos, then maybe <a href="https://youtu.be/crnGzF43aoc">this video will be helpful to you</a>.</p>
 <p>It is also recommend to read the official guide on how to create packages: <a href="https://wiki.archlinux.org/index.php/Creating_packages">Creating packages</a>.</p>
-<h2 id="creating-a-repository">Creating a repository</h2>
+<p>The manual for <code>PKGBUILD</code> is a nice resource for information as well:</p>
+<pre><code>man PKGBUILD
+</code></pre><h2 id="creating-a-repository">Creating a repository</h2>
 <p>This was one of the steps of creating an AUR package that confused me the most. How do you &ldquo;create a repository&rdquo; like you would on Github by logging in to the web interface and clicking a button that would create a repo?</p>
 <p>Well, the way to do it is:</p>
 <ol>
