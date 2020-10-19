@@ -271,6 +271,8 @@ git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;important chang
 </code></pre></div><hr>
 <h2 id="random-notes">Random notes</h2>
 <p>Here are some random things I learned by doing them the wrong way on the AUR (and getting feedback from more experienced contributors).</p>
+<h2 id="naming-packages-based-on-version-control-sources-like-github">Naming packages based on version control sources (like Github)</h2>
+<p><a href="https://wiki.archlinux.org/index.php/VCS_package_guidelines">&hellip; is covered here</a></p>
 <h3 id="make-flags-should-be-avoided">Make-flags should be avoided</h3>
 <p>You shouldn&rsquo;t use flags when <code>make</code>&lsquo;ing software in an AUR package. A common way to speed up the compilation process is to add the <code>-j4</code> flag for example to utilize 4 cores. On Arch that is done globally for packages in the <code>/etc/makepkg.conf</code> configuration file, eg.:</p>
 <pre><code>MAKEFLAGS=&quot;-j4&quot;
