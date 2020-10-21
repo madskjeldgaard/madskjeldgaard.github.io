@@ -3,11 +3,6 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</loc>
-    <lastmod>2020-10-21T15:48:28+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://madskjeldgaard.dk/tags/14bitmidi/</loc>
     <lastmod>2020-10-21T15:48:28+02:00</lastmod>
   </url>
@@ -34,6 +29,11 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/tags/teensy/</loc>
+    <lastmod>2020-10-21T15:48:28+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</loc>
     <lastmod>2020-10-21T15:48:28+02:00</lastmod>
   </url>
   
