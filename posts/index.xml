@@ -9,6 +9,161 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>14bit Midi Teensy Supercollider</title>
+            <link>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</link>
+            <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</guid>
+            <description>Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.</description>
+            <content type="html"><![CDATA[<p><img src="/img/full/14bitteensybb.jpg" alt="Teensy on a breadboard"></p>
+<p>Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.</p>
+<p>There are probably some commercial MIDI controllers out there that provide 14 bit MIDI by now but I have experimented with it using the trusty <a href="https://www.pjrc.com/store/teensy32.html">Teensy 3.2 microcontroller</a>. Among the many nice features of this is the fact that it has native support for USB MIDI which works great out of the box and so with this and a couple of analog potentiometers you have yourself a cheap and simple high-resolution 14bit MIDI controller. The only problem with the Teensy is that it only has a 13 bit ADC (Analog to digital converter) meaning the resulting readings will only be in a resolution of 8192 steps but I find that it is more than adequate and you just have to shift it up (see the code below) to fill out the whole spectrum available.</p>
+<h2 id="microcontroller-code">Microcontroller code</h2>
+<p>The code is well documented so please read the comments for details.</p>
+<p>The core concept here is that the 14 bit MIDI is achieved by sending two MIDI cc values at the same time. One &ldquo;low&rdquo; MIDI cc and one &ldquo;high&rdquo; MIDI cc value which is 32 MIDI CC&rsquo;s above it. These are then combined at the receiving software to become a 14 bit MIDI signal.</p>
+<p><a href="https://github.com/madskjeldgaard/14bit-midi-teensy-supercollider">Source code is here</a>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// main.cpp
+</span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Arduino.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;ResponsiveAnalogRead.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#define LEDPIN 13
+</span><span style="color:#75715e">#define POT_PIN1 14
+</span><span style="color:#75715e">#define POT_PIN2 15
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">/* Set analog resolution */</span>
+<span style="color:#75715e">#define RESOLUTION 8192
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">// 14 bit midi is achieved by sending two midicc signals, one &#34;low&#34; combined
+</span><span style="color:#75715e">// with one 32 midicc&#39;s later called high
+</span><span style="color:#75715e">// Here we just define the lower ones
+</span><span style="color:#75715e"></span><span style="color:#75715e">#define LOWCC1 16
+</span><span style="color:#75715e">#define LOWCC2 17
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">#define HIGHCC1 LOWCC1 + 32
+</span><span style="color:#75715e">#define HIGHCC2 LOWCC2 + 32
+</span><span style="color:#75715e"></span>
+<span style="color:#75715e">/* Pot value storage */</span>
+<span style="color:#66d9ef">int</span> pot1val <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+<span style="color:#66d9ef">int</span> pot2val <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+
+<span style="color:#75715e">/* Set up read pins */</span>
+ResponsiveAnalogRead <span style="color:#a6e22e">pot1</span>(POT_PIN1, true);
+ResponsiveAnalogRead <span style="color:#a6e22e">pot2</span>(POT_PIN2, true);
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
+  <span style="color:#75715e">/* resolution */</span>
+  analogReadResolution(<span style="color:#ae81ff">13</span>);
+
+  <span style="color:#75715e">/* smooth input values */</span>
+  analogReadAveraging(<span style="color:#ae81ff">16</span>);
+
+  <span style="color:#75715e">/* Set up smooth potentiometer readings */</span>
+  pot1.setAnalogResolution(RESOLUTION);
+
+  <span style="color:#75715e">// Enabling sleep will cause values to take less time to stop changing and
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// potentially stop changing more abruptly, where as disabling sleep will
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// cause values to ease into their correct position smoothly.
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// On by default
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">/* pot1.disableSleep(); */</span>
+
+  <span style="color:#75715e">// edge snap ensures that values at the edges of the spectrum (0 and 8192) can
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// be easily reached when sleep is enabled
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">// On by default
+</span><span style="color:#75715e"></span>  <span style="color:#75715e">/* pot1.disableEdgeSnap(); */</span>
+
+  pot2.setAnalogResolution(RESOLUTION);
+
+  <span style="color:#75715e">/* Turn internal led on on boot */</span>
+  pinMode(LEDPIN, OUTPUT);
+  digitalWrite(LEDPIN, HIGH);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">readPots</span>() {
+  pot1.update();
+
+  <span style="color:#66d9ef">if</span> (pot1.hasChanged()) {
+    <span style="color:#75715e">// Shift up from ADC&#39;s 13 bits to Midi 14 bit
+</span><span style="color:#75715e"></span>    pot1val <span style="color:#f92672">=</span> pot1.getValue() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>;
+
+    usbMIDI.sendControlChange(HIGHCC1, pot1val <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x7F</span>, <span style="color:#ae81ff">1</span>);
+    usbMIDI.sendControlChange(LOWCC1, (pot1val <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">7</span>) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x7F</span>, <span style="color:#ae81ff">1</span>);
+  }
+
+  pot2.update();
+  <span style="color:#66d9ef">if</span> (pot2.hasChanged()) {
+    pot2val <span style="color:#f92672">=</span> pot2.getValue() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">1</span>;
+
+    usbMIDI.sendControlChange(HIGHCC2, pot2val <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x7F</span>, <span style="color:#ae81ff">1</span>);
+    usbMIDI.sendControlChange(LOWCC2, (pot2val <span style="color:#f92672">&gt;&gt;</span> <span style="color:#ae81ff">7</span>) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x7F</span>, <span style="color:#ae81ff">1</span>);
+  }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
+  readPots();
+  delay(<span style="color:#ae81ff">10</span>);
+}
+</code></pre></div><h2 id="testing-it-out-in-supercollider">Testing it out in SuperCollider</h2>
+<p>SuperCollider does not at the time of writing have built in support for 14 bit MIDI, but there are several external libraries you may install to achieve such a result.  One of the simplest solutions is Carl Testa&rsquo;s <code>FourteenBitCC</code> class which may be <a href="https://gist.github.com/carltesta/bb5065a7b92bab7673237e9cc1c9a612">downloaded here</a> and placed in your SuperCollider extensions folder.</p>
+<p>Here is an example of how to use it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/*********************************/</span>
+<span style="color:#75715e">/* Using the FourteenbitCC class */</span>
+<span style="color:#75715e">/*********************************/</span>
+<span style="color:#75715e">// Get it here: https://gist.github.com/carltesta/bb5065a7b92bab7673237e9cc1c9a612
+</span><span style="color:#75715e"></span>(
+<span style="color:#a6e22e">MIDIIn</span>.<span style="color:#a6e22e">connectAll</span>;
+
+<span style="color:#f92672">~</span><span style="color:#a6e22e">x</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">FourteenBitCC</span>.<span style="color:#66d9ef">new</span>(<span style="color:#e6db74">&#34;x&#34;</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">48</span>);
+<span style="color:#f92672">~</span><span style="color:#a6e22e">x</span>.<span style="color:#a6e22e">func</span> <span style="color:#f92672">=</span> {<span style="color:#f92672">|</span><span style="color:#a6e22e">val</span><span style="color:#f92672">|</span> 
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bits</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>,
+	<span style="color:#a6e22e">maxval</span> <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#a6e22e">bits</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+
+	<span style="color:#a6e22e">Ndef</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">s</span>).<span style="color:#a6e22e">set</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">carfreq</span>, <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">linexp</span>(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#ae81ff">13</span>, <span style="color:#ae81ff">50.0</span>,<span style="color:#ae81ff">15000.0</span>));
+	(<span style="color:#e6db74">&#34;x: &#34;</span><span style="color:#f92672">++</span><span style="color:#a6e22e">val</span>).<span style="color:#a6e22e">postln</span>
+};
+
+<span style="color:#f92672">~</span><span style="color:#a6e22e">y</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">FourteenBitCC</span>.<span style="color:#66d9ef">new</span>(<span style="color:#e6db74">&#34;y&#34;</span>, <span style="color:#ae81ff">17</span>, <span style="color:#ae81ff">49</span>, <span style="color:#ae81ff">0</span>);
+<span style="color:#f92672">~</span><span style="color:#a6e22e">y</span>.<span style="color:#a6e22e">func</span> <span style="color:#f92672">=</span> {<span style="color:#f92672">|</span><span style="color:#a6e22e">val</span><span style="color:#f92672">|</span> 
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">bits</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">13</span>,
+		<span style="color:#a6e22e">maxval</span> <span style="color:#f92672">=</span> (<span style="color:#ae81ff">2</span><span style="color:#f92672">**</span><span style="color:#a6e22e">bits</span><span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>);
+
+	<span style="color:#a6e22e">Ndef</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">s</span>).<span style="color:#a6e22e">set</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">freq</span>, <span style="color:#a6e22e">val</span>.<span style="color:#a6e22e">linexp</span>(<span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">maxval</span>, <span style="color:#ae81ff">50.0</span>,<span style="color:#ae81ff">5000.0</span>));
+	(<span style="color:#e6db74">&#34;y: &#34;</span><span style="color:#f92672">++</span><span style="color:#a6e22e">val</span>).<span style="color:#a6e22e">postln</span>;
+};
+
+<span style="color:#a6e22e">Ndef</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">s</span>, {<span style="color:#f92672">|</span><span style="color:#a6e22e">freq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">444</span>, <span style="color:#a6e22e">carfreq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">919</span><span style="color:#f92672">|</span> <span style="color:#a6e22e">SinOsc</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">freq</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">SinOsc</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">carfreq</span>))<span style="color:#f92672">*</span><span style="color:#ae81ff">0.5</span><span style="color:#f92672">!</span><span style="color:#ae81ff">2</span>}).<span style="color:#a6e22e">mold</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">play</span>;
+)
+</code></pre></div><p>Another reasonable choice is the <a href="https://github.com/ModalityTeam/Modality-toolkit">Modality Toolkit</a> library which is normally my go to for anything controller based in SuperCollider. It has 14bit midi support but it is at the time of writing this not documented and not 100% implemented, but the following example should work fine:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/*********************************/</span>
+<span style="color:#75715e">/* Using Modality 				 */</span>
+<span style="color:#75715e">/*********************************/</span>
+(
+<span style="color:#f92672">~</span><span style="color:#a6e22e">descInput</span> <span style="color:#f92672">=</span> (
+	<span style="color:#a6e22e">idInfo</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Teensy MIDI&#34;</span>,
+	<span style="color:#a6e22e">deviceName</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;Teensy MIDI&#34;</span>,
+    <span style="color:#a6e22e">protocol</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">midi</span>,
+    <span style="color:#a6e22e">elementsDesc</span><span style="color:#f92672">:</span> (
+        <span style="color:#a6e22e">elements</span><span style="color:#f92672">:</span> (<span style="color:#ae81ff">16..20</span>).<span style="color:#a6e22e">collect</span>{<span style="color:#f92672">|</span><span style="color:#a6e22e">lowerMidiCC</span><span style="color:#f92672">|</span>
+			(
+                <span style="color:#a6e22e">key</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;kn%&#34;</span>.<span style="color:#a6e22e">format</span>(<span style="color:#a6e22e">lowerMidiCC</span>).<span style="color:#a6e22e">asSymbol</span>,
+                <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;knob&#39;</span>,
+                <span style="color:#a6e22e">spec</span><span style="color:#f92672">:</span> [<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">16383</span>,<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">lin</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>], <span style="color:#75715e">// Custom spec needed for the moment since a midiCC14 spec doesn&#39;t exist yet
+</span><span style="color:#75715e"></span>                <span style="color:#a6e22e">midiMsgType</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">cc14</span>,
+                <span style="color:#a6e22e">midiChan</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">0</span>,
+                <span style="color:#a6e22e">midiNum</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">lowerMidiCC</span>,
+                <span style="color:#a6e22e">ioType</span><span style="color:#f92672">:</span> <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">in</span>
+            )
+		}
+    )
+);
+
+<span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">MKtl</span>( <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">testMIDI</span>, <span style="color:#f92672">~</span><span style="color:#a6e22e">descInput</span>);
+<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">elAt</span>(<span style="color:#e6db74">&#39;kn16&#39;</span>).<span style="color:#a6e22e">action</span> <span style="color:#f92672">=</span> {<span style="color:#f92672">|</span><span style="color:#a6e22e">el</span><span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Touched kn16: %&#34;</span>.<span style="color:#a6e22e">format</span>(<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">value</span>).<span style="color:#a6e22e">postln</span>};
+<span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">elAt</span>(<span style="color:#e6db74">&#39;kn17&#39;</span>).<span style="color:#a6e22e">action</span> <span style="color:#f92672">=</span> {<span style="color:#f92672">|</span><span style="color:#a6e22e">el</span><span style="color:#f92672">|</span> <span style="color:#e6db74">&#34;Touched kn17: %&#34;</span>.<span style="color:#a6e22e">format</span>(<span style="color:#a6e22e">el</span>.<span style="color:#a6e22e">value</span>).<span style="color:#a6e22e">postln</span>};
+);
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
             <title>A portable Arch Linux Computer Music system on a USB drive</title>
             <link>http://madskjeldgaard.dk/posts/portable-arch-computermusic-distro-usb/</link>
             <pubDate>Sat, 10 Oct 2020 17:17:22 +0200</pubDate>

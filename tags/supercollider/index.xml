@@ -6,7 +6,16 @@
     <description>Recent content in supercollider on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sat, 19 Sep 2020 22:51:04 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/supercollider/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 21 Oct 2020 15:48:28 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/supercollider/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>14bit Midi Teensy Supercollider</title>
+      <link>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</link>
+      <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</guid>
+      <description>Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.</description>
+    </item>
+    
     <item>
       <title>Notes on creating packages for the Arch User Repository (AUR)</title>
       <link>http://madskjeldgaard.dk/posts/aur-package-workflow/</link>
