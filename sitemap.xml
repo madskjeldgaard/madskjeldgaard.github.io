@@ -223,6 +223,11 @@
   </url>
   
   <url>
+    <loc>http://madskjeldgaard.dk/pages/work/</loc>
+    <lastmod>2020-04-30T12:48:40+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/tags/creative-coding/</loc>
     <lastmod>2020-04-26T15:02:49+02:00</lastmod>
   </url>
@@ -368,10 +373,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/series/</loc>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/pages/work/</loc>
   </url>
   
 </urlset>
