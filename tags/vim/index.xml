@@ -6,18 +6,7 @@
     <description>Recent content in vim on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sat, 19 Sep 2020 22:51:04 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/vim/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Notes on creating packages for the Arch User Repository (AUR)</title>
-      <link>http://madskjeldgaard.dk/posts/aur-package-workflow/</link>
-      <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/aur-package-workflow/</guid>
-      <description>These are notes I have been taking while making packages for the Arch User Repository, a community based package repository for users of Arch Linux and it&amp;rsquo;s derivative operating systems. This isn&amp;rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.
-If you have a tolerance for YouTube videos, then maybe this video will be helpful to you.
-It is also recommend to read the official guide on how to create packages: Creating packages.</description>
-    </item>
-    
+    <lastBuildDate>Thu, 11 Jun 2020 11:07:41 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Setting up Vim and YouCompleteMe for Rust development</title>
       <link>http://madskjeldgaard.dk/posts/rust-ycm/</link>

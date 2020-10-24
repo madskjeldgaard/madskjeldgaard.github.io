@@ -17,17 +17,6 @@
     </item>
     
     <item>
-      <title>Notes on creating packages for the Arch User Repository (AUR)</title>
-      <link>http://madskjeldgaard.dk/posts/aur-package-workflow/</link>
-      <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/aur-package-workflow/</guid>
-      <description>These are notes I have been taking while making packages for the Arch User Repository, a community based package repository for users of Arch Linux and it&amp;rsquo;s derivative operating systems. This isn&amp;rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.
-If you have a tolerance for YouTube videos, then maybe this video will be helpful to you.
-It is also recommend to read the official guide on how to create packages: Creating packages.</description>
-    </item>
-    
-    <item>
       <title>Sketch for a granular cloud generator in SuperCollider</title>
       <link>http://madskjeldgaard.dk/posts/kloudgenerator-sketch/</link>
       <pubDate>Fri, 21 Aug 2020 11:14:29 +0200</pubDate>

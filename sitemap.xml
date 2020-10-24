@@ -68,32 +68,7 @@
   </url>
   
   <url>
-    <loc>http://madskjeldgaard.dk/tags/csound/</loc>
-    <lastmod>2020-09-19T22:51:04+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://madskjeldgaard.dk/posts/aur-package-workflow/</loc>
-    <lastmod>2020-09-19T22:51:04+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/reaper/</loc>
-    <lastmod>2020-09-19T22:51:04+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/sox/</loc>
-    <lastmod>2020-09-19T22:51:04+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/tidal/</loc>
-    <lastmod>2020-09-19T22:51:04+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/vim/</loc>
     <lastmod>2020-09-19T22:51:04+02:00</lastmod>
   </url>
   
@@ -149,6 +124,11 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/posts/rust-ycm/</loc>
+    <lastmod>2020-06-11T11:07:41+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/vim/</loc>
     <lastmod>2020-06-11T11:07:41+02:00</lastmod>
   </url>
   
@@ -255,6 +235,11 @@
   <url>
     <loc>http://madskjeldgaard.dk/work/verdenskvaernen/</loc>
     <lastmod>2020-04-26T11:06:06+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/sox/</loc>
+    <lastmod>2020-04-26T10:21:42+02:00</lastmod>
   </url>
   
   <url>

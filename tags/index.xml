@@ -89,51 +89,6 @@
     </item>
     
     <item>
-      <title>csound</title>
-      <link>http://madskjeldgaard.dk/tags/csound/</link>
-      <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/csound/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>reaper</title>
-      <link>http://madskjeldgaard.dk/tags/reaper/</link>
-      <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/reaper/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>sox</title>
-      <link>http://madskjeldgaard.dk/tags/sox/</link>
-      <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/sox/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tidal</title>
-      <link>http://madskjeldgaard.dk/tags/tidal/</link>
-      <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/tidal/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vim</title>
-      <link>http://madskjeldgaard.dk/tags/vim/</link>
-      <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/vim/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>granularsynthesis</title>
       <link>http://madskjeldgaard.dk/tags/granularsynthesis/</link>
       <pubDate>Fri, 21 Aug 2020 11:14:29 +0200</pubDate>
@@ -175,6 +130,15 @@
       <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/nvim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vim</title>
+      <link>http://madskjeldgaard.dk/tags/vim/</link>
+      <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/vim/</guid>
       <description></description>
     </item>
     
@@ -247,6 +211,15 @@
       <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sox</title>
+      <link>http://madskjeldgaard.dk/tags/sox/</link>
+      <pubDate>Sun, 26 Apr 2020 10:21:42 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/sox/</guid>
       <description></description>
     </item>
     
