@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>osc on Mads Kjeldgaard</title>
-    <link>http://madskjeldgaard.dk/tags/osc/</link>
-    <description>Recent content in osc on Mads Kjeldgaard</description>
+    <title>esp32 on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/esp32/</link>
+    <description>Recent content in esp32 on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Mon, 09 Nov 2020 16:29:19 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/osc/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 09 Nov 2020 16:29:19 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/esp32/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Esp32 Simple Osc Receiver</title>
       <link>http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/</link>
@@ -17,16 +17,6 @@
 Today I made a simple example of a firmware which receives OSC from a computer and then blinks the on-board LED according to the incoming message and I packaged it all as an easy to clone/copy/use platformio project (mostly for myself).
 The firmware uses CNMAT&amp;rsquo;s OSC library:
 #include &amp;#34;Arduino.h&amp;#34;#include &amp;#34;WiFi.h&amp;#34;#include &amp;lt;OSCMessage.h&amp;gt; WiFiUDP Udp; // A UDP instance to let us send and receive packets over UDP int LED_BUILTIN = 2; // Options int update_rate = 16; // Network settings char ssid[] = &amp;#34;wifiname&amp;#34;; // your network SSID (name) char pass[] = &amp;#34;wifipassword&amp;#34;; // your network password unsigned int localPort = 8888; // local port to listen for OSC packets  void setup() { pinMode(LED_BUILTIN, OUTPUT); /* setup wifi */ WiFi.</description>
-    </item>
-    
-    <item>
-      <title>Raspberry Pi 4: Simple Button to OSC example in Rust</title>
-      <link>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</link>
-      <pubDate>Thu, 11 Jun 2020 16:49:29 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</guid>
-      <description>Today I did a small experiment with my Raspberry Pi 4: I wanted to poll the GPIO data pins and use data from them in SuperCollider. This is best done by polling the pins in a separate program and then sending that data to SuperCollider via OSC.
-I have done this in Python before but I much prefer doing this kind of thing in Rust since the latter is fast and safe (and just generally: I love Rust!</description>
     </item>
     
   </channel>

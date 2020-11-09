@@ -3,6 +3,36 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://madskjeldgaard.dk/tags/esp32/</loc>
+    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/</loc>
+    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/microcontroller/</loc>
+    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/osc/</loc>
+    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
+    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/tags/14bitmidi/</loc>
     <lastmod>2020-10-21T15:48:28+02:00</lastmod>
   </url>
@@ -14,16 +44,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/tags/midi/</loc>
-    <lastmod>2020-10-21T15:48:28+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
-    <lastmod>2020-10-21T15:48:28+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2020-10-21T15:48:28+02:00</lastmod>
   </url>
   
@@ -95,11 +115,6 @@
   <url>
     <loc>http://madskjeldgaard.dk/pages/software/</loc>
     <lastmod>2020-06-19T09:30:50+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/osc/</loc>
-    <lastmod>2020-06-11T16:49:29+02:00</lastmod>
   </url>
   
   <url>
@@ -334,11 +349,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</loc>
-    <lastmod>2019-08-22T08:56:36+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/microcontroller/</loc>
     <lastmod>2019-08-22T08:56:36+00:00</lastmod>
   </url>
   

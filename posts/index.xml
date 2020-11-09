@@ -9,6 +9,105 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Esp32 Simple Osc Receiver</title>
+            <link>http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/</link>
+            <pubDate>Mon, 09 Nov 2020 16:29:19 +0100</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/</guid>
+            <description>Lately I have started experimenting with the very cheap and powerful ESP32 microcontrollers.
+Today I made a simple example of a firmware which receives OSC from a computer and then blinks the on-board LED according to the incoming message and I packaged it all as an easy to clone/copy/use platformio project (mostly for myself).
+The firmware uses CNMAT&amp;rsquo;s OSC library:
+#include &amp;#34;Arduino.h&amp;#34;#include &amp;#34;WiFi.h&amp;#34;#include &amp;lt;OSCMessage.h&amp;gt; WiFiUDP Udp; // A UDP instance to let us send and receive packets over UDP int LED_BUILTIN = 2; // Options int update_rate = 16; // Network settings char ssid[] = &amp;#34;wifiname&amp;#34;; // your network SSID (name) char pass[] = &amp;#34;wifipassword&amp;#34;; // your network password unsigned int localPort = 8888; // local port to listen for OSC packets  void setup() { pinMode(LED_BUILTIN, OUTPUT); /* setup wifi */ WiFi.</description>
+            <content type="html"><![CDATA[<p><img src="/img/full/esp32-bb.jpg" alt="breadboarded esp32"></p>
+<p>Lately I have started experimenting with the very cheap and powerful <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/">ESP32 microcontrollers</a>.</p>
+<p>Today I made a simple example of a firmware which receives OSC from a computer and then blinks the on-board LED according to the incoming message and I packaged it all as an easy to clone/copy/use <a href="https://github.com/madskjeldgaard/esp32-receive-osc-simple">platformio project (mostly for myself)</a>.</p>
+<p>The firmware uses <a href="https://github.com/CNMAT/OSC">CNMAT&rsquo;s OSC library</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Arduino.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;WiFi.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;OSCMessage.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+WiFiUDP Udp; <span style="color:#75715e">// A UDP instance to let us send and receive packets over UDP
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> LED_BUILTIN <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>;
+
+<span style="color:#75715e">// Options
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> update_rate <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>;
+
+<span style="color:#75715e">// Network settings
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">char</span> ssid[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wifiname&#34;</span>; <span style="color:#75715e">// your network SSID (name)
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">char</span> pass[] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;wifipassword&#34;</span>;  <span style="color:#75715e">// your network password
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span> localPort <span style="color:#f92672">=</span> <span style="color:#ae81ff">8888</span>; <span style="color:#75715e">// local port to listen for OSC packets
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">setup</span>() {
+  pinMode(LED_BUILTIN, OUTPUT);
+
+  <span style="color:#75715e">/* setup wifi */</span>
+  WiFi.begin(ssid, pass);
+  <span style="color:#66d9ef">while</span> (WiFi.status() <span style="color:#f92672">!=</span> WL_CONNECTED) {
+    delay(<span style="color:#ae81ff">500</span>);
+  }
+
+  Udp.begin(localPort);
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ledtoggle</span>(OSCMessage <span style="color:#f92672">&amp;</span>msg) {
+  <span style="color:#66d9ef">switch</span> (msg.getInt(<span style="color:#ae81ff">0</span>)) {
+  <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">:</span>
+    digitalWrite(LED_BUILTIN, LOW);
+    <span style="color:#66d9ef">break</span>;
+  <span style="color:#66d9ef">case</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>
+    digitalWrite(LED_BUILTIN, HIGH);
+    <span style="color:#66d9ef">break</span>;
+  }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">receiveMessage</span>() {
+  OSCMessage inmsg;
+  <span style="color:#66d9ef">int</span> size <span style="color:#f92672">=</span> Udp.parsePacket();
+
+  <span style="color:#66d9ef">if</span> (size <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>) {
+    <span style="color:#66d9ef">while</span> (size<span style="color:#f92672">--</span>) {
+      inmsg.fill(Udp.read());
+    }
+    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>inmsg.hasError()) {
+      inmsg.dispatch(<span style="color:#e6db74">&#34;/led&#34;</span>, ledtoggle);
+    } 
+    <span style="color:#75715e">//else { auto error = inmsg.getError(); }
+</span><span style="color:#75715e"></span>  }
+}
+
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loop</span>() {
+  receiveMessage();
+  delay(update_rate);
+}
+</code></pre></div><p>And here is some SuperCollider code to play around with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(
+<span style="color:#75715e">// Target IP. Change the IP address accordingly
+</span><span style="color:#75715e"></span><span style="color:#f92672">~</span><span style="color:#a6e22e">ip</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10.0.0.11&#34;</span>;
+<span style="color:#f92672">~</span><span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8888</span>;
+<span style="color:#a6e22e">t</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">NetAddr</span>.<span style="color:#66d9ef">new</span>(<span style="color:#f92672">~</span><span style="color:#a6e22e">ip</span>, <span style="color:#f92672">~</span><span style="color:#a6e22e">port</span>);
+
+)
+
+<span style="color:#75715e">// Turn led on
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">sendMsg</span>(<span style="color:#e6db74">&#34;/led&#34;</span>, <span style="color:#ae81ff">1</span>)
+
+<span style="color:#75715e">// Turn led off
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">sendMsg</span>(<span style="color:#e6db74">&#34;/led&#34;</span>, <span style="color:#ae81ff">0</span>)
+
+<span style="color:#75715e">// Or do it with a pattern
+</span><span style="color:#75715e"></span>(
+
+<span style="color:#a6e22e">Pbind</span>(
+	<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">dur</span>, <span style="color:#a6e22e">Prand</span>([<span style="color:#ae81ff">0.25</span>, <span style="color:#ae81ff">0.125</span>, <span style="color:#ae81ff">0.5</span>, <span style="color:#ae81ff">0.0125</span>, <span style="color:#ae81ff">0.025</span>], <span style="color:#a6e22e">inf</span>), 
+	<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">led</span>, <span style="color:#a6e22e">Pxrand</span>([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">0</span>],<span style="color:#a6e22e">inf</span>),
+	<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">play</span>, <span style="color:#a6e22e">Pfunc</span>({<span style="color:#f92672">|</span><span style="color:#a6e22e">ev</span><span style="color:#f92672">|</span> <span style="color:#a6e22e">t</span>.<span style="color:#a6e22e">sendMsg</span>(<span style="color:#e6db74">&#34;/led&#34;</span>, <span style="color:#a6e22e">ev</span>[<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">led</span>])}),
+).<span style="color:#a6e22e">play</span>
+
+)
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
             <title>Working with 14bit Midi using a Teensy microcontroller and Supercollider</title>
             <link>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</link>
             <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
