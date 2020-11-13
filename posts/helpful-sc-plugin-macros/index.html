@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="This is a transcription of Dan Stowell&amp;rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &amp;ldquo;new&amp;rdquo; c&#43;&#43; style for writing plugins. It contains some of the macros available when writing UGens/Plugins in c&#43;&#43; in SuperCollider.
+This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
+Also check out this cookiecutter template for generating plugins and the Server Plugin API." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux, supercollider, cpp" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/" />
+
+
+    <title>
+        
+            Helpful SuperCollider plugin macros :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.753fac8f03736f0edc9be411eb20cee875dd7bb8e73c8155fbf6a629c863f4ca.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Helpful SuperCollider plugin macros">
+<meta itemprop="description" content="This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c&#43;&#43; style for writing plugins. It contains some of the macros available when writing UGens/Plugins in c&#43;&#43; in SuperCollider.
+This repo contains example code for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.
+Also check out this cookiecutter template for generating plugins and the Server Plugin API.">
+<meta itemprop="datePublished" content="2020-11-13T21:38:31+01:00" />
+<meta itemprop="dateModified" content="2020-11-13T21:38:31+01:00" />
+<meta itemprop="wordCount" content="311">
+<meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+
+
+
+<meta itemprop="keywords" content="supercollider,cpp," />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+
+<meta name="twitter:title" content="Helpful SuperCollider plugin macros"/>
+<meta name="twitter:description" content="This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c&#43;&#43; style for writing plugins. It contains some of the macros available when writing UGens/Plugins in c&#43;&#43; in SuperCollider.
+This repo contains example code for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.
+Also check out this cookiecutter template for generating plugins and the Server Plugin API."/>
+
+
+
+    <meta property="og:title" content="Helpful SuperCollider plugin macros" />
+<meta property="og:description" content="This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c&#43;&#43; style for writing plugins. It contains some of the macros available when writing UGens/Plugins in c&#43;&#43; in SuperCollider.
+This repo contains example code for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.
+Also check out this cookiecutter template for generating plugins and the Server Plugin API." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/" />
+<meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+<meta property="article:published_time" content="2020-11-13T21:38:31+01:00" />
+<meta property="article:modified_time" content="2020-11-13T21:38:31+01:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-11-13 21:38:31 &#43;0100 CET" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>2 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/">Helpful SuperCollider plugin macros</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <p>This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c++ style for writing plugins. It contains <em>some</em> of the macros available when writing UGens/Plugins in c++ in SuperCollider.</p>
+<p><a href="https://github.com/supercollider/example-plugins">This repo contains example code</a> for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.</p>
+<p>Also check out this <a href="https://github.com/supercollider/cookiecutter-supercollider-plugin">cookiecutter template for generating plugins</a> and the <a href="http://doc.sccode.org/Reference/ServerPluginAPI.html">Server Plugin API</a>.</p>
+<h1 id="macros">Macros</h1>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in(index)</code></td>
+<td>a float* pointer to input number <em>index</em></td>
+</tr>
+<tr>
+<td><code>out(index)</code></td>
+<td>a float* pointer to output number <em>index</em></td>
+</tr>
+<tr>
+<td><code>in0(index)</code></td>
+<td>a single (control-rate) value from input number <em>index</em></td>
+</tr>
+<tr>
+<td><code>out0(index)</code></td>
+<td>a single (control-rate) value at output number <em>index</em></td>
+</tr>
+<tr>
+<td><code>inRate(index)</code></td>
+<td>The rate of input <em>index</em>, an integer value corresponding to 1 of the following constants: <code>calc_ScalarRate</code> (scalar-rate), <code>calc_BufRate</code>(control-rate), <code>calc_FullRate</code> (audio-rate), <code>calc_DemandRate</code> (demand-rate)</td>
+</tr>
+<tr>
+<td><code>set_calc_function&lt;ClassName, &amp;ClassName::func&gt;()</code></td>
+<td>Set the calculation function for ugen <code>ClassName</code> to <code>func</code></td>
+</tr>
+<tr>
+<td><code>sampleRate()</code></td>
+<td>Samplerate of the ugen as a double. Note: For control-rate UGens this is not the full audio rate but audio rate/blocksize</td>
+</tr>
+<tr>
+<td><code>sampleDur()</code></td>
+<td>Reciprocal of <code>sampleRate()</code> (seconds per sample)</td>
+</tr>
+<tr>
+<td><code>bufferSize()</code></td>
+<td>Equal to the block size if the unit is audio rate and 1 if the unit is control rate</td>
+</tr>
+<tr>
+<td><code>ClearUnitOutputs(unit, inNumSamples)</code></td>
+<td>Print text to the SuperCollider post window; arguments are just like those for the C function <code>printf</code></td>
+</tr>
+<tr>
+<td><code>Print(text)</code></td>
+<td>Print text to the SuperCollider post window; arguments are just like those for the C function <code>printf</code></td>
+</tr>
+<tr>
+<td><code>RTAlloc(world, numBytes)</code></td>
+<td>Allocate memory from the real-time pool &ndash; analogous to <code>malloc(numBytes)</code></td>
+</tr>
+<tr>
+<td><code>RTRealloc(world, pointer, numBytes)</code></td>
+<td>Reallocate memory from the real-time pool &ndash; analogous to <code>realloc(pointer, numBytes)</code></td>
+</tr>
+<tr>
+<td><code>RTFree(world, pointer)</code></td>
+<td>Free allocated memory back to the real-time pool &ndash; analogous to <code>free(pointer)</code></td>
+</tr>
+<tr>
+<td><code>fullSampleRate()</code></td>
+<td>The full audio sample rate of the server (irrespective of the rate of the UGen) as a double</td>
+</tr>
+<tr>
+<td><code>fullBufferSize()</code></td>
+<td>The integer number of samples in an audio-rate input (irrespective of the rate of the UGen)</td>
+</tr>
+</tbody>
+</table>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/cpp">cpp</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>311 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-11-13 21:38 &#43;0100</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+
+                    
+                        <span class="button next">
+                            <a href="http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/">
+                                <span class="button__text">Esp32 Simple Osc Receiver</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2020</span>
+            
+            <span></span>
+            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.4a69500057d68129e88f497d354afe68422eb56de6d15e45dbe2190858ea5a76bfcb096406f992984b241db45f47388ac57ab0376e3b32125bef7a8a6d0f06c4.js" integrity="sha512-SmlQAFfWgSnoj0l9NUr&#43;aEIutW3m0V5F2&#43;IZCFjqWna/ywlkBvmSmEskHbRfRziKxXqwN247MhJb73qKbQ8GxA=="></script>
+
+
+
+    </body>
+</html>

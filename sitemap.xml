@@ -3,6 +3,26 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>http://madskjeldgaard.dk/tags/cpp/</loc>
+    <lastmod>2020-11-13T21:38:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</loc>
+    <lastmod>2020-11-13T21:38:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
+    <lastmod>2020-11-13T21:38:31+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2020-11-13T21:38:31+01:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://madskjeldgaard.dk/tags/esp32/</loc>
     <lastmod>2020-11-09T16:29:19+01:00</lastmod>
   </url>
@@ -19,16 +39,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/tags/osc/</loc>
-    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
-    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2020-11-09T16:29:19+01:00</lastmod>
   </url>
   
@@ -300,11 +310,6 @@
   <url>
     <loc>http://madskjeldgaard.dk/</loc>
     <lastmod>2020-04-14T10:41:44+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/cpp/</loc>
-    <lastmod>2020-04-06T15:44:23+00:00</lastmod>
   </url>
   
   <url>
