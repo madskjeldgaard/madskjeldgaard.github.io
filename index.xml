@@ -9,10 +9,10 @@
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Notes on writing SuperCollider plugins</title>
-      <link>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</link>
+      <link>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</link>
       <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
       
-      <guid>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</guid>
+      <guid>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</guid>
       <description>This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.
 Useful links This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
 Also check out this cookiecutter template for generating plugins and the Server Plugin API.
