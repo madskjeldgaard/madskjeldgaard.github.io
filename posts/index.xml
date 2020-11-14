@@ -9,18 +9,21 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
-            <title>Helpful SuperCollider plugin macros</title>
+            <title>Notes on writing SuperCollider plugins</title>
             <link>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</link>
             <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
             
             <guid>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</guid>
-            <description>This is a transcription of Dan Stowell&amp;rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &amp;ldquo;new&amp;rdquo; c++ style for writing plugins. It contains some of the macros available when writing UGens/Plugins in c++ in SuperCollider.
-This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
-Also check out this cookiecutter template for generating plugins and the Server Plugin API.</description>
-            <content type="html"><![CDATA[<p>This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c++ style for writing plugins. It contains <em>some</em> of the macros available when writing UGens/Plugins in c++ in SuperCollider.</p>
+            <description>This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.
+Useful links This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
+Also check out this cookiecutter template for generating plugins and the Server Plugin API.
+Macros This is a transcription of Dan Stowell&amp;rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &amp;ldquo;new&amp;rdquo; c++ style for writing plugins.</description>
+            <content type="html"><![CDATA[<p>This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.</p>
+<h2 id="useful-links">Useful links</h2>
 <p><a href="https://github.com/supercollider/example-plugins">This repo contains example code</a> for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.</p>
 <p>Also check out this <a href="https://github.com/supercollider/cookiecutter-supercollider-plugin">cookiecutter template for generating plugins</a> and the <a href="http://doc.sccode.org/Reference/ServerPluginAPI.html">Server Plugin API</a>.</p>
-<h1 id="macros">Macros</h1>
+<h2 id="macros">Macros</h2>
+<p>This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c++ style for writing plugins. It contains <em>some</em> of the macros available when writing UGens/Plugins in c++ in SuperCollider.</p>
 <table>
 <thead>
 <tr>
@@ -95,7 +98,40 @@ Also check out this cookiecutter template for generating plugins and the Server 
 </tr>
 </tbody>
 </table>
-]]></content>
+<h2 id="the-randomness-api">The Randomness API</h2>
+<p>There&rsquo;s an API for a bunch of randomness functions that come with the SuperCollider plugin development framework, most of which reflect sclang equivalents so are probably well known to people with experience i sclang. These are described in the header file <code>SC_RGen.h</code>.</p>
+<p>To use them, first include the header file in your plugin&rsquo;s <code>.hpp</code> file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_RGen.h&#34;</span><span style="color:#75715e">
+</span></code></pre></div><p>Then instantiate a random number generator class in your header file (under the <code>private:</code> keyword for example) as a member variable.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">RGen <span style="color:#f92672">&amp;</span> rgen <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>mParent <span style="color:#f92672">-&gt;</span> mRGen;
+</code></pre></div><p>With this, you now have access to the random number generators in your calculation functions in your plugin like so:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> random_float <span style="color:#f92672">=</span> rgen.frand();
+</code></pre></div><h3 id="available-methods-for-random-number-generation">Available methods for random number generation</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">uint32 <span style="color:#a6e22e">trand</span>();
+
+int32 <span style="color:#a6e22e">irand</span>(int32 scale);
+int32 <span style="color:#a6e22e">irand2</span>(int32 scale);
+int32 <span style="color:#a6e22e">ilinrand</span>(int32 scale);
+int32 <span style="color:#a6e22e">ibilinrand</span>(int32 scale);
+
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">fcoin</span>();
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">frand</span>();
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">frand2</span>();
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">frand0</span>();
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">frand8</span>();
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">flinrand</span>();
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">fbilinrand</span>();
+<span style="color:#66d9ef">float</span> <span style="color:#a6e22e">fsum3rand</span>();
+
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">drand</span>();
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">drand2</span>(<span style="color:#66d9ef">double</span> scale);
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">linrand</span>(<span style="color:#66d9ef">double</span> scale);
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">bilinrand</span>(<span style="color:#66d9ef">double</span> scale);
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">exprandrng</span>(<span style="color:#66d9ef">double</span> lo, <span style="color:#66d9ef">double</span> hi);
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">exprand</span>(<span style="color:#66d9ef">double</span> scale);
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">biexprand</span>(<span style="color:#66d9ef">double</span> scale);
+<span style="color:#66d9ef">double</span> <span style="color:#a6e22e">sum3rand</span>(<span style="color:#66d9ef">double</span> scale);
+</code></pre></div>]]></content>
         </item>
         
         <item>
