@@ -17,11 +17,24 @@
             <description>This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.
 Useful links This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
 Also check out this cookiecutter template for generating plugins and the Server Plugin API.
-Macros This is a transcription of Dan Stowell&amp;rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &amp;ldquo;new&amp;rdquo; c++ style for writing plugins.</description>
+The two different styles There are two different headers that contain SuperCollider&amp;rsquo;s plugin boiler plate code.</description>
             <content type="html"><![CDATA[<p>This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.</p>
 <h2 id="useful-links">Useful links</h2>
 <p><a href="https://github.com/supercollider/example-plugins">This repo contains example code</a> for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.</p>
 <p>Also check out this <a href="https://github.com/supercollider/cookiecutter-supercollider-plugin">cookiecutter template for generating plugins</a> and the <a href="http://doc.sccode.org/Reference/ServerPluginAPI.html">Server Plugin API</a>.</p>
+<h2 id="the-two-different-styles">The two different styles</h2>
+<p>There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code.
+These are imported at the top of both your .cpp and .hpp file and will lead to two different styles of writing your plugin code.</p>
+<h3 id="new-style-c-wrapper">New style c++ wrapper</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.hpp&#34;</span><span style="color:#75715e">
+</span></code></pre></div><p>This header will import &ldquo;newer&rdquo; c++ headers that are recognizable as lower case method names such as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">set_calc_function<span style="color:#f92672">&lt;</span>BoringMixer, <span style="color:#f92672">&amp;</span>BoringMixer<span style="color:#f92672">::</span>next<span style="color:#f92672">&gt;</span>();
+</code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01b-BoringMixer/BoringMixer.cpp">BoringMixer (new style)</a> for are more extensive example.</p>
+<h3 id="old-style">Old style</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.h&#34;</span><span style="color:#75715e">
+</span></code></pre></div><p>This imports the older header, which leads to code with a lot of upper case macros like</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">SETCALC(BoringMixer_next)
+</code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01a-BoringMixer/BoringMixer.cpp">BoringMixer (old style)</a> for a more extensive example.</p>
 <h2 id="macros">Macros</h2>
 <p>This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c++ style for writing plugins. It contains <em>some</em> of the macros available when writing UGens/Plugins in c++ in SuperCollider.</p>
 <table>
@@ -131,6 +144,23 @@ int32 <span style="color:#a6e22e">ibilinrand</span>(int32 scale);
 <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">exprand</span>(<span style="color:#66d9ef">double</span> scale);
 <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">biexprand</span>(<span style="color:#66d9ef">double</span> scale);
 <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">sum3rand</span>(<span style="color:#66d9ef">double</span> scale);
+</code></pre></div><h3 id="interpolation">Interpolation</h3>
+<p>Interpolation functions available (for working with buffers):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">float</span> lininterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b) 
+<span style="color:#66d9ef">float</span> cubicinterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> y0, <span style="color:#66d9ef">float</span> y1, <span style="color:#66d9ef">float</span> y2, <span style="color:#66d9ef">float</span> y3)
+</code></pre></div><p>Example from the <code>example-plugins</code> repo&rsquo;s AnalogEcho example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Four integer phases into the buffer
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> phase1 <span style="color:#f92672">=</span> writephase <span style="color:#f92672">-</span> offset;
+<span style="color:#66d9ef">int</span> phase2 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+<span style="color:#66d9ef">int</span> phase3 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>;
+<span style="color:#66d9ef">int</span> phase0 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+<span style="color:#66d9ef">float</span> d0 <span style="color:#f92672">=</span> buf[phase0 <span style="color:#f92672">&amp;</span> mask];
+<span style="color:#66d9ef">float</span> d1 <span style="color:#f92672">=</span> buf[phase1 <span style="color:#f92672">&amp;</span> mask];
+<span style="color:#66d9ef">float</span> d2 <span style="color:#f92672">=</span> buf[phase2 <span style="color:#f92672">&amp;</span> mask];
+<span style="color:#66d9ef">float</span> d3 <span style="color:#f92672">=</span> buf[phase3 <span style="color:#f92672">&amp;</span> mask];
+
+<span style="color:#75715e">// Use cubic interpolation with the fractional part of the delay in samples
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> delayed <span style="color:#f92672">=</span> cubicinterp(frac, d0, d1, d2, d3);
 </code></pre></div>]]></content>
         </item>
         

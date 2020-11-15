@@ -8,7 +8,7 @@
 <meta name="description" content="This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.
 Useful links This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
 Also check out this cookiecutter template for generating plugins and the Server Plugin API.
-Macros This is a transcription of Dan Stowell&amp;rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &amp;ldquo;new&amp;rdquo; c&#43;&#43; style for writing plugins." />
+The two different styles There are two different headers that contain SuperCollider&amp;rsquo;s plugin boiler plate code." />
 <meta name="keywords" content="computer music, supercollider, rust, vim, linux, supercollider, cpp" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
@@ -39,10 +39,10 @@ Macros This is a transcription of Dan Stowell&amp;rsquo;s very helpful table in 
 <meta itemprop="description" content="This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.
 Useful links This repo contains example code for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.
 Also check out this cookiecutter template for generating plugins and the Server Plugin API.
-Macros This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c&#43;&#43; style for writing plugins.">
+The two different styles There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code.">
 <meta itemprop="datePublished" content="2020-11-13T21:38:31+01:00" />
 <meta itemprop="dateModified" content="2020-11-13T21:38:31+01:00" />
-<meta itemprop="wordCount" content="504">
+<meta itemprop="wordCount" content="717">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 
 
@@ -56,7 +56,7 @@ Macros This is a transcription of Dan Stowell&rsquo;s very helpful table in the 
 <meta name="twitter:description" content="This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.
 Useful links This repo contains example code for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.
 Also check out this cookiecutter template for generating plugins and the Server Plugin API.
-Macros This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c&#43;&#43; style for writing plugins."/>
+The two different styles There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code."/>
 
 
 
@@ -64,7 +64,7 @@ Macros This is a transcription of Dan Stowell&rsquo;s very helpful table in the 
 <meta property="og:description" content="This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.
 Useful links This repo contains example code for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.
 Also check out this cookiecutter template for generating plugins and the Server Plugin API.
-Macros This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c&#43;&#43; style for writing plugins." />
+The two different styles There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/" />
 <meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
@@ -137,7 +137,7 @@ Macros This is a transcription of Dan Stowell&rsquo;s very helpful table in the 
     <main class="post">
 
         <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>3 minutes
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>4 minutes
 
             
 
@@ -154,10 +154,17 @@ Macros This is a transcription of Dan Stowell&rsquo;s very helpful table in the 
                     <nav id="TableOfContents">
   <ul>
     <li><a href="#useful-links">Useful links</a></li>
+    <li><a href="#the-two-different-styles">The two different styles</a>
+      <ul>
+        <li><a href="#new-style-c-wrapper">New style c++ wrapper</a></li>
+        <li><a href="#old-style">Old style</a></li>
+      </ul>
+    </li>
     <li><a href="#macros">Macros</a></li>
     <li><a href="#the-randomness-api">The Randomness API</a>
       <ul>
         <li><a href="#available-methods-for-random-number-generation">Available methods for random number generation</a></li>
+        <li><a href="#interpolation">Interpolation</a></li>
       </ul>
     </li>
   </ul>
@@ -172,6 +179,19 @@ Macros This is a transcription of Dan Stowell&rsquo;s very helpful table in the 
 <h2 id="useful-links">Useful links</h2>
 <p><a href="https://github.com/supercollider/example-plugins">This repo contains example code</a> for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.</p>
 <p>Also check out this <a href="https://github.com/supercollider/cookiecutter-supercollider-plugin">cookiecutter template for generating plugins</a> and the <a href="http://doc.sccode.org/Reference/ServerPluginAPI.html">Server Plugin API</a>.</p>
+<h2 id="the-two-different-styles">The two different styles</h2>
+<p>There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code.
+These are imported at the top of both your .cpp and .hpp file and will lead to two different styles of writing your plugin code.</p>
+<h3 id="new-style-c-wrapper">New style c++ wrapper</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.hpp&#34;</span><span style="color:#75715e">
+</span></code></pre></div><p>This header will import &ldquo;newer&rdquo; c++ headers that are recognizable as lower case method names such as:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">set_calc_function<span style="color:#f92672">&lt;</span>BoringMixer, <span style="color:#f92672">&amp;</span>BoringMixer<span style="color:#f92672">::</span>next<span style="color:#f92672">&gt;</span>();
+</code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01b-BoringMixer/BoringMixer.cpp">BoringMixer (new style)</a> for are more extensive example.</p>
+<h3 id="old-style">Old style</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.h&#34;</span><span style="color:#75715e">
+</span></code></pre></div><p>This imports the older header, which leads to code with a lot of upper case macros like</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">SETCALC(BoringMixer_next)
+</code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01a-BoringMixer/BoringMixer.cpp">BoringMixer (old style)</a> for a more extensive example.</p>
 <h2 id="macros">Macros</h2>
 <p>This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c++ style for writing plugins. It contains <em>some</em> of the macros available when writing UGens/Plugins in c++ in SuperCollider.</p>
 <table>
@@ -281,6 +301,23 @@ int32 <span style="color:#a6e22e">ibilinrand</span>(int32 scale);
 <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">exprand</span>(<span style="color:#66d9ef">double</span> scale);
 <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">biexprand</span>(<span style="color:#66d9ef">double</span> scale);
 <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">sum3rand</span>(<span style="color:#66d9ef">double</span> scale);
+</code></pre></div><h3 id="interpolation">Interpolation</h3>
+<p>Interpolation functions available (for working with buffers):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">float</span> lininterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b) 
+<span style="color:#66d9ef">float</span> cubicinterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> y0, <span style="color:#66d9ef">float</span> y1, <span style="color:#66d9ef">float</span> y2, <span style="color:#66d9ef">float</span> y3)
+</code></pre></div><p>Example from the <code>example-plugins</code> repo&rsquo;s AnalogEcho example:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Four integer phases into the buffer
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> phase1 <span style="color:#f92672">=</span> writephase <span style="color:#f92672">-</span> offset;
+<span style="color:#66d9ef">int</span> phase2 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+<span style="color:#66d9ef">int</span> phase3 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>;
+<span style="color:#66d9ef">int</span> phase0 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+<span style="color:#66d9ef">float</span> d0 <span style="color:#f92672">=</span> buf[phase0 <span style="color:#f92672">&amp;</span> mask];
+<span style="color:#66d9ef">float</span> d1 <span style="color:#f92672">=</span> buf[phase1 <span style="color:#f92672">&amp;</span> mask];
+<span style="color:#66d9ef">float</span> d2 <span style="color:#f92672">=</span> buf[phase2 <span style="color:#f92672">&amp;</span> mask];
+<span style="color:#66d9ef">float</span> d3 <span style="color:#f92672">=</span> buf[phase3 <span style="color:#f92672">&amp;</span> mask];
+
+<span style="color:#75715e">// Use cubic interpolation with the fractional part of the delay in samples
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">float</span> delayed <span style="color:#f92672">=</span> cubicinterp(frac, d0, d1, d2, d3);
 </code></pre></div>
             </div>
         </article>
@@ -292,7 +329,7 @@ int32 <span style="color:#a6e22e">ibilinrand</span>(int32 scale);
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/cpp">cpp</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>504 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>717 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-11-13 21:38 &#43;0100</p>
         </div>
