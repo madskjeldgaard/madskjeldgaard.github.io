@@ -13,7 +13,8 @@
       <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</guid>
-      <description>This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.
+      <description>This post is a collection of notes on how to write plugins for SuperCollider.
+This post will be updated as I go along.
 Useful links This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
 Also check out this cookiecutter template for generating plugins and the Server Plugin API.
 The two different styles There are two different headers that contain SuperCollider&amp;rsquo;s plugin boiler plate code.</description>

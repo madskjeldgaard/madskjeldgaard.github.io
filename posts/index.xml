@@ -14,11 +14,13 @@
             <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
             
             <guid>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</guid>
-            <description>This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.
+            <description>This post is a collection of notes on how to write plugins for SuperCollider.
+This post will be updated as I go along.
 Useful links This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
 Also check out this cookiecutter template for generating plugins and the Server Plugin API.
 The two different styles There are two different headers that contain SuperCollider&amp;rsquo;s plugin boiler plate code.</description>
-            <content type="html"><![CDATA[<p>This post is a collection of notes on how to write plugins for SuperCollider. It will updated continuously.</p>
+            <content type="html"><![CDATA[<p>This post is a collection of notes on how to write plugins for SuperCollider.</p>
+<p>This post will be updated as I go along.</p>
 <h2 id="useful-links">Useful links</h2>
 <p><a href="https://github.com/supercollider/example-plugins">This repo contains example code</a> for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.</p>
 <p>Also check out this <a href="https://github.com/supercollider/cookiecutter-supercollider-plugin">cookiecutter template for generating plugins</a> and the <a href="http://doc.sccode.org/Reference/ServerPluginAPI.html">Server Plugin API</a>.</p>
@@ -87,7 +89,7 @@ These are imported at the top of both your .cpp and .hpp file and will lead to t
 </tr>
 <tr>
 <td><code>Print(text)</code></td>
-<td>Print text to the SuperCollider post window; arguments are just like those for the C function <code>printf</code></td>
+<td>Print text to the SuperCollider post window; arguments are just like those for the C function <code>printf</code>, eg: <code>Print(&quot;Hello\n&quot;)</code></td>
 </tr>
 <tr>
 <td><code>RTAlloc(world, numBytes)</code></td>
