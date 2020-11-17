@@ -191,7 +191,7 @@ These are imported at the top of both your .cpp and .hpp file and will lead to t
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.hpp&#34;</span><span style="color:#75715e">
 </span></code></pre></div><p>This header will import &ldquo;newer&rdquo; c++ headers that are recognizable as lower case method names such as:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">set_calc_function<span style="color:#f92672">&lt;</span>BoringMixer, <span style="color:#f92672">&amp;</span>BoringMixer<span style="color:#f92672">::</span>next<span style="color:#f92672">&gt;</span>();
-</code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01b-BoringMixer/BoringMixer.cpp">BoringMixer (new style)</a> for are more extensive example.</p>
+</code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01b-BoringMixer/BoringMixer.cpp">BoringMixer (new style)</a> for a more extensive example.</p>
 <h3 id="old-style">Old style</h3>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.h&#34;</span><span style="color:#75715e">
 </span></code></pre></div><p>This imports the older header, which leads to code with a lot of upper case macros like</p>
