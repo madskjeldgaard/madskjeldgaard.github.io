@@ -9,6 +9,96 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Helpful SuperCollider plugin macros</title>
+            <link>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</link>
+            <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</guid>
+            <description>This is a transcription of Dan Stowell&amp;rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &amp;ldquo;new&amp;rdquo; c++ style for writing plugins. It contains some of the macros available when writing UGens/Plugins in c++ in SuperCollider.
+This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
+Also check out this cookiecutter template for generating plugins and the Server Plugin API.</description>
+            <content type="html"><![CDATA[<p>This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c++ style for writing plugins. It contains <em>some</em> of the macros available when writing UGens/Plugins in c++ in SuperCollider.</p>
+<p><a href="https://github.com/supercollider/example-plugins">This repo contains example code</a> for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.</p>
+<p>Also check out this <a href="https://github.com/supercollider/cookiecutter-supercollider-plugin">cookiecutter template for generating plugins</a> and the <a href="http://doc.sccode.org/Reference/ServerPluginAPI.html">Server Plugin API</a>.</p>
+<h1 id="macros">Macros</h1>
+<table>
+<thead>
+<tr>
+<th>Macro</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>in(index)</code></td>
+<td>a float* pointer to input number <em>index</em></td>
+</tr>
+<tr>
+<td><code>out(index)</code></td>
+<td>a float* pointer to output number <em>index</em></td>
+</tr>
+<tr>
+<td><code>in0(index)</code></td>
+<td>a single (control-rate) value from input number <em>index</em></td>
+</tr>
+<tr>
+<td><code>out0(index)</code></td>
+<td>a single (control-rate) value at output number <em>index</em></td>
+</tr>
+<tr>
+<td><code>inRate(index)</code></td>
+<td>The rate of input <em>index</em>, an integer value corresponding to 1 of the following constants: <code>calc_ScalarRate</code> (scalar-rate), <code>calc_BufRate</code>(control-rate), <code>calc_FullRate</code> (audio-rate), <code>calc_DemandRate</code> (demand-rate)</td>
+</tr>
+<tr>
+<td><code>set_calc_function&lt;ClassName, &amp;ClassName::next&gt;()</code></td>
+<td>Set the calculation function for ugen <code>ClassName</code> to <code>next</code></td>
+</tr>
+<tr>
+<td><code>sampleRate()</code></td>
+<td>Samplerate of the ugen as a double. Note: For control-rate UGens this is not the full audio rate but audio rate/blocksize</td>
+</tr>
+<tr>
+<td><code>sampleDur()</code></td>
+<td>Reciprocal of <code>sampleRate()</code> (seconds per sample)</td>
+</tr>
+<tr>
+<td><code>bufferSize()</code></td>
+<td>Equal to the block size if the unit is audio rate and 1 if the unit is control rate</td>
+</tr>
+<tr>
+<td><code>ClearUnitOutputs(unit, inNumSamples)</code></td>
+<td>Print text to the SuperCollider post window; arguments are just like those for the C function <code>printf</code></td>
+</tr>
+<tr>
+<td><code>Print(text)</code></td>
+<td>Print text to the SuperCollider post window; arguments are just like those for the C function <code>printf</code></td>
+</tr>
+<tr>
+<td><code>RTAlloc(world, numBytes)</code></td>
+<td>Allocate memory from the real-time pool &ndash; analogous to <code>malloc(numBytes)</code></td>
+</tr>
+<tr>
+<td><code>RTRealloc(world, pointer, numBytes)</code></td>
+<td>Reallocate memory from the real-time pool &ndash; analogous to <code>realloc(pointer, numBytes)</code></td>
+</tr>
+<tr>
+<td><code>RTFree(world, pointer)</code></td>
+<td>Free allocated memory back to the real-time pool &ndash; analogous to <code>free(pointer)</code></td>
+</tr>
+<tr>
+<td><code>fullSampleRate()</code></td>
+<td>The full audio sample rate of the server (irrespective of the rate of the UGen) as a double</td>
+</tr>
+<tr>
+<td><code>fullBufferSize()</code></td>
+<td>The integer number of samples in an audio-rate input (irrespective of the rate of the UGen)</td>
+</tr>
+</tbody>
+</table>
+]]></content>
+        </item>
+        
+        <item>
             <title>Notes on writing SuperCollider plugins</title>
             <link>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</link>
             <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
