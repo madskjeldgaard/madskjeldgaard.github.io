@@ -796,7 +796,24 @@ pacman -Sg base-devel
 	printf <span style="color:#e6db74">&#34;r%s.%s&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>git rev-list --count HEAD<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>git rev-parse --short HEAD<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 <span style="color:#f92672">}</span>
 </code></pre></div><p>Quit your text editor, then run <code>makepkg -s</code>. When you reopen the PKGBUILD file in a text editor, it now has a git hash as the version name.</p>
-]]></content>
+<h3 id="cloning-and-locally-updating-an-out-of-date-package">Cloning and locally updating an out-of-date package</h3>
+<p>Sometimes packages aren&rsquo;t updated as regularly as you would want.
+If there is a specific package you want the latest version of, but the maintainer has become unresponsive, you can download it to your computer and create a local version of the <code>PKGBUILD</code> file of the package.</p>
+<p>As an example, let&rsquo;s download <code>reaper-bin</code></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PKG_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;reaper-bin&#34;</span>
+AUR_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ssh://aur@aur.archlinux.org/</span>$PKG_NAME<span style="color:#e6db74">.git&#34;</span>
+
+<span style="color:#75715e"># Remote</span>
+git clone $AUR_URL
+cd $PKG_NAME
+</code></pre></div><p>Then open the <code>PKGBUILD</code> file in a text editor of your choice</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim PKGBUILD
+</code></pre></div><p>Then change the <code>pkgver</code> variable to the version number you would like.</p>
+<p>Exit your text editor and still from within the directory with the PKGBUILD in it, run
+<code>updpkgsums</code> to update the checksums in the package.</p>
+<p>And then, if all is well, you should be able to install the package like so:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg -si --clean
+</code></pre></div>]]></content>
         </item>
         
         <item>
