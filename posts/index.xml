@@ -2090,9 +2090,11 @@ Let us say you have a sound file containing many different sounds seperated by a
 <p>In the manual, <code>silence</code> is defined like this:</p>
 <p>&ldquo;Removes silence from the beginning, middle, or end of the audio. &lsquo;Silence&rsquo; is determined by a specified threshold.&rdquo;</p>
 <p><code>silence</code> takes a range of optional arguments but we will only use the first three of them:</p>
-<p>• above-periods - indicate if audio should be trimmed at the begnning of the audio. 0 = no silence trimmed from beginning, 1 = trim silence from beginning
-• duration - amount of time in seconds that non-silence must be detected before it stops trimming audio
-• threshold - audio threshold, we will indicate this in percentages</p>
+<ul>
+<li>above-periods - indicate if audio should be trimmed at the begnning of the audio. 0 = no silence trimmed from beginning, 1 = trim silence from beginning</li>
+<li>duration - amount of time in seconds that non-silence must be detected before it stops trimming audio</li>
+<li>threshold - audio threshold, we will indicate this in percentages</li>
+</ul>
 <p>The parameters are stringed together after the <code>silence</code> keyword in the sox command like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence above-periods duration threshold
 </code></pre></div><h2 id="trimming-silence-from-beginning-and-end-of-one-file">Trimming silence from beginning and end of one file</h2>
