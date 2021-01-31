@@ -43,7 +43,7 @@ I solens flint 1000 floder</description>
       <pubDate>Tue, 14 Apr 2020 10:41:44 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/pages/about/</guid>
-      <description>Bio Mads Kjeldgaard (b. 1988 Horsens, Denmark) is an electronic music composer.
+      <description>new Twitch.Player(&#34;twitch-embed&#34;, { video: &#34;895251155&#34;, height: 500, width: 900 });  Bio Mads Kjeldgaard (b. 1988 Horsens, Denmark) is an electronic music composer.
 His main field of interest as a composer is computer music. Using selfauthored algorithmic systems and DIY electronics, he explores psychoacoustics as well as ideas of time, perception and &amp;ldquo;living&amp;rdquo; sound environments. By expressing himself mainly in software, his compositions often end up as code outlining the conditions of composition, rather than the specificities of the artform.</description>
     </item>
     
@@ -70,6 +70,7 @@ December 6th, 2018, Cappelens Forslag, Oslo, Norway @ Hollow Body Timbals releas
       <description>Email: mail ☺ madskjeldgaard.dk
 Github: madskjeldgaard
 Instagram: @mads_kjeldgaard
+Twitch: twitch
 YouTube: youtube
 Configuration files: dotfiles</description>
     </item>
