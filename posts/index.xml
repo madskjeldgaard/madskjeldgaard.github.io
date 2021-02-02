@@ -2071,6 +2071,14 @@ The idea is to put our sox command inside of a for-loop which iterates over all 
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> -b <span style="color:#ae81ff">16</span> <span style="color:#e6db74">&#34;16bit_</span>$file<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span>
 </code></pre></div><h1 id="where-to-go-from-here">Where to go from here?</h1>
 <p>I would highly encourage you to go back and read the SoX manual (<code>man sox</code>, remember?) because there really is a plethora of fun and useful things you can do with SoX in a for-loop.</p>
+<hr>
+<p><em>This tutorial is part of a series:</em></p>
+<ul>
+<li><a href="/posts/sox-tutorial-cli-tape-music">SoX tutorial: Command line tape music</a></li>
+<li><a href="/posts/sox-tutorial-split-by-silence">SoX tutorial: Split by silence</a></li>
+<li><a href="/posts/sox-tutorial-batch-processing">SoX tutorial: Batch processing audio</a></li>
+<li><a href="/posts/sox-tutorial-sox-on-android">SoX tutorial: SoX on Android</a></li>
+</ul>
 ]]></content>
         </item>
         
@@ -2118,6 +2126,14 @@ Let us say you have a sound file containing many different sounds seperated by a
 </code></pre></div><p>which will produce sound files called &ldquo;burst_num001.wav&rdquo;, &ldquo;burst_num002.wav&rdquo; etc.</p>
 <p>Now this works very well for our very unnatural example here, but I encourage you to mess around with the parameters when you do this on your own with your own files. Change the threshold to 5% for example if it&rsquo;s noisy or set the duration to something higher if it results in too many small files.</p>
 <p>Note: Sometimes on some systems this command will produce an extra audio file containing nothing. I honestly have no idea why. Just delete the file (or send me an email if you have a solution to this problem)</p>
+<hr>
+<p><em>This tutorial is part of a series:</em></p>
+<ul>
+<li><a href="/posts/sox-tutorial-cli-tape-music">SoX tutorial: Command line tape music</a></li>
+<li><a href="/posts/sox-tutorial-split-by-silence">SoX tutorial: Split by silence</a></li>
+<li><a href="/posts/sox-tutorial-batch-processing">SoX tutorial: Batch processing audio</a></li>
+<li><a href="/posts/sox-tutorial-sox-on-android">SoX tutorial: SoX on Android</a></li>
+</ul>
 ]]></content>
         </item>
         
@@ -2201,7 +2217,15 @@ I came across SoX via the live coding community where it is a popular tool for c
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play art.wav
 </code></pre></div><p>Now, we would not be proper command line tape musicians if we felt satisfied after 1 manipulation to the original recording, so let us continue our sonic journey by transforming the <code>art.wav</code> file further, this time we will time stretch to twice the length (factor 2), reverse the audio again and add some reverb. Just to make sure we do not lose too much of our audio level, we will normalize the output to -0.1db as well finally saving the result in the file <code>art2.wav</code></p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox art.wav art2.wav stretch <span style="color:#ae81ff">2</span> reverse reverb norm -0.1
-</code></pre></div>]]></content>
+</code></pre></div><hr>
+<p><em>This tutorial is part of a series:</em></p>
+<ul>
+<li><a href="/posts/sox-tutorial-cli-tape-music">SoX tutorial: Command line tape music</a></li>
+<li><a href="/posts/sox-tutorial-split-by-silence">SoX tutorial: Split by silence</a></li>
+<li><a href="/posts/sox-tutorial-batch-processing">SoX tutorial: Batch processing audio</a></li>
+<li><a href="/posts/sox-tutorial-sox-on-android">SoX tutorial: SoX on Android</a></li>
+</ul>
+]]></content>
         </item>
         
         <item>
