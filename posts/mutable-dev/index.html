@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware.
+<meta name="description" content="Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware (check out this brilliant tutorial om how to do the same).
 The company has even open sourced it&amp;rsquo;s development environment which on most systems may be setup in a virtual machine.
 But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely." />
 <meta name="keywords" content="computer music, supercollider, rust, vim, linux, cpp, arch, mutable-instruments" />
@@ -35,12 +35,12 @@ But this is not so easy on Arch Linux, since these virtual machines rely on old(
 
 
 <meta itemprop="name" content="Mutable Instruments dev environment on Arch Linux">
-<meta itemprop="description" content="Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware.
+<meta itemprop="description" content="Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware (check out this brilliant tutorial om how to do the same).
 The company has even open sourced it&rsquo;s development environment which on most systems may be setup in a virtual machine.
 But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely.">
 <meta itemprop="datePublished" content="2021-01-26T13:39:45+01:00" />
 <meta itemprop="dateModified" content="2021-01-26T13:39:45+01:00" />
-<meta itemprop="wordCount" content="415">
+<meta itemprop="wordCount" content="426">
 <meta itemprop="image" content="http://madskjeldgaard.dk/img/full/mutabledev.jpg">
 
 
@@ -51,14 +51,14 @@ But this is not so easy on Arch Linux, since these virtual machines rely on old(
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/full/mutabledev.jpg"/>
 
 <meta name="twitter:title" content="Mutable Instruments dev environment on Arch Linux"/>
-<meta name="twitter:description" content="Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware.
+<meta name="twitter:description" content="Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware (check out this brilliant tutorial om how to do the same).
 The company has even open sourced it&rsquo;s development environment which on most systems may be setup in a virtual machine.
 But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely."/>
 
 
 
     <meta property="og:title" content="Mutable Instruments dev environment on Arch Linux" />
-<meta property="og:description" content="Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware.
+<meta property="og:description" content="Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware (check out this brilliant tutorial om how to do the same).
 The company has even open sourced it&rsquo;s development environment which on most systems may be setup in a virtual machine.
 But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely." />
 <meta property="og:type" content="article" />
@@ -149,7 +149,7 @@ But this is not so easy on Arch Linux, since these virtual machines rely on old(
 
             <div class="post-content">
                 <p><img src="/img/full/mutabledev.jpg" alt="mutable instruments dev environment"></p>
-<p><a href="https://mutable-instruments.net/">Mutable Instruments</a> is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware.</p>
+<p><a href="https://mutable-instruments.net/">Mutable Instruments</a> is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware (check out <a href="https://medium.com/music-thing-modular-notes/how-to-get-started-writing-your-own-firmware-for-mutable-instruments-clouds-a08173cec317">this brilliant tutorial om how to do the same</a>).</p>
 <p>The company has even open sourced it&rsquo;s <a href="https://github.com/pichenettes/mutable-dev-environment">development environment which on most systems may be setup in a virtual machine</a>.</p>
 <p>But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely.</p>
 <p>Below are some notes on how to replicate this - but if you are on anything other than Arch I would seriously recommend you to just use the Mutable Instruments dev environment in a virtual machine.</p>
@@ -207,7 +207,7 @@ make -f stages/makefile
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/cpp">cpp</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/arch">arch</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/mutable-instruments">mutable-instruments</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>415 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>426 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-01-26 13:39 &#43;0100</p>
         </div>
