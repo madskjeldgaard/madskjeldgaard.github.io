@@ -6,7 +6,34 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 26 Jan 2021 13:39:45 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2021 21:16:09 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>cpp</title>
+      <link>http://madskjeldgaard.dk/tags/cpp/</link>
+      <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>supercollider</title>
+      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
+      <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>teensy</title>
+      <link>http://madskjeldgaard.dk/tags/teensy/</link>
+      <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/teensy/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>arch</title>
       <link>http://madskjeldgaard.dk/tags/arch/</link>
@@ -17,29 +44,11 @@
     </item>
     
     <item>
-      <title>cpp</title>
-      <link>http://madskjeldgaard.dk/tags/cpp/</link>
-      <pubDate>Tue, 26 Jan 2021 13:39:45 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/cpp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>mutable-instruments</title>
       <link>http://madskjeldgaard.dk/tags/mutable-instruments/</link>
       <pubDate>Tue, 26 Jan 2021 13:39:45 +0100</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/mutable-instruments/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>supercollider</title>
-      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
-      <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
       <description></description>
     </item>
     
@@ -94,15 +103,6 @@
       <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/midi/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>teensy</title>
-      <link>http://madskjeldgaard.dk/tags/teensy/</link>
-      <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/teensy/</guid>
       <description></description>
     </item>
     

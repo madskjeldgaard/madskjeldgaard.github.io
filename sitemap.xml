@@ -3,12 +3,32 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>http://madskjeldgaard.dk/tags/arch/</loc>
-    <lastmod>2021-01-26T13:39:45+01:00</lastmod>
+    <loc>http://madskjeldgaard.dk/posts/master-volume/</loc>
+    <lastmod>2021-02-06T21:16:09+00:00</lastmod>
   </url>
   
   <url>
     <loc>http://madskjeldgaard.dk/tags/cpp/</loc>
+    <lastmod>2021-02-06T21:16:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
+    <lastmod>2021-02-06T21:16:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2021-02-06T21:16:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/teensy/</loc>
+    <lastmod>2021-02-06T21:16:09+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://madskjeldgaard.dk/tags/arch/</loc>
     <lastmod>2021-01-26T13:39:45+01:00</lastmod>
   </url>
   
@@ -23,22 +43,12 @@
   </url>
   
   <url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
-    <lastmod>2021-01-26T13:39:45+01:00</lastmod>
-  </url>
-  
-  <url>
     <loc>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</loc>
     <lastmod>2020-11-13T21:38:31+01:00</lastmod>
   </url>
   
   <url>
     <loc>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</loc>
-    <lastmod>2020-11-13T21:38:31+01:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
     <lastmod>2020-11-13T21:38:31+01:00</lastmod>
   </url>
   
@@ -74,11 +84,6 @@
   
   <url>
     <loc>http://madskjeldgaard.dk/tags/midi/</loc>
-    <lastmod>2020-10-21T15:48:28+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/tags/teensy/</loc>
     <lastmod>2020-10-21T15:48:28+02:00</lastmod>
   </url>
   
@@ -380,10 +385,6 @@
   <url>
     <loc>http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/</loc>
     <lastmod>2019-08-05T17:46:09+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://madskjeldgaard.dk/posts/master-volume/</loc>
   </url>
   
   <url>

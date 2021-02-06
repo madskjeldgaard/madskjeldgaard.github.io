@@ -6,7 +6,19 @@
     <description>Recent content in teensy on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Wed, 21 Oct 2020 15:48:28 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/teensy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 06 Feb 2021 21:16:09 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/teensy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A midi controller in a box of screws</title>
+      <link>http://madskjeldgaard.dk/posts/master-volume/</link>
+      <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
+      <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.</description>
+    </item>
+    
     <item>
       <title>Working with 14bit Midi using a Teensy microcontroller and Supercollider</title>
       <link>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</link>
@@ -14,18 +26,6 @@
       
       <guid>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</guid>
       <description>Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.</description>
-    </item>
-    
-    <item>
-      <title>A midi controller in a box of screws</title>
-      <link>http://madskjeldgaard.dk/posts/master-volume/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
-      <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
-It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
-Bill of materials includes:
- A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.</description>
     </item>
     
   </channel>

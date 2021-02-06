@@ -9,6 +9,86 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>A midi controller in a box of screws</title>
+            <link>http://madskjeldgaard.dk/posts/master-volume/</link>
+            <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
+            <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.</description>
+            <content type="html"><![CDATA[<p><img src="/img/full/screws1.jpg" alt="box of screws controller">
+<img src="/img/full/screws2.jpg" alt="box of screws controller"></p>
+<p>I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former.</p>
+<p>It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.</p>
+<p>Bill of materials includes:</p>
+<ul>
+<li>A 10k potentiometer</li>
+<li>A button</li>
+<li>A <a href="https://www.pjrc.com/teensy/teensyLC.html">Teensy LC</a></li>
+<li>A box (I used a leftover box that had contained some wood screws - perfect size!)</li>
+<li>A few wires</li>
+</ul>
+<p>All <a href="https://github.com/madskjeldgaard/MasterVolumeController">code and notes for building may be found here</a>.</p>
+<h2 id="supercollider-example">SuperCollider example</h2>
+<p>To use this controller as the master volume controller in SuperCollider you may copy and paste the following code to your startup file in SuperCollider.</p>
+<pre><code>//------------------------------------------
+// Server volume set by external controller
+//------------------------------------------
+
+Server.local.waitForBoot{
+
+	// Adjust these to match the Teensy code
+	var potentiometerCC = 7;
+	var muteNoteNum = 44;
+	var midichan = 0;
+
+	// Adjust this if device sourceid varies
+	var deviceSrcID = 1572864; 
+
+	// ----------------
+
+	// Connect midi
+	MIDIIn.connectAll();
+
+	// Setup responder for master volume
+	MIDIdef.cc(\masterVolume, {|...args| 
+		var value = args[0];
+		var volume = (value / 128.0).ampdb;
+
+		&quot;Server volume: % db&quot;.format(volume.round(0.01)).postln;
+
+		Server.local.volume = volume;
+	}, 
+		chan: midichan,
+		ccNum: potentiometerCC, 
+		srcID: deviceSrcID
+	).fix; // Make permanent between hardstops
+
+	// Mute button
+	MIDIdef.noteOn(\masterMute, {|...args| 
+
+		if(Server.local.volume.isMuted, {
+			&quot;Unmuting...&quot;.postln; 
+			Server.local.unmute 
+		}, {
+			&quot;Muting...&quot;.postln; 
+			Server.local.mute 
+		})
+
+	}, 
+		noteNum: muteNoteNum, 
+		chan: midichan,
+		srcID: deviceSrcID
+	).fix; // Make permanent between hardstops
+
+};
+
+</code></pre>]]></content>
+        </item>
+        
+        <item>
             <title>Mutable Instruments dev environment on Arch Linux</title>
             <link>http://madskjeldgaard.dk/posts/mutable-dev/</link>
             <pubDate>Tue, 26 Jan 2021 13:39:45 +0100</pubDate>
@@ -4020,86 +4100,6 @@ NRT works like this (normally): First you write a list of server OSC messages (s
 <span style="color:#f92672">~</span><span style="color:#a6e22e">renderMelody</span>.<span style="color:#a6e22e">value</span>(<span style="color:#a6e22e">p</span>, <span style="color:#e6db74">&#34;~/Desktop/boringMelody&#34;</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;.wav&#34;</span>);
 };
 </code></pre></div>]]></content>
-        </item>
-        
-        <item>
-            <title>A midi controller in a box of screws</title>
-            <link>http://madskjeldgaard.dk/posts/master-volume/</link>
-            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-            
-            <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
-            <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
-It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
-Bill of materials includes:
- A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.</description>
-            <content type="html"><![CDATA[<p><img src="/img/full/screws1.jpg" alt="box of screws controller">
-<img src="/img/full/screws2.jpg" alt="box of screws controller"></p>
-<p>I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former.</p>
-<p>It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.</p>
-<p>Bill of materials includes:</p>
-<ul>
-<li>A 10k potentiometer</li>
-<li>A button</li>
-<li>A <a href="https://www.pjrc.com/teensy/teensyLC.html">Teensy LC</a></li>
-<li>A box (I used a leftover box that had contained some wood screws - perfect size!)</li>
-<li>A few wires</li>
-</ul>
-<p>All <a href="https://github.com/madskjeldgaard/MasterVolumeController">code and notes for building may be found here</a>.</p>
-<h2 id="supercollider-example">SuperCollider example</h2>
-<p>To use this controller as the master volume controller in SuperCollider you may copy and paste the following code to your startup file in SuperCollider.</p>
-<pre><code>//------------------------------------------
-// Server volume set by external controller
-//------------------------------------------
-
-Server.local.waitForBoot{
-
-	// Adjust these to match the Teensy code
-	var potentiometerCC = 7;
-	var muteNoteNum = 44;
-	var midichan = 0;
-
-	// Adjust this if device sourceid varies
-	var deviceSrcID = 1572864; 
-
-	// ----------------
-
-	// Connect midi
-	MIDIIn.connectAll();
-
-	// Setup responder for master volume
-	MIDIdef.cc(\masterVolume, {|...args| 
-		var value = args[0];
-		var volume = (value / 128.0).ampdb;
-
-		&quot;Server volume: % db&quot;.format(volume.round(0.01)).postln;
-
-		Server.local.volume = volume;
-	}, 
-		chan: midichan,
-		ccNum: potentiometerCC, 
-		srcID: deviceSrcID
-	).fix; // Make permanent between hardstops
-
-	// Mute button
-	MIDIdef.noteOn(\masterMute, {|...args| 
-
-		if(Server.local.volume.isMuted, {
-			&quot;Unmuting...&quot;.postln; 
-			Server.local.unmute 
-		}, {
-			&quot;Muting...&quot;.postln; 
-			Server.local.mute 
-		})
-
-	}, 
-		noteNum: muteNoteNum, 
-		chan: midichan,
-		srcID: deviceSrcID
-	).fix; // Make permanent between hardstops
-
-};
-
-</code></pre>]]></content>
         </item>
         
     </channel>
