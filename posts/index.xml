@@ -17,7 +17,7 @@
             <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
 It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
 Bill of materials includes:
- A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.</description>
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires (Optionally) A 3D-printed bracket to mount the Teensy to the side of the box  All code and notes for building may be found here.</description>
             <content type="html"><![CDATA[<p><img src="/img/full/screws1.jpg" alt="box of screws controller">
 <img src="/img/full/screws2.jpg" alt="box of screws controller"></p>
 <p>I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former.</p>
@@ -29,6 +29,7 @@ Bill of materials includes:
 <li>A <a href="https://www.pjrc.com/teensy/teensyLC.html">Teensy LC</a></li>
 <li>A box (I used a leftover box that had contained some wood screws - perfect size!)</li>
 <li>A few wires</li>
+<li>(Optionally) A <a href="https://www.thingiverse.com/thing:4568474">3D-printed bracket to mount the Teensy to the side of the box</a></li>
 </ul>
 <p>All <a href="https://github.com/madskjeldgaard/MasterVolumeController">code and notes for building may be found here</a>.</p>
 <h2 id="supercollider-example">SuperCollider example</h2>
