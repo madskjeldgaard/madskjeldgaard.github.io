@@ -54,5 +54,17 @@ I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CP
 So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.</description>
     </item>
     
+    <item>
+      <title>A midi controller in a box of screws</title>
+      <link>http://madskjeldgaard.dk/posts/master-volume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
+      <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.</description>
+    </item>
+    
   </channel>
 </rss>

@@ -14,7 +14,7 @@
       
       <guid>http://madskjeldgaard.dk/pages/software/</guid>
       <description>Most of the software I develop as part of my practice is made available on Github.
-Instruments / Systems  vortex - A system for turbulent tape music akkorder - This repo contains the code used to generate the pieces for the release &amp;ldquo;Akkorder&amp;rdquo; by Mads Kjeldgaard.  Command line tools  osccli - OSC Communication on the command line. Written in fast and safe Rust. cookiecutter quark - A cookiecutter template to help you automatically generate a SuperCollider Quark (package) sox-tricks - Command line tools that make batch processing, editing and organization of audio files a fast and painless task.</description>
+ tree-sitter-supercollider - Advanced, incremental code parser grammar adding support for the SuperCollider programming language in the tree-sitter parser.  Instruments / Systems  vortex - A system for turbulent tape music akkorder - This repo contains the code used to generate the pieces for the release &amp;ldquo;Akkorder&amp;rdquo; by Mads Kjeldgaard.  Command line tools  osccli - OSC Communication on the command line.</description>
     </item>
     
     <item>
