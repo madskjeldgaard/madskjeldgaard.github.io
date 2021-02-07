@@ -34,24 +34,27 @@ Bill of materials includes:
 <p>All <a href="https://github.com/madskjeldgaard/MasterVolumeController">code and notes for building may be found here</a>.</p>
 <h2 id="supercollider-example">SuperCollider example</h2>
 <p>To use this controller as the master volume controller in SuperCollider you may copy and paste the following code to your startup file in SuperCollider.</p>
-<pre><code>//------------------------------------------
+<pre><code>
+//------------------------------------------
 // Server volume set by external controller
 //------------------------------------------
 
 Server.local.waitForBoot{
+
+	var deviceName = &quot;MasterVol&quot;;
 
 	// Adjust these to match the Teensy code
 	var potentiometerCC = 7;
 	var muteNoteNum = 44;
 	var midichan = 0;
 
-	// Adjust this if device sourceid varies
-	var deviceSrcID = 1572864; 
+	var deviceSrcID; 
 
 	// ----------------
-
 	// Connect midi
 	MIDIIn.connectAll();
+
+	deviceSrcID = MIDIClient.sources.select{|client| client.device == deviceName}[0].uid; 
 
 	// Setup responder for master volume
 	MIDIdef.cc(\masterVolume, {|...args| 
@@ -85,7 +88,6 @@ Server.local.waitForBoot{
 	).fix; // Make permanent between hardstops
 
 };
-
 </code></pre>]]></content>
         </item>
         
