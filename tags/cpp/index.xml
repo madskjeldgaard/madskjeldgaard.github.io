@@ -13,10 +13,8 @@
       <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
-      <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
-It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
-Bill of materials includes:
- A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires (Optionally) A 3D-printed bracket to mount the Teensy to the side of the box  All code and notes for building may be found here.</description>
+      <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&amp;rsquo;s bits for this) to allow high resolution on the potentiometer&amp;rsquo;s input.
+The controller is very cheap and simple to make.</description>
     </item>
     
     <item>
