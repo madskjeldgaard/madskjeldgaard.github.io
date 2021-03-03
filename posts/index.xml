@@ -9,6 +9,40 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Automatically build, compile and release SuperCollider plugins using Github Actions</title>
+            <link>http://madskjeldgaard.dk/posts/how-to-gh-action/</link>
+            <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/how-to-gh-action/</guid>
+            <description>Since the main SuperCollider github repository moved to using Github Actions to automatically build, compile and release cross platform, I felt intrigued to use the same technology to do the same for SuperCollider plugins.
+There is a number of amazing SuperCollider plugin repositories on Github - a lot will demand that the user compiles the sourcecode themselves to use the plugins. For people used to CMake and/or a Linux-ey workflow of compiling, this is not a big problem but for a lot of others (most people perhaps), it really is a doorstopper.</description>
+            <content type="html"><![CDATA[<p>Since the main SuperCollider github repository moved to using Github Actions to automatically build, compile and release cross platform, I felt intrigued to use the same technology to do the same for SuperCollider plugins.</p>
+<p>There is a number of amazing SuperCollider plugin repositories on Github - a lot will demand that the user compiles the sourcecode themselves to use the plugins. For people used to CMake and/or a Linux-ey workflow of compiling, this is not a big problem but for a lot of others (most people perhaps), it really is a doorstopper.</p>
+<p>Thankfully, we can automate all of this.</p>
+<p>For the developers, this means that whenever they push a new version tag, Github will automatically compile and package everything nicely.</p>
+<p>For the users, this will make it easy them to find and download the correct version of the plugins for their operating system of choice.</p>
+<p>If you want to see a live example of this, I do this in my own <a href="https://github.com/madskjeldgaard/mkplugins/releases">personal plugin repository</a>.</p>
+<h2 id="how-to-set-up-github-actions-to-build-and-publish-supercollider-plugins">How to set up Github Actions to build and publish SuperCollider plugins</h2>
+<p>I have written a configuration file for Github Actions that makes this whole process fairly easy for plugin developers. It is all based around a .yaml-file containing a list of commands to be run to build the plugins. These are the same commands you would use locally to build the plugins basically, but for macOS, Linux and Windows in one go.</p>
+<ol>
+<li>Add <a href="https://gist.github.com/madskjeldgaard/1f2e91c59ca0476ec600b3c6af799702">this yaml</a> file to <code>.github/workflows</code> in your git repo.</li>
+<li>Edit the file to change all of <code>MKPlugins</code> to whatever you want your asset (this is the zip file containing your prebuilt release) to be called.</li>
+<li>Then, locally run <code>git add -f .github/workflows/build.yml</code> and <code>git commit .github/workflows/build.yml -m &quot;Add GH action&quot;</code> to add this file to your project.</li>
+<li>Push the file to <code>main</code> branch on Github: <code>git push</code></li>
+<li>Open up Github.com and navigate to your repo, click the &ldquo;Actions&rdquo; pane and select your workflow. This is where you will be able to see your &ldquo;jobs&rdquo; running in realtime (and potential errors they give off).</li>
+</ol>
+<h2 id="create-a-release">Create a release</h2>
+<p>The way the yaml file is set up, it will activate the process whenever the github repository receives a new tag containing <code>v*</code>, where the asterisk is some version number (for example <code>v1</code> or <code>v2.0.19</code>).</p>
+<p>To activate this, in your local git repo you may run this command to</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create a version tag</span>
+git tag v0.0.108 
+
+<span style="color:#75715e"># Push new version tag to GH and activate action</span>
+git push origin --tags
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
             <title>A midi controller in a box of screws</title>
             <link>http://madskjeldgaard.dk/posts/master-volume/</link>
             <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
@@ -76,6 +110,8 @@ echo <span style="color:#e6db74">&#34;gccver=48
 </code></pre></div><h2 id="install-prerequisites">Install prerequisites</h2>
 <p>Now to install the rest of the packages:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S  autoconf pkgconf libusb libftdi git ncurses cowsay figlet arm-none-eabi-gcc openocd python2-numpy python2-scipy python2-matplotlib avr-gcc avr-binutils avr-libc avrdude stlink arm-none-eabi-newlib arm-eabi-4.8
+
+pip2 install matplotlib scipy
 </code></pre></div><h2 id="symlinking">Symlinking</h2>
 <p>Make expects arm g++ to available in a non traditional place:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ln -s /usr/bin/arm-none-eabi-g++ /usr/local/arm/bin/arm-none-eabi-g++

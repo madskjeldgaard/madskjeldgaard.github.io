@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>github on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/github/</link>
+    <description>Recent content in github on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Wed, 03 Mar 2021 18:22:34 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Automatically build, compile and release SuperCollider plugins using Github Actions</title>
+      <link>http://madskjeldgaard.dk/posts/how-to-gh-action/</link>
+      <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/how-to-gh-action/</guid>
+      <description>Since the main SuperCollider github repository moved to using Github Actions to automatically build, compile and release cross platform, I felt intrigued to use the same technology to do the same for SuperCollider plugins.
+There is a number of amazing SuperCollider plugin repositories on Github - a lot will demand that the user compiles the sourcecode themselves to use the plugins. For people used to CMake and/or a Linux-ey workflow of compiling, this is not a big problem but for a lot of others (most people perhaps), it really is a doorstopper.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -8,6 +8,16 @@
     <language>en-uk</language>
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Automatically build, compile and release SuperCollider plugins using Github Actions</title>
+      <link>http://madskjeldgaard.dk/posts/how-to-gh-action/</link>
+      <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/how-to-gh-action/</guid>
+      <description>Since the main SuperCollider github repository moved to using Github Actions to automatically build, compile and release cross platform, I felt intrigued to use the same technology to do the same for SuperCollider plugins.
+There is a number of amazing SuperCollider plugin repositories on Github - a lot will demand that the user compiles the sourcecode themselves to use the plugins. For people used to CMake and/or a Linux-ey workflow of compiling, this is not a big problem but for a lot of others (most people perhaps), it really is a doorstopper.</description>
+    </item>
+    
+    <item>
       <title>A midi controller in a box of screws</title>
       <link>http://madskjeldgaard.dk/posts/master-volume/</link>
       <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
