@@ -9,6 +9,130 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Setting up and using the Daisy Seed DSP platform on Linux</title>
+            <link>http://madskjeldgaard.dk/posts/daisy-setup/</link>
+            <pubDate>Thu, 11 Mar 2021 09:20:36 +0100</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/daisy-setup/</guid>
+            <description>I recently got hold of Electro-Smith&amp;rsquo;s powerful Daisy Seed microcontroller board for developing embedded DSP projects. Unfortunately, at the time of writing the libraries for it do not support Platformio fully which is normally my preferred way of working with microcontrollers but fortunately it&amp;rsquo;s pretty easy to setup and use using make. Here are my notes for doing that.
+Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and build libraries From the root of your project:</description>
+            <content type="html"><![CDATA[<p>I recently got hold of Electro-Smith&rsquo;s powerful <a href="https://https://www.electro-smith.com/daisy">Daisy Seed</a> microcontroller board for developing embedded DSP projects. Unfortunately, at the time of writing the libraries for it do not support Platformio fully which is normally my preferred way of working with microcontrollers but fortunately it&rsquo;s pretty easy to setup and use using <em>make</em>. Here are my notes for doing that.</p>
+<h2 id="install-prerequisites-on-arch">Install prerequisites (on Arch)</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S dfu-util gcc-arm-none-eabi-bin
+</code></pre></div><h2 id="setup-and-build-libraries">Setup and build libraries</h2>
+<p>From the root of your project:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git init
+git submodule add https://github.com/electro-smith/DaisySP
+git submodule add https://github.com/electro-smith/libDaisy
+
+echo <span style="color:#e6db74">&#34;building DaisySP . . .&#34;</span>
+cd <span style="color:#e6db74">&#34;DaisySP&#34;</span> ; make clean ; make | grep <span style="color:#e6db74">&#34;warning:r\|error&#34;</span> ;
+echo <span style="color:#e6db74">&#34;done.&#34;</span>
+
+cd ../libDaisy
+echo <span style="color:#e6db74">&#34;building libDaisy . . .&#34;</span>
+make clean ; make | grep <span style="color:#e6db74">&#34;warning:r\|error&#34;</span> ;
+echo <span style="color:#e6db74">&#34;done.&#34;</span>
+</code></pre></div><h2 id="makefile-and-cpp-file">Makefile and cpp file</h2>
+<p>Here&rsquo;s an example of a Makefile:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#75715e"># Project Name
+</span><span style="color:#75715e"></span>TARGET <span style="color:#f92672">=</span> ex_vco
+
+<span style="color:#75715e"># Sources
+</span><span style="color:#75715e"></span>CPP_SOURCES <span style="color:#f92672">=</span> ex_vco.cpp
+
+<span style="color:#75715e"># Library Locations
+</span><span style="color:#75715e"></span>LIBDAISY_DIR <span style="color:#f92672">=</span> libDaisy
+DAISYSP_DIR <span style="color:#f92672">=</span> DaisySP
+
+<span style="color:#75715e"># Core location, and generic Makefile.
+</span><span style="color:#75715e"></span>SYSTEM_FILES_DIR <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>LIBDAISY_DIR<span style="color:#66d9ef">)</span>/core
+<span style="color:#960050;background-color:#1e0010">include</span> <span style="color:#66d9ef">$(</span>SYSTEM_FILES_DIR<span style="color:#66d9ef">)</span><span style="color:#960050;background-color:#1e0010">/Makefile</span>
+</code></pre></div><p>And the accompanying code (<em>ex_vco.cpp</em>)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;daisysp.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;daisy_patch.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> daisy;
+<span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> daisysp;
+
+DaisyPatch patch;
+Oscillator osc;
+Parameter  freqctrl, wavectrl, ampctrl, finectrl;
+
+<span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">AudioCallback</span>(<span style="color:#66d9ef">float</span> <span style="color:#f92672">**</span>in, <span style="color:#66d9ef">float</span> <span style="color:#f92672">**</span>out, size_t size)
+{
+    <span style="color:#66d9ef">float</span>  sig, freq, amp;
+    size_t wave;
+
+    patch.ProcessAnalogControls();
+
+    <span style="color:#66d9ef">for</span>(size_t i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> size; i<span style="color:#f92672">++</span>)
+    {
+        <span style="color:#75715e">// Read Knobs
+</span><span style="color:#75715e"></span>        freq <span style="color:#f92672">=</span> mtof(freqctrl.Process() <span style="color:#f92672">+</span> finectrl.Process());
+        wave <span style="color:#f92672">=</span> wavectrl.Process();
+        amp  <span style="color:#f92672">=</span> ampctrl.Process();
+        <span style="color:#75715e">// Set osc params
+</span><span style="color:#75715e"></span>        osc.SetFreq(freq);
+        osc.SetWaveform(wave);
+        osc.SetAmp(amp);
+        <span style="color:#75715e">//.Process
+</span><span style="color:#75715e"></span>        sig <span style="color:#f92672">=</span> osc.Process();
+        <span style="color:#75715e">// Assign Synthesized Waveform to all four outputs.
+</span><span style="color:#75715e"></span>        <span style="color:#66d9ef">for</span>(size_t chn <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; chn <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">4</span>; chn<span style="color:#f92672">++</span>)
+        {
+            out[chn][i] <span style="color:#f92672">=</span> sig;
+        }
+    }
+}
+
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(<span style="color:#66d9ef">void</span>)
+{
+    <span style="color:#66d9ef">float</span> samplerate;
+    <span style="color:#66d9ef">int</span>   num_waves <span style="color:#f92672">=</span> Oscillator<span style="color:#f92672">::</span>WAVE_LAST <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
+    patch.Init(); <span style="color:#75715e">// Initialize hardware (daisy seed, and patch)
+</span><span style="color:#75715e"></span>    samplerate <span style="color:#f92672">=</span> patch.AudioSampleRate();
+
+    osc.Init(samplerate); <span style="color:#75715e">// Init oscillator
+</span><span style="color:#75715e"></span>
+    freqctrl.Init(
+        patch.controls[patch.CTRL_1], <span style="color:#ae81ff">10.0</span>, <span style="color:#ae81ff">110.0f</span>, Parameter<span style="color:#f92672">::</span>LINEAR);
+    finectrl.Init(patch.controls[patch.CTRL_2], <span style="color:#ae81ff">0.f</span>, <span style="color:#ae81ff">7.f</span>, Parameter<span style="color:#f92672">::</span>LINEAR);
+    wavectrl.Init(
+        patch.controls[patch.CTRL_3], <span style="color:#ae81ff">0.0</span>, num_waves, Parameter<span style="color:#f92672">::</span>LINEAR);
+    ampctrl.Init(patch.controls[patch.CTRL_4], <span style="color:#ae81ff">0.0</span>, <span style="color:#ae81ff">0.5f</span>, Parameter<span style="color:#f92672">::</span>LINEAR);
+
+    <span style="color:#75715e">//briefly display module name
+</span><span style="color:#75715e"></span>    std<span style="color:#f92672">::</span>string str  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;VCO&#34;</span>;
+    <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>      cstr <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>str[<span style="color:#ae81ff">0</span>];
+    patch.display.WriteString(cstr, Font_7x10, true);
+    patch.display.Update();
+    patch.DelayMs(<span style="color:#ae81ff">1000</span>);
+
+    patch.StartAdc();
+    patch.StartAudio(AudioCallback);
+    <span style="color:#66d9ef">while</span>(<span style="color:#ae81ff">1</span>)
+    {
+        patch.DisplayControls(false);
+    }
+}
+</code></pre></div><p>Both of these are from the Daisy examples.</p>
+<h2 id="building">Building</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make
+</code></pre></div><h2 id="uploading">Uploading</h2>
+<p>Put Daisy into DFU mode by pressing BOOT, then RESET, then letting go of RESET and then of BOOT.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make program-dfu
+</code></pre></div><p>Or build and upload in one:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make; make program-dfu
+</code></pre></div><h2 id="project-generator-script">Project generator script</h2>
+<p>I created a small script for myself to generate projects for the Daisy Seed.</p>
+<script type="application/javascript" src="https://gist.github.com/madskjeldgaard/117e9ee328641aae10b5493a94f7efe2.js"></script>
+
+]]></content>
+        </item>
+        
+        <item>
             <title>Automatically build, compile and release SuperCollider plugins using Github Actions</title>
             <link>http://madskjeldgaard.dk/posts/how-to-gh-action/</link>
             <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>

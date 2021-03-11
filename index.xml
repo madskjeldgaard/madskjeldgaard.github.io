@@ -8,6 +8,16 @@
     <language>en-uk</language>
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Setting up and using the Daisy Seed DSP platform on Linux</title>
+      <link>http://madskjeldgaard.dk/posts/daisy-setup/</link>
+      <pubDate>Thu, 11 Mar 2021 09:20:36 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/daisy-setup/</guid>
+      <description>I recently got hold of Electro-Smith&amp;rsquo;s powerful Daisy Seed microcontroller board for developing embedded DSP projects. Unfortunately, at the time of writing the libraries for it do not support Platformio fully which is normally my preferred way of working with microcontrollers but fortunately it&amp;rsquo;s pretty easy to setup and use using make. Here are my notes for doing that.
+Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and build libraries From the root of your project:</description>
+    </item>
+    
+    <item>
       <title>Automatically build, compile and release SuperCollider plugins using Github Actions</title>
       <link>http://madskjeldgaard.dk/posts/how-to-gh-action/</link>
       <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
