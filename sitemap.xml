@@ -3,18 +3,24 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>http://madskjeldgaard.dk/tags/cpp/</loc>
-    <lastmod>2021-03-11T09:20:36+01:00</lastmod>
+    <lastmod>2021-03-18T22:09:08+01:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/dsp/</loc>
+    <lastmod>2021-03-18T22:09:08+01:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
+    <lastmod>2021-03-18T22:09:08+01:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2021-03-18T22:09:08+01:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</loc>
+    <lastmod>2021-03-18T22:09:08+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/tags/daisy/</loc>
     <lastmod>2021-03-11T09:20:36+01:00</lastmod>
   </url><url>
-    <loc>http://madskjeldgaard.dk/tags/dsp/</loc>
-    <lastmod>2021-03-11T09:20:36+01:00</lastmod>
-  </url><url>
     <loc>http://madskjeldgaard.dk/posts/daisy-setup/</loc>
-    <lastmod>2021-03-11T09:20:36+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2021-03-11T09:20:36+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/how-to-gh-action/</loc>
@@ -24,9 +30,6 @@
     <lastmod>2021-03-03T18:22:34+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/tags/github/</loc>
-    <lastmod>2021-03-03T18:22:34+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
     <lastmod>2021-03-03T18:22:34+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/master-volume/</loc>

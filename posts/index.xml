@@ -9,6 +9,21 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Tutorial: How to write plugins for SuperCollider using C&#43;&#43;</title>
+            <link>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</link>
+            <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</guid>
+            <description>My amazing workplace allowed me time during the Covid-19 lockdowns in Oslo to spend time improving my C++ and DSP skills. The result of this is a bunch of plugins for SuperCollider, some of which are already released as well as a trunk of Notam plugins that are to be announced.
+The process of creating server plugins (aka UGens) for SuperCollider is one of the most fun and gratifying ways one can experiment with DSP and C++ in my opinion.</description>
+            <content type="html"><![CDATA[<p>My amazing <a href="https://notam.no">workplace</a> allowed me time during the Covid-19 lockdowns in Oslo to spend time improving my C++ and DSP skills. The result of this is a bunch of plugins for SuperCollider, <a href="https://github.com/madskjeldgaard/mkplugins">some of which are already released</a> as well as a trunk of Notam plugins that are to be announced.</p>
+<p>The process of creating server plugins (aka UGens) for SuperCollider is one of the most fun and gratifying ways one can experiment with DSP and C++ in my opinion. That said, getting started with it was a difficult task for me since the different resources on the process of creating plugins for SuperCollider were either spotty or out of date and did not include some of the best practices involved in creating high quality plugins.</p>
+<p>While learning about this myself and piece together the information, I decided to write up a <a href="https://scsynth.org/t/tutorial-supercollider-server-plugins-in-c/3449">tutorial</a> containing the information I wish I had when I started out.</p>
+<p><a href="https://https://raw.githubusercontent.com/notam02/supercollider-plugin-tutorial/main/tutorial/how-to-make-a-supercollider-plugin-cpp.pdf">Click here to download the PDF version</a>.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>Setting up and using the Daisy Seed DSP platform on Linux</title>
             <link>http://madskjeldgaard.dk/posts/daisy-setup/</link>
             <pubDate>Thu, 11 Mar 2021 09:20:36 +0100</pubDate>

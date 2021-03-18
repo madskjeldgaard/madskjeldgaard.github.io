@@ -6,7 +6,17 @@
     <description>Recent content in dsp on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Thu, 11 Mar 2021 09:20:36 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/dsp/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Mar 2021 22:09:08 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/dsp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tutorial: How to write plugins for SuperCollider using C&#43;&#43;</title>
+      <link>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</link>
+      <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</guid>
+      <description>My amazing workplace allowed me time during the Covid-19 lockdowns in Oslo to spend time improving my C++ and DSP skills. The result of this is a bunch of plugins for SuperCollider, some of which are already released as well as a trunk of Notam plugins that are to be announced.
+The process of creating server plugins (aka UGens) for SuperCollider is one of the most fun and gratifying ways one can experiment with DSP and C++ in my opinion.</description>
+    </item>
+    
     <item>
       <title>Setting up and using the Daisy Seed DSP platform on Linux</title>
       <link>http://madskjeldgaard.dk/posts/daisy-setup/</link>

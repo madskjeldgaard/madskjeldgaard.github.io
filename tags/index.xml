@@ -6,13 +6,31 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Thu, 11 Mar 2021 09:20:36 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 18 Mar 2021 22:09:08 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>cpp</title>
       <link>http://madskjeldgaard.dk/tags/cpp/</link>
-      <pubDate>Thu, 11 Mar 2021 09:20:36 +0100</pubDate>
+      <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dsp</title>
+      <link>http://madskjeldgaard.dk/tags/dsp/</link>
+      <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/dsp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>supercollider</title>
+      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
+      <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
       <description></description>
     </item>
     
@@ -22,15 +40,6 @@
       <pubDate>Thu, 11 Mar 2021 09:20:36 +0100</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/daisy/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>dsp</title>
-      <link>http://madskjeldgaard.dk/tags/dsp/</link>
-      <pubDate>Thu, 11 Mar 2021 09:20:36 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/dsp/</guid>
       <description></description>
     </item>
     
@@ -49,15 +58,6 @@
       <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>supercollider</title>
-      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
-      <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
       <description></description>
     </item>
     
