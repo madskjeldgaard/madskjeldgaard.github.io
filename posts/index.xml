@@ -1028,7 +1028,8 @@ git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;first commit&#3
 <code>git push</code></p>
 <h2 id="step-35-updating-a-package">Step 3.5: Updating a package</h2>
 <p>After updating a PKGBUILD, you need to regenerate the <code>.SRCINFO</code> file and then commit it with the PKGBUILD that was changed:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg --printsrcinfo &gt; .SRCINFO
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">updpkgsums
+makepkg --printsrcinfo &gt; .SRCINFO
 git add -f .SRCINFO PKGBUILD
 git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;important change&#34;</span>
 </code></pre></div><hr>
@@ -4221,6 +4222,16 @@ NRT works like this (normally): First you write a list of server OSC messages (s
 <span style="color:#f92672">~</span><span style="color:#a6e22e">renderMelody</span>.<span style="color:#a6e22e">value</span>(<span style="color:#a6e22e">p</span>, <span style="color:#e6db74">&#34;~/Desktop/boringMelody&#34;</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;.wav&#34;</span>);
 };
 </code></pre></div>]]></content>
+        </item>
+        
+        <item>
+            <title>Notes on creating packages for the Arch User Repository (AUR)</title>
+            <link>http://madskjeldgaard.dk/posts/yo/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/yo/</guid>
+            <description></description>
+            <content type="html"><![CDATA[]]></content>
         </item>
         
     </channel>

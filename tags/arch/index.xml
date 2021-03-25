@@ -48,5 +48,14 @@ If you have a tolerance for YouTube videos, then maybe this video will be helpfu
 It is also recommend to read the official guide on how to create packages: Creating packages.</description>
     </item>
     
+    <item>
+      <title>Notes on creating packages for the Arch User Repository (AUR)</title>
+      <link>http://madskjeldgaard.dk/posts/yo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/yo/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
