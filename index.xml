@@ -201,7 +201,7 @@ In the interview (which is in Danish unfortunately) I talk about the brain, morp
       
       <guid>http://madskjeldgaard.dk/pages/movies/</guid>
       <description>These are films that I saw (oftentime with Sofie) and liked a lot and that I recommend others to watch as well.
-   title year     A Separation 2011   Alien 1979   Alphaville 1965   Amour 2012   Antichrist 2009   Apocalypse Now 1979   Ascenseur pour l&amp;rsquo;échafaud 1958   Bacurau 2019   Borgman 2013   Bullhead 2011   Caché 2005   Chaser 2008   Down Terrace 2009   Elle 2016   Festen 1998   Fucking Åmål 1999   Hiroshima Mon Amour 1959   Ikiru 1952   L&amp;rsquo;Humanité 1999   La Vie de Jésus 1997   Lady Snowblood 1973   Le Feu Follet 1963   Le Samouraï 1967   Le feu follet 1963   Lost in Translation 2003   Love Streams 1984   Lyset fra sjokoladefabrikken 2020   Naked 1993   Night and Day 2008   Night of the Hunter 1955   Nobody Knows 2004   Oslo, 31.</description>
+   title year     A Separation 2011   Alien 1979   Alphaville 1965   Amour 2012   Antichrist 2009   Apocalypse Now 1979   Ascenseur pour l&amp;rsquo;échafaud 1958   Bacurau 2019   Borgman 2013   Bullhead 2011   Caché 2005   Chaser 2008   Down Terrace 2009   Elle 2016   Embrace of the serpent 2015   Festen 1998   Fucking Åmål 1999   Hiroshima Mon Amour 1959   Ikiru 1952   Kramer vs.</description>
     </item>
     
     <item>
@@ -469,6 +469,17 @@ This becomes annoying when working with UGens that want to know the exact number
       <guid>http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
       <description>One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
 NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.</description>
+    </item>
+    
+    <item>
+      <title>GDB and SuperCollider plugins</title>
+      <link>http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/</guid>
+      <description>We will assume that you already have SuperCollider running and that you have booted the server. Now you&amp;rsquo;d like to attach the GDB debugger to that process to see what happens when / if it crashes.
+Attach GDB to an already running scsynth process First, we need to find the pid of the running process:
+ps -C scsynth -o pid h Then, we can use the number output from the command above to attach gdb:</description>
     </item>
     
     <item>

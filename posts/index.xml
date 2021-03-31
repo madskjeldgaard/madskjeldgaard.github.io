@@ -4225,6 +4225,27 @@ NRT works like this (normally): First you write a list of server OSC messages (s
         </item>
         
         <item>
+            <title>GDB and SuperCollider plugins</title>
+            <link>http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/</link>
+            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/</guid>
+            <description>We will assume that you already have SuperCollider running and that you have booted the server. Now you&amp;rsquo;d like to attach the GDB debugger to that process to see what happens when / if it crashes.
+Attach GDB to an already running scsynth process First, we need to find the pid of the running process:
+ps -C scsynth -o pid h Then, we can use the number output from the command above to attach gdb:</description>
+            <content type="html"><![CDATA[<p>We will assume that you already have SuperCollider running and that you have booted the server. Now you&rsquo;d like to attach the GDB debugger to that process to see what happens when / if it crashes.</p>
+<h2 id="attach-gdb-to-an-already-running-scsynth-process">Attach GDB to an already running scsynth process</h2>
+<p>First, we need to find the pid of the running process:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ps -C scsynth -o pid h
+</code></pre></div><p>Then, we can use the number output from the command above to attach gdb:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gdb scsynth -p &lt;pid&gt;
+</code></pre></div><p>Or, both of the above in one line:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gdb scsynth -p <span style="color:#66d9ef">$(</span>ps -C scsynth -o pid h<span style="color:#66d9ef">)</span>
+</code></pre></div><p>Once inside GDB, you may execute the command <code>n</code> (or <code>next</code>) until it crashes. Then run <code>bt</code> to get a backtrace with more information.</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>Notes on creating packages for the Arch User Repository (AUR)</title>
             <link>http://madskjeldgaard.dk/posts/yo/</link>
             <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
