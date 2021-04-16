@@ -8,6 +8,16 @@
     <language>en-uk</language>
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Getting started with Faust for SuperCollider</title>
+      <link>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</link>
+      <pubDate>Fri, 16 Apr 2021 16:08:27 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</guid>
+      <description>I recently started toying around with Faust. Faust is a functional programming language specifically designed for audio manipulation. One of the many strengths of Faust is it&amp;rsquo;s compiler backends that allows the user to compile Faust code to almost any end target - including microcontrollers, JUCE/VST plugin projects, Pure Data, Max and SuperCollider - with the same Faust code. It even works in the browser.
+Another fantastic strength is the library of building blocks it comes with - these are extremely high quality and reflect a lot of the new developments in DSP technology and research in recent years.</description>
+    </item>
+    
+    <item>
       <title>Tutorial: How to write plugins for SuperCollider using C&#43;&#43;</title>
       <link>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</link>
       <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>

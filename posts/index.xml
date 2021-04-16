@@ -9,6 +9,75 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Getting started with Faust for SuperCollider</title>
+            <link>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</link>
+            <pubDate>Fri, 16 Apr 2021 16:08:27 +0200</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</guid>
+            <description>I recently started toying around with Faust. Faust is a functional programming language specifically designed for audio manipulation. One of the many strengths of Faust is it&amp;rsquo;s compiler backends that allows the user to compile Faust code to almost any end target - including microcontrollers, JUCE/VST plugin projects, Pure Data, Max and SuperCollider - with the same Faust code. It even works in the browser.
+Another fantastic strength is the library of building blocks it comes with - these are extremely high quality and reflect a lot of the new developments in DSP technology and research in recent years.</description>
+            <content type="html"><![CDATA[<p>I recently started toying around with <a href="https://faust.grame.fr/">Faust</a>. Faust is a functional programming language specifically designed for audio manipulation. One of the many strengths of Faust is it&rsquo;s compiler backends that allows the user to compile Faust code to almost any end target - including microcontrollers, JUCE/VST plugin projects, Pure Data, Max and SuperCollider - with the same Faust code. <a href="https://faustide.grame.fr/">It even works in the browser.</a></p>
+<p>Another fantastic strength is the <a href="https://faustlibraries.grame.fr/">library of building blocks</a> it comes with - these are extremely high quality and reflect a lot of the new developments in DSP technology and research in recent years. For you as a user this means you have a really solid toolbox for creating sound patches.</p>
+<p>For SuperCollider users this means that Faust is probably the quickest way to create highly effective custom plugins / UGens for SuperCollider.</p>
+<h2 id="faust2supercollider-creating-a-supercollider-plugin-using-faust">faust2supercollider: Creating a SuperCollider plugin using Faust</h2>
+<p>If you <a href="https://faust.grame.fr/downloads/">download and install faust on your computer</a>(most Linux distributions probably have it in their package managers), you get a ton of compilation tools for free. These are all prefixed <code>faust2&lt;target&gt;</code>.</p>
+<p>For SuperCollider there is a specific tool called <code>faust2supercollider</code>, this takes a Faust file as an input and compiles it as a SuperCollider UGen. The UGen consists of two files: a compiled object and a <code>.sc</code>-file containing the sclang interface for it.</p>
+<p>Let&rsquo;s try a simple example. Create a file called <code>Wah4.dsp</code> (.dsp is the suffix for Faust-files) and put this code in it:</p>
+<pre><code class="language-faust" data-lang="faust">import(&quot;stdfaust.lib&quot;);
+
+// Cutoff frequency argument
+freq=vslider(&quot;cutoff&quot;,500,20.0,20000,1);
+
+// Perform process on input sound
+process= _: ve.wah4(freq) : _;
+</code></pre><p>This imports the standard library for faust and then defines a parameter &ldquo;cutoff&rdquo; that we will use to control the cutoff frequency. Note that in Faust this is represented as a slider with a default value of 500 (hz), range from 20.0 to 20000.0 in steps of 1. When converting to a SuperCollider UGen, this will be interpreted as an argument for the UGen and show up as <code>cutoff</code>.</p>
+<p>Now save the file and compile it to SuperCollider using the command line tool <code>faust2supercollider</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">faust2supercollider Wah4.dsp -noprefix
+</code></pre></div><p>The <code>-noprefix</code>-flag here removes the standard <code>Faust</code>-prefix and just uses the base file name <code>Wah4</code> as the name of our UGen.</p>
+<p>If succesful, this process outputs a shared object and a SuperCollider class file. Copy these to your Extensions folder (this can be found by executing <code>Platform.userExtensionDir</code> in SuperCollider) and recompile the SuperCollider class library.</p>
+<p>Now, test out your brand spanking new Wahwah-effect in a patch with a noise UGen modulating the cutoff frequency:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> 
+(
+<span style="color:#a6e22e">Ndef</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">wahhhh</span>, { <span style="color:#f92672">|</span><span style="color:#a6e22e">freq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">150</span>, <span style="color:#a6e22e">amp</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.25</span><span style="color:#f92672">|</span> 
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Saw</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">freq</span>);
+	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">freq</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">LFNoise2</span>.<span style="color:#a6e22e">kr</span>(<span style="color:#ae81ff">10</span>).<span style="color:#a6e22e">exprange</span>(<span style="color:#ae81ff">25</span>,<span style="color:#ae81ff">2500</span>);
+	<span style="color:#a6e22e">Wah4</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">sig</span>, <span style="color:#a6e22e">freq</span>) <span style="color:#f92672">*</span> <span style="color:#a6e22e">amp</span>;
+}).<span style="color:#a6e22e">play</span>
+)
+</code></pre></div><p>That&rsquo;s it. Now, all there&rsquo;s left is to actually <a href="https://faustdoc.grame.fr/workshops/2020-04-10-faust-101/">learn the faust programming language syntax, hehe</a>.</p>
+<h2 id="appendix-the-generated-supercollider-class">Appendix: The generated SuperCollider class</h2>
+<p>This is what the actual SuperCollider class interface for our new Wah effect looks like after being generated by <code>faust2supercollider</code>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Wah4</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">UGen</span> {
+  <span style="color:#f92672">*</span><span style="color:#a6e22e">ar</span> { <span style="color:#f92672">|</span> <span style="color:#a6e22e">in1</span>, <span style="color:#a6e22e">cutoff</span>(<span style="color:#ae81ff">500.0</span>) <span style="color:#f92672">|</span>
+      <span style="color:#f92672">^</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">multiNew</span>(<span style="color:#e6db74">&#39;audio&#39;</span>, <span style="color:#a6e22e">in1</span>, <span style="color:#a6e22e">cutoff</span>)
+  }
+
+  <span style="color:#f92672">*</span><span style="color:#a6e22e">kr</span> { <span style="color:#f92672">|</span> <span style="color:#a6e22e">in1</span>, <span style="color:#a6e22e">cutoff</span>(<span style="color:#ae81ff">500.0</span>) <span style="color:#f92672">|</span>
+      <span style="color:#f92672">^</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">multiNew</span>(<span style="color:#e6db74">&#39;control&#39;</span>, <span style="color:#a6e22e">in1</span>, <span style="color:#a6e22e">cutoff</span>)
+  } 
+
+  <span style="color:#a6e22e">checkInputs</span> {
+    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">rate</span> <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;audio&#39;</span>, {
+      <span style="color:#ae81ff">1.</span><span style="color:#66d9ef">do</span>({<span style="color:#f92672">|</span><span style="color:#a6e22e">i</span><span style="color:#f92672">|</span>
+        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">at</span>(<span style="color:#a6e22e">i</span>).<span style="color:#a6e22e">rate</span> <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#39;audio&#39;</span>, {
+          <span style="color:#f92672">^</span>(<span style="color:#e6db74">&#34; input at index &#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">i</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;(&#34;</span> <span style="color:#f92672">+</span> <span style="color:#a6e22e">inputs</span>.<span style="color:#a6e22e">at</span>(<span style="color:#a6e22e">i</span>) <span style="color:#f92672">+</span> 
+            <span style="color:#e6db74">&#34;) is not audio rate&#34;</span>);
+        });
+      });
+    });
+    <span style="color:#f92672">^</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">checkValidInputs</span>
+  }
+
+  <span style="color:#a6e22e">name</span> { <span style="color:#f92672">^</span><span style="color:#e6db74">&#34;Wah4&#34;</span> }
+
+
+  <span style="color:#a6e22e">info</span> { <span style="color:#f92672">^</span><span style="color:#e6db74">&#34;Generated with Faust&#34;</span> }
+}
+
+</code></pre></div>]]></content>
+        </item>
+        
+        <item>
             <title>Tutorial: How to write plugins for SuperCollider using C&#43;&#43;</title>
             <link>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</link>
             <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>

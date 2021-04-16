@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</loc>
+    <lastmod>2021-04-16T16:08:27+02:00</lastmod>
+  </url><url>
     <loc>http://madskjeldgaard.dk/tags/cpp/</loc>
     <lastmod>2021-03-18T22:09:08+01:00</lastmod>
   </url><url>
