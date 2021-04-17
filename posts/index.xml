@@ -34,6 +34,9 @@ process= _: ve.wah4(freq) : _;
 <p>Now save the file and compile it to SuperCollider using the command line tool <code>faust2supercollider</code>:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">faust2supercollider Wah4.dsp -noprefix
 </code></pre></div><p>The <code>-noprefix</code>-flag here removes the standard <code>Faust</code>-prefix and just uses the base file name <code>Wah4</code> as the name of our UGen.</p>
+<p>On some systems (including MacOS) you may need to download the SuperCollider source code and put the path to it into an environment variable when running the faust compilation command, like so (thanks Johannes Burström for pointing out):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">SUPERCOLLIDER_HEADERS<span style="color:#f92672">=</span>/path/to/supercollider_source/include faust2supercollider Wah4.dsp -noprefix
+</code></pre></div><h2 id="test-the-plugin">Test the plugin</h2>
 <p>If succesful, this process outputs a shared object and a SuperCollider class file. Copy these to your Extensions folder (this can be found by executing <code>Platform.userExtensionDir</code> in SuperCollider) and recompile the SuperCollider class library.</p>
 <p>Now, test out your brand spanking new Wahwah-effect in a patch with a noise UGen modulating the cutoff frequency:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> 
