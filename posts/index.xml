@@ -78,7 +78,7 @@ process= _: ve.wah4(freq) : _;
 }
 
 </code></pre></div><h2 id="generate-only-the-c-files-for-the-supercollider-plugin">Generate only the C++ files for the SuperCollider plugin</h2>
-<p>If you want to see the C++ code that is generated from your faust-file you may run the following command:</p>
+<p>If you want to see the C++ code that is generated from your faust-file you have several options. If you compile using the <code>faust2supercollider</code> tool, you can add <code>-ks</code> (short for keep source) as a flag to the command, or you may run the following command to only create the C++ source:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">faust -a supercollider.cpp Wah4.dsp -o Wah4.cpp
 </code></pre></div><p>This will result in a C++ file called <code>Wah4.cpp</code>.</p>
 <p>This can be useful for several things - for me personally this is a nice way to see what happens behind the scenes when your faust-code is interpreted and compiled to SuperCollider friendly C++ classes (scroll down to the stuff with <code>Faust_next</code> to see the actual class used by SuperCollider).</p>
