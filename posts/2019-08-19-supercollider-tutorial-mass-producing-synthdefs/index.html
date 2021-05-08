@@ -27,7 +27,7 @@ This becomes annoying when working with UGens that want to know the exact number
 
 
 
-<link rel="stylesheet" href="/main.min.3959b2e25c4445ea43e4b8b5d9fc6ea049ed72f8e4af7576e4e87bee34718ce6.css">
+<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
 
 
 
@@ -173,7 +173,7 @@ This becomes annoying when working with UGens that want to know the exact number
 </code></pre></div><p>As you can see, the synth function is wrapped in an outer function which takes one argument: the number of channels. The function returns the actual synth function we need to put inside of a SynthDef.</p>
 <p>Using the numchans argument, the PlayBuf UGEN is set to appropriate channel number (and the Out UGEN is smart enough to adjust to this).</p>
 <p>The next step is to put this function inside of a SynthDef and call it 64 times. One time for each number of channels we want to have:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(<span style="color:#ae81ff">1..64</span>).<span style="color:#66d9ef">do</span>{<span style="color:#f92672">|</span><span style="color:#a6e22e">chanNum</span><span style="color:#f92672">|</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(<span style="color:#ae81ff">1.</span>.<span style="color:#ae81ff">64</span>).<span style="color:#66d9ef">do</span>{<span style="color:#f92672">|</span><span style="color:#a6e22e">chanNum</span><span style="color:#f92672">|</span>
    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bufplayer&#34;</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">chanNum</span>;
    <span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#a6e22e">name</span>, <span style="color:#f92672">~</span><span style="color:#a6e22e">bufplayerfunc</span>.<span style="color:#a6e22e">value</span>(<span style="color:#a6e22e">chanNum</span>)).<span style="color:#a6e22e">add</span>;
 };

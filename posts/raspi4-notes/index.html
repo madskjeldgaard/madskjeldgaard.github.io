@@ -27,7 +27,7 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
 
 
 
-<link rel="stylesheet" href="/main.min.3959b2e25c4445ea43e4b8b5d9fc6ea049ed72f8e4af7576e4e87bee34718ce6.css">
+<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
 
 
 
@@ -39,7 +39,7 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
 I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
 It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in."><meta itemprop="datePublished" content="2020-04-30T16:07:22&#43;02:00" />
 <meta itemprop="dateModified" content="2020-04-30T16:07:22&#43;02:00" />
-<meta itemprop="wordCount" content="3015"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/raspi4-quad2.jpg"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/raspi-termux.png"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/termux-ssh-arm.jpg">
+<meta itemprop="wordCount" content="3016"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/raspi4-quad2.jpg"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/raspi-termux.png"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/termux-ssh-arm.jpg">
 <meta itemprop="keywords" content="supercollider,raspberrypi,termux," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/raspi4-quad2.jpg"/>
@@ -243,7 +243,7 @@ network<span style="color:#f92672">={</span>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e <span style="color:#f92672">&amp;&amp;</span> mv c5731e95bc5be9b3e2789b14b1149b6e raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> cd raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> chmod +x raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> ./raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> cd ~ rm -rf raspiaudiotune
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e <span style="color:#f92672">&amp;&amp;</span> mv c5731e95bc5be9b3e2789b14b1149b6e raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> cd raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> chmod +x raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> ./raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> cd ~ <span style="color:#f92672">&amp;&amp;</span> rm -rf raspiaudiotune
 </code></pre></div><p>This is the full script:</p>
 <script type="application/javascript" src="https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e.js"></script>
 
@@ -472,7 +472,7 @@ nvme0n1
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/raspberrypi">raspberrypi</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/termux">termux</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>3015 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>3016 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-30 16:07 &#43;0200</p>
         </div>
