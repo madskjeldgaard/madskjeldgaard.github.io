@@ -9,6 +9,28 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>A simple multi touch midi controller using the Trill sensor and Teensy LC</title>
+            <link>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</link>
+            <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</guid>
+            <description>I recently bought one of Bela&amp;rsquo;s Trill sensors - a really nice multitouch capacitive sensor that comes in various shapes and sizes (and open source hardware !). Capacitive touch sensing is something that has been used in analog modular synthesizers for half a century. The main attraction for me as an artist is that it is incredibly response as opposed to the bulky rubber buttons you get on terrible commercial midi controllers or even high quality switches: As soon as you touch it, it sends off a signal (as opposed to a hardware button where the button has to be pressed to the point where it triggers - it sounds like nothing when put in to writing but the difference in responsiveness is incredible).</description>
+            <content type="html"><![CDATA[<p><img src="/img/full/trillteensy1.jpg" alt="trill bar controller"></p>
+<p>I recently bought one of Bela&rsquo;s <a href="https://eu.shop.bela.io/collections/trill">Trill sensors</a> - a really nice multitouch capacitive sensor that comes in various shapes and sizes (and <a href="https://github.com/BelaPlatform/Trill">open source hardware</a> !). Capacitive touch sensing is something that has been used in analog modular synthesizers for half a century. The main attraction for me as an artist is that it is incredibly response as opposed to the bulky rubber buttons you get on terrible commercial midi controllers or even high quality switches: As soon as you touch it, it sends off a signal (as opposed to a hardware button where the button has to be pressed to the point where it triggers - it sounds like nothing when put in to writing but the difference in responsiveness is incredible). Since this is a digital circuit, the response is not immediate as it is in an analog circuitry but it is very close (125 microseconds) to immediate I find.</p>
+<p>I finally got around to making my first midi controller out of one of these (<a href="https://github.com/madskjeldgaard/trillbar-teensy-lc-controller">source code here</a>), and a fairly cheap one at that ($12 for the microcontroller and £12.5 for the sensor).</p>
+<p>I decided to make a simple controller consisting of one Trill Bar sensor hooked up to a <a href="https://www.pjrc.com/store/teensylc.html">Teensy LC microcontroller board</a>, the cheapest of the Teensy microcontroller boards. The electronic setup for this is very simple (and <a href="https://learn.bela.io/products/trill/get-started-with-trill/">explained very thoroughly in Bela&rsquo;s fantastic documentation for the sensor</a>). The Trill sensor communicates via the I2C protocol and so all you have to do is connect the sensor&rsquo;s data pins to the Teensy&rsquo;s data pins, and the sensor&rsquo;s power pins to the teensy&rsquo;s power output pins. For some microcontrollers like the Teensy LC you additionally need two pullup resistors soldered between the 3.3v output of the Teensy and each of the two data lines going into the Teensy from the Trill Bar.</p>
+<p><img src="/img/full/trillteensy2.jpg" alt="trill bar pull up resistors"></p>
+<p>As mentioned, the documentation for the Trill sensor is really great, and it has a nice overview page of the <a href="https://learn.bela.io/products/trill/integrating-trill-into-your-projects/">different settings and setups possible</a>. Mine is currently running in the <code>CENTROID</code> mode where it tracks the touch size and the position (x axis) on the touch bar. The sensor chip can be configured to run at different speeds and bit depths. According to documentation, the sensor can be configured to be anything in between 9 and 16 bits, but I found 11 bits to be the most usable, anything higher than that and the sensor would pick up too much noise in the readings.</p>
+<p>Lastly, I configured the microcontroller to output 14 bit midi ( 16384 steps ), even though the sensor only picks up 3200 or 4000 steps depending on the value, this is to get a little bit more data squeezed out of it and it <a href="https://gist.github.com/carltesta/bb5065a7b92bab7673237e9cc1c9a612">is fairly easy to receive 14 bit midi in SuperCollider</a>. The firmware is setup to send triggers, locations and touch sizes on adjacent midi channels, with a maximum of 10 (it&rsquo;s very hard to squeeze 10 fingers onto the trill bar (unless you&rsquo;re a child I guess?)).</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/549208838" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+]]></content>
+        </item>
+        
+        <item>
             <title>Getting started with Faust for SuperCollider</title>
             <link>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</link>
             <pubDate>Fri, 16 Apr 2021 16:08:27 +0200</pubDate>

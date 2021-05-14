@@ -2,6 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</loc>
+    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/bela/</loc>
+    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/controller/</loc>
+    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/cpp/</loc>
+    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/diy/</loc>
+    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/teensy/</loc>
+    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/trill/</loc>
+    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://madskjeldgaard.dk/tags/dsp/</loc>
     <lastmod>2021-04-16T16:08:27+02:00</lastmod>
   </url><url>
@@ -13,12 +37,6 @@
   </url><url>
     <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
     <lastmod>2021-04-16T16:08:27+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
-    <lastmod>2021-04-16T16:08:27+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/cpp/</loc>
-    <lastmod>2021-03-18T22:09:08+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</loc>
     <lastmod>2021-03-18T22:09:08+01:00</lastmod>
@@ -39,9 +57,6 @@
     <lastmod>2021-03-03T18:22:34+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/master-volume/</loc>
-    <lastmod>2021-02-06T21:16:09+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/teensy/</loc>
     <lastmod>2021-02-06T21:16:09+00:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/tags/arch/</loc>

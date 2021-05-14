@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>teensy on Mads Kjeldgaard</title>
-    <link>http://madskjeldgaard.dk/tags/teensy/</link>
-    <description>Recent content in teensy on Mads Kjeldgaard</description>
+    <title>controller on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/controller/</link>
+    <description>Recent content in controller on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 14 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/teensy/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/controller/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A simple multi touch midi controller using the Trill sensor and Teensy LC</title>
       <link>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</link>
@@ -27,12 +27,13 @@ The controller is very cheap and simple to make.</description>
     </item>
     
     <item>
-      <title>Working with 14bit Midi using a Teensy microcontroller and Supercollider</title>
-      <link>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</link>
-      <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
+      <title>Control voltage and SuperCollider: Using the open source module Ornament &amp; Crime as a midi-cv interface</title>
+      <link>http://madskjeldgaard.dk/posts/hemisphere/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
       
-      <guid>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</guid>
-      <description>Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.</description>
+      <guid>http://madskjeldgaard.dk/posts/hemisphere/</guid>
+      <description>My Ornament &amp;amp; Crime build (the Mini OC version). The USB connector on the Teensy on the back of the module has been rewired to a Neutrik USB connector attached to a panel next to it (the grey panel).
+I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.</description>
     </item>
     
   </channel>

@@ -6,7 +6,61 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 16 Apr 2021 16:08:27 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 14 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>bela</title>
+      <link>http://madskjeldgaard.dk/tags/bela/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/bela/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>controller</title>
+      <link>http://madskjeldgaard.dk/tags/controller/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/controller/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cpp</title>
+      <link>http://madskjeldgaard.dk/tags/cpp/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diy</title>
+      <link>http://madskjeldgaard.dk/tags/diy/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/diy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>teensy</title>
+      <link>http://madskjeldgaard.dk/tags/teensy/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/teensy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>trill</title>
+      <link>http://madskjeldgaard.dk/tags/trill/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/trill/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>dsp</title>
       <link>http://madskjeldgaard.dk/tags/dsp/</link>
@@ -35,15 +89,6 @@
     </item>
     
     <item>
-      <title>cpp</title>
-      <link>http://madskjeldgaard.dk/tags/cpp/</link>
-      <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/cpp/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>daisy</title>
       <link>http://madskjeldgaard.dk/tags/daisy/</link>
       <pubDate>Thu, 11 Mar 2021 09:20:36 +0100</pubDate>
@@ -67,15 +112,6 @@
       <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/github/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>teensy</title>
-      <link>http://madskjeldgaard.dk/tags/teensy/</link>
-      <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/teensy/</guid>
       <description></description>
     </item>
     

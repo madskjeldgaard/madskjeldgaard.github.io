@@ -8,6 +8,15 @@
     <language>en-uk</language>
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>A simple multi touch midi controller using the Trill sensor and Teensy LC</title>
+      <link>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</guid>
+      <description>I recently bought one of Bela&amp;rsquo;s Trill sensors - a really nice multitouch capacitive sensor that comes in various shapes and sizes (and open source hardware !). Capacitive touch sensing is something that has been used in analog modular synthesizers for half a century. The main attraction for me as an artist is that it is incredibly response as opposed to the bulky rubber buttons you get on terrible commercial midi controllers or even high quality switches: As soon as you touch it, it sends off a signal (as opposed to a hardware button where the button has to be pressed to the point where it triggers - it sounds like nothing when put in to writing but the difference in responsiveness is incredible).</description>
+    </item>
+    
+    <item>
       <title>Getting started with Faust for SuperCollider</title>
       <link>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</link>
       <pubDate>Fri, 16 Apr 2021 16:08:27 +0200</pubDate>
