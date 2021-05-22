@@ -950,7 +950,7 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 <p>If you followed the previous step by enabling multilib, you should now be able to install wine like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S wine
 </code></pre></div><h2 id="method-1-yabridge">Method 1: yabridge</h2>
-<p>Using <a href="https://github.com/robbert-vdh/yabridge">yabridge</a> is my favourite way of using vst plugins on Linux these days. It is the simplest and easiest method and includes a lot of really good documentation.</p>
+<p>Using <a href="https://github.com/robbert-vdh/yabridge">yabridge</a> is my favourite way of using vst plugins on Linux these days. It is the simplest and easiest method and includes a lot of really good documentation. In fact, the documentation is so good that I won&rsquo;t go into too much detail here about it - simply check out the Github page for it or visit <a href="https://discord.com/invite/pyNeweqadf">the discord chat server associated with it</a>.</p>
 <p>Installing on Arch and Manjaro is easy:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S yabridge
 </code></pre></div><p>This gives you access to the command line tool <code>yabridgectl</code> which is the main interface for you. After installing a vst plugin using wine, all you have to do is make sure yabridge knows the path to the folder containing the plugin and then simply run <code>yabridgectl sync</code> and that&rsquo;s it.</p>
