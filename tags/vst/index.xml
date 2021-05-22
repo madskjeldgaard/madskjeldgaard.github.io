@@ -8,12 +8,12 @@
     <language>en-uk</language>
     <lastBuildDate>Fri, 02 Oct 2020 12:20:40 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/vst/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>How to install Windows VST Plugins on Arch Linux</title>
+      <title>How to install Windows VST Plugins on Arch Linux and Manjaro</title>
       <link>http://madskjeldgaard.dk/posts/vst-manager/</link>
       <pubDate>Fri, 02 Oct 2020 12:20:40 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/vst-manager/</guid>
-      <description>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the linvst VST plugin bridging software.</description>
+      <description>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software.</description>
     </item>
     
   </channel>

@@ -923,19 +923,19 @@ Password: music
         </item>
         
         <item>
-            <title>How to install Windows VST Plugins on Arch Linux</title>
+            <title>How to install Windows VST Plugins on Arch Linux and Manjaro</title>
             <link>http://madskjeldgaard.dk/posts/vst-manager/</link>
             <pubDate>Fri, 02 Oct 2020 12:20:40 +0200</pubDate>
             
             <guid>http://madskjeldgaard.dk/posts/vst-manager/</guid>
-            <description>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the linvst VST plugin bridging software.</description>
-            <content type="html"><![CDATA[<p>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the <code>wine</code> Windows compatibility layer and the <code>linvst</code> VST plugin bridging software.</p>
-<p>The workflow for getting set up though was quite difficult before I switched to Arch based distributions than on other Linux distributions (thanks to the Arch User Repository (AUR)), and even though it is significantly easier on Arch, it still has some quirks in the setup process which I have tried to collect here as a set of instructions and notes for getting started.</p>
+            <description>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software.</description>
+            <content type="html"><![CDATA[<p>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the <code>wine</code> Windows compatibility layer and the <code>yabridge</code> or <code>linvst</code> VST plugin bridging software.</p>
+<p>The workflow for getting set up though was quite difficult before I switched to Arch based distributions than on other Linux distributions (thanks to the Arch User Repository (AUR)), and even though it is significantly easier on Arch and Manjaro, it still has some quirks in the setup process which I have tried to collect here as a set of instructions and notes for getting started.</p>
 <p><strong>Disclaimer</strong>
 There may be licensing problems in doing this operation on some plugins. I talked to a commercial plugin developer about using their plugins on Linux and they said that it sounded interesting (because they developed everything on Linux anyway (but did not make releases for Linux)) but that I was probably in conflict with their licensing when doing so. I don&rsquo;t take responsibility for anyone breaking any laws here.</p>
 <h2 id="preparations">Preparations</h2>
 <h3 id="enable-32-bit-repositories">Enable 32 bit repositories</h3>
-<p>To install <code>wine</code> (and enable 32 bit support) you need to do enable the <code>multilib</code> repositories in your pacman configuration.</p>
+<p>To install <code>wine</code> (and enable 32 bit support) you need to do enable the <code>multilib</code> repositories in your pacman configuration. If you are running Manjaro, this is already done for you so you can skip this section.</p>
 <p>By doing this, you get access to a range of 32 bit software that can be run on a 64 bit machine.</p>
 <p>Open up <code>/etc/pacman.conf</code> in your favourite text editor. E.g. in vim:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
@@ -949,8 +949,16 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 <p>To be able to run Windows software on Linux, you need to install <code>wine</code>. Wine is a huge subject in itself (and I definitely do not master it at all), but it basically runs as a compatibility layer between windows software and your linux system.</p>
 <p>If you followed the previous step by enabling multilib, you should now be able to install wine like this:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S wine
-</code></pre></div><h2 id="setting-up-linux-vst-compatibility">Setting up linux VST compatibility</h2>
-<p>The main software used to enable windows VST plugins is <a href="https://github.com/osxmidi/LinVst">linvst</a>. It is used to create bridges between the windows <code>.dll</code> files that VST plugins are delivered in and creates a Linux equivalent <code>.so</code> file. Managing this process can be complicated and a bit of a pain, but thankfully there is a program to do it all for us: <a href="linvstmanager">https://github.com/Goli4thus/linvstmanager</a>.</p>
+</code></pre></div><h2 id="method-1-yabridge">Method 1: yabridge</h2>
+<p>Using <a href="https://github.com/robbert-vdh/yabridge">yabridge</a> is my favourite way of using vst plugins on Linux these days. It is the simplest and easiest method and includes a lot of really good documentation.</p>
+<p>Installing on Arch and Manjaro is easy:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S yabridge
+</code></pre></div><p>This gives you access to the command line tool <code>yabridgectl</code> which is the main interface for you. After installing a vst plugin using wine, all you have to do is make sure yabridge knows the path to the folder containing the plugin and then simply run <code>yabridgectl sync</code> and that&rsquo;s it.</p>
+<p>According to the developer, the performance isn&rsquo;t that much better than linvst but I have noticed that especially graphical interfaces run much more smoothly.</p>
+<h3 id="tip-migrating-an-installation-with-yabridge">Tip: Migrating an installation with yabridge</h3>
+<p>I recently had to migrate my wine installation to another computer, since my primary computer died on me. This was surprisingly easy - I simply moved the <code>$HOME/.wine</code> folder to my new computer&rsquo;s home directory, installed wine and wine-mono and then ran <code>yabridgectl sync</code> and I was up and running.</p>
+<h2 id="method-2-linvst">Method 2: Linvst</h2>
+<p>This method involves using <a href="https://github.com/osxmidi/LinVst">linvst</a> to enable vst support. It is used to create bridges between the windows <code>.dll</code> files that VST plugins are delivered in and creates a Linux equivalent <code>.so</code> file. Managing this process can be complicated and a bit of a pain, but thankfully there is a program to do it all for us: <a href="linvstmanager">https://github.com/Goli4thus/linvstmanager</a>.</p>
 <p>Linvstmanager is the main program we use to keep track of vst plugins, where they are and if they are supported on our system.</p>
 <p>There are packages for linvstmanager and all of the linvst bridges on <a href="aur.archlinux.org">the AUR</a> that can be installed using <code>yay</code> or another aur helper system:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S linvstmanager-git linvst-bin linvst3-bin linvst-x-bin linvst3-x-bin
@@ -959,7 +967,7 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 <p>Before we are able to use linvstmanager, we need to tell it where the vst bridges we installed along with it are in our system.</p>
 <p>If you used the packages from the AUR, they are probably in <code>/usr/share/LinVst</code>. Select and find them in your preferences.</p>
 <p>Next up you need to set a folder that will contain your plugins. This is called the <strong>Link folder</strong>. This is the folder your DAW needs to read from when scanning for VST Plugins. I have put mine in a hidden folder called <code>.vst-win</code> in my user&rsquo;s home directory but you can put it anywhere.</p>
-<h2 id="installing-a-plugin">Installing a plugin</h2>
+<h3 id="part-0-installing-a-plugin">Part 0: Installing a plugin</h3>
 <p>This is the workflow I use for downloading and installing a plugin. See the <a href="https://github.com/Goli4thus/linvstmanager">linvstmanager documentation</a> for a more thorough explanation.</p>
 <h3 id="part-1-install-the-plugin-to-your-wine-drive">Part 1: Install the plugin to your wine drive</h3>
 <ol>
@@ -995,6 +1003,10 @@ The syntax for this consists of full path names with semicolons (<code>;</code>)
 <p>After adding the path, click <code>re-scan</code>.</p>
 <h2 id="an-alternative-approach-using-carla">An alternative approach: Using Carla</h2>
 <p>An alternative approach is to use <a href="https://kx.studio/Applications:Carla">carla</a>, which has been <a href="http://blog.kindohm.com/posts/2020/2020-06-06-vsts-on-linux/">outlined nicely by kindohm / Mike Hodnick in this post</a>.</p>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<ul>
+<li>If you get errors about a kernel32 dll missing, the solution for me was to run <code>winetricks</code> and run <code>create prefix</code> and install wine mono.</li>
+</ul>
 ]]></content>
         </item>
         
