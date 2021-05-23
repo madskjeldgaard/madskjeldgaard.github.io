@@ -954,7 +954,6 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 <p>Installing on Arch and Manjaro is easy:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S yabridge
 </code></pre></div><p>This gives you access to the command line tool <code>yabridgectl</code> which is the main interface for you. After installing a vst plugin using wine, all you have to do is make sure yabridge knows the path to the folder containing the plugin and then simply run <code>yabridgectl sync</code> and that&rsquo;s it.</p>
-<p>According to the developer, the performance isn&rsquo;t that much better than linvst but I have noticed that especially graphical interfaces run much more smoothly.</p>
 <h3 id="tip-migrating-an-installation-with-yabridge">Tip: Migrating an installation with yabridge</h3>
 <p>I recently had to migrate my wine installation to another computer, since my primary computer died on me. This was surprisingly easy - I simply moved the <code>$HOME/.wine</code> folder to my new computer&rsquo;s home directory, installed wine and wine-mono and then ran <code>yabridgectl sync</code> and I was up and running.</p>
 <h2 id="method-2-linvst">Method 2: Linvst</h2>
