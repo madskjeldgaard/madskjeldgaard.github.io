@@ -1979,6 +1979,11 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
   <iframe src="https://player.vimeo.com/video/414061680" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 </div>
 
+<h2 id="before-contacting-me-about-this-guide">Before contacting me about this guide</h2>
+<p><em>Edit June 2021:</em></p>
+<p>I get a ton of emails about this subject because of this guide, and while some of it is innocent enough and in the form of questions clarifying parts of this guide or correcting errors (thank you!), quite a few emails I get are from people who mistakenly expect me to offer free consulting because I have shared these notes. <em>I don&rsquo;t</em>.</p>
+<p>Examples of requests like this (that I receive almost every day at the time of writing this) include asking me to debug corporate networks, to literally setup other people&rsquo;s Raspberry Pi&rsquo;s, to offer free classes at universities and be available for video conferencing meetings at short notice. These are jobs and you should pay someone to do them for you.</p>
+<p>With that out of the way, let&rsquo;s continue on our journey.</p>
 <h2 id="preparing-the-pi">Preparing the Pi</h2>
 <p>You may skip this step if you already have a Raspberry Pi setup with ssh and you are logged into it. Otherwise, here are the steps needed to get access to a fresh Raspbian Lite installation from another computer.</p>
 <h3 id="installing-raspbian-lite">Installing Raspbian Lite</h3>
