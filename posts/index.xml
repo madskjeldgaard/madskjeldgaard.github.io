@@ -15,9 +15,9 @@
             
             <guid>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</guid>
             <description>I do all of my production work on Arch-based Linux systems these days. This is generally a pleasent experience since Reaper started supporting native Linux builds and yabridgectl made bridging Windows VST Plugins quite breezy and effective. Once setup correctly, this offers a performance experience and workflow that I think is quite close to native.
-One advice that I kept hearing again and again though was to install wine using wine-tkg, a customized build system for installing the Wine program that lets you use Windows software on Linux.</description>
+One advice that I kept hearing again and again though was to install wine (the Wine program that lets you use Windows software on Linux) using wine-tkg, a customized build system for installing.</description>
             <content type="html"><![CDATA[<p>I do all of my production work on Arch-based Linux systems these days. This is generally a pleasent experience since <a href="https://reaper.fm">Reaper started supporting native Linux builds</a> and <a href="https://madskjeldgaard.dk/posts/vst-manager/">yabridgectl made bridging Windows VST Plugins quite breezy and effective</a>. Once setup correctly, this offers a performance experience and workflow that I think is quite close to native.</p>
-<p>One advice that I kept hearing again and again though was to install wine using <a href="https://madskjeldgaard.dk/posts/vst-manager/">wine-tkg</a>, a customized build system for installing the Wine program that lets you use Windows software on Linux. The TKG system makes it easy to add patches during installation that increases performance and was, as far as I can tell, made for gamers who wanted to squeeze the best possible performance out of Linux systems (thanks, gamers!). The increased performance is relevant for audio work as well.</p>
+<p>One advice that I kept hearing again and again though was to install wine (the Wine program that lets you use Windows software on Linux) using <a href="https://madskjeldgaard.dk/posts/vst-manager/">wine-tkg</a>, a customized build system for installing. The TKG system makes it easy to add patches during installation that increases performance and was, as far as I can tell, made for gamers who wanted to squeeze the best possible performance out of Linux systems (thanks, gamers!). The main patch we are interestd in here is the one that adds support for <code>fsync</code> <a href="https://www.techspot.com/news/81254-valve-proposes-changes-linux-kernel-make-more-game.html">which uses some kernel trickery to reduce cpu usage</a>. The increased performance is relevant for audio work as well.</p>
 <p>I put off installing wine-tkg for a long time because I found the installation process a bit mysterious and so I gathered these notes that hopefully will help others in the process.</p>
 <p>Note: It is assumed that you are on Manjaro or Arch Linux.</p>
 <p>The installation process consists of downloading a PKGBUILD, which is a small script that is used in Arch Linux packages to install software (this is a big part of the magic of the Arch User Repository). With a(ny) PKGBUILD file downloaded, you are able to run the <code>makepkg</code> command to build and install the software described in the file on your system using <code>pacman</code>. An added benefit of this is that this allows your system to keep track of the installation.</p>
@@ -35,9 +35,10 @@ Make sure it looks like this:</p>
 <pre><code>_use_fsync=&quot;true&quot;
 </code></pre><p>Once that&rsquo;s done, and while still in the directory of the PKGBUILD, you may run the following command to install the software using pacman:</p>
 <pre><code>makepkg -si
-</code></pre><h2 id="after-install">After install</h2>
-<p>Then add <code>export WINEFSYNC=1</code> to <code>$HOME/.zprofile</code> (if using zsh as shell (note, it won&rsquo;t work if you put it in <code>.zshrc</code>))</p>
-<p>Verify that it worked:</p>
+</code></pre><h2 id="after-the-install">After the install</h2>
+<p>To allow your system to make use of the fsync feature, you need to modify or add an environment variable to your system.</p>
+<p>Add <code>export WINEFSYNC=1</code> to <code>$HOME/.zprofile</code> (if using zsh as shell (note, it won&rsquo;t work if you put it in <code>.zshrc</code>))</p>
+<p>Then reboot your system and run this command to verify that it worked:</p>
 <pre><code>env -i HOME=&quot;$HOME&quot; $SHELL -l -c 'echo $WINEFSYNC'
 </code></pre><p>This should print <code>1</code>. If it didn&rsquo;t, something is wrong.</p>
 ]]></content>

@@ -2,7 +2,25 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://madskjeldgaard.dk/tags/arch/</loc>
+    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
+  </url><url>
     <loc>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</loc>
+    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/manjaro/</loc>
+    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/vst/</loc>
+    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/windows/</loc>
+    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/wine/</loc>
     <lastmod>2021-06-21T11:13:58+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</loc>
@@ -18,9 +36,6 @@
     <lastmod>2021-05-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/tags/diy/</loc>
-    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2021-05-14T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/tags/teensy/</loc>
@@ -61,9 +76,6 @@
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/master-volume/</loc>
     <lastmod>2021-02-06T21:16:09+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/arch/</loc>
-    <lastmod>2021-01-26T13:39:45+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/mutable-dev/</loc>
     <lastmod>2021-01-26T13:39:45+01:00</lastmod>
@@ -108,12 +120,6 @@
     <lastmod>2020-10-10T17:17:22+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/vst-manager/</loc>
-    <lastmod>2020-10-02T12:20:40+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/vst/</loc>
-    <lastmod>2020-10-02T12:20:40+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/windows/</loc>
     <lastmod>2020-10-02T12:20:40+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/aur-package-workflow/</loc>

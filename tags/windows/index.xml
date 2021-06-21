@@ -6,7 +6,17 @@
     <description>Recent content in windows on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 02 Oct 2020 12:20:40 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Jun 2021 11:13:58 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Improve VST performance using Wine TKG on Arch-based systems</title>
+      <link>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</guid>
+      <description>I do all of my production work on Arch-based Linux systems these days. This is generally a pleasent experience since Reaper started supporting native Linux builds and yabridgectl made bridging Windows VST Plugins quite breezy and effective. Once setup correctly, this offers a performance experience and workflow that I think is quite close to native.
+One advice that I kept hearing again and again though was to install wine (the Wine program that lets you use Windows software on Linux) using wine-tkg, a customized build system for installing.</description>
+    </item>
+    
     <item>
       <title>How to install Windows VST Plugins on Arch Linux and Manjaro</title>
       <link>http://madskjeldgaard.dk/posts/vst-manager/</link>

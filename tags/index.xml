@@ -6,7 +6,52 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 14 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 21 Jun 2021 11:13:58 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>arch</title>
+      <link>http://madskjeldgaard.dk/tags/arch/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/arch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>manjaro</title>
+      <link>http://madskjeldgaard.dk/tags/manjaro/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/manjaro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vst</title>
+      <link>http://madskjeldgaard.dk/tags/vst/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/vst/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>http://madskjeldgaard.dk/tags/windows/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wine</title>
+      <link>http://madskjeldgaard.dk/tags/wine/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/wine/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>bela</title>
       <link>http://madskjeldgaard.dk/tags/bela/</link>
@@ -116,15 +161,6 @@
     </item>
     
     <item>
-      <title>arch</title>
-      <link>http://madskjeldgaard.dk/tags/arch/</link>
-      <pubDate>Tue, 26 Jan 2021 13:39:45 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/arch/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>mutable-instruments</title>
       <link>http://madskjeldgaard.dk/tags/mutable-instruments/</link>
       <pubDate>Tue, 26 Jan 2021 13:39:45 +0100</pubDate>
@@ -193,24 +229,6 @@
       <pubDate>Sat, 10 Oct 2020 17:17:22 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>vst</title>
-      <link>http://madskjeldgaard.dk/tags/vst/</link>
-      <pubDate>Fri, 02 Oct 2020 12:20:40 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/vst/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>windows</title>
-      <link>http://madskjeldgaard.dk/tags/windows/</link>
-      <pubDate>Fri, 02 Oct 2020 12:20:40 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/windows/</guid>
       <description></description>
     </item>
     

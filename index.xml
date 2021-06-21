@@ -14,7 +14,7 @@
       
       <guid>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</guid>
       <description>I do all of my production work on Arch-based Linux systems these days. This is generally a pleasent experience since Reaper started supporting native Linux builds and yabridgectl made bridging Windows VST Plugins quite breezy and effective. Once setup correctly, this offers a performance experience and workflow that I think is quite close to native.
-One advice that I kept hearing again and again though was to install wine using wine-tkg, a customized build system for installing the Wine program that lets you use Windows software on Linux.</description>
+One advice that I kept hearing again and again though was to install wine (the Wine program that lets you use Windows software on Linux) using wine-tkg, a customized build system for installing.</description>
     </item>
     
     <item>
