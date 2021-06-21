@@ -8,6 +8,16 @@
     <language>en-uk</language>
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Improve VST performance using Wine TKG on Arch-based systems</title>
+      <link>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</guid>
+      <description>I do all of my production work on Arch-based Linux systems these days. This is generally a pleasent experience since Reaper started supporting native Linux builds and yabridgectl made bridging Windows VST Plugins quite breezy and effective. Once setup correctly, this offers a performance experience and workflow that I think is quite close to native.
+One advice that I kept hearing again and again though was to install wine using wine-tkg, a customized build system for installing the Wine program that lets you use Windows software on Linux.</description>
+    </item>
+    
+    <item>
       <title>A simple multi touch midi controller using the Trill sensor and Teensy LC</title>
       <link>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</link>
       <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
