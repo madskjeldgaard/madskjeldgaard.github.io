@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&amp;rsquo;s got plenty of space for fun stuff like this.
+The first step is to install Windows. I won&amp;rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux, arch, windows" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/" />
+
+
+    <title>
+        
+            Dual boot setup with Windows and Arch: Installation notes :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Dual boot setup with Windows and Arch: Installation notes">
+<meta itemprop="description" content="These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&rsquo;s got plenty of space for fun stuff like this.
+The first step is to install Windows. I won&rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive.">
+
+<meta itemprop="wordCount" content="636"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+<meta itemprop="keywords" content="arch,windows," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+
+<meta name="twitter:title" content="Dual boot setup with Windows and Arch: Installation notes"/>
+<meta name="twitter:description" content="These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&rsquo;s got plenty of space for fun stuff like this.
+The first step is to install Windows. I won&rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive."/>
+
+
+
+    <meta property="og:title" content="Dual boot setup with Windows and Arch: Installation notes" />
+<meta property="og:description" content="These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&rsquo;s got plenty of space for fun stuff like this.
+The first step is to install Windows. I won&rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
+
+<meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="dark-theme">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>3 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/">Dual boot setup with Windows and Arch: Installation notes</a>
+            </h1>
+
+            
+
+            <div class="post-content">
+                <p>These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&rsquo;s got plenty of space for fun stuff like this.</p>
+<p>The first step is to install Windows. I won&rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive. The installation will make the windows partition accessible from the Arch environment.</p>
+<p>I don&rsquo;t cover the audio tuning that happens after the setup here but will do that in a seperate post / note at some point.</p>
+<p>If need someone to hold your hand while doing this (I did) then check out <a href="https://youtu.be/L1B1O0R1IHA">this video which I found helpful during the process, even though it isn&rsquo;t 100% accurate I found</a>.</p>
+<h1 id="initial-setup">Initial setup</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">loadkeys dk
+</code></pre></div><p>connect to wifi</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">iwctl station wlan0 connect <span style="color:#e6db74">&#34;&lt;network-name&gt;&#34;</span>
+</code></pre></div><p>network time:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">timedatectl set-ntp true
+</code></pre></div><p>Use reflector to setup mirrors</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S reflector
+reflector -c Norway -a <span style="color:#ae81ff">5</span> --sort rate --save /etc/pacman.d/mirrorlist
+pacman -Syyy
+</code></pre></div><h1 id="setup-dual-boot">Setup dual boot</h1>
+<p>Create partition on disk:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cfdisk /dev/nvme0n1
+</code></pre></div><p>Choose free space
+Hit enter
+Write</p>
+<p>Make filesystem</p>
+<p>Find the linux partition:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lsblk
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/nvmen0n5
+</code></pre></div><p>Now mount it</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mount /dev/nvmen0n5 /mnt
+</code></pre></div><p>Mount windows boot partition</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /mnt/boot
+mount /dev/nvme0n1p1 /mnt/boot
+</code></pre></div><p>Mount main windows fs</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /mnt/windows
+mount /dev/nvme0n1p3 /mnt/windows
+</code></pre></div><h1 id="install-base-system">Install base system</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacstrap /mnt base linux linux-firmware intel-ucode vim
+</code></pre></div><p>Generate fstab</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+</code></pre></div><p>Check fstab</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /mnt/etc/fstab
+</code></pre></div><p>If it looks okay, its time to lave the iso:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">arch-chroot /mnt
+</code></pre></div><h1 id="swap">Swap</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">fallocate -l 10GB /swapfile
+chmod <span style="color:#ae81ff">600</span> /swapfile
+mkswap /swapfile
+swapon /swapfile
+</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/fstab
+</code></pre></div><p>Add:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/swapfile none swap defaults <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+</code></pre></div><h1 id="timezone">Timezone</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -sf /usr/share/zoneinfo/Europe/Oslo /etc/localtime
+hwclock --systohc
+</code></pre></div><h1 id="locale">Locale</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/locale.gen
+</code></pre></div><p>uncomment
+da_DK.UTF-8 UTF-8</p>
+<p>then run</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">locale-gen
+echo <span style="color:#e6db74">&#34;LANG=da_DK.UTF-8&#34;</span> &gt;&gt; /etc/locale.conf
+</code></pre></div><h1 id="keymap">Keymap</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;KEYMAP=dk&#34;</span> &gt;&gt; /etc/vconsole.conf
+loadkeys dk
+</code></pre></div><h1 id="hostname">Hostname</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/hostname
+</code></pre></div><p>add &ldquo;lysendebjerg&rdquo;</p>
+<p>Then open</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/hosts
+</code></pre></div><p>And add</p>
+<pre><code>127.0.0.1 localhost
+::1 localhost
+127.0.1.1 lysendebjerg.localdomain lysendebjerg
+</code></pre><h1 id="root-password">Root password</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">passwd
+</code></pre></div><h1 id="base-packages">Base packages</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S sudo grub efibootmgr base-devel linux-headers git networkmanager network-manager-applet wireless_tools wpa_supplicant dialog git bluez bluez-utils pulseaudio-bluetooth cups openssh jack
+</code></pre></div><p>if dual boot with windows:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S os-prober ntfs-3g mtools dosfstools
+</code></pre></div><h1 id="grub">Grub</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grub-install --target<span style="color:#f92672">=</span>x86_64-efi --efi-directory<span style="color:#f92672">=</span>/boot --bootloader-id<span style="color:#f92672">=</span>GRUB
+</code></pre></div><p>Allow os-prober (for dual boot only):</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/default/grub
+</code></pre></div><p>Add</p>
+<pre><code>GRUB_DISABLE_OS_PROBER=false
+</code></pre><p>Create config:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grub-mkconfig -o /boot/grub/grub.cfg
+</code></pre></div><h1 id="enable-services">Enable services</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl enable sshd
+systemctl enable NetworkManager
+systemctl enable bluetooth
+</code></pre></div><h1 id="new-user">New user</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">useradd -mG wheel mads
+passwd mads
+</code></pre></div><h1 id="sudo">sudo</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">EDITOR<span style="color:#f92672">=</span>vim visudo
+</code></pre></div><p>uncomment <code>%wheel ALL=(ALL) ALL</code></p>
+<h1 id="enable-color-pacman">Enable color pacman</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
+</code></pre></div><p>uncomment <code>Color</code></p>
+<h1 id="change-shell-to-zsh">Change shell to zsh</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S zsh
+chsh /bin/zsh
+</code></pre></div><h1 id="install-aur-helper-paru">Install AUR helper (paru)</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+</code></pre></div><h1 id="install-desktop-environment-and-basic-necessities">Install desktop environment and basic necessities</h1>
+<p>I use bspwm at the moment because it&rsquo;s extremely minimalistic and very very nice. This will install pretty much everything I need in a full desktop environment including terminals, browser, file managers statusbar and other tidbits.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S  xorg-server xorg-twm xorg-xprop xorg-xkill xorg-xinit xautolock rofi sxhkd bspwm bsp-layout alacritty kitty blueman neovim-git htop neomutt tmux ncdu namcap picom polybar polkit-gnome xfce4-power-manager tuned vlc topgrade timew task taskwarrior-tui-git scrot ripgrep skim fzf redshift ranger thunar telegram-desktop the_silver_searcher starship-bin sudo pass firefox downgrade bashmount arandr mbsync-git mons exa bat
+</code></pre></div><h1 id="install-development-stuff">Install development stuff</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S platformio teensyduino lazygit kicad gdb gcc cmake cppcheck openscad rust
+</code></pre></div><h1 id="install-audio-stuff">Install audio stuff</h1>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S reaper-bin sws supercollider sc3-plugins jack2 mpv sox qjackctl pulseaudio-bluetooth pulseaudio-jack pulseaudio njconnect flac cadence alsa-firmware alsa-plugins alsa-utils realtimeconfigquickscan-git
+</code></pre></div><h1 id="install-dotfiles">Install dotfiles</h1>
+<p>First setup ssh keys to github account: <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account</a></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh-keygen -t ed25519 -C <span style="color:#e6db74">&#34;mail@madskjeldgaard.dk&#34;</span>
+eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+ssh-add ~/.ssh/id_ed25519
+</code></pre></div><p>Then get the new key:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat ~/.ssh/id_ed25519.pub
+</code></pre></div><p>and paste it into github account</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:madskjeldgaard/dotfiles.git <span style="color:#f92672">&amp;&amp;</span> cd dotfiles <span style="color:#f92672">&amp;&amp;</span> ./install
+</code></pre></div><p>Install neovim plugins</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim -c <span style="color:#e6db74">&#34;PlugInstall&#34;</span> --headless
+</code></pre></div>
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/arch">arch</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/windows">windows</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>636 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>0001-01-01 00:43 &#43;0043</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">SuperCollider tutorial: Easily render generative compositions as sound files using NRT</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/">
+                                <span class="button__text">GDB and SuperCollider plugins</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+            <span></span>
+            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
+
+
+
+    </body>
+</html>

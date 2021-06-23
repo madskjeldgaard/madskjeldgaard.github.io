@@ -26,5 +26,15 @@ One advice that I kept hearing again and again though was to install wine (the W
       <description>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software.</description>
     </item>
     
+    <item>
+      <title>Dual boot setup with Windows and Arch: Installation notes</title>
+      <link>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</guid>
+      <description>These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&amp;rsquo;s got plenty of space for fun stuff like this.
+The first step is to install Windows. I won&amp;rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive.</description>
+    </item>
+    
   </channel>
 </rss>

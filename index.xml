@@ -501,6 +501,16 @@ NRT works like this (normally): First you write a list of server OSC messages (s
     </item>
     
     <item>
+      <title>Dual boot setup with Windows and Arch: Installation notes</title>
+      <link>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</guid>
+      <description>These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&amp;rsquo;s got plenty of space for fun stuff like this.
+The first step is to install Windows. I won&amp;rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive.</description>
+    </item>
+    
+    <item>
       <title>GDB and SuperCollider plugins</title>
       <link>http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
