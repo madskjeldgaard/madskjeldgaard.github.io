@@ -6,7 +6,17 @@
     <description>Recent content in arch on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Mon, 21 Jun 2021 11:13:58 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/arch/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/arch/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Dual boot setup with Windows and Arch: Installation notes</title>
+      <link>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</link>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</guid>
+      <description>These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&amp;rsquo;s got plenty of space for fun stuff like this.
+The first step is to install Windows. I won&amp;rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive.</description>
+    </item>
+    
     <item>
       <title>Improve Windows VST plugin performance on Arch using Wine TKG</title>
       <link>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</link>
@@ -56,16 +66,6 @@ I have achieved this now using the awesome alma project. Alma is a tool for crea
       <description>These are notes I have been taking while making packages for the Arch User Repository, a community based package repository for users of Arch Linux and it&amp;rsquo;s derivative operating systems. This isn&amp;rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.
 If you have a tolerance for YouTube videos, then maybe this video will be helpful to you.
 It is also recommend to read the official guide on how to create packages: Creating packages.</description>
-    </item>
-    
-    <item>
-      <title>Dual boot setup with Windows and Arch: Installation notes</title>
-      <link>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</guid>
-      <description>These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&amp;rsquo;s got plenty of space for fun stuff like this.
-The first step is to install Windows. I won&amp;rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive.</description>
     </item>
     
     <item>

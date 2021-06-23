@@ -6,13 +6,22 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Mon, 21 Jun 2021 11:13:58 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>arch</title>
       <link>http://madskjeldgaard.dk/tags/arch/</link>
-      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/arch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>http://madskjeldgaard.dk/tags/windows/</link>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/windows/</guid>
       <description></description>
     </item>
     
@@ -31,15 +40,6 @@
       <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/vst/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>windows</title>
-      <link>http://madskjeldgaard.dk/tags/windows/</link>
-      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/windows/</guid>
       <description></description>
     </item>
     
