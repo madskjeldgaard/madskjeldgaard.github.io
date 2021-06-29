@@ -8,6 +8,15 @@
     <language>en-uk</language>
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Setting up Arch Linux for audio performance</title>
+      <link>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</link>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</guid>
+      <description>These notes are for setting up a new audio system on Arch Linux. It is assumed that you have an AUR helper like yay or paru installed (I use the latter here but exchange with yay if you use that). This isn&amp;rsquo;t a tutorial but just a collection of notes to help myself and perhaps others setup a high performance audio system in Arch Linux. The Arch Linux maintainers have done an amazing job in making it a good operating system for this kind of work by allowing users to easily setup the system with the right privileges and install the needed software.</description>
+    </item>
+    
+    <item>
       <title>Dual boot setup with Windows and Arch: Installation notes</title>
       <link>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</link>
       <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>

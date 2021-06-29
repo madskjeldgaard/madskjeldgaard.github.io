@@ -9,6 +9,64 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Setting up Arch Linux for audio performance</title>
+            <link>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</link>
+            <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</guid>
+            <description>These notes are for setting up a new audio system on Arch Linux. It is assumed that you have an AUR helper like yay or paru installed (I use the latter here but exchange with yay if you use that). This isn&amp;rsquo;t a tutorial but just a collection of notes to help myself and perhaps others setup a high performance audio system in Arch Linux. The Arch Linux maintainers have done an amazing job in making it a good operating system for this kind of work by allowing users to easily setup the system with the right privileges and install the needed software.</description>
+            <content type="html"><![CDATA[<p>These notes are for setting up a new audio system on Arch Linux. It is assumed that you have an AUR helper like yay or paru installed (I use the latter here but exchange with yay if you use that). This isn&rsquo;t a tutorial but just a collection of notes to help myself and perhaps others setup a high performance audio system in Arch Linux. The Arch Linux maintainers have done an amazing job in making it a good operating system for this kind of work by allowing users to easily setup the system with the right privileges and install the needed software.</p>
+<h2 id="install-audio-tools">Install audio tools</h2>
+<p>This will install all the audio tools I need on any system:</p>
+<pre><code>paru -S reaper-bin sws supercollider sc3-plugins jack2 mpv sox qjackctl pulseaudio-bluetooth pulseaudio-jack pulseaudio njconnect flac cadence alsa-firmware alsa-plugins alsa-utils realtimeconfigquickscan-git
+</code></pre><p>And then to install all SuperCollider plugins on the AUR:
+<code>paru -S supercollider-plugins</code></p>
+<h2 id="system-checking-tools">System checking tools</h2>
+<p>I use the script <code>realTimeAudioConfigQuickScan</code> to check how well I&rsquo;m doing. By running it you can quickly see what needs to be optimized.</p>
+<p>install from AUR:</p>
+<pre><code>paru -S realtimeconfigquickscan-git
+</code></pre><p>If you want to go even deeper, there is a script called <code>realtime-suggestions</code>, also available on the AUR but I&rsquo;ve not detected any performance differences when messing with the suggestions from that one.</p>
+<h2 id="realtime-privileges">Realtime privileges</h2>
+<p>Arch has a nice package will allow users in the <code>realtime</code> group to have realtime privileges, including unlocking memory and setting realtime priorities very high.</p>
+<p>It&rsquo;s easily setup:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S realtime-privileges
+sudo groupadd realtime
+sudo usermod -a -G realtime $USER
+</code></pre></div><h2 id="reduce-swappiness">Reduce swappiness</h2>
+<p>Add <code>vm.swappiness=10</code> to /etc/sysctl.conf</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo echo <span style="color:#e6db74">&#34;vm.swappiness=10&#34;</span> &gt;&gt; /etc/sysctl.conf
+</code></pre></div><h2 id="cpu-governor">CPU governor</h2>
+<p>This is by far the audio system improvement that makes the biggest difference on my systems. By setting your CPU governors to &ldquo;performance&rdquo; (instead of &ldquo;powersave&rdquo;) the performance stability (and energy usage) of your CPU increases. In practice, this often doubles the performance of my machines so it&rsquo;s definately worth doing. <a href="https://wiki.archlinux.org/title/CPU_frequency_scaling">The Arch wiki has a whole page dedicated to this</a>, but I prefer using this approach using <code>tuned</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S tuned
+systemctl enable --now tuned.service
+tuned-adm profile latency-performance
+</code></pre></div><p>You can setup a udev rule to automatically switch between power save mode and performance when plugging power into your laptop.</p>
+<p>Create the file <code>/etc/udev/rules.d/99-powerprofile_switch.rules</code> and add this (thanks <a href="roosnaflak.com/">Kenneth Flak</a>):</p>
+<pre><code># Rule for when switching to battery
+ACTION==&quot;change&quot;, SUBSYSTEM==&quot;power_supply&quot;, ATTR{type}==&quot;Mains&quot;, ATTR{online}==&quot;0&quot; RUN+=&quot;/usr/bin/tuned-adm profile laptop-battery-powersave&quot;
+# Rule for when switching to AC
+ACTION==&quot;change&quot;, SUBSYSTEM==&quot;power_supply&quot;, ATTR{type}==&quot;Mains&quot;, ATTR{online}==&quot;1&quot; RUN+=&quot;/usr/bin/tuned-adm profile latency-performance&quot;
+</code></pre><p><a href="oddodd.org">Niklas Adam</a> also recommends these aliases if you want to switch between the performance profiles dynamically. Add them to your .zshrc or whatever:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias cpu-max<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile latency-performance&#39;</span>
+alias cpu-balanced<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile balanced&#39;</span>
+alias cpu-min<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile laptop-battery-powersave&#39;</span>
+</code></pre></div><h2 id="windows-vst-plugins">Windows VST Plugins</h2>
+<p>I use a lot of Windows VST plugins in my audio workflow. I use wine and <code>yabridge</code> to bridge them in Linux.</p>
+<p>First install Wine. I use Wine TKG which has some performance patches: <a href="https://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/">Installation instructions here</a>. After installing that, you can run <code>paru -S yabridge</code> to install the vst bridge itself (<a href="https://madskjeldgaard.dk/posts/vst-manager/">more info here</a>).</p>
+<h2 id="realtime-kernel">Realtime kernel</h2>
+<p>The default kernel on Arch is pretty good for audio performance. But you might be able to squeeze a bit more performance out of your system by installing realtime kernels.</p>
+<p>To install prebuilt realtime kernels easily you can add this section:</p>
+<pre><code>[dvzrv]
+Server = https://pkgbuild.com/~dvzrv/repo/$arch
+</code></pre><p>to your pacman configuration:
+<code>/etc/pacman.conf</code></p>
+<p>Then run</p>
+<pre><code>paru -Syyu linux-rt linux-rt-headers
+</code></pre><p>And update your grub bootloader to include the new kernel when booting. Next time you reboot your computer you are able to choose it from the list of kernels in grub: <code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code></p>
+]]></content>
+        </item>
+        
+        <item>
             <title>Dual boot setup with Windows and Arch: Installation notes</title>
             <link>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</link>
             <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
