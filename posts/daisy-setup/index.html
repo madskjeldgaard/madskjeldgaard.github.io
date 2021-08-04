@@ -35,8 +35,8 @@ Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and 
 
 <meta itemprop="name" content="Setting up and using the Daisy Seed DSP platform on Linux">
 <meta itemprop="description" content="I recently got hold of Electro-Smith&rsquo;s powerful Daisy Seed microcontroller board for developing embedded DSP projects. Unfortunately, at the time of writing the libraries for it do not support Platformio fully which is normally my preferred way of working with microcontrollers but fortunately it&rsquo;s pretty easy to setup and use using make. Here are my notes for doing that.
-Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and build libraries From the root of your project:"><meta itemprop="datePublished" content="2021-03-11T09:20:36&#43;01:00" />
-<meta itemprop="dateModified" content="2021-03-11T09:20:36&#43;01:00" />
+Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and build libraries From the root of your project:"><meta itemprop="datePublished" content="2021-03-11T09:20:36+01:00" />
+<meta itemprop="dateModified" content="2021-03-11T09:20:36+01:00" />
 <meta itemprop="wordCount" content="393"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 <meta itemprop="keywords" content="dsp,cpp,daisy," />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -53,8 +53,8 @@ Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and 
 Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and build libraries From the root of your project:" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/daisy-setup/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-11T09:20:36&#43;01:00" />
-<meta property="article:modified_time" content="2021-03-11T09:20:36&#43;01:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+<meta property="article:published_time" content="2021-03-11T09:20:36+01:00" />
+<meta property="article:modified_time" content="2021-03-11T09:20:36+01:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -155,10 +155,10 @@ Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and 
             <div class="post-content">
                 <p>I recently got hold of Electro-Smith&rsquo;s powerful <a href="https://https://www.electro-smith.com/daisy">Daisy Seed</a> microcontroller board for developing embedded DSP projects. Unfortunately, at the time of writing the libraries for it do not support Platformio fully which is normally my preferred way of working with microcontrollers but fortunately it&rsquo;s pretty easy to setup and use using <em>make</em>. Here are my notes for doing that.</p>
 <h2 id="install-prerequisites-on-arch">Install prerequisites (on Arch)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S dfu-util gcc-arm-none-eabi-bin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S dfu-util gcc-arm-none-eabi-bin
 </code></pre></div><h2 id="setup-and-build-libraries">Setup and build libraries</h2>
 <p>From the root of your project:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git init
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git init
 git submodule add https://github.com/electro-smith/DaisySP
 git submodule add https://github.com/electro-smith/libDaisy
 
@@ -172,7 +172,7 @@ make clean ; make | grep <span style="color:#e6db74">&#34;warning:r\|error&#34;<
 echo <span style="color:#e6db74">&#34;done.&#34;</span>
 </code></pre></div><h2 id="makefile-and-cpp-file">Makefile and cpp file</h2>
 <p>Here&rsquo;s an example of a Makefile:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#75715e"># Project Name
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#75715e"># Project Name
 </span><span style="color:#75715e"></span>TARGET <span style="color:#f92672">=</span> ex_vco
 
 <span style="color:#75715e"># Sources
@@ -186,7 +186,7 @@ DAISYSP_DIR <span style="color:#f92672">=</span> DaisySP
 </span><span style="color:#75715e"></span>SYSTEM_FILES_DIR <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>LIBDAISY_DIR<span style="color:#66d9ef">)</span>/core
 <span style="color:#960050;background-color:#1e0010">include</span> <span style="color:#66d9ef">$(</span>SYSTEM_FILES_DIR<span style="color:#66d9ef">)</span><span style="color:#960050;background-color:#1e0010">/Makefile</span>
 </code></pre></div><p>And the accompanying code (<em>ex_vco.cpp</em>)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;daisysp.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;daisysp.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;daisy_patch.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
@@ -256,12 +256,12 @@ Parameter  freqctrl, wavectrl, ampctrl, finectrl;
 }
 </code></pre></div><p>Both of these are from the Daisy examples.</p>
 <h2 id="building">Building</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make
 </code></pre></div><h2 id="uploading">Uploading</h2>
 <p>Put Daisy into DFU mode by pressing BOOT, then RESET, then letting go of RESET and then of BOOT.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make program-dfu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make program-dfu
 </code></pre></div><p>Or build and upload in one:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make; make program-dfu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make; make program-dfu
 </code></pre></div><h2 id="project-generator-script">Project generator script</h2>
 <p>I created a small script for myself to generate projects for the Daisy Seed.</p>
 <script type="application/javascript" src="https://gist.github.com/madskjeldgaard/117e9ee328641aae10b5493a94f7efe2.js"></script>

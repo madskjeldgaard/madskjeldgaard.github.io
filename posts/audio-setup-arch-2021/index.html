@@ -33,8 +33,8 @@
 
 
 <meta itemprop="name" content="Setting up Arch Linux for audio performance">
-<meta itemprop="description" content="These notes are for setting up a new audio system on Arch Linux. It is assumed that you have an AUR helper like yay or paru installed (I use the latter here but exchange with yay if you use that). This isn&rsquo;t a tutorial but just a collection of notes to help myself and perhaps others setup a high performance audio system in Arch Linux. The Arch Linux maintainers have done an amazing job in making it a good operating system for this kind of work by allowing users to easily setup the system with the right privileges and install the needed software."><meta itemprop="datePublished" content="2021-06-29T00:00:00&#43;00:00" />
-<meta itemprop="dateModified" content="2021-06-29T00:00:00&#43;00:00" />
+<meta itemprop="description" content="These notes are for setting up a new audio system on Arch Linux. It is assumed that you have an AUR helper like yay or paru installed (I use the latter here but exchange with yay if you use that). This isn&rsquo;t a tutorial but just a collection of notes to help myself and perhaps others setup a high performance audio system in Arch Linux. The Arch Linux maintainers have done an amazing job in making it a good operating system for this kind of work by allowing users to easily setup the system with the right privileges and install the needed software."><meta itemprop="datePublished" content="2021-06-29T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-06-29T00:00:00+00:00" />
 <meta itemprop="wordCount" content="596"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/archlogo.png">
 <meta itemprop="keywords" content="arch," />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -49,8 +49,8 @@
 <meta property="og:description" content="These notes are for setting up a new audio system on Arch Linux. It is assumed that you have an AUR helper like yay or paru installed (I use the latter here but exchange with yay if you use that). This isn&rsquo;t a tutorial but just a collection of notes to help myself and perhaps others setup a high performance audio system in Arch Linux. The Arch Linux maintainers have done an amazing job in making it a good operating system for this kind of work by allowing users to easily setup the system with the right privileges and install the needed software." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/audio-setup-arch-2021/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/archlogo.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-06-29T00:00:00&#43;00:00" />
-<meta property="article:modified_time" content="2021-06-29T00:00:00&#43;00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+<meta property="article:published_time" content="2021-06-29T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-06-29T00:00:00+00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -164,15 +164,15 @@
 <h2 id="realtime-privileges">Realtime privileges</h2>
 <p>Arch has a nice package will allow users in the <code>realtime</code> group to have realtime privileges, including unlocking memory and setting realtime priorities very high.</p>
 <p>It&rsquo;s easily setup:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S realtime-privileges
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S realtime-privileges
 sudo groupadd realtime
 sudo usermod -a -G realtime $USER
 </code></pre></div><h2 id="reduce-swappiness">Reduce swappiness</h2>
 <p>Add <code>vm.swappiness=10</code> to /etc/sysctl.conf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo echo <span style="color:#e6db74">&#34;vm.swappiness=10&#34;</span> &gt;&gt; /etc/sysctl.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo echo <span style="color:#e6db74">&#34;vm.swappiness=10&#34;</span> &gt;&gt; /etc/sysctl.conf
 </code></pre></div><h2 id="cpu-governor">CPU governor</h2>
 <p>This is by far the audio system improvement that makes the biggest difference on my systems. By setting your CPU governors to &ldquo;performance&rdquo; (instead of &ldquo;powersave&rdquo;) the performance stability (and energy usage) of your CPU increases. In practice, this often doubles the performance of my machines so it&rsquo;s definately worth doing. <a href="https://wiki.archlinux.org/title/CPU_frequency_scaling">The Arch wiki has a whole page dedicated to this</a>, but I prefer using this approach using <code>tuned</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S tuned
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S tuned
 systemctl enable --now tuned.service
 tuned-adm profile latency-performance
 </code></pre></div><p>You can setup a udev rule to automatically switch between power save mode and performance when plugging power into your laptop.</p>
@@ -182,7 +182,7 @@ ACTION==&quot;change&quot;, SUBSYSTEM==&quot;power_supply&quot;, ATTR{type}==&qu
 # Rule for when switching to AC
 ACTION==&quot;change&quot;, SUBSYSTEM==&quot;power_supply&quot;, ATTR{type}==&quot;Mains&quot;, ATTR{online}==&quot;1&quot; RUN+=&quot;/usr/bin/tuned-adm profile latency-performance&quot;
 </code></pre><p><a href="oddodd.org">Niklas Adam</a> also recommends these aliases if you want to switch between the performance profiles dynamically. Add them to your .zshrc or whatever:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias cpu-max<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile latency-performance&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias cpu-max<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile latency-performance&#39;</span>
 alias cpu-balanced<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile balanced&#39;</span>
 alias cpu-min<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile laptop-battery-powersave&#39;</span>
 </code></pre></div><h2 id="windows-vst-plugins">Windows VST Plugins</h2>

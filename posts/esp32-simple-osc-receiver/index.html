@@ -39,8 +39,8 @@ The firmware uses CNMAT&amp;rsquo;s OSC library:
 <meta itemprop="description" content="Lately I have started experimenting with the very cheap and powerful ESP32 microcontrollers.
 Today I made a simple example of a firmware which receives OSC from a computer and then blinks the on-board LED according to the incoming message and I packaged it all as an easy to clone/copy/use platformio project (mostly for myself).
 The firmware uses CNMAT&rsquo;s OSC library:
-#include &#34;Arduino.h&#34;#include &#34;WiFi.h&#34;#include &lt;OSCMessage.h&gt; WiFiUDP Udp; // A UDP instance to let us send and receive packets over UDP int LED_BUILTIN = 2; // Options int update_rate = 16; // Network settings char ssid[] = &#34;wifiname&#34;; // your network SSID (name) char pass[] = &#34;wifipassword&#34;; // your network password unsigned int localPort = 8888; // local port to listen for OSC packets  void setup() { pinMode(LED_BUILTIN, OUTPUT); /* setup wifi */ WiFi."><meta itemprop="datePublished" content="2020-11-09T16:29:19&#43;01:00" />
-<meta itemprop="dateModified" content="2020-11-09T16:29:19&#43;01:00" />
+#include &#34;Arduino.h&#34;#include &#34;WiFi.h&#34;#include &lt;OSCMessage.h&gt; WiFiUDP Udp; // A UDP instance to let us send and receive packets over UDP int LED_BUILTIN = 2; // Options int update_rate = 16; // Network settings char ssid[] = &#34;wifiname&#34;; // your network SSID (name) char pass[] = &#34;wifipassword&#34;; // your network password unsigned int localPort = 8888; // local port to listen for OSC packets  void setup() { pinMode(LED_BUILTIN, OUTPUT); /* setup wifi */ WiFi."><meta itemprop="datePublished" content="2020-11-09T16:29:19+01:00" />
+<meta itemprop="dateModified" content="2020-11-09T16:29:19+01:00" />
 <meta itemprop="wordCount" content="267"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/esp32-bb.jpg">
 <meta itemprop="keywords" content="esp32,microcontroller,osc,supercollider," />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -61,8 +61,8 @@ The firmware uses CNMAT&rsquo;s OSC library:
 #include &#34;Arduino.h&#34;#include &#34;WiFi.h&#34;#include &lt;OSCMessage.h&gt; WiFiUDP Udp; // A UDP instance to let us send and receive packets over UDP int LED_BUILTIN = 2; // Options int update_rate = 16; // Network settings char ssid[] = &#34;wifiname&#34;; // your network SSID (name) char pass[] = &#34;wifipassword&#34;; // your network password unsigned int localPort = 8888; // local port to listen for OSC packets  void setup() { pinMode(LED_BUILTIN, OUTPUT); /* setup wifi */ WiFi." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/full/esp32-bb.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-11-09T16:29:19&#43;01:00" />
-<meta property="article:modified_time" content="2020-11-09T16:29:19&#43;01:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+<meta property="article:published_time" content="2020-11-09T16:29:19+01:00" />
+<meta property="article:modified_time" content="2020-11-09T16:29:19+01:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -150,7 +150,7 @@ The firmware uses CNMAT&rsquo;s OSC library:
 <p>Lately I have started experimenting with the very cheap and powerful <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/">ESP32 microcontrollers</a>.</p>
 <p>Today I made a simple example of a firmware which receives OSC from a computer and then blinks the on-board LED according to the incoming message and I packaged it all as an easy to clone/copy/use <a href="https://github.com/madskjeldgaard/esp32-receive-osc-simple">platformio project (mostly for myself)</a>.</p>
 <p>The firmware uses <a href="https://github.com/CNMAT/OSC">CNMAT&rsquo;s OSC library</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Arduino.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Arduino.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;WiFi.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;OSCMessage.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
@@ -208,7 +208,7 @@ WiFiUDP Udp; <span style="color:#75715e">// A UDP instance to let us send and re
   delay(update_rate);
 }
 </code></pre></div><p>And here is some SuperCollider code to play around with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(
 <span style="color:#75715e">// Target IP. Change the IP address accordingly
 </span><span style="color:#75715e"></span><span style="color:#f92672">~</span><span style="color:#a6e22e">ip</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10.0.0.11&#34;</span>;
 <span style="color:#f92672">~</span><span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8888</span>;

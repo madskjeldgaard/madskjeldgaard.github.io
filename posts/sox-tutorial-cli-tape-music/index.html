@@ -35,8 +35,8 @@ I came across SoX via the live coding community where it is a popular tool for c
 
 <meta itemprop="name" content="SoX tutorial: Command line tape music (an introduction)">
 <meta itemprop="description" content="SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&rsquo;s you perform powerful audio operations by typing just a few words in your computer&rsquo;s terminal.
-I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg."><meta itemprop="datePublished" content="2020-04-26T00:00:44&#43;02:00" />
-<meta itemprop="dateModified" content="2020-04-26T00:00:44&#43;02:00" />
+I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg."><meta itemprop="datePublished" content="2020-04-26T00:00:44+02:00" />
+<meta itemprop="dateModified" content="2020-04-26T00:00:44+02:00" />
 <meta itemprop="wordCount" content="1103"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 <meta itemprop="keywords" content="sox,tutorial," />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -53,8 +53,8 @@ I came across SoX via the live coding community where it is a popular tool for c
 I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-04-26T00:00:44&#43;02:00" />
-<meta property="article:modified_time" content="2020-04-26T00:00:44&#43;02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+<meta property="article:published_time" content="2020-04-26T00:00:44+02:00" />
+<meta property="article:modified_time" content="2020-04-26T00:00:44+02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -172,14 +172,14 @@ I came across SoX via the live coding community where it is a popular tool for c
 <h2 id="installing-sox">Installing SoX</h2>
 <h3 id="macos">MacOS</h3>
 <p>Using the Homebrew package manager:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install sox
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install sox
 </code></pre></div><h3 id="windows">Windows</h3>
 <p>Using the Chocolatey package manager</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">choco install sox.portable
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">choco install sox.portable
 </code></pre></div><h3 id="ubuntu">Ubuntu</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install sox
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install sox
 </code></pre></div><h3 id="arch--manjaro">Arch / Manjaro</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S sox
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S sox
 </code></pre></div><h2 id="whats-included">What&rsquo;s included</h2>
 <h3 id="the-manual">The manual</h3>
 <p><img src="/img/small/sox-man.png" alt="sox manual"></p>
@@ -193,15 +193,15 @@ I came across SoX via the live coding community where it is a popular tool for c
 <p>SoX includes a very handy way of recording audio using the <code>rec</code> command.</p>
 <p>The simplest use is to type <code>rec filename</code> which will start recording from the default input until you stop it by pressing <code>ctrl-c</code> in the terminal window.</p>
 <p>Example use:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec hello.wav
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec hello.wav
 </code></pre></div><p>You can specify a predefined length of the recording like this: <code>rec hello.wav trim 0 30:00</code> which will record for 30 minutes and then automatically stop</p>
 <h3 id="audio-player">Audio player</h3>
 <p>Similarly, playing audio is also possible using the command <code>play</code></p>
 <p>Example use:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav
 </code></pre></div><p>Note that both play and rec can be used with SoX&rsquo;s many included effects.</p>
 <p>Playing the above example at half speed with a flanger at the end is as simple as</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav speed 0.5 flanger
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav speed 0.5 flanger
 </code></pre></div><h2 id="command-line-basics">Command line basics</h2>
 <p>You do not have to have a lot of command line experience to use SoX but there is a few basic commands that will make it easier for you to navigate your computer in the command line.</p>
 <p>• <code>pwd</code> - see path to directory you are currently in
@@ -216,27 +216,27 @@ I came across SoX via the live coding community where it is a popular tool for c
 <h2 id="the-sox-command">The sox command</h2>
 <p>Our main interface for sox in this tutorial will be the <code>sox</code> command. The basic usage of this includes specifying an input file path, an output file path and then optionally some effects followed by an optional series of parameters.</p>
 <p>The basic command we will use will thus look like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox inputfile outputfile effect parameters
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox inputfile outputfile effect parameters
 </code></pre></div><p>If your input or output file contains spaces in the file name, you should wrap the path to it in quotation marks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox <span style="color:#e6db74">&#34;/some folder/containg/a sound.wav&#34;</span> <span style="color:#e6db74">&#34;outputfolder/a new sound.wav&#34;</span> effect param1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox <span style="color:#e6db74">&#34;/some folder/containg/a sound.wav&#34;</span> <span style="color:#e6db74">&#34;outputfolder/a new sound.wav&#34;</span> effect param1
 </code></pre></div><p>Like other command line tools, sox executes from the context of the folder that you are currently in (which can be found by typing <code>pwd</code>) and as such you do not need to type out the entire path to a file if it is in the same folder as the one you are executing sox from.</p>
 <h2 id="command-line-tape-music">Command line tape music</h2>
 <p>Tape music artists of the 60&rsquo;s and 70&rsquo;s had very rudimentary tools at their disposal - mostly they did their work using reel-to-reel tape recorders and simple effects. But you would be surprised by the incredible sonic possibilities available in a tool as simple as this, using basic techniques of recording, reversing, adding effects, changing playback speed, etc. you can get a long way towards making interesting music.</p>
 <p>Let us explore some of SoX' basic commands a bit by doing some command line audio manipulations reminiscent of classic tape music techniques.</p>
 <p>First of all, we need some audio to operate on. I would recommend recording a quick bit from your computer&rsquo;s microphone. If you have an instrument around, maybe use that for this exercise or simply (like me) whistle like an idiot in front of your computer.</p>
 <p>Record to the file idiot.wav for 10 seconds:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec idiot.wav trim 0:0 0:10
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec idiot.wav trim 0:0 0:10
 </code></pre></div><p>Once SoX is done recording, it will post a &ldquo;done&rdquo; message.</p>
 <p>Moving on, let us test the file we just recorded</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play idiot.wav
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play idiot.wav
 </code></pre></div><p>You should now hear yourself doing something silly in front of your computer a few seconds ago.</p>
 <p>To convert this to something else, we need to invoke the <code>sox</code> command now, providing it with an input file name, an output file name and a chain of effects. In this example, I will add a silly effects chain consisting of reversing the audio -&gt; flanger (2ms delay) -&gt; playback speed 50% (0.5) -&gt; reverb. The output of this operation will be saved in the file <code>art.wav</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox idiot.wav art.wav reverse flanger <span style="color:#ae81ff">2</span> speed 0.5 reverb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox idiot.wav art.wav reverse flanger <span style="color:#ae81ff">2</span> speed 0.5 reverb
 </code></pre></div><p>If you execute the command <code>ls</code> now, you should in your directory see both the files idiot.wav (the original) and the manipulated file art.wav.</p>
 <p>Just to be sure, we can test our output file.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play art.wav
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play art.wav
 </code></pre></div><p>Now, we would not be proper command line tape musicians if we felt satisfied after 1 manipulation to the original recording, so let us continue our sonic journey by transforming the <code>art.wav</code> file further, this time we will time stretch to twice the length (factor 2), reverse the audio again and add some reverb. Just to make sure we do not lose too much of our audio level, we will normalize the output to -0.1db as well finally saving the result in the file <code>art2.wav</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox art.wav art2.wav stretch <span style="color:#ae81ff">2</span> reverse reverb norm -0.1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox art.wav art2.wav stretch <span style="color:#ae81ff">2</span> reverse reverb norm -0.1
 </code></pre></div><hr>
 <p><em>This tutorial is part of a series:</em></p>
 <ul>

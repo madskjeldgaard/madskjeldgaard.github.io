@@ -33,8 +33,8 @@
 
 
 <meta itemprop="name" content="How to install Windows VST Plugins on Arch Linux and Manjaro">
-<meta itemprop="description" content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software."><meta itemprop="datePublished" content="2020-10-02T12:20:40&#43;02:00" />
-<meta itemprop="dateModified" content="2020-10-02T12:20:40&#43;02:00" />
+<meta itemprop="description" content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software."><meta itemprop="datePublished" content="2020-10-02T12:20:40+02:00" />
+<meta itemprop="dateModified" content="2020-10-02T12:20:40+02:00" />
 <meta itemprop="wordCount" content="1219"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/linvstprefs.png">
 <meta itemprop="keywords" content="arch,vst,windows,manjaro,wine," />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -49,8 +49,8 @@
 <meta property="og:description" content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/vst-manager/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/linvstprefs.png" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-10-02T12:20:40&#43;02:00" />
-<meta property="article:modified_time" content="2020-10-02T12:20:40&#43;02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+<meta property="article:published_time" content="2020-10-02T12:20:40+02:00" />
+<meta property="article:modified_time" content="2020-10-02T12:20:40+02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -176,21 +176,21 @@ There may be licensing problems in doing this operation on some plugins. I talke
 <p>To install <code>wine</code> (and enable 32 bit support) you need to do enable the <code>multilib</code> repositories in your pacman configuration. If you are running Manjaro, this is already done for you so you can skip this section.</p>
 <p>By doing this, you get access to a range of 32 bit software that can be run on a 64 bit machine.</p>
 <p>Open up <code>/etc/pacman.conf</code> in your favourite text editor. E.g. in vim:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
 </code></pre></div><p>And then uncomment the multilib section:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>multilib<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>multilib<span style="color:#f92672">]</span>
 Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 </code></pre></div><p>And then upgrade your system:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -Syu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -Syu
 </code></pre></div><p>See <a href="https://wiki.archlinux.org/index.php/Official_repositories#multilib">the arch wiki for more information</a>.</p>
 <h3 id="wine">wine</h3>
 <p>To be able to run Windows software on Linux, you need to install <code>wine</code>. Wine is a huge subject in itself (and I definitely do not master it at all), but it basically runs as a compatibility layer between windows software and your linux system.</p>
 <p>If you followed the previous step by enabling multilib, you should now be able to install wine like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S wine
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S wine
 </code></pre></div><h2 id="method-1-yabridge">Method 1: yabridge</h2>
 <p>Using <a href="https://github.com/robbert-vdh/yabridge">yabridge</a> is my favourite way of using vst plugins on Linux these days. It is the simplest and easiest method and includes a lot of really good documentation. In fact, the documentation is so good that I won&rsquo;t go into too much detail here about it - simply check out the Github page for it or visit <a href="https://discord.com/invite/pyNeweqadf">the discord chat server associated with it</a>.</p>
 <p>Installing on Arch and Manjaro is easy:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S yabridge
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S yabridge
 </code></pre></div><p>This gives you access to the command line tool <code>yabridgectl</code> which is the main interface for you. After installing a vst plugin using wine, all you have to do is make sure yabridge knows the path to the folder containing the plugin and then simply run <code>yabridgectl sync</code> and that&rsquo;s it.</p>
 <h3 id="tip-migrating-an-installation-with-yabridge">Tip: Migrating an installation with yabridge</h3>
 <p>I recently had to migrate my wine installation to another computer, since my primary computer died on me. This was surprisingly easy - I simply moved the <code>$HOME/.wine</code> folder to my new computer&rsquo;s home directory, installed wine and wine-mono and then ran <code>yabridgectl sync</code> and I was up and running.</p>
@@ -198,7 +198,7 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 <p>This method involves using <a href="https://github.com/osxmidi/LinVst">linvst</a> to enable vst support. It is used to create bridges between the windows <code>.dll</code> files that VST plugins are delivered in and creates a Linux equivalent <code>.so</code> file. Managing this process can be complicated and a bit of a pain, but thankfully there is a program to do it all for us: <a href="linvstmanager">https://github.com/Goli4thus/linvstmanager</a>.</p>
 <p>Linvstmanager is the main program we use to keep track of vst plugins, where they are and if they are supported on our system.</p>
 <p>There are packages for linvstmanager and all of the linvst bridges on <a href="aur.archlinux.org">the AUR</a> that can be installed using <code>yay</code> or another aur helper system:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S linvstmanager-git linvst-bin linvst3-bin linvst-x-bin linvst3-x-bin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S linvstmanager-git linvst-bin linvst3-bin linvst-x-bin linvst3-x-bin
 </code></pre></div><h3 id="setting-linvstmanager-preferences">Setting linvstmanager preferences</h3>
 <p><img src="/img/small/linvstprefs.png" alt="linvstmanager preferences"></p>
 <p>Before we are able to use linvstmanager, we need to tell it where the vst bridges we installed along with it are in our system.</p>

@@ -39,8 +39,8 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <meta itemprop="description" content="It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
 This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
 I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
-So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins."><meta itemprop="datePublished" content="2020-04-06T15:44:23&#43;00:00" />
-<meta itemprop="dateModified" content="2020-04-06T15:44:23&#43;00:00" />
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins."><meta itemprop="datePublished" content="2020-04-06T15:44:23+00:00" />
+<meta itemprop="dateModified" content="2020-04-06T15:44:23+00:00" />
 <meta itemprop="wordCount" content="769"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 <meta itemprop="keywords" content="cpp,openframeworks,creative-coding,tutorial," />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -61,8 +61,8 @@ I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CP
 So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-04-06T15:44:23&#43;00:00" />
-<meta property="article:modified_time" content="2020-04-06T15:44:23&#43;00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+<meta property="article:published_time" content="2020-04-06T15:44:23+00:00" />
+<meta property="article:modified_time" content="2020-04-06T15:44:23+00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -149,12 +149,12 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <h2 id="install-clang-formatting">Install clang formatting</h2>
 <p>On Arch Linux I had to install clang to make this work: <code>sudo pacman -Syu clang</code></p>
 <p>There’s some really nice autoformatting plugins from Google. Add these to your init.vim and install:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Code formatting (for c++)</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Code formatting (for c++)</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;google/vim-maktaba&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;google/vim-codefmt&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;google/vim-glaive&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>This should now automatically fix your code automatically with the following in your init.vim:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">&#34; Code formatting</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">cpp</span>,<span style="color:#a6e22e">proto</span>,<span style="color:#a6e22e">javascript</span> <span style="color:#a6e22e">AutoFormatBuffer</span> <span style="color:#a6e22e">clang</span>-<span style="color:#a6e22e">format</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h2 id="ctags">Ctags</h2>
@@ -173,7 +173,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <p>Following this installation guide thoroughly <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Full-Installation-Guide">installation guide</a></p>
 <p>Especially make sure you have <a href="https://clangd.llvm.org/installation.html">clangd</a> installed. On arch, this was installed automatically for me with the <code>clang</code> package but you can verify this on the command line by running <code>which clangd</code> which should return a path to the binary, otherwise you need to install it.</p>
 <p>It’s especially important to add this line to your init.vim file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_clangd_binary_path</span> = <span style="color:#e6db74">&#34;/path/to/clangd&#34;</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_clangd_binary_path</span> = <span style="color:#e6db74">&#34;/path/to/clangd&#34;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p><code>/path/to/clangd</code> can be replaced by the output of the command <code>which clangd</code></p>
 <p>Now you should have automatic debugging and autocomplete suggestions.</p>
 <p>Try opening up a openframeworks, run the <code>compiledb -n make</code> command and move to <code>ofApp.cpp</code> and inside the setup function add the following:</p>
@@ -181,7 +181,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <p>This will make a rectangle object. Now, in the next line, write <code>rect.</code> – by the <code>.</code> you should now see a list of suggested methods to use that are native to the ofRectangle class.</p>
 <h2 id="keybindings">Keybindings</h2>
 <p>Most of the relevant keymappings I use, I got from <a href="http://roosnaflak.com/tech-and-research/openframeworks-nvim-archlinux/">Kenneth Flak’s blogpost about the same</a>. These will setup vim to compile your oF program when you press ctrl-e (this is convenient since this is the same shortcut we use in <a href="https://github.com/davidgranstrom/scnvim">SCNVim</a>):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">c</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">c</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span>!<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">cpp</span>,<span style="color:#a6e22e">h</span>,<span style="color:#a6e22e">hpp</span>,<span style="color:#a6e22e">glsl</span> <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">MakeRun</span>()<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">end</span><span style="color:#960050;background-color:#1e0010">
@@ -191,7 +191,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">inoremap</span> :<span style="color:#a6e22e">terminal</span> <span style="color:#a6e22e">make</span> -<span style="color:#a6e22e">j8</span> &amp;&amp; <span style="color:#a6e22e">make</span> <span style="color:#a6e22e">run</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endfunction</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>And then some nice keybindings to work with YouCompleteMe:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Find definition</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Find definition</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">au</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">cpp</span> <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">si</span> :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">GoToDefinition</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
 </span><span style="color:#75715e">&#34; Reboot Ycm server</span><span style="color:#960050;background-color:#1e0010">
@@ -217,7 +217,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <p><img src="/img/gif/of-snippets.gif" alt="open frameworks + vim"></p>
 <p>Another really nice feature in this dev environment is the addition of snippets. I use UltiSnips for this. When I set this up, I read varying reports about how well UltiSnips works with YCM, but for me it works fine.</p>
 <p>Install <a href="https://github.com/SirVer/ultisnips">UltiSnips</a> and then add these to your init.vim:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YouCompleteMe and UltiSnips compatibility.</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YouCompleteMe and UltiSnips compatibility.</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_use_ultisnips_completer</span> = <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_select_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_previous_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
@@ -232,7 +232,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 </span></code></pre></div><p>I’d also recommend installing <a href="github.com/honza/vim-snippets/">vim-snippets</a> which contains extra snippets.</p>
 <p>Now, when for example you type <code>if</code> in a <code>.cpp</code> or <code>.h</code> file you can hit tab to expand it to get the full code for an if-statement. If you want, you can even add your own custom snippets using Ultisnips powerful capabilities ( execute <code>:h snippets</code> in Vim for more info about this ). Below I have defined two snippets. One which will expand when typing <code>ofclass</code> and one when typing <code>ofheader</code>. The first will create a sensible class and the latter a sensible header. Hit tab to cycle through the arguments.</p>
 <p>To use these snippets, add these to the file (which you can create if it doesn’t exist yet) <code>~/.vim/UltiSnips/cpp.snippets</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">snippet</span> <span style="color:#a6e22e">ofclass</span> <span style="color:#e6db74">&#34;Class for open frameworks&#34;</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">snippet</span> <span style="color:#a6e22e">ofclass</span> <span style="color:#e6db74">&#34;Class for open frameworks&#34;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>#<span style="color:#a6e22e">include</span> <span style="color:#e6db74">&#34;${1:`!p snip.rv = snip.basename`}.h&#34;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>$<span style="color:#ae81ff">1</span>::$<span style="color:#ae81ff">1</span>(){}<span style="color:#960050;background-color:#1e0010">

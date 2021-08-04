@@ -39,8 +39,8 @@ To quote from the manual on zita-njbridge:
 <meta itemprop="description" content="Jack is an incredibly flexible piece of software for making audio connections. It&rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
 This is exploited to it&rsquo;s fullest in the zita-njbridge package.
 To quote from the manual on zita-njbridge:
- The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server."><meta itemprop="datePublished" content="2020-05-03T10:17:27&#43;02:00" />
-<meta itemprop="dateModified" content="2020-05-03T10:17:27&#43;02:00" />
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server."><meta itemprop="datePublished" content="2020-05-03T10:17:27+02:00" />
+<meta itemprop="dateModified" content="2020-05-03T10:17:27+02:00" />
 <meta itemprop="wordCount" content="1536"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 <meta itemprop="keywords" content="supercollider,raspberrypi,zita-njbridge," />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -61,8 +61,8 @@ To quote from the manual on zita-njbridge:
  The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/raspi-zita-njbridge/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-05-03T10:17:27&#43;02:00" />
-<meta property="article:modified_time" content="2020-05-03T10:17:27&#43;02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+<meta property="article:published_time" content="2020-05-03T10:17:27+02:00" />
+<meta property="article:modified_time" content="2020-05-03T10:17:27+02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -217,9 +217,9 @@ the audio stream(s) to its local sample rate.</p>
 <h2 id="setting-up-the-raspberry-pi">Setting up the Raspberry Pi</h2>
 <p>At the end of this post I will get back to <code>tmux</code> and how to launch these commands simultaneously in a terminal, but for now let&rsquo;s go through each command needed.</p>
 <p>First, install dependencies:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install tmux zita-njbridge jackd2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install tmux zita-njbridge jackd2
 </code></pre></div><p>Let&rsquo;s start jack on the pi using some sensible settings. Assuming your Pi has a USB audio interface connected, the hardware number (this is the <code>-dhw:1</code> bit below) should be 1. If you are using (which you shouldn&rsquo;t) the internal interface on the Pi, change this to 0.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Launch jack using card 0, 48khz sample rate and block size of 256</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Launch jack using card 0, 48khz sample rate and block size of 256</span>
 /usr/bin/jackd -dalsa -dhw:1 -r48000 -p256 -n2
 </code></pre></div><p>Once jack is up and running, the next step is to run zita-njbridge.</p>
 <p>zita-njbridge contains two commands:</p>
@@ -231,13 +231,13 @@ the audio stream(s) to its local sample rate.</p>
 <p>Both of these commands should be the ip address and port of the receiving computer (for more information, read the manual by executing <code>man zita-njbridge</code>).</p>
 <p>My laptop, which is the computer receiving the audio, has the local ip address <code>10.0.1.5</code> and for the port number, we can just make up something, how about <code>1234</code>?</p>
 <p>With these two bits of information, we can launch <code>zita-j2n</code> on the Pi:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-j2n 10.0.1.5 <span style="color:#ae81ff">1234</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-j2n 10.0.1.5 <span style="color:#ae81ff">1234</span>
 </code></pre></div><p>Note, this command doesn&rsquo;t output anything, so don&rsquo;t freak out if you don&rsquo;t see anything happen in the terminal when you execute this.</p>
 <h3 id="start-supercollider">Start SuperCollider</h3>
 <p>As mentioned, in this example we will be using SuperCollider but any software that can run in headless mode on the Pi may be used. If you haven&rsquo;t installed it already, there are <a href="/posts/raspi4-notes">scripts for doing so here</a>.</p>
 <p>From the command line, you can create a simple SuperCollider test file which will make the SuperCollider server boot and then play a stereo sine wave.</p>
 <p>Using <code>echo</code> we can create a small test file in your home directory called <code>test.scd</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;
 </span><span style="color:#e6db74">		// Boot server and play stereo sine wave
 </span><span style="color:#e6db74">		s.waitForBoot{
 </span><span style="color:#e6db74">		play{
@@ -245,20 +245,20 @@ the audio stream(s) to its local sample rate.</p>
 </span><span style="color:#e6db74">	}
 </span><span style="color:#e6db74">	}&#34;</span> &gt; <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/test.scd&#34;</span>
 </code></pre></div><p>And then launch that same file using the SuperCollider language:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sclang $HOME/test.scd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sclang $HOME/test.scd
 </code></pre></div><h3 id="connect-jack">Connect jack</h3>
 <p>Open up a terminal and type <code>jack_lsp</code> to see the available connections in jack.</p>
 <p>These are the connections for our virtual patch cords.</p>
 <p>We can connect these on the command line using the <code>jack_connect</code> command.</p>
 <p>If zita-njbridge and SuperCollider are running, you should see the output of <code>jack_lsp</code> contain connection points for both of these.</p>
 <p>Execute these commands to connect output 1 and 2 of SuperCollider to inputs 1 and 2 of <code>zita-j2n</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jack_connect SuperCollider:out_1 zita-j2n:in_1 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jack_connect SuperCollider:out_1 zita-j2n:in_1 
 jack_connect SuperCollider:out_2 zita-j2n:in_2
 </code></pre></div><p>Make sure these commands don&rsquo;t output any errors before continuing.</p>
 <h2 id="on-the-receiving-computer">On the receiving computer</h2>
 <p><img src="/img/small/qjackctl-zita.png" alt="success - this is what it should look like on your host computer"></p>
 <p>Then start receiving sound from zita. Note that this is the same ip and port as typed into the command in the Raspberry Pi, but the command itself is slightly different</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-n2j 10.0.1.5 <span style="color:#ae81ff">1234</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-n2j 10.0.1.5 <span style="color:#ae81ff">1234</span>
 </code></pre></div><p>This should result in a message like:</p>
 <pre><code>From 10.0.1.50 : 2 chan, 44100 Hz
 Resampler filter delay is 48.
@@ -274,13 +274,13 @@ Receiving.
 <p>Apart from solving the obvious problem of not being able to see multiple processes at the same time, Tmux is great for automation. We can set up and launch programs in Tmux automatically. This means we can bring together all commands from above in a setup script to be launched on the Pi. With this, we only need to launch this on the pi and it will transmit sound on the network.</p>
 <p>I&rsquo;ve written a full script for this which is <a href="https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd75946">available here</a>.</p>
 <p>You can download this on your Pi by executing this command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Get startup script and make it executable</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Get startup script and make it executable</span>
 git clone https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd75946 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	mv 1a1e58a36f2d7526cd28524f5fd75946/njstart . <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	rm -rf 1a1e58a36f2d7526cd28524f5fd75946 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	chmod +x njstart
 </code></pre></div><p>Using it is fairly simple. You run the script like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./njstart &lt;ipaddress&gt; &lt;port&gt; &lt;supercolliderfile&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./njstart &lt;ipaddress&gt; &lt;port&gt; &lt;supercolliderfile&gt;
 </code></pre></div><p>It has three arguments. The ip address and port of the receiving computer (your laptop) and an optional third argument for a SuperCollider file to be launched. If the third argument isn&rsquo;t supplied it will use the file in <code>~/test.scd</code> if it exists or create one if it doesn&rsquo;t.</p>
 <p>Then, using the same ip address and port, run <code>zita-n2j</code> on the receiving computer to receive the audio from the Pi.</p>
 <p>This is the full script:</p>

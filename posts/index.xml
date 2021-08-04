@@ -29,15 +29,15 @@
 <h2 id="realtime-privileges">Realtime privileges</h2>
 <p>Arch has a nice package will allow users in the <code>realtime</code> group to have realtime privileges, including unlocking memory and setting realtime priorities very high.</p>
 <p>It&rsquo;s easily setup:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S realtime-privileges
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S realtime-privileges
 sudo groupadd realtime
 sudo usermod -a -G realtime $USER
 </code></pre></div><h2 id="reduce-swappiness">Reduce swappiness</h2>
 <p>Add <code>vm.swappiness=10</code> to /etc/sysctl.conf</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo echo <span style="color:#e6db74">&#34;vm.swappiness=10&#34;</span> &gt;&gt; /etc/sysctl.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo echo <span style="color:#e6db74">&#34;vm.swappiness=10&#34;</span> &gt;&gt; /etc/sysctl.conf
 </code></pre></div><h2 id="cpu-governor">CPU governor</h2>
 <p>This is by far the audio system improvement that makes the biggest difference on my systems. By setting your CPU governors to &ldquo;performance&rdquo; (instead of &ldquo;powersave&rdquo;) the performance stability (and energy usage) of your CPU increases. In practice, this often doubles the performance of my machines so it&rsquo;s definately worth doing. <a href="https://wiki.archlinux.org/title/CPU_frequency_scaling">The Arch wiki has a whole page dedicated to this</a>, but I prefer using this approach using <code>tuned</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S tuned
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S tuned
 systemctl enable --now tuned.service
 tuned-adm profile latency-performance
 </code></pre></div><p>You can setup a udev rule to automatically switch between power save mode and performance when plugging power into your laptop.</p>
@@ -47,7 +47,7 @@ ACTION==&quot;change&quot;, SUBSYSTEM==&quot;power_supply&quot;, ATTR{type}==&qu
 # Rule for when switching to AC
 ACTION==&quot;change&quot;, SUBSYSTEM==&quot;power_supply&quot;, ATTR{type}==&quot;Mains&quot;, ATTR{online}==&quot;1&quot; RUN+=&quot;/usr/bin/tuned-adm profile latency-performance&quot;
 </code></pre><p><a href="oddodd.org">Niklas Adam</a> also recommends these aliases if you want to switch between the performance profiles dynamically. Add them to your .zshrc or whatever:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias cpu-max<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile latency-performance&#39;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias cpu-max<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile latency-performance&#39;</span>
 alias cpu-balanced<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile balanced&#39;</span>
 alias cpu-min<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;tuned-adm profile laptop-battery-powersave&#39;</span>
 </code></pre></div><h2 id="windows-vst-plugins">Windows VST Plugins</h2>
@@ -79,124 +79,124 @@ The first step is to install Windows. I won&amp;rsquo;t cover that here. I insta
 <p>I don&rsquo;t cover the audio tuning that happens after the setup here but will do that in a seperate post / note at some point.</p>
 <p>If need someone to hold your hand while doing this (I did) then check out <a href="https://youtu.be/L1B1O0R1IHA">this video which I found helpful during the process, even though it isn&rsquo;t 100% accurate I found</a>.</p>
 <h1 id="initial-setup">Initial setup</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">loadkeys dk
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">loadkeys dk
 </code></pre></div><p>connect to wifi</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">iwctl station wlan0 connect <span style="color:#e6db74">&#34;&lt;network-name&gt;&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">iwctl station wlan0 connect <span style="color:#e6db74">&#34;&lt;network-name&gt;&#34;</span>
 </code></pre></div><p>network time:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">timedatectl set-ntp true
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">timedatectl set-ntp true
 </code></pre></div><p>Use reflector to setup mirrors</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S reflector
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S reflector
 reflector -c Norway -a <span style="color:#ae81ff">5</span> --sort rate --save /etc/pacman.d/mirrorlist
 pacman -Syyy
 </code></pre></div><h1 id="setup-dual-boot">Setup dual boot</h1>
 <p>Create partition on disk:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cfdisk /dev/nvme0n1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cfdisk /dev/nvme0n1
 </code></pre></div><p>Choose free space
 Hit enter
 Write</p>
 <p>Make filesystem</p>
 <p>Find the linux partition:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lsblk
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/nvmen0n5
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">lsblk
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkfs.ext4 /dev/nvmen0n5
 </code></pre></div><p>Now mount it</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mount /dev/nvmen0n5 /mnt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mount /dev/nvmen0n5 /mnt
 </code></pre></div><p>Mount windows boot partition</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /mnt/boot
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /mnt/boot
 mount /dev/nvme0n1p1 /mnt/boot
 </code></pre></div><p>Mount main windows fs</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /mnt/windows
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir /mnt/windows
 mount /dev/nvme0n1p3 /mnt/windows
 </code></pre></div><h1 id="install-base-system">Install base system</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacstrap /mnt base linux linux-firmware intel-ucode vim
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacstrap /mnt base linux linux-firmware intel-ucode vim
 </code></pre></div><p>Generate fstab</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">genfstab -U /mnt &gt;&gt; /mnt/etc/fstab
 </code></pre></div><p>Check fstab</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /mnt/etc/fstab
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat /mnt/etc/fstab
 </code></pre></div><p>If it looks okay, its time to lave the iso:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">arch-chroot /mnt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">arch-chroot /mnt
 </code></pre></div><h1 id="swap">Swap</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">fallocate -l 10GB /swapfile
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">fallocate -l 10GB /swapfile
 chmod <span style="color:#ae81ff">600</span> /swapfile
 mkswap /swapfile
 swapon /swapfile
-</code></pre></div><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/fstab
+</code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/fstab
 </code></pre></div><p>Add:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/swapfile none swap defaults <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">/swapfile none swap defaults <span style="color:#ae81ff">0</span> <span style="color:#ae81ff">0</span>
 </code></pre></div><h1 id="timezone">Timezone</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -sf /usr/share/zoneinfo/Europe/Oslo /etc/localtime
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ln -sf /usr/share/zoneinfo/Europe/Oslo /etc/localtime
 hwclock --systohc
 </code></pre></div><h1 id="locale">Locale</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/locale.gen
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/locale.gen
 </code></pre></div><p>uncomment
 da_DK.UTF-8 UTF-8</p>
 <p>then run</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">locale-gen
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">locale-gen
 echo <span style="color:#e6db74">&#34;LANG=da_DK.UTF-8&#34;</span> &gt;&gt; /etc/locale.conf
 </code></pre></div><h1 id="keymap">Keymap</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;KEYMAP=dk&#34;</span> &gt;&gt; /etc/vconsole.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">echo <span style="color:#e6db74">&#34;KEYMAP=dk&#34;</span> &gt;&gt; /etc/vconsole.conf
 loadkeys dk
 </code></pre></div><h1 id="hostname">Hostname</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/hostname
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/hostname
 </code></pre></div><p>add &ldquo;lysendebjerg&rdquo;</p>
 <p>Then open</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/hosts
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/hosts
 </code></pre></div><p>And add</p>
 <pre><code>127.0.0.1 localhost
 ::1 localhost
 127.0.1.1 lysendebjerg.localdomain lysendebjerg
 </code></pre><h1 id="root-password">Root password</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">passwd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">passwd
 </code></pre></div><h1 id="base-packages">Base packages</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S sudo grub efibootmgr base-devel linux-headers git networkmanager network-manager-applet wireless_tools wpa_supplicant dialog git bluez bluez-utils pulseaudio-bluetooth cups openssh jack
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S sudo grub efibootmgr base-devel linux-headers git networkmanager network-manager-applet wireless_tools wpa_supplicant dialog git bluez bluez-utils pulseaudio-bluetooth cups openssh jack
 </code></pre></div><p>if dual boot with windows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S os-prober ntfs-3g mtools dosfstools
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pacman -S os-prober ntfs-3g mtools dosfstools
 </code></pre></div><h1 id="grub">Grub</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grub-install --target<span style="color:#f92672">=</span>x86_64-efi --efi-directory<span style="color:#f92672">=</span>/boot --bootloader-id<span style="color:#f92672">=</span>GRUB
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grub-install --target<span style="color:#f92672">=</span>x86_64-efi --efi-directory<span style="color:#f92672">=</span>/boot --bootloader-id<span style="color:#f92672">=</span>GRUB
 </code></pre></div><p>Allow os-prober (for dual boot only):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/default/grub
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/default/grub
 </code></pre></div><p>Add</p>
 <pre><code>GRUB_DISABLE_OS_PROBER=false
 </code></pre><p>Create config:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grub-mkconfig -o /boot/grub/grub.cfg
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre></div><h1 id="enable-services">Enable services</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl enable sshd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">systemctl enable sshd
 systemctl enable NetworkManager
 systemctl enable bluetooth
 </code></pre></div><h1 id="new-user">New user</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">useradd -mG wheel mads
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">useradd -mG wheel mads
 passwd mads
 </code></pre></div><h1 id="sudo">sudo</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">EDITOR<span style="color:#f92672">=</span>vim visudo
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">EDITOR<span style="color:#f92672">=</span>vim visudo
 </code></pre></div><p>uncomment <code>%wheel ALL=(ALL) ALL</code></p>
 <h1 id="enable-color-pacman">Enable color pacman</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
 </code></pre></div><p>uncomment <code>Color</code></p>
 <h1 id="change-shell-to-zsh">Change shell to zsh</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S zsh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S zsh
 chsh /bin/zsh
 </code></pre></div><h1 id="install-aur-helper-paru">Install AUR helper (paru)</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S --needed base-devel
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S --needed base-devel
 git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 </code></pre></div><h1 id="install-desktop-environment-and-basic-necessities">Install desktop environment and basic necessities</h1>
 <p>I use bspwm at the moment because it&rsquo;s extremely minimalistic and very very nice. This will install pretty much everything I need in a full desktop environment including terminals, browser, file managers statusbar and other tidbits.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S  xorg-server xorg-twm xorg-xprop xorg-xkill xorg-xinit xautolock rofi sxhkd bspwm bsp-layout alacritty kitty blueman neovim-git htop neomutt tmux ncdu namcap picom polybar polkit-gnome xfce4-power-manager tuned vlc topgrade timew task taskwarrior-tui-git scrot ripgrep skim fzf redshift ranger thunar telegram-desktop the_silver_searcher starship-bin sudo pass firefox downgrade bashmount arandr mbsync-git mons exa bat
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S  xorg-server xorg-twm xorg-xprop xorg-xkill xorg-xinit xautolock rofi sxhkd bspwm bsp-layout alacritty kitty blueman neovim-git htop neomutt tmux ncdu namcap picom polybar polkit-gnome xfce4-power-manager tuned vlc topgrade timew task taskwarrior-tui-git scrot ripgrep skim fzf redshift ranger thunar telegram-desktop the_silver_searcher starship-bin sudo pass firefox downgrade bashmount arandr mbsync-git mons exa bat
 </code></pre></div><h1 id="install-development-stuff">Install development stuff</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S platformio teensyduino lazygit kicad gdb gcc cmake cppcheck openscad rust
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S platformio teensyduino lazygit kicad gdb gcc cmake cppcheck openscad rust
 </code></pre></div><h1 id="install-audio-stuff">Install audio stuff</h1>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S reaper-bin sws supercollider sc3-plugins jack2 mpv sox qjackctl pulseaudio-bluetooth pulseaudio-jack pulseaudio njconnect flac cadence alsa-firmware alsa-plugins alsa-utils realtimeconfigquickscan-git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">paru -S reaper-bin sws supercollider sc3-plugins jack2 mpv sox qjackctl pulseaudio-bluetooth pulseaudio-jack pulseaudio njconnect flac cadence alsa-firmware alsa-plugins alsa-utils realtimeconfigquickscan-git
 </code></pre></div><h1 id="install-dotfiles">Install dotfiles</h1>
 <p>First setup ssh keys to github account: <a href="https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account">https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh-keygen -t ed25519 -C <span style="color:#e6db74">&#34;mail@madskjeldgaard.dk&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh-keygen -t ed25519 -C <span style="color:#e6db74">&#34;mail@madskjeldgaard.dk&#34;</span>
 eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
 ssh-add ~/.ssh/id_ed25519
 </code></pre></div><p>Then get the new key:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat ~/.ssh/id_ed25519.pub
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cat ~/.ssh/id_ed25519.pub
 </code></pre></div><p>and paste it into github account</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:madskjeldgaard/dotfiles.git <span style="color:#f92672">&amp;&amp;</span> cd dotfiles <span style="color:#f92672">&amp;&amp;</span> ./install
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone git@github.com:madskjeldgaard/dotfiles.git <span style="color:#f92672">&amp;&amp;</span> cd dotfiles <span style="color:#f92672">&amp;&amp;</span> ./install
 </code></pre></div><p>Install neovim plugins</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim -c <span style="color:#e6db74">&#34;PlugInstall&#34;</span> --headless
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim -c <span style="color:#e6db74">&#34;PlugInstall&#34;</span> --headless
 </code></pre></div>]]></content>
         </item>
         
@@ -216,7 +216,7 @@ One advice that I kept hearing again and again though was to install wine (the W
 <p>We will be using <a href="https://github.com/Frogging-Family/wine-tkg-git">Frogging-Family&rsquo;s PKGBUILD</a> for this installation.</p>
 <h1 id="installation">Installation</h1>
 <p>First, download the source code and move into it&rsquo;s directory:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/Frogging-Family/wine-tkg-git
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/Frogging-Family/wine-tkg-git
 cd wine-tkg-git/wine-tkg-git
 </code></pre></div><p>The next step is to configure the installation. The defaults should be good, but still, if you want to customize your installation, it is done by editing <code>customization.cfg</code>.</p>
 <p>This file allows you to choose a specific wine version.</p>
@@ -282,14 +282,14 @@ freq=vslider(&quot;cutoff&quot;,500,20.0,20000,1);
 process= _: ve.wah4(freq) : _;
 </code></pre><p>This imports the standard library for faust and then defines a parameter &ldquo;cutoff&rdquo; that we will use to control the cutoff frequency. Note that in Faust this is represented as a slider with a default value of 500 (hz), range from 20.0 to 20000.0 in steps of 1. When converting to a SuperCollider UGen, this will be interpreted as an argument for the UGen and show up as <code>cutoff</code>.</p>
 <p>Now save the file and compile it to SuperCollider using the command line tool <code>faust2supercollider</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">faust2supercollider Wah4.dsp -noprefix
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">faust2supercollider Wah4.dsp -noprefix
 </code></pre></div><p>The <code>-noprefix</code>-flag here removes the standard <code>Faust</code>-prefix and just uses the base file name <code>Wah4</code> as the name of our UGen.</p>
 <p>On some systems (including MacOS) you may need to download the SuperCollider source code and put the path to it into an environment variable when running the faust compilation command, like so (thanks Johannes Burström for pointing out):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">SUPERCOLLIDER_HEADERS<span style="color:#f92672">=</span>/path/to/supercollider_source/include faust2supercollider Wah4.dsp -noprefix
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">SUPERCOLLIDER_HEADERS<span style="color:#f92672">=</span>/path/to/supercollider_source/include faust2supercollider Wah4.dsp -noprefix
 </code></pre></div><h2 id="test-the-plugin">Test the plugin</h2>
 <p>If succesful, this process outputs a shared object and a SuperCollider class file. Copy these to your Extensions folder (this can be found by executing <code>Platform.userExtensionDir</code> in SuperCollider) and recompile the SuperCollider class library.</p>
 <p>Now, test out your brand spanking new Wahwah-effect in a patch with a noise UGen modulating the cutoff frequency:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"> 
 (
 <span style="color:#a6e22e">Ndef</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">wahhhh</span>, { <span style="color:#f92672">|</span><span style="color:#a6e22e">freq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">150</span>, <span style="color:#a6e22e">amp</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.25</span><span style="color:#f92672">|</span> 
 	<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Saw</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">freq</span>);
@@ -300,7 +300,7 @@ process= _: ve.wah4(freq) : _;
 </code></pre></div><p>That&rsquo;s it. Now, all there&rsquo;s left is to actually <a href="https://faustdoc.grame.fr/workshops/2020-04-10-faust-101/">learn the faust programming language syntax, hehe</a>.</p>
 <h2 id="the-generated-supercollider-class">The generated SuperCollider class</h2>
 <p>This is what the actual SuperCollider class interface for our new Wah effect looks like after being generated by <code>faust2supercollider</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Wah4</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">UGen</span> {
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Wah4</span> <span style="color:#f92672">:</span> <span style="color:#a6e22e">UGen</span> {
   <span style="color:#f92672">*</span><span style="color:#a6e22e">ar</span> { <span style="color:#f92672">|</span> <span style="color:#a6e22e">in1</span>, <span style="color:#a6e22e">cutoff</span>(<span style="color:#ae81ff">500.0</span>) <span style="color:#f92672">|</span>
       <span style="color:#f92672">^</span><span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">multiNew</span>(<span style="color:#e6db74">&#39;audio&#39;</span>, <span style="color:#a6e22e">in1</span>, <span style="color:#a6e22e">cutoff</span>)
   }
@@ -329,7 +329,7 @@ process= _: ve.wah4(freq) : _;
 
 </code></pre></div><h2 id="generate-only-the-c-files-for-the-supercollider-plugin">Generate only the C++ files for the SuperCollider plugin</h2>
 <p>If you want to see the C++ code that is generated from your faust-file you have several options. If you compile using the <code>faust2supercollider</code> tool, you can add <code>-ks</code> (short for keep source) as a flag to the command, or you may run the following command to only create the C++ source:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">faust -a supercollider.cpp Wah4.dsp -o Wah4.cpp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">faust -a supercollider.cpp Wah4.dsp -o Wah4.cpp
 </code></pre></div><p>This will result in a C++ file called <code>Wah4.cpp</code>.</p>
 <p>This can be useful for several things - for me personally this is a nice way to see what happens behind the scenes when your faust-code is interpreted and compiled to SuperCollider friendly C++ classes (scroll down to the stuff with <code>Faust_next</code> to see the actual class used by SuperCollider).</p>
 ]]></content>
@@ -346,7 +346,7 @@ The process of creating server plugins (aka UGens) for SuperCollider is one of t
             <content type="html"><![CDATA[<p>My amazing <a href="https://notam.no">workplace</a> allowed me time during the Covid-19 lockdowns in Oslo to spend time improving my C++ and DSP skills. The result of this is a bunch of plugins for SuperCollider, <a href="https://github.com/madskjeldgaard/mkplugins">some of which are already released</a> as well as a trunk of Notam plugins that are to be announced.</p>
 <p>The process of creating server plugins (aka UGens) for SuperCollider is one of the most fun and gratifying ways one can experiment with DSP and C++ in my opinion. That said, getting started with it was a difficult task for me since the different resources on the process of creating plugins for SuperCollider were either spotty or out of date and did not include some of the best practices involved in creating high quality plugins.</p>
 <p>While learning about this myself and piece together the information, I decided to write up a <a href="https://scsynth.org/t/tutorial-supercollider-server-plugins-in-c/3449">tutorial</a> containing the information I wish I had when I started out.</p>
-<p><a href="https://https://raw.githubusercontent.com/notam02/supercollider-plugin-tutorial/main/tutorial/how-to-make-a-supercollider-plugin-cpp.pdf">Click here to download the PDF version</a>.</p>
+<p><a href="https://raw.githubusercontent.com/notam02/supercollider-plugin-tutorial/main/tutorial/how-to-make-a-supercollider-plugin-cpp.pdf">Click here to download the PDF version</a>.</p>
 ]]></content>
         </item>
         
@@ -360,10 +360,10 @@ The process of creating server plugins (aka UGens) for SuperCollider is one of t
 Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and build libraries From the root of your project:</description>
             <content type="html"><![CDATA[<p>I recently got hold of Electro-Smith&rsquo;s powerful <a href="https://https://www.electro-smith.com/daisy">Daisy Seed</a> microcontroller board for developing embedded DSP projects. Unfortunately, at the time of writing the libraries for it do not support Platformio fully which is normally my preferred way of working with microcontrollers but fortunately it&rsquo;s pretty easy to setup and use using <em>make</em>. Here are my notes for doing that.</p>
 <h2 id="install-prerequisites-on-arch">Install prerequisites (on Arch)</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S dfu-util gcc-arm-none-eabi-bin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S dfu-util gcc-arm-none-eabi-bin
 </code></pre></div><h2 id="setup-and-build-libraries">Setup and build libraries</h2>
 <p>From the root of your project:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git init
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git init
 git submodule add https://github.com/electro-smith/DaisySP
 git submodule add https://github.com/electro-smith/libDaisy
 
@@ -377,7 +377,7 @@ make clean ; make | grep <span style="color:#e6db74">&#34;warning:r\|error&#34;<
 echo <span style="color:#e6db74">&#34;done.&#34;</span>
 </code></pre></div><h2 id="makefile-and-cpp-file">Makefile and cpp file</h2>
 <p>Here&rsquo;s an example of a Makefile:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#75715e"># Project Name
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-Makefile" data-lang="Makefile"><span style="color:#75715e"># Project Name
 </span><span style="color:#75715e"></span>TARGET <span style="color:#f92672">=</span> ex_vco
 
 <span style="color:#75715e"># Sources
@@ -391,7 +391,7 @@ DAISYSP_DIR <span style="color:#f92672">=</span> DaisySP
 </span><span style="color:#75715e"></span>SYSTEM_FILES_DIR <span style="color:#f92672">=</span> <span style="color:#66d9ef">$(</span>LIBDAISY_DIR<span style="color:#66d9ef">)</span>/core
 <span style="color:#960050;background-color:#1e0010">include</span> <span style="color:#66d9ef">$(</span>SYSTEM_FILES_DIR<span style="color:#66d9ef">)</span><span style="color:#960050;background-color:#1e0010">/Makefile</span>
 </code></pre></div><p>And the accompanying code (<em>ex_vco.cpp</em>)</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;daisysp.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;daisysp.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;daisy_patch.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;string&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
@@ -461,12 +461,12 @@ Parameter  freqctrl, wavectrl, ampctrl, finectrl;
 }
 </code></pre></div><p>Both of these are from the Daisy examples.</p>
 <h2 id="building">Building</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make
 </code></pre></div><h2 id="uploading">Uploading</h2>
 <p>Put Daisy into DFU mode by pressing BOOT, then RESET, then letting go of RESET and then of BOOT.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make program-dfu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make program-dfu
 </code></pre></div><p>Or build and upload in one:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make; make program-dfu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make clean; make; make program-dfu
 </code></pre></div><h2 id="project-generator-script">Project generator script</h2>
 <p>I created a small script for myself to generate projects for the Daisy Seed.</p>
 <script type="application/javascript" src="https://gist.github.com/madskjeldgaard/117e9ee328641aae10b5493a94f7efe2.js"></script>
@@ -500,7 +500,7 @@ There is a number of amazing SuperCollider plugin repositories on Github - a lot
 <h2 id="create-a-release">Create a release</h2>
 <p>The way the yaml file is set up, it will activate the process whenever the github repository receives a new tag containing <code>v*</code>, where the asterisk is some version number (for example <code>v1</code> or <code>v2.0.19</code>).</p>
 <p>To activate this, in your local git repo you may run this command to</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create a version tag</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create a version tag</span>
 git tag v0.0.108 
 
 <span style="color:#75715e"># Push new version tag to GH and activate action</span>
@@ -551,7 +551,7 @@ But this is not so easy on Arch Linux, since these virtual machines rely on old(
 <p>Messing up here might do weird things to your installation, so proceed with caution.</p>
 <h2 id="install-arm-48-3">Install arm 4.8-3</h2>
 <p>The MI modules need a very old version of <code>gcc-arm-none-eabi</code> to work, so old in fact that there currently isn&rsquo;t an arch package for it. You can create your own though:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir tmp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir tmp
 cd tmp
 echo <span style="color:#e6db74">&#34;gccver=48
 </span><span style="color:#e6db74">pkgname=gcc-arm-none-eabi-bin-</span>$gccver<span style="color:#e6db74">
@@ -572,27 +572,27 @@ echo <span style="color:#e6db74">&#34;gccver=48
 </span><span style="color:#e6db74">  cp -a gcc-arm-none-eabi-4_8-2013q4 </span>$pkgdir<span style="color:#e6db74">/usr/local/arm-4.8.3
 </span><span style="color:#e6db74">}&#34;</span> &gt; PKGBUILD
 </code></pre></div><p>Then, to install you run <code>makepkg</code> from the directory of your new PKGBUILD</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg -si --clean
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg -si --clean
 </code></pre></div><h2 id="install-prerequisites">Install prerequisites</h2>
 <p>Now to install the rest of the packages:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S  autoconf pkgconf libusb libftdi git ncurses cowsay figlet arm-none-eabi-gcc openocd python2-numpy python2-scipy python2-matplotlib avr-gcc avr-binutils avr-libc avrdude stlink arm-none-eabi-newlib arm-eabi-4.8
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S  autoconf pkgconf libusb libftdi git ncurses cowsay figlet arm-none-eabi-gcc openocd python2-numpy python2-scipy python2-matplotlib avr-gcc avr-binutils avr-libc avrdude stlink arm-none-eabi-newlib arm-eabi-4.8
 
 pip2 install matplotlib scipy
 </code></pre></div><h2 id="symlinking">Symlinking</h2>
 <p>Make expects arm g++ to available in a non traditional place:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ln -s /usr/bin/arm-none-eabi-g++ /usr/local/arm/bin/arm-none-eabi-g++
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo ln -s /usr/bin/arm-none-eabi-g++ /usr/local/arm/bin/arm-none-eabi-g++
 sudo ln -s /usr/bin/arm-none-eabi-gcc /usr/local/arm/bin/arm-none-eabi-gcc
 sudo ln -s /usr/local/arm/bin/objcopy /usr/local/arm/bin/arm-none-eabi-objcopy
 sudo ln -s /opt/toolchains/arm-eabi-4.8/ /usr/local/arm
 </code></pre></div><p>Then, to compile you need to specify the toolchain path before the make command</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">TOOLCHAIN_PATH<span style="color:#f92672">=</span>/usr/local/arm-4.8.3/gcc-arm-none-eabi-4_8-2013q4/ make -f stages/bootloader/makefile hex
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">TOOLCHAIN_PATH<span style="color:#f92672">=</span>/usr/local/arm-4.8.3/gcc-arm-none-eabi-4_8-2013q4/ make -f stages/bootloader/makefile hex
 make -f stages/makefile
 </code></pre></div><p>To make the command shorter and more readable you could make an alias for it:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias mimake<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;TOOLCHAIN_PATH=/usr/local/arm-4.8.3/gcc-arm-none-eabi-4_8-2013q4/ make&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias mimake<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;TOOLCHAIN_PATH=/usr/local/arm-4.8.3/gcc-arm-none-eabi-4_8-2013q4/ make&#34;</span>
 </code></pre></div><p>The steps above should be enough for you to compile the firmware. Now to connecting it to your computer.</p>
 <h2 id="connecting-to-the-modules-setup-stm-stuff">Connecting to the modules: Setup stm stuff</h2>
 <p>I connect to my MI modules using an stlink jtag USB thingy. If you aliased the make command like I recommended above, you should be good to go with just this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mimake -f clouds/makefile upload
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mimake -f clouds/makefile upload
 </code></pre></div>]]></content>
         </item>
         
@@ -706,14 +706,14 @@ The two different styles There are two different headers that contain SuperColli
 <p>There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code.
 These are imported at the top of both your .cpp and .hpp file and will lead to two different styles of writing your plugin code.</p>
 <h3 id="new-style-c-wrapper">New style c++ wrapper</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.hpp&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.hpp&#34;</span><span style="color:#75715e">
 </span></code></pre></div><p>This header will import &ldquo;newer&rdquo; c++ headers that are recognizable as lower case method names such as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">set_calc_function<span style="color:#f92672">&lt;</span>BoringMixer, <span style="color:#f92672">&amp;</span>BoringMixer<span style="color:#f92672">::</span>next<span style="color:#f92672">&gt;</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">set_calc_function<span style="color:#f92672">&lt;</span>BoringMixer, <span style="color:#f92672">&amp;</span>BoringMixer<span style="color:#f92672">::</span>next<span style="color:#f92672">&gt;</span>();
 </code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01b-BoringMixer/BoringMixer.cpp">BoringMixer (new style)</a> for a more extensive example.</p>
 <h3 id="old-style">Old style</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.h&#34;</span><span style="color:#75715e">
 </span></code></pre></div><p>This imports the older header, which leads to code with a lot of upper case macros like</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">SETCALC(BoringMixer_next)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">SETCALC(BoringMixer_next)
 </code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01a-BoringMixer/BoringMixer.cpp">BoringMixer (old style)</a> for a more extensive example.</p>
 <h2 id="macros">Macros</h2>
 <p>This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c++ style for writing plugins. It contains <em>some</em> of the macros available when writing UGens/Plugins in c++ in SuperCollider.</p>
@@ -794,13 +794,13 @@ These are imported at the top of both your .cpp and .hpp file and will lead to t
 <h2 id="the-randomness-api">The Randomness API</h2>
 <p>There&rsquo;s an API for a bunch of randomness functions that come with the SuperCollider plugin development framework, most of which reflect sclang equivalents so are probably well known to people with experience i sclang. These are described in the header file <code>SC_RGen.h</code>.</p>
 <p>To use them, first include the header file in your plugin&rsquo;s <code>.hpp</code> file.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_RGen.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_RGen.h&#34;</span><span style="color:#75715e">
 </span></code></pre></div><p>Then instantiate a random number generator class in your header file (under the <code>private:</code> keyword for example) as a member variable.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">RGen <span style="color:#f92672">&amp;</span> rgen <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>mParent <span style="color:#f92672">-&gt;</span> mRGen;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">RGen <span style="color:#f92672">&amp;</span> rgen <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>mParent <span style="color:#f92672">-&gt;</span> mRGen;
 </code></pre></div><p>With this, you now have access to the random number generators in your calculation functions in your plugin like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> random_float <span style="color:#f92672">=</span> rgen.frand();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> random_float <span style="color:#f92672">=</span> rgen.frand();
 </code></pre></div><h3 id="available-methods-for-random-number-generation">Available methods for random number generation</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">uint32 <span style="color:#a6e22e">trand</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">uint32 <span style="color:#a6e22e">trand</span>();
 
 int32 <span style="color:#a6e22e">irand</span>(int32 scale);
 int32 <span style="color:#a6e22e">irand2</span>(int32 scale);
@@ -826,10 +826,10 @@ int32 <span style="color:#a6e22e">ibilinrand</span>(int32 scale);
 <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">sum3rand</span>(<span style="color:#66d9ef">double</span> scale);
 </code></pre></div><h3 id="interpolation">Interpolation</h3>
 <p>Interpolation functions available (for working with buffers):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">float</span> lininterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b) 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">float</span> lininterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b) 
 <span style="color:#66d9ef">float</span> cubicinterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> y0, <span style="color:#66d9ef">float</span> y1, <span style="color:#66d9ef">float</span> y2, <span style="color:#66d9ef">float</span> y3)
 </code></pre></div><p>Example from the <code>example-plugins</code> repo&rsquo;s AnalogEcho example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Four integer phases into the buffer
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Four integer phases into the buffer
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> phase1 <span style="color:#f92672">=</span> writephase <span style="color:#f92672">-</span> offset;
 <span style="color:#66d9ef">int</span> phase2 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
 <span style="color:#66d9ef">int</span> phase3 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>;
@@ -858,7 +858,7 @@ The firmware uses CNMAT&amp;rsquo;s OSC library:
 <p>Lately I have started experimenting with the very cheap and powerful <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32/">ESP32 microcontrollers</a>.</p>
 <p>Today I made a simple example of a firmware which receives OSC from a computer and then blinks the on-board LED according to the incoming message and I packaged it all as an easy to clone/copy/use <a href="https://github.com/madskjeldgaard/esp32-receive-osc-simple">platformio project (mostly for myself)</a>.</p>
 <p>The firmware uses <a href="https://github.com/CNMAT/OSC">CNMAT&rsquo;s OSC library</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Arduino.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Arduino.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;WiFi.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;OSCMessage.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
@@ -916,7 +916,7 @@ WiFiUDP Udp; <span style="color:#75715e">// A UDP instance to let us send and re
   delay(update_rate);
 }
 </code></pre></div><p>And here is some SuperCollider code to play around with:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(
 <span style="color:#75715e">// Target IP. Change the IP address accordingly
 </span><span style="color:#75715e"></span><span style="color:#f92672">~</span><span style="color:#a6e22e">ip</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;10.0.0.11&#34;</span>;
 <span style="color:#f92672">~</span><span style="color:#a6e22e">port</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8888</span>;
@@ -957,7 +957,7 @@ WiFiUDP Udp; <span style="color:#75715e">// A UDP instance to let us send and re
 <p>The code is well documented so please read the comments for details.</p>
 <p>The core concept here is that the 14 bit MIDI is achieved by sending two MIDI cc values at the same time. One &ldquo;low&rdquo; MIDI cc and one &ldquo;high&rdquo; MIDI cc value which is 32 MIDI CC&rsquo;s above it. These are then combined at the receiving software to become a 14 bit MIDI signal.</p>
 <p><a href="https://github.com/madskjeldgaard/14bit-midi-teensy-supercollider">Source code is here</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// main.cpp
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// main.cpp
 </span><span style="color:#75715e"></span><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;Arduino.h&#34;</span><span style="color:#75715e">
 </span><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;ResponsiveAnalogRead.h&gt;</span><span style="color:#75715e">
 </span><span style="color:#75715e"></span>
@@ -1040,7 +1040,7 @@ ResponsiveAnalogRead <span style="color:#a6e22e">pot2</span>(POT_PIN2, true);
 </code></pre></div><h2 id="testing-it-out-in-supercollider">Testing it out in SuperCollider</h2>
 <p>SuperCollider does not at the time of writing have built in support for 14 bit MIDI, but there are several external libraries you may install to achieve such a result.  One of the simplest solutions is Carl Testa&rsquo;s <code>FourteenBitCC</code> class which may be <a href="https://gist.github.com/carltesta/bb5065a7b92bab7673237e9cc1c9a612">downloaded here</a> and placed in your SuperCollider extensions folder.</p>
 <p>Here is an example of how to use it:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/*********************************/</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/*********************************/</span>
 <span style="color:#75715e">/* Using the FourteenbitCC class */</span>
 <span style="color:#75715e">/*********************************/</span>
 <span style="color:#75715e">// Get it here: https://gist.github.com/carltesta/bb5065a7b92bab7673237e9cc1c9a612
@@ -1068,7 +1068,7 @@ ResponsiveAnalogRead <span style="color:#a6e22e">pot2</span>(POT_PIN2, true);
 <span style="color:#a6e22e">Ndef</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">s</span>, {<span style="color:#f92672">|</span><span style="color:#a6e22e">freq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">444</span>, <span style="color:#a6e22e">carfreq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">919</span><span style="color:#f92672">|</span> <span style="color:#a6e22e">SinOsc</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">freq</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">SinOsc</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">carfreq</span>))<span style="color:#f92672">*</span><span style="color:#ae81ff">0.5</span><span style="color:#f92672">!</span><span style="color:#ae81ff">2</span>}).<span style="color:#a6e22e">mold</span>(<span style="color:#ae81ff">2</span>).<span style="color:#a6e22e">play</span>;
 )
 </code></pre></div><p>Another reasonable choice is the <a href="https://github.com/ModalityTeam/Modality-toolkit">Modality Toolkit</a> library which is normally my go to for anything controller based in SuperCollider. It has 14bit midi support but it is at the time of writing this not documented and not 100% implemented, but the following example should work fine:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/*********************************/</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">/*********************************/</span>
 <span style="color:#75715e">/* Using Modality 				 */</span>
 <span style="color:#75715e">/*********************************/</span>
 (
@@ -1166,21 +1166,21 @@ There may be licensing problems in doing this operation on some plugins. I talke
 <p>To install <code>wine</code> (and enable 32 bit support) you need to do enable the <code>multilib</code> repositories in your pacman configuration. If you are running Manjaro, this is already done for you so you can skip this section.</p>
 <p>By doing this, you get access to a range of 32 bit software that can be run on a 64 bit machine.</p>
 <p>Open up <code>/etc/pacman.conf</code> in your favourite text editor. E.g. in vim:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
 </code></pre></div><p>And then uncomment the multilib section:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>multilib<span style="color:#f92672">]</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#f92672">[</span>multilib<span style="color:#f92672">]</span>
 Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 </code></pre></div><p>And then upgrade your system:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -Syu
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -Syu
 </code></pre></div><p>See <a href="https://wiki.archlinux.org/index.php/Official_repositories#multilib">the arch wiki for more information</a>.</p>
 <h3 id="wine">wine</h3>
 <p>To be able to run Windows software on Linux, you need to install <code>wine</code>. Wine is a huge subject in itself (and I definitely do not master it at all), but it basically runs as a compatibility layer between windows software and your linux system.</p>
 <p>If you followed the previous step by enabling multilib, you should now be able to install wine like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S wine
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S wine
 </code></pre></div><h2 id="method-1-yabridge">Method 1: yabridge</h2>
 <p>Using <a href="https://github.com/robbert-vdh/yabridge">yabridge</a> is my favourite way of using vst plugins on Linux these days. It is the simplest and easiest method and includes a lot of really good documentation. In fact, the documentation is so good that I won&rsquo;t go into too much detail here about it - simply check out the Github page for it or visit <a href="https://discord.com/invite/pyNeweqadf">the discord chat server associated with it</a>.</p>
 <p>Installing on Arch and Manjaro is easy:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S yabridge
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S yabridge
 </code></pre></div><p>This gives you access to the command line tool <code>yabridgectl</code> which is the main interface for you. After installing a vst plugin using wine, all you have to do is make sure yabridge knows the path to the folder containing the plugin and then simply run <code>yabridgectl sync</code> and that&rsquo;s it.</p>
 <h3 id="tip-migrating-an-installation-with-yabridge">Tip: Migrating an installation with yabridge</h3>
 <p>I recently had to migrate my wine installation to another computer, since my primary computer died on me. This was surprisingly easy - I simply moved the <code>$HOME/.wine</code> folder to my new computer&rsquo;s home directory, installed wine and wine-mono and then ran <code>yabridgectl sync</code> and I was up and running.</p>
@@ -1188,7 +1188,7 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 <p>This method involves using <a href="https://github.com/osxmidi/LinVst">linvst</a> to enable vst support. It is used to create bridges between the windows <code>.dll</code> files that VST plugins are delivered in and creates a Linux equivalent <code>.so</code> file. Managing this process can be complicated and a bit of a pain, but thankfully there is a program to do it all for us: <a href="linvstmanager">https://github.com/Goli4thus/linvstmanager</a>.</p>
 <p>Linvstmanager is the main program we use to keep track of vst plugins, where they are and if they are supported on our system.</p>
 <p>There are packages for linvstmanager and all of the linvst bridges on <a href="aur.archlinux.org">the AUR</a> that can be installed using <code>yay</code> or another aur helper system:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S linvstmanager-git linvst-bin linvst3-bin linvst-x-bin linvst3-x-bin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S linvstmanager-git linvst-bin linvst3-bin linvst-x-bin linvst3-x-bin
 </code></pre></div><h3 id="setting-linvstmanager-preferences">Setting linvstmanager preferences</h3>
 <p><img src="/img/small/linvstprefs.png" alt="linvstmanager preferences"></p>
 <p>Before we are able to use linvstmanager, we need to tell it where the vst bridges we installed along with it are in our system.</p>
@@ -1267,7 +1267,7 @@ It is also recommend to read the official guide on how to create packages: Creat
 <p>Then add your public key to your aur user <a href="https://aur.archlinux.org/account">here</a>.</p>
 <h2 id="step-1-clone-the-aur-repo">Step 1: Clone the AUR repo</h2>
 <p>The cloning/creating of the repository looks like this (change the <code>PKG_NAME</code> variable to contain the name of your package):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PKG_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wowzers&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PKG_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;wowzers&#34;</span>
 AUR_GIT_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ssh://aur@aur.archlinux.org/</span>$PKG_NAME<span style="color:#e6db74">.git&#34;</span>
 git clone $AUR_GIT_URL
 git remote add origin $AUR_GIT_URL
@@ -1275,22 +1275,22 @@ git fetch
 cd $PKG_NAME
 </code></pre></div><h2 id="step-15-avoid-messing-up-your-git-stuff">Step 1.5: Avoid messing up your git stuff</h2>
 <p>Inside of the folder that is about to contain your package, create a <code>.gitignore</code> file setup to ignore everything. This way you have to explicitly add and commit files to your package&rsquo;s git history to have them take effect.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Only add files explicitly using -f flag with git, eg git -f add &lt;file&gt;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Only add files explicitly using -f flag with git, eg git -f add &lt;file&gt;</span>
 echo <span style="color:#e6db74">&#34;*&#34;</span> &gt; .gitignore
 </code></pre></div><h2 id="step-2-write-a-pkgbuild">Step 2: Write a PKGBUILD</h2>
 <p>Write a <a href="https://wiki.archlinux.org/index.php/PKGBUILD">PKGBUILD</a> file. This is a script describing the name of your package, it&rsquo;s source, dependencies and how to install it among other things.</p>
 <p>I won&rsquo;t cover how to write a PKGBUILD in detail here but you can copy a full PKGBUILD from your system like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /usr/share/pacman/PKGBUILD.proto PKGBUILD
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">cp /usr/share/pacman/PKGBUILD.proto PKGBUILD
 </code></pre></div><p>Be warned though that this is a full PKGBUILD containing tons of things you don&rsquo;t actually need to worry about.</p>
 <p><a href="https://wiki.archlinux.org/index.php/PKGBUILD">Here you can find an explanation</a> of all the PKGBUILD&rsquo;s keys and functions.</p>
 <p>But honestly, the best way to learn about the necessary things in a PKGBUILD is to search <a href="https://aur.archlinux.org">aur.archlinux.org</a> for a package similar to yours. Then click it and then find a link to &ldquo;VIEW PKGBUILD&rdquo;.</p>
 <p>Don&rsquo;t forget to add your PKGBUILD to your git repo:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add -f PKGBUILD
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add -f PKGBUILD
 </code></pre></div><h3 id="an-important-trick-using-the-install-command">An important trick: Using the install command</h3>
 <p>In the <code>package(){}</code> function of your PKGBUILD, you can use the <code>install</code> command to copy things into the system.</p>
 <p>A lot of packages are simply copying files (binaries, shared libraries and or documentation for example)  like this, and it is best done using the <code>install</code> command because it can copy the files and set it&rsquo;s permissions in one go.</p>
 <p>Some examples:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Copy package binary to system</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Copy package binary to system</span>
 install -Dm755 <span style="color:#e6db74">&#34;</span>$srcdir<span style="color:#e6db74">/package/amazingbinary&#34;</span> <span style="color:#e6db74">&#34;</span>$pkgdir<span style="color:#e6db74">/usr/bin/amazingbinary&#34;</span>
 
 <span style="color:#75715e"># Copy shared library to system</span>
@@ -1306,9 +1306,9 @@ install -Dm644 <span style="color:#e6db74">&#34;</span>$srcdir<span style="color
 <h2 id="step-25-prepare-for-release">Step 2.5: Prepare for release</h2>
 <h3 id="making-the-package">Making the package</h3>
 <p>In the folder containing your PKGBUILD you can run the following command to make the package and install it:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg -s
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg -s
 </code></pre></div><p>This will download the sources, create a .tar file and a file/folder structure like in this example for <a href="https://aur.archlinux.org/packages/linvst3-bin/">linvst3-bin</a>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linvst3-bin
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">linvst3-bin
 ├── LinVst3-2.1-Debian-rz.zip
 ├── linvst3-bin-2.1-1-x86_64.pkg.tar.xz
 ├── pkg
@@ -1346,27 +1346,27 @@ install -Dm644 <span style="color:#e6db74">&#34;</span>$srcdir<span style="color
 <code>makepkg -si</code></p>
 <h3 id="clean-up-your-mess">Clean up your mess</h3>
 <p>When using <code>makepkg -si</code>, the package will actually be installed on your system. Make sure to clean them up afterwards using pacman:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -R &lt;pkgname&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -R &lt;pkgname&gt;
 </code></pre></div><h3 id="test">Test</h3>
 <p>Check sanity of package using the <code>namcap</code> tool (which you will need to install if you haven&rsquo;t already):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">namcap PKGBUILD <span style="color:#75715e"># If this returns nothing, it is okay</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">namcap PKGBUILD <span style="color:#75715e"># If this returns nothing, it is okay</span>
 namcap name-of-pkg.pkg.tar.xz
 </code></pre></div><h3 id="update-checksums">Update checksums</h3>
 <p>Update package checksums. This will be inserted into the PKGBUILD file.
 <code>updpkgsums</code></p>
 <h3 id="create-srcinfo">Create .SRCINFO</h3>
 <p>Make the <code>.SRCINFO</code> file</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg --printsrcinfo &gt; .SRCINFO
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg --printsrcinfo &gt; .SRCINFO
 git add -f .SRCINFO
 </code></pre></div><h2 id="step-3-publish">Step 3: Publish</h2>
 <p>Do the final git stuff:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add -f .SRCINFO PKGBUILD
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git add -f .SRCINFO PKGBUILD
 git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;first commit&#34;</span>
 </code></pre></div><p>Then push:
 <code>git push</code></p>
 <h2 id="step-35-updating-a-package">Step 3.5: Updating a package</h2>
 <p>After updating a PKGBUILD, you need to regenerate the <code>.SRCINFO</code> file and then commit it with the PKGBUILD that was changed:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">updpkgsums
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">updpkgsums
 makepkg --printsrcinfo &gt; .SRCINFO
 git add -f .SRCINFO PKGBUILD
 git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;important change&#34;</span>
@@ -1385,12 +1385,12 @@ git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;important chang
 <h3 id="do-not-include-dependencies-covered-in-the-base-devel-group">Do not include dependencies covered in the <code>base-devel</code> group</h3>
 <p>Make sure the <code>makedepends=()</code> array does not contain things already covered in the <code>base-devel</code> group (like <code>gcc</code> and <code>make</code>):</p>
 <p><a href="https://wiki.archlinux.org/index.php/PKGBUILD#makedepends">https://wiki.archlinux.org/index.php/PKGBUILD#makedepends</a></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># List all packages in base-devel group</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># List all packages in base-devel group</span>
 pacman -Sg base-devel
 </code></pre></div><h3 id="using-git-hash-as-version-number">Using git hash as version number</h3>
 <p>For packages based on version control systems such as git (these packages normally have a name ending in <code>-git</code>), a trick to update the package version is to create a function that extracts the git hash automatically.</p>
 <p>Add this to your PKGBUILD:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkgver<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">pkgver<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 	cd <span style="color:#e6db74">&#34;</span>$srcdir<span style="color:#e6db74">/</span><span style="color:#e6db74">${</span>pkgname<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 
 	printf <span style="color:#e6db74">&#34;r%s.%s&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>git rev-list --count HEAD<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>git rev-parse --short HEAD<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
@@ -1400,19 +1400,19 @@ pacman -Sg base-devel
 <p>Sometimes packages aren&rsquo;t updated as regularly as you would want.
 If there is a specific package you want the latest version of, but the maintainer has become unresponsive, you can download it to your computer and create a local version of the <code>PKGBUILD</code> file of the package.</p>
 <p>As an example, let&rsquo;s download <code>reaper-bin</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PKG_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;reaper-bin&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">PKG_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;reaper-bin&#34;</span>
 AUR_URL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;ssh://aur@aur.archlinux.org/</span>$PKG_NAME<span style="color:#e6db74">.git&#34;</span>
 
 <span style="color:#75715e"># Remote</span>
 git clone $AUR_URL
 cd $PKG_NAME
 </code></pre></div><p>Then open the <code>PKGBUILD</code> file in a text editor of your choice</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim PKGBUILD
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim PKGBUILD
 </code></pre></div><p>Then change the <code>pkgver</code> variable to the version number you would like.</p>
 <p>Exit your text editor and still from within the directory with the PKGBUILD in it, run
 <code>updpkgsums</code> to update the checksums in the package.</p>
 <p>And then, if all is well, you should be able to install the package like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg -si --clean
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">makepkg -si --clean
 </code></pre></div>]]></content>
         </item>
         
@@ -1870,17 +1870,17 @@ I have done this in Python before but I much prefer doing this kind of thing in 
 <p>I am assuming here that you have both <code>git</code> and Vundle installed for NVim.</p>
 <p>In Nvim, install YouCompleteMe by adding the plugin to your init.vim-file by executing <code>:e $MYVIMRC</code>.</p>
 <p>Then, after <code>call plug#begin()</code> and before  <code>call plug#end()</code> add this line:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;ycm-core/YouCompleteMe&#39;</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;ycm-core/YouCompleteMe&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>Then re-source the init file by running the command <code>:source $MYVIMRC</code> and then install the plugin using <code>:PlugInstall</code>.</p>
 <h2 id="install-completion">Install completion</h2>
 <p>Next up we need to install the completion engines needed. You can cherry-pick the engines you need or do not need but I honestly just install it all.</p>
 <p>This is done by going into the plugin folder of YouCompleteMe in a terminal, again assuming you are using Vundle for your plugins this will probably be:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd ~/.vim/plugged/YouCompleteMe/
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">cd ~/.vim/plugged/YouCompleteMe/
 ./install.py --all
 </code></pre></div><p>This will take a while to install.</p>
 <p>Once that&rsquo;s done, there is a final step which is quite strange and hopefully it will change in the future. According to <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Full-Installation-Guide">the full installation guide</a>, you need to install <a href="https://www.rustup.rs">rustup</a> if you haven&rsquo;t already.</p>
 <p>Then we need to get toolchains and add them to YouCompleteMe.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Temporarily redirect rustup to be able to extract the source</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Temporarily redirect rustup to be able to extract the source</span>
 RUSTUP_HOME<span style="color:#f92672">=</span>~/rusttmp
 
 <span style="color:#75715e"># Get the tools</span>
@@ -1891,7 +1891,7 @@ cd $RUSTUP_HOME/toolchains
 </code></pre></div><p>Now you should be in the toolchains folder that you just downloaded. There should be a folder there named something depending on your system (on mine it&rsquo;s <code>nightly-x86_64-unknown-linux-gnu</code> because I&rsquo;m on linux). Move into it using <code>cd &lt;folder_name&gt;</code>.</p>
 <p>Then, move the contents of the folder of your YouCompleteMe installation <code>~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/rls</code>.</p>
 <p>Check that you did it correctly by seeing the contents:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ls ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/rls
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ls ~/.vim/plugged/YouCompleteMe/third_party/ycmd/third_party/rls
 </code></pre></div><p>This should return something like
 <code>bin  etc  lib  share</code></p>
 <h2 id="extra-configuration">Extra configuration</h2>
@@ -1900,14 +1900,14 @@ cd $RUSTUP_HOME/toolchains
 <p><code>let g:ycm_global_ycm_extra_conf = '~/.config/nvim/global_extra_conf.py'</code></p>
 <p>Then edit the config file in NVim by executing <code>:tabnew ~/.config/nvim/global_extra_conf.py</code>.</p>
 <p>Here is what mine looks like:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Settings</span>(<span style="color:#f92672">**</span>kwargs):
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Settings</span>(<span style="color:#f92672">**</span>kwargs):
     <span style="color:#66d9ef">if</span> kwargs[<span style="color:#e6db74">&#39;language&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;rust&#39;</span>:
         <span style="color:#66d9ef">return</span> {
             <span style="color:#e6db74">&#39;ls&#39;</span>: {
                 <span style="color:#e6db74">&#39;rust&#39;</span>: {
                     <span style="color:#75715e"># &#39;features&#39;: [&#39;http2&#39;, &#39;spnego&#39;],</span>
-                    <span style="color:#e6db74">&#39;all_features&#39;</span>: True,
-                    <span style="color:#e6db74">&#39;racer_completion&#39;</span>: True,
+                    <span style="color:#e6db74">&#39;all_features&#39;</span>: <span style="color:#66d9ef">True</span>,
+                    <span style="color:#e6db74">&#39;racer_completion&#39;</span>: <span style="color:#66d9ef">True</span>,
                     <span style="color:#75715e"># &#39;all_targets&#39;: False,</span>
                     <span style="color:#75715e"># &#39;wait_to_build&#39;: 1500,</span>
                 }
@@ -1915,7 +1915,7 @@ cd $RUSTUP_HOME/toolchains
         }
 </code></pre></div><h2 id="keybindings">Keybindings</h2>
 <p>Here are the keybindings I use for Rust/YouCompleteMe:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YCM KEYBINDINGS</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YCM KEYBINDINGS</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">function</span>! <span style="color:#a6e22e">YcmStuff</span>() <span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">si</span> :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">GoToDefinition</span>&lt;<span style="color:#a6e22e">cr</span>&gt;<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>    <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">sk</span> :<span style="color:#a6e22e">YcmRestartServer</span>&lt;<span style="color:#a6e22e">cr</span>&gt;<span style="color:#960050;background-color:#1e0010">
@@ -1937,7 +1937,7 @@ cd $RUSTUP_HOME/toolchains
 </span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h2 id="ultisnips">UltiSnips</h2>
 <p>I use these configuration lines to make UltiSnips work with YouCompleteMe to be able to use snippets as well as autocompletion.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YouCompleteMe and UltiSnips compatibility.</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YouCompleteMe and UltiSnips compatibility.</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_use_ultisnips_completer</span> = <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_select_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_previous_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
@@ -2022,12 +2022,12 @@ MIDI &gt; D 	4
 </code></pre><h3 id="making-contact">Making contact</h3>
 <p>Plug your USB cable into the back of the Teensy and in to your computer.</p>
 <p>Then, in SuperCollider you can init the module as a controller:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">MKtl</span>(<span style="color:#e6db74">&#39;captain&#39;</span>, <span style="color:#e6db74">&#34;captain-midi&#34;</span>)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">m</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">MKtl</span>(<span style="color:#e6db74">&#39;captain&#39;</span>, <span style="color:#e6db74">&#34;captain-midi&#34;</span>)
 </code></pre></div><p>One of the nice things about Modality is that it automatically creates GUI interfaces so that you can experiment with the controllers even though they are not present.</p>
 <p>Open up the GUI (and press the labels button to make it clear what is what):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">gui</span>;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">gui</span>;
 </code></pre></div><p>Now you can either move the sliders for the outputs or run this code which will randomly change the four outputs on the module to random values</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Test outputs
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Test outputs
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">Tdef</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">outTester</span>, { 
 	<span style="color:#a6e22e">loop</span>{
 		<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">out</span> <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;a&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>].<span style="color:#a6e22e">choose</span>;
@@ -2038,13 +2038,13 @@ MIDI &gt; D 	4
 	}
 }).<span style="color:#a6e22e">play</span>;
 </code></pre></div><p>Alternatively, set them manually</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Manually set outputs
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Manually set outputs
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">elAt</span>(<span style="color:#e6db74">&#39;out&#39;</span>, <span style="color:#e6db74">&#39;a&#39;</span>).<span style="color:#a6e22e">value_</span>(<span style="color:#ae81ff">0.2</span>);
 <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">elAt</span>(<span style="color:#e6db74">&#39;out&#39;</span>, <span style="color:#e6db74">&#39;b&#39;</span>).<span style="color:#a6e22e">value_</span>(<span style="color:#ae81ff">0.7</span>);
 <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">elAt</span>(<span style="color:#e6db74">&#39;out&#39;</span>, <span style="color:#e6db74">&#39;c&#39;</span>).<span style="color:#a6e22e">value_</span>(<span style="color:#ae81ff">0.1</span>);
 <span style="color:#a6e22e">m</span>.<span style="color:#a6e22e">elAt</span>(<span style="color:#e6db74">&#39;out&#39;</span>, <span style="color:#e6db74">&#39;d&#39;</span>).<span style="color:#a6e22e">value_</span>(<span style="color:#ae81ff">0.9</span>);
 </code></pre></div><p>Now, plug signals into the four inputs on the module and have them control four feedback sine wave synths in SuperCollider:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Map cv inputs 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Map cv inputs 
 </span><span style="color:#75715e"></span>[<span style="color:#e6db74">&#39;1&#39;</span>, <span style="color:#e6db74">&#39;2&#39;</span>, <span style="color:#e6db74">&#39;3&#39;</span>, <span style="color:#e6db74">&#39;4&#39;</span>].<span style="color:#66d9ef">do</span>{<span style="color:#f92672">|</span><span style="color:#66d9ef">in</span>, <span style="color:#a6e22e">in_num</span><span style="color:#f92672">|</span>
 	<span style="color:#a6e22e">Ndef</span>(<span style="color:#66d9ef">in</span>, {<span style="color:#f92672">|</span><span style="color:#a6e22e">freq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">424</span>, <span style="color:#a6e22e">feedback</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.65</span>, <span style="color:#a6e22e">amp</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>, <span style="color:#a6e22e">pan</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">|</span> 
 		<span style="color:#a6e22e">Pan2</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">SinOscFB</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">freq</span>, <span style="color:#a6e22e">feedback</span>, <span style="color:#a6e22e">amp</span>), <span style="color:#a6e22e">pan</span>)
@@ -2112,9 +2112,9 @@ the audio stream(s) to its local sample rate.</p>
 <h2 id="setting-up-the-raspberry-pi">Setting up the Raspberry Pi</h2>
 <p>At the end of this post I will get back to <code>tmux</code> and how to launch these commands simultaneously in a terminal, but for now let&rsquo;s go through each command needed.</p>
 <p>First, install dependencies:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install tmux zita-njbridge jackd2
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install tmux zita-njbridge jackd2
 </code></pre></div><p>Let&rsquo;s start jack on the pi using some sensible settings. Assuming your Pi has a USB audio interface connected, the hardware number (this is the <code>-dhw:1</code> bit below) should be 1. If you are using (which you shouldn&rsquo;t) the internal interface on the Pi, change this to 0.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Launch jack using card 0, 48khz sample rate and block size of 256</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#75715e"># Launch jack using card 0, 48khz sample rate and block size of 256</span>
 /usr/bin/jackd -dalsa -dhw:1 -r48000 -p256 -n2
 </code></pre></div><p>Once jack is up and running, the next step is to run zita-njbridge.</p>
 <p>zita-njbridge contains two commands:</p>
@@ -2126,13 +2126,13 @@ the audio stream(s) to its local sample rate.</p>
 <p>Both of these commands should be the ip address and port of the receiving computer (for more information, read the manual by executing <code>man zita-njbridge</code>).</p>
 <p>My laptop, which is the computer receiving the audio, has the local ip address <code>10.0.1.5</code> and for the port number, we can just make up something, how about <code>1234</code>?</p>
 <p>With these two bits of information, we can launch <code>zita-j2n</code> on the Pi:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-j2n 10.0.1.5 <span style="color:#ae81ff">1234</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-j2n 10.0.1.5 <span style="color:#ae81ff">1234</span>
 </code></pre></div><p>Note, this command doesn&rsquo;t output anything, so don&rsquo;t freak out if you don&rsquo;t see anything happen in the terminal when you execute this.</p>
 <h3 id="start-supercollider">Start SuperCollider</h3>
 <p>As mentioned, in this example we will be using SuperCollider but any software that can run in headless mode on the Pi may be used. If you haven&rsquo;t installed it already, there are <a href="/posts/raspi4-notes">scripts for doing so here</a>.</p>
 <p>From the command line, you can create a simple SuperCollider test file which will make the SuperCollider server boot and then play a stereo sine wave.</p>
 <p>Using <code>echo</code> we can create a small test file in your home directory called <code>test.scd</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">echo <span style="color:#e6db74">&#34;
 </span><span style="color:#e6db74">		// Boot server and play stereo sine wave
 </span><span style="color:#e6db74">		s.waitForBoot{
 </span><span style="color:#e6db74">		play{
@@ -2140,20 +2140,20 @@ the audio stream(s) to its local sample rate.</p>
 </span><span style="color:#e6db74">	}
 </span><span style="color:#e6db74">	}&#34;</span> &gt; <span style="color:#e6db74">&#34;</span>$HOME<span style="color:#e6db74">/test.scd&#34;</span>
 </code></pre></div><p>And then launch that same file using the SuperCollider language:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sclang $HOME/test.scd
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sclang $HOME/test.scd
 </code></pre></div><h3 id="connect-jack">Connect jack</h3>
 <p>Open up a terminal and type <code>jack_lsp</code> to see the available connections in jack.</p>
 <p>These are the connections for our virtual patch cords.</p>
 <p>We can connect these on the command line using the <code>jack_connect</code> command.</p>
 <p>If zita-njbridge and SuperCollider are running, you should see the output of <code>jack_lsp</code> contain connection points for both of these.</p>
 <p>Execute these commands to connect output 1 and 2 of SuperCollider to inputs 1 and 2 of <code>zita-j2n</code>:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jack_connect SuperCollider:out_1 zita-j2n:in_1 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">jack_connect SuperCollider:out_1 zita-j2n:in_1 
 jack_connect SuperCollider:out_2 zita-j2n:in_2
 </code></pre></div><p>Make sure these commands don&rsquo;t output any errors before continuing.</p>
 <h2 id="on-the-receiving-computer">On the receiving computer</h2>
 <p><img src="/img/small/qjackctl-zita.png" alt="success - this is what it should look like on your host computer"></p>
 <p>Then start receiving sound from zita. Note that this is the same ip and port as typed into the command in the Raspberry Pi, but the command itself is slightly different</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-n2j 10.0.1.5 <span style="color:#ae81ff">1234</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">zita-n2j 10.0.1.5 <span style="color:#ae81ff">1234</span>
 </code></pre></div><p>This should result in a message like:</p>
 <pre><code>From 10.0.1.50 : 2 chan, 44100 Hz
 Resampler filter delay is 48.
@@ -2169,13 +2169,13 @@ Receiving.
 <p>Apart from solving the obvious problem of not being able to see multiple processes at the same time, Tmux is great for automation. We can set up and launch programs in Tmux automatically. This means we can bring together all commands from above in a setup script to be launched on the Pi. With this, we only need to launch this on the pi and it will transmit sound on the network.</p>
 <p>I&rsquo;ve written a full script for this which is <a href="https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd75946">available here</a>.</p>
 <p>You can download this on your Pi by executing this command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Get startup script and make it executable</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Get startup script and make it executable</span>
 git clone https://gist.github.com/madskjeldgaard/1a1e58a36f2d7526cd28524f5fd75946 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	mv 1a1e58a36f2d7526cd28524f5fd75946/njstart . <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	rm -rf 1a1e58a36f2d7526cd28524f5fd75946 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#ae81ff">\
 </span><span style="color:#ae81ff"></span>	chmod +x njstart
 </code></pre></div><p>Using it is fairly simple. You run the script like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./njstart &lt;ipaddress&gt; &lt;port&gt; &lt;supercolliderfile&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">./njstart &lt;ipaddress&gt; &lt;port&gt; &lt;supercolliderfile&gt;
 </code></pre></div><p>It has three arguments. The ip address and port of the receiving computer (your laptop) and an optional third argument for a SuperCollider file to be launched. If the third argument isn&rsquo;t supplied it will use the file in <code>~/test.scd</code> if it exists or create one if it doesn&rsquo;t.</p>
 <p>Then, using the same ip address and port, run <code>zita-n2j</code> on the receiving computer to receive the audio from the Pi.</p>
 <p>This is the full script:</p>
@@ -2229,7 +2229,7 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
 <li>Replace the string  in the <code>psk</code> line with the password your network.</li>
 <li>Replace the country code in the <code>country=NO</code> line (I am in Norway = NO).</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ctrl_interface<span style="color:#f92672">=</span>DIR<span style="color:#f92672">=</span>/var/run/wpa_supplicant GROUP<span style="color:#f92672">=</span>netdev
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ctrl_interface<span style="color:#f92672">=</span>DIR<span style="color:#f92672">=</span>/var/run/wpa_supplicant GROUP<span style="color:#f92672">=</span>netdev
 update_config<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 ap_scan<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
 fast_reauth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
@@ -2250,7 +2250,7 @@ network<span style="color:#f92672">={</span>
 <p>If on your host computer you are using <a href="https://sw.kovidgoyal.net/kitty/">kitty</a> as your terminal emulator you may experience some annoyances if you ssh using the normal <code>ssh</code> command. This is because the Pi isn&rsquo;t recognizing your terminal type.</p>
 <p>You can fix this by from your computer ssh&rsquo;ing using <code>kitty +kitten ssh</code> instead.</p>
 <p>I made an alias for this so that I can just type <code>kssh</code>. If you want an alias on your system, add this to your <code>$HOME/.bashrc</code> file on your computer (not the Pi) if you are using bash as your main shell or <code>$HOME/.zshrc</code> (if using zsh as your main shell):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
 </code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
 <h2 id="important-packages-and-dependencies">Important packages and dependencies</h2>
 <p>Run this command to install git and perl which are important packages you will need later on.</p>
@@ -2260,19 +2260,19 @@ network<span style="color:#f92672">={</span>
 <h2 id="tuning-the-system">Tuning the system</h2>
 <p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
 <p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e <span style="color:#f92672">&amp;&amp;</span> mv c5731e95bc5be9b3e2789b14b1149b6e raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> cd raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> chmod +x raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> ./raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> cd ~ <span style="color:#f92672">&amp;&amp;</span> rm -rf raspiaudiotune
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e <span style="color:#f92672">&amp;&amp;</span> mv c5731e95bc5be9b3e2789b14b1149b6e raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> cd raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> chmod +x raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> ./raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> cd ~ <span style="color:#f92672">&amp;&amp;</span> rm -rf raspiaudiotune
 </code></pre></div><p>This is the full script:</p>
 <script type="application/javascript" src="https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e.js"></script>
 
 <p>To make these changes take effect, the pi must be rebooted</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo reboot
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo reboot
 </code></pre></div><h2 id="install-and-setup-jack">Install and setup jack</h2>
 <p>Jack is used to patch audio throughout your audio system on Linux. In this case we will mostly use it to patch audio from software to the hardware output.</p>
 <p>Let&rsquo;s install and setup jack:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install jack</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install jack</span>
 sudo apt-get install jackd2
 </code></pre></div><p>Jack has a configuration file in <code>~/.jackdrc</code> that we will set up on installation, but you can edit this anytime to tune the system&rsquo;s settings using a text editor by running <code>nano ~/.jackdrc</code> for example or <code>vi ~/.jackdrc</code>. The config file consists of a <code>jackd</code> command which will be run by SuperCollider when we boot the audio server in there.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create config file in home folder called .jackdrc</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create config file in home folder called .jackdrc</span>
 echo /usr/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p512 -n3 &gt; ~/.jackdrc
 </code></pre></div><p>Explanations of the flags used here:</p>
 <ul>
@@ -2309,16 +2309,16 @@ card 1: UCX23906524 [Fireface UCX (23906524)], device 0: USB Audio [USB Audio]
 </code></pre><p>Note the card number. Card 0 is the trashy jack on the pi. Card 1 is the USB audio interface.</p>
 <h3 id="disable-the-on-board-audio-output">Disable the on-board audio output</h3>
 <p>To disable the useless on board jack output on the raspberry pi open up the boot config file</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vi /boot/config.txt
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vi /boot/config.txt
 </code></pre></div><p>Find the line that says <code>dtparam=audio=on</code> and comment it out so that it looks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#dtparam=audio=on</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#dtparam=audio=on</span>
 </code></pre></div><p>Then reboot, and run <code>aplay -l</code> to verify it isn&rsquo;t there anymore.</p>
 <h2 id="install-a-real-time-kernel">Install a real-time kernel</h2>
 <p>One of the most important things you can do to improve any Linux system&rsquo;s audio performance is installing a real-time-kernel. On the Raspberry Pi, you need to compile this kernel yourself. <a href="https://lemariva.com/blog/2018/07/raspberry-pi-preempt-rt-patching-tutorial-for-kernel-4-14-y">There are instructions for doing so here</a>.</p>
 <p>Compiling a kernel takes a lot of time, but my colleague at <a href="https://notam.no">Notam</a>, Thom Johansen, has built a <a href="http://users.notam.no/~thomj/rt-kernel-gcc_8_3_0.tar.gz">great RT-kernel for the Raspberry Pi 4 that you can download here</a>. For any other kind of Raspberry Pi, you are on your own (see the link above which has a guide for how to do this).</p>
 <p><em>A big fat warning</em>: It&rsquo;s a good idea to <a href="https://thepihut.com/blogs/raspberry-pi-tutorials/17789160-backing-up-and-restoring-your-raspberry-pis-sd-card">back up your sd card at this point, if you have important data on it</a>. Screwing up the kernel installation can get you in a complicated situation.</p>
 <p>If you are on a Pi 4, then proceed by executing these commands to download and install the kernel:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir rtkernel <span style="color:#f92672">&amp;&amp;</span> cd rtkernel
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir rtkernel <span style="color:#f92672">&amp;&amp;</span> cd rtkernel
 wget https://users.notam.no/~thomj/rt-kernel.tar.gz <span style="color:#f92672">&amp;&amp;</span> tar xzf rt-kernel.tar.gz
 cd boot
 sudo cp -rd * /boot/
@@ -2347,10 +2347,10 @@ perl ./realTimeConfigQuickScan.pl
 <p>I personally prefer SuperCollider so that&rsquo;s what I&rsquo;m going to use here.</p>
 <p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailor fit to a headless Raspberry Pi install.</p>
 <p>Run these scripts by executing this massive oneliner:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908 <span style="color:#f92672">&amp;&amp;</span> mv 10ab025993d5b77d235819d56c4cc908 scbuildscripts <span style="color:#f92672">&amp;&amp;</span> cd scbuildscripts <span style="color:#f92672">&amp;&amp;</span> chmod +x *.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc4pi.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc3-plugins-pi.sh
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908 <span style="color:#f92672">&amp;&amp;</span> mv 10ab025993d5b77d235819d56c4cc908 scbuildscripts <span style="color:#f92672">&amp;&amp;</span> cd scbuildscripts <span style="color:#f92672">&amp;&amp;</span> chmod +x *.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc4pi.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc3-plugins-pi.sh
 </code></pre></div><h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
 <p>Let&rsquo;s create a simple SuperCollider test file which will boot the audio server (and automatically start and connect Jack) to see if the installation went well and we are getting sound out of the pi.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing. </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing. </span>
 echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5).dup(2)} }&#34;</span> &gt;&gt; test.scd
 
 <span style="color:#75715e"># This will boot the server and play white noise in 2 channels</span>
@@ -2364,7 +2364,7 @@ sclang test.scd
 <p>My preferred way of working (on any computer, single board or not) is using a combination of NeoVim and the <a href="https://github.com/davidgranstrom/scnvim">scnvim plugin</a>.</p>
 <p>To get this combination to work properly, unfortunately you cannot just install NeoVim using Raspbian&rsquo;s package manager since we need a fairly new version of NeoVim to get it to work (and Raspbian/Debian typically has pretty old &ldquo;stable&rdquo; versions in it&rsquo;s package manager).</p>
 <p>Follow <a href="https://github.com/neovim/neovim/wiki/Building-Neovim">the instructions here</a> (look for <code>Debian</code> things, this should be the same on Raspbian) to build NeoVim from source. The neovim wiki is the best place to find instructions on this, but I will condense the commands I used to build neovim on Raspbian below:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Dependencies</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Dependencies</span>
 sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
 
 <span style="color:#75715e"># Get the neovim source code and switch to the stable branch</span>
@@ -2377,9 +2377,9 @@ make -j4 <span style="color:#f92672">&amp;&amp;</span> sudo make install
 cd ..
 rm -rf neovim
 </code></pre></div><p>Now, verify that NeoVim is installed by running the following command:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim --version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim --version
 </code></pre></div><p>If you get any output from that command, you are good to go and can proceed to install <a href="https://github.com/davidgranstrom/scnvim">scnvim</a> by following the instructions on the project&rsquo;s github repo.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file </span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file </span>
 mkdir ~/.config/nvim
 echo <span style="color:#e6db74">&#34;call plug#begin()
 </span><span style="color:#e6db74">Plug &#39;davidgranstrom/scnvim&#39;
@@ -2392,10 +2392,10 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs <span style="
 <span style="color:#75715e"># Open nvim and install the scnvim plugin</span>
 nvim -c <span style="color:#e6db74">&#34;:PlugInstall&#34;</span>
 </code></pre></div><p>Exit neovim when it&rsquo;s done installing the plugin, then finish the scnvim integration by symlinking the SuperCollider classes that came with the plugin to the extensions folder of SC:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/.local/share/SuperCollider/Extensions/scide_scvim
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/.local/share/SuperCollider/Extensions/scide_scvim
 ln -sf /home/pi/.config/nvim/plugged/scnvim/sc /home/pi/.local/share/SuperCollider/Extensions/scide_scvim
 </code></pre></div><p>You should now be good to go. Open up the <code>test.scd</code> file from before and edit it:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Open a SuperCollider file and start SCNvim on startup (by running the :SCNvimStart command)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Open a SuperCollider file and start SCNvim on startup (by running the :SCNvimStart command)</span>
 nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 </code></pre></div><h2 id="controlling-the-pi-using-a-phone">Controlling the pi using a phone</h2>
 <p><img src="/img/full/raspi-termux.png" alt="raspi termux"></p>
@@ -2410,7 +2410,7 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 <li>Open up Termux, type and run the following command: <code>pkg install openssh</code>. This will install ssh and let you log in to your Raspberry Pi from your phone.</li>
 <li>Find the address of your Pi on the network and ssh into it in Termux using this command (change the IP to whatever the ip of your pi is):</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh pi@10.0.1.51
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh pi@10.0.1.51
 </code></pre></div><p>And now you&rsquo;re in your Pi on your phone and can do everything you would be able to with a computer ssh&rsquo;d into your Pi.</p>
 <h2 id="using-the-raspberry-pi-for-networked-audio">Using the Raspberry Pi for networked audio</h2>
 <p><a href="/posts/raspi-zita-njbridge">This blog post</a> describes a way to use the Raspberry Pi in a networked audio configuration.</p>
@@ -2428,7 +2428,7 @@ watchdog-timeout=15
 sudo systemctl start watchdog
 </code></pre><p>To test if the watchdog is doing it&rsquo;s job, you can stress the system by creating a so-called fork bomb which will make the system crash by recursively calling a function until the Pi chokes up.</p>
 <p>On the pi (not your main computer!), execute the following fork bomb:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">forkbomb<span style="color:#f92672">(){</span> forkbomb | forkbomb &amp; <span style="color:#f92672">}</span>; forkbomb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">forkbomb<span style="color:#f92672">(){</span> forkbomb | forkbomb &amp; <span style="color:#f92672">}</span>; forkbomb
 </code></pre></div><p>Wait a bit and then see your pi crash. After choking up, it should automatically reboot itself. If it does this, your watchdog is doing it&rsquo;s job.</p>
 <h2 id="backing-up-images">Backing up images</h2>
 <p>It is possible to back up and compress your SD card containing your Raspberry Pi installation so that it&rsquo;s easy to recall later on, flash it to more cards or share it online.</p>
@@ -2439,7 +2439,7 @@ sudo systemctl start watchdog
 <p>Then plug in the sd card from the Pi into the computer and repeat the command above and see which partition was added.
 This is your sd card. Look at the size to verify that it matches your sd card.</p>
 <p>Normally this is called something like <code>sda</code> or <code>sdb</code> but on my Arch Linux computer it looks like this, where the <code>mmcblk0</code> is the sd card:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
 mmcblk0
 │    179:0    <span style="color:#ae81ff">0</span>  29,7G  <span style="color:#ae81ff">0</span> disk
 ├─mmcblk0p1
@@ -2463,7 +2463,7 @@ nvme0n1
 └─nvme0n1p3
      259:3    <span style="color:#ae81ff">0</span>     8G  <span style="color:#ae81ff">0</span> part <span style="color:#f92672">[</span>SWAP<span style="color:#f92672">]</span>
 </code></pre></div><p>Then, using the information that the <code>mmcblk0</code> partition is the sd card, we can run the following command to first create an image from the partition and then compress it into a tarball ( warning: the resulting files may be quite large, depending on the size of the sd card! ):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dd bs<span style="color:#f92672">=</span>4M <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/mmcblk0 | gzip &gt; mega-badass-pi-image.img.gz
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dd bs<span style="color:#f92672">=</span>4M <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/mmcblk0 | gzip &gt; mega-badass-pi-image.img.gz
 </code></pre></div><h2 id="preconfigured-images">Preconfigured images</h2>
 <p><a href="https://oddodd.org/">Niklas Adam</a> has done us all a favour and made preconfigured images available which are already setup for audio work. So if you don&rsquo;t feel like going through this setup process, you can simply download one of them and flash them to a card and you are good to go.</p>
 <p><a href="https://oddodd.org/lib/rpi_images/images/">Download the images here.</a></p>
@@ -2593,7 +2593,7 @@ The idea is to put our sox command inside of a for-loop which iterates over all 
 <p>The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write <code>pwd</code> to see it&rsquo;s full path and <code>ls</code> to see the folder&rsquo;s contents.</p>
 <h1 id="for-loop">For-loop</h1>
 <p>The structure of our for-loop-command will look something like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> command $file; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> command $file; <span style="color:#66d9ef">done</span>
 </code></pre></div><p>This needs a bit of explanation. What we see here is shell scripting where commands (or lines of code you could say) are seperated by semi colons.</p>
 <p>The first bit of this command (<code>for file in *.wav</code>) will find all files in the current directory containing the suffix <code>.wav</code>. Note that this is case-sensitive, so if you want WAV files to be converted change it to <code>*.WAV</code>, and so on. The smart thing about this is that each file inside of the for-loop will accessible as the variable <code>$file</code>.</p>
 <p>The second bit of the command is the meat of it. Here we execute our sox command like we have done previously in this tutorial, with the main difference being we put <code>do</code> in front of it - this is a way to tell our for loop that this is supposed to happen on each file we find.</p>
@@ -2602,16 +2602,16 @@ The idea is to put our sox command inside of a for-loop which iterates over all 
 <h1 id="batch-processing-examples">Batch processing examples</h1>
 <h2 id="normalize">Normalize</h2>
 <p>To normalize a file in SoX we need to apply the <code>norm</code> effect which only takes one parameter which is the sound level to normalize to. A reasonable normalization level is -0.1 dB so let us use that in our conversion process.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;n_</span>$file<span style="color:#e6db74">&#34;</span> norm -0.1; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;n_</span>$file<span style="color:#e6db74">&#34;</span> norm -0.1; <span style="color:#66d9ef">done</span>
 </code></pre></div><p>Notice that what we do here is non-destructive. The normalized files produced by this process have the same file names as the input files but with a &ldquo;n_&rdquo; at the beginning to signify that it has been normalized.</p>
 <h2 id="channel-conversion">Channel conversion</h2>
 <p>Another useful effect included with SoX is <code>channels</code>, this makes it possible for us to specify the number of channels in the output file. This is useful if for example you need to convert a folder of files to mono, this can be done in a manner similar to the above:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;mono_</span>$file<span style="color:#e6db74">&#34;</span> channels 1; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;mono_</span>$file<span style="color:#e6db74">&#34;</span> channels 1; <span style="color:#66d9ef">done</span>
 </code></pre></div><h2 id="convert-to-48khz-sample-rate">Convert to 48khz sample rate</h2>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;48khz_</span>$file<span style="color:#e6db74">&#34;</span> rate 48k; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> <span style="color:#e6db74">&#34;48khz_</span>$file<span style="color:#e6db74">&#34;</span> rate 48k; <span style="color:#66d9ef">done</span>
 </code></pre></div><h2 id="convert-to-16bit">Convert to 16bit</h2>
 <p>Now, this is slightly different because when converting bit-depth we need to use a command line flag instead of an effect. Normally, SoX will use the detected bit-depth of the input file as the bit-depth of the output file, but you can force SoX to change it to something else (like 16 bit) by adding a <code>-b 16</code> in between the file names (or <code>-b 24</code> for 24 bit).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> -b <span style="color:#ae81ff">16</span> <span style="color:#e6db74">&#34;16bit_</span>$file<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#66d9ef">for</span> file in *.wav; <span style="color:#66d9ef">do</span> sox <span style="color:#e6db74">&#34;</span>$file<span style="color:#e6db74">&#34;</span> -b <span style="color:#ae81ff">16</span> <span style="color:#e6db74">&#34;16bit_</span>$file<span style="color:#e6db74">&#34;</span>; <span style="color:#66d9ef">done</span>
 </code></pre></div><h1 id="where-to-go-from-here">Where to go from here?</h1>
 <p>I would highly encourage you to go back and read the SoX manual (<code>man sox</code>, remember?) because there really is a plethora of fun and useful things you can do with SoX in a for-loop.</p>
 <hr>
@@ -2647,25 +2647,25 @@ Let us say you have a sound file containing many different sounds seperated by a
 <li>threshold - audio threshold, we will indicate this in percentages</li>
 </ul>
 <p>The parameters are stringed together after the <code>silence</code> keyword in the sox command like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence above-periods duration threshold
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence above-periods duration threshold
 </code></pre></div><h2 id="trimming-silence-from-beginning-and-end-of-one-file">Trimming silence from beginning and end of one file</h2>
 <p>To trim the beginning of a file until the audio is above 1% in volume for more than 0.1 seconds, you would write a command like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1%
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1%
 </code></pre></div><p>To trim the ending as well, we basically repeat the parameters like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1%
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1%
 </code></pre></div><h2 id="chaining-pseudo-effects">Chaining (pseudo) effects</h2>
 <p>This is all good and well, but we want to produce a sample bank from one input audio file. To do this we need to make use of SoX' ability to chain effects chains after eachother and enter into &ldquo;multiple output file mode&rdquo;.</p>
 <p>From the manual: &ldquo;In multiple output mode, a new file is created when the effects prior to the &lsquo;newfile&rsquo; indicate they are done. The effects chain listed after &lsquo;newfile&rsquo; is then started up and its output is saved to the new file.&rdquo;</p>
 <p>An effects chain can thus be chained after another using a colon <code>:</code>. Now instead of manually writing out the silence effect and it&rsquo;s parameters for each bit we want to extract from the sound file, we can make the process automatically restart each time it has detected a bit of sound by silence</p>
 <p>To do this we need to chain the <code>restart</code> pseudoeffect at the end of our command. This will make the process create a new file from the bit it detected by silence, then restart the process from where it left off and repeat until it reaches the end of the file. Kind of like slicing off bits of a (sound) sausage from left to right.</p>
 <p>Our final command for chopping files by silence will then end up looking like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1% : newfile : restart
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1% : newfile : restart
 </code></pre></div><h2 id="chopping-three-bursts">Chopping three bursts</h2>
 <p><img src="/img/small/threebursts.png" alt="alt"></p>
 <p>As an example of the above, let us have a look at a sound file containing three short noise bursts.</p>
 <p>The sound file is called threebursts.wav and can be <a href="/audio/threebursts.wav">downloaded here</a>.</p>
 <p>To split the soundfile into three seperate files containing the bursts (without the silence in between), we simply execute the command</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox threebursts.wav burst_num.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1% : newfile : restart
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox threebursts.wav burst_num.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1% : newfile : restart
 </code></pre></div><p>which will produce sound files called &ldquo;burst_num001.wav&rdquo;, &ldquo;burst_num002.wav&rdquo; etc.</p>
 <p>Now this works very well for our very unnatural example here, but I encourage you to mess around with the parameters when you do this on your own with your own files. Change the threshold to 5% for example if it&rsquo;s noisy or set the duration to something higher if it results in too many small files.</p>
 <p>Note: Sometimes on some systems this command will produce an extra audio file containing nothing. I honestly have no idea why. Just delete the file (or send me an email if you have a solution to this problem)</p>
@@ -2695,14 +2695,14 @@ I came across SoX via the live coding community where it is a popular tool for c
 <h2 id="installing-sox">Installing SoX</h2>
 <h3 id="macos">MacOS</h3>
 <p>Using the Homebrew package manager:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install sox
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install sox
 </code></pre></div><h3 id="windows">Windows</h3>
 <p>Using the Chocolatey package manager</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">choco install sox.portable
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">choco install sox.portable
 </code></pre></div><h3 id="ubuntu">Ubuntu</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install sox
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install sox
 </code></pre></div><h3 id="arch--manjaro">Arch / Manjaro</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S sox
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S sox
 </code></pre></div><h2 id="whats-included">What&rsquo;s included</h2>
 <h3 id="the-manual">The manual</h3>
 <p><img src="/img/small/sox-man.png" alt="sox manual"></p>
@@ -2716,15 +2716,15 @@ I came across SoX via the live coding community where it is a popular tool for c
 <p>SoX includes a very handy way of recording audio using the <code>rec</code> command.</p>
 <p>The simplest use is to type <code>rec filename</code> which will start recording from the default input until you stop it by pressing <code>ctrl-c</code> in the terminal window.</p>
 <p>Example use:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec hello.wav
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec hello.wav
 </code></pre></div><p>You can specify a predefined length of the recording like this: <code>rec hello.wav trim 0 30:00</code> which will record for 30 minutes and then automatically stop</p>
 <h3 id="audio-player">Audio player</h3>
 <p>Similarly, playing audio is also possible using the command <code>play</code></p>
 <p>Example use:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav
 </code></pre></div><p>Note that both play and rec can be used with SoX&rsquo;s many included effects.</p>
 <p>Playing the above example at half speed with a flanger at the end is as simple as</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav speed 0.5 flanger
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav speed 0.5 flanger
 </code></pre></div><h2 id="command-line-basics">Command line basics</h2>
 <p>You do not have to have a lot of command line experience to use SoX but there is a few basic commands that will make it easier for you to navigate your computer in the command line.</p>
 <p>• <code>pwd</code> - see path to directory you are currently in
@@ -2739,27 +2739,27 @@ I came across SoX via the live coding community where it is a popular tool for c
 <h2 id="the-sox-command">The sox command</h2>
 <p>Our main interface for sox in this tutorial will be the <code>sox</code> command. The basic usage of this includes specifying an input file path, an output file path and then optionally some effects followed by an optional series of parameters.</p>
 <p>The basic command we will use will thus look like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox inputfile outputfile effect parameters
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox inputfile outputfile effect parameters
 </code></pre></div><p>If your input or output file contains spaces in the file name, you should wrap the path to it in quotation marks like this:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox <span style="color:#e6db74">&#34;/some folder/containg/a sound.wav&#34;</span> <span style="color:#e6db74">&#34;outputfolder/a new sound.wav&#34;</span> effect param1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox <span style="color:#e6db74">&#34;/some folder/containg/a sound.wav&#34;</span> <span style="color:#e6db74">&#34;outputfolder/a new sound.wav&#34;</span> effect param1
 </code></pre></div><p>Like other command line tools, sox executes from the context of the folder that you are currently in (which can be found by typing <code>pwd</code>) and as such you do not need to type out the entire path to a file if it is in the same folder as the one you are executing sox from.</p>
 <h2 id="command-line-tape-music">Command line tape music</h2>
 <p>Tape music artists of the 60&rsquo;s and 70&rsquo;s had very rudimentary tools at their disposal - mostly they did their work using reel-to-reel tape recorders and simple effects. But you would be surprised by the incredible sonic possibilities available in a tool as simple as this, using basic techniques of recording, reversing, adding effects, changing playback speed, etc. you can get a long way towards making interesting music.</p>
 <p>Let us explore some of SoX' basic commands a bit by doing some command line audio manipulations reminiscent of classic tape music techniques.</p>
 <p>First of all, we need some audio to operate on. I would recommend recording a quick bit from your computer&rsquo;s microphone. If you have an instrument around, maybe use that for this exercise or simply (like me) whistle like an idiot in front of your computer.</p>
 <p>Record to the file idiot.wav for 10 seconds:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec idiot.wav trim 0:0 0:10
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec idiot.wav trim 0:0 0:10
 </code></pre></div><p>Once SoX is done recording, it will post a &ldquo;done&rdquo; message.</p>
 <p>Moving on, let us test the file we just recorded</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play idiot.wav
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play idiot.wav
 </code></pre></div><p>You should now hear yourself doing something silly in front of your computer a few seconds ago.</p>
 <p>To convert this to something else, we need to invoke the <code>sox</code> command now, providing it with an input file name, an output file name and a chain of effects. In this example, I will add a silly effects chain consisting of reversing the audio -&gt; flanger (2ms delay) -&gt; playback speed 50% (0.5) -&gt; reverb. The output of this operation will be saved in the file <code>art.wav</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox idiot.wav art.wav reverse flanger <span style="color:#ae81ff">2</span> speed 0.5 reverb
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox idiot.wav art.wav reverse flanger <span style="color:#ae81ff">2</span> speed 0.5 reverb
 </code></pre></div><p>If you execute the command <code>ls</code> now, you should in your directory see both the files idiot.wav (the original) and the manipulated file art.wav.</p>
 <p>Just to be sure, we can test our output file.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play art.wav
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play art.wav
 </code></pre></div><p>Now, we would not be proper command line tape musicians if we felt satisfied after 1 manipulation to the original recording, so let us continue our sonic journey by transforming the <code>art.wav</code> file further, this time we will time stretch to twice the length (factor 2), reverse the audio again and add some reverb. Just to make sure we do not lose too much of our audio level, we will normalize the output to -0.1db as well finally saving the result in the file <code>art2.wav</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox art.wav art2.wav stretch <span style="color:#ae81ff">2</span> reverse reverb norm -0.1
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox art.wav art2.wav stretch <span style="color:#ae81ff">2</span> reverse reverb norm -0.1
 </code></pre></div><hr>
 <p><em>This tutorial is part of a series:</em></p>
 <ul>
@@ -2789,12 +2789,12 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <h2 id="install-clang-formatting">Install clang formatting</h2>
 <p>On Arch Linux I had to install clang to make this work: <code>sudo pacman -Syu clang</code></p>
 <p>There’s some really nice autoformatting plugins from Google. Add these to your init.vim and install:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Code formatting (for c++)</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Code formatting (for c++)</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;google/vim-maktaba&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;google/vim-codefmt&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">Plug</span> <span style="color:#e6db74">&#39;google/vim-glaive&#39;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>This should now automatically fix your code automatically with the following in your init.vim:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">&#34; Code formatting</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">cpp</span>,<span style="color:#a6e22e">proto</span>,<span style="color:#a6e22e">javascript</span> <span style="color:#a6e22e">AutoFormatBuffer</span> <span style="color:#a6e22e">clang</span>-<span style="color:#a6e22e">format</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><h2 id="ctags">Ctags</h2>
@@ -2813,7 +2813,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <p>Following this installation guide thoroughly <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Full-Installation-Guide">installation guide</a></p>
 <p>Especially make sure you have <a href="https://clangd.llvm.org/installation.html">clangd</a> installed. On arch, this was installed automatically for me with the <code>clang</code> package but you can verify this on the command line by running <code>which clangd</code> which should return a path to the binary, otherwise you need to install it.</p>
 <p>It’s especially important to add this line to your init.vim file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_clangd_binary_path</span> = <span style="color:#e6db74">&#34;/path/to/clangd&#34;</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_clangd_binary_path</span> = <span style="color:#e6db74">&#34;/path/to/clangd&#34;</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p><code>/path/to/clangd</code> can be replaced by the output of the command <code>which clangd</code></p>
 <p>Now you should have automatic debugging and autocomplete suggestions.</p>
 <p>Try opening up a openframeworks, run the <code>compiledb -n make</code> command and move to <code>ofApp.cpp</code> and inside the setup function add the following:</p>
@@ -2821,7 +2821,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <p>This will make a rectangle object. Now, in the next line, write <code>rect.</code> – by the <code>.</code> you should now see a list of suggested methods to use that are native to the ofRectangle class.</p>
 <h2 id="keybindings">Keybindings</h2>
 <p>Most of the relevant keymappings I use, I got from <a href="http://roosnaflak.com/tech-and-research/openframeworks-nvim-archlinux/">Kenneth Flak’s blogpost about the same</a>. These will setup vim to compile your oF program when you press ctrl-e (this is convenient since this is the same shortcut we use in <a href="https://github.com/davidgranstrom/scnvim">SCNVim</a>):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">c</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">c</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span>!<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">cpp</span>,<span style="color:#a6e22e">h</span>,<span style="color:#a6e22e">hpp</span>,<span style="color:#a6e22e">glsl</span> <span style="color:#a6e22e">call</span> <span style="color:#a6e22e">MakeRun</span>()<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">end</span><span style="color:#960050;background-color:#1e0010">
@@ -2831,7 +2831,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">inoremap</span> :<span style="color:#a6e22e">terminal</span> <span style="color:#a6e22e">make</span> -<span style="color:#a6e22e">j8</span> &amp;&amp; <span style="color:#a6e22e">make</span> <span style="color:#a6e22e">run</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">endfunction</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div><p>And then some nice keybindings to work with YouCompleteMe:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Find definition</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Find definition</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">au</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">cpp</span> <span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">si</span> :<span style="color:#a6e22e">YcmCompleter</span> <span style="color:#a6e22e">GoToDefinition</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">
 </span><span style="color:#75715e">&#34; Reboot Ycm server</span><span style="color:#960050;background-color:#1e0010">
@@ -2857,7 +2857,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <p><img src="/img/gif/of-snippets.gif" alt="open frameworks + vim"></p>
 <p>Another really nice feature in this dev environment is the addition of snippets. I use UltiSnips for this. When I set this up, I read varying reports about how well UltiSnips works with YCM, but for me it works fine.</p>
 <p>Install <a href="https://github.com/SirVer/ultisnips">UltiSnips</a> and then add these to your init.vim:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YouCompleteMe and UltiSnips compatibility.</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; YouCompleteMe and UltiSnips compatibility.</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_use_ultisnips_completer</span> = <span style="color:#ae81ff">1</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_select_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#66d9ef">let</span> <span style="color:#a6e22e">g</span>:<span style="color:#a6e22e">ycm_key_list_previous_completion</span>=[]<span style="color:#960050;background-color:#1e0010">
@@ -2872,7 +2872,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 </span></code></pre></div><p>I’d also recommend installing <a href="github.com/honza/vim-snippets/">vim-snippets</a> which contains extra snippets.</p>
 <p>Now, when for example you type <code>if</code> in a <code>.cpp</code> or <code>.h</code> file you can hit tab to expand it to get the full code for an if-statement. If you want, you can even add your own custom snippets using Ultisnips powerful capabilities ( execute <code>:h snippets</code> in Vim for more info about this ). Below I have defined two snippets. One which will expand when typing <code>ofclass</code> and one when typing <code>ofheader</code>. The first will create a sensible class and the latter a sensible header. Hit tab to cycle through the arguments.</p>
 <p>To use these snippets, add these to the file (which you can create if it doesn’t exist yet) <code>~/.vim/UltiSnips/cpp.snippets</code></p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">snippet</span> <span style="color:#a6e22e">ofclass</span> <span style="color:#e6db74">&#34;Class for open frameworks&#34;</span><span style="color:#960050;background-color:#1e0010">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">snippet</span> <span style="color:#a6e22e">ofclass</span> <span style="color:#e6db74">&#34;Class for open frameworks&#34;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>#<span style="color:#a6e22e">include</span> <span style="color:#e6db74">&#34;${1:`!p snip.rv = snip.basename`}.h&#34;</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span>$<span style="color:#ae81ff">1</span>::$<span style="color:#ae81ff">1</span>(){}<span style="color:#960050;background-color:#1e0010">
@@ -3836,7 +3836,7 @@ A nice alternative: A triangle wave synth with a low pass filter Imagine a utopi
 <h2 id="a-nice-alternative-a-triangle-wave-synth-with-a-low-pass-filter">A nice alternative: A triangle wave synth with a low pass filter</h2>
 <p>Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth. Well that world is here and now.</p>
 <p>Overwriting the default is actually easy. All you have to do is write a new SynthDef called <code>\default</code>. Evaluate this piece of code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// A simple triangle wave synth in stereo 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// A simple triangle wave synth in stereo 
 </span><span style="color:#75715e"></span>(
 <span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">default</span>, {
 <span style="color:#a6e22e">arg</span> <span style="color:#a6e22e">dur</span>, <span style="color:#a6e22e">attack</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, <span style="color:#a6e22e">release</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>,
@@ -3856,7 +3856,7 @@ A nice alternative: A triangle wave synth with a low pass filter Imagine a utopi
 }).<span style="color:#a6e22e">add</span>;
 )
 </code></pre></div><p>Try this new default synth out by playing the default event again:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-smalltalk" data-lang="smalltalk">().play;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-smalltalk" data-lang="smalltalk">().play;
 </code></pre></div><p>Isn’t that much better?</p>
 <p>Now, let us try it with patterns:</p>
 <!-- raw HTML omitted -->
@@ -4396,7 +4396,7 @@ This becomes annoying when working with UGens that want to know the exact number
 <p>When you need to create synths and you want it to be flexible in terms of the number of channels involved, a nice way of doing it involves the almighty <em>do</em> function.</p>
 <p>The trick here is basically to put the SynthDef inside of a do function, which will repeat 64 times. We will then use the index from the do process to append to the SynthDef’s name and set the ugens to the appropriate amount of channels.</p>
 <p>Let’s start by making the function to be used inside of the SynthDef:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Function for buffer player synth defs
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Function for buffer player synth defs
 </span><span style="color:#75715e"></span><span style="color:#f92672">~</span><span style="color:#a6e22e">bufplayerfunc</span> <span style="color:#f92672">=</span> {<span style="color:#f92672">|</span><span style="color:#a6e22e">numchans</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>
    {<span style="color:#f92672">|</span><span style="color:#a6e22e">rate</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">buffer</span>, <span style="color:#a6e22e">trigger</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">start</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">loop</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, <span style="color:#a6e22e">amp</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">out</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0</span><span style="color:#f92672">|</span>
 
@@ -4417,7 +4417,7 @@ This becomes annoying when working with UGens that want to know the exact number
 </code></pre></div><p>As you can see, the synth function is wrapped in an outer function which takes one argument: the number of channels. The function returns the actual synth function we need to put inside of a SynthDef.</p>
 <p>Using the numchans argument, the PlayBuf UGEN is set to appropriate channel number (and the Out UGEN is smart enough to adjust to this).</p>
 <p>The next step is to put this function inside of a SynthDef and call it 64 times. One time for each number of channels we want to have:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(<span style="color:#ae81ff">1.</span>.<span style="color:#ae81ff">64</span>).<span style="color:#66d9ef">do</span>{<span style="color:#f92672">|</span><span style="color:#a6e22e">chanNum</span><span style="color:#f92672">|</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(<span style="color:#ae81ff">1.</span>.<span style="color:#ae81ff">64</span>).<span style="color:#66d9ef">do</span>{<span style="color:#f92672">|</span><span style="color:#a6e22e">chanNum</span><span style="color:#f92672">|</span>
    <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">name</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;bufplayer&#34;</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">chanNum</span>;
    <span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#a6e22e">name</span>, <span style="color:#f92672">~</span><span style="color:#a6e22e">bufplayerfunc</span>.<span style="color:#a6e22e">value</span>(<span style="color:#a6e22e">chanNum</span>)).<span style="color:#a6e22e">add</span>;
 };
@@ -4433,7 +4433,7 @@ This becomes annoying when working with UGens that want to know the exact number
 <p>The signal of our Saw oscillator is passed into the filter using the wrap-argument <em>prependArgs</em>.</p>
 <p>This part of SynthDef.wrap is very important and a bit confusing too. Anything you pass in to the prependArgs argument will be put into the first argument(s) of the function used in the wrap-method.</p>
 <p>The argument in question (in our case the <em>in</em> argument) will then be removed from the outer function’s list of arguments. The prepended argument is in other words overwritten and becomes unavailable to the outside SynthDef argument list.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Filter functions organized in a dictionary (Event)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Filter functions organized in a dictionary (Event)
 </span><span style="color:#75715e">// The signal of our synth will be passed in as the first argument
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">f</span> <span style="color:#f92672">=</span> (
     <span style="color:#a6e22e">hpf</span><span style="color:#f92672">:</span> { <span style="color:#f92672">|</span><span style="color:#66d9ef">in</span>, <span style="color:#a6e22e">cutoff</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, <span style="color:#a6e22e">rq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">|</span>
@@ -4466,7 +4466,7 @@ This becomes annoying when working with UGens that want to know the exact number
 
 )
 </code></pre></div><p>Now, let us test these synths:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Test low pass version
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Test low pass version
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">Synth</span>(<span style="color:#e6db74">&#34;sawlpf&#34;</span>, [<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">freq</span>, <span style="color:#ae81ff">222</span>, <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">cutoff</span>, <span style="color:#ae81ff">100</span>]);
 
 <span style="color:#75715e">// Test high pass version
@@ -4512,7 +4512,7 @@ NRT works like this (normally): First you write a list of server OSC messages (s
 </li>
 </ol>
 <p>First step is to make a SynthDef. SynthDefs are sort of recipes for sound patches that the server uses to make sound. In this case, it will be a very boring sine, aptly named \boring_sine. Note the use of the .store method here. This will save the synthdef as a file on your system and make it available to the NRT process later on.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">boring_sine</span>, {<span style="color:#f92672">|</span><span style="color:#a6e22e">freq</span>, <span style="color:#a6e22e">dur</span><span style="color:#f92672">|</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">boring_sine</span>, {<span style="color:#f92672">|</span><span style="color:#a6e22e">freq</span>, <span style="color:#a6e22e">dur</span><span style="color:#f92672">|</span>
 <span style="color:#75715e">// A percussive envelope
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">EnvGen</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">Env</span>.<span style="color:#a6e22e">perc</span>, <span style="color:#a6e22e">gate</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">timeScale</span><span style="color:#f92672">:</span><span style="color:#a6e22e">dur</span>);
 
@@ -4524,15 +4524,15 @@ NRT works like this (normally): First you write a list of server OSC messages (s
 }).<span style="color:#a6e22e">store</span>;
 </code></pre></div><p>We will keep the pattern super simple: Random scale degrees played using our \boring_sine synth, each of which a quarter of beat in duration.</p>
 <p>The total duration of the pattern will be infinite for now (the length of this will automatically be truncated by the Score conversion process).</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Pbind</span>(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Pbind</span>(
 <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">instrument</span>, <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">boring_sine</span>,
 <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">dur</span>, <span style="color:#ae81ff">0.25</span>,
 <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">degree</span>, <span style="color:#a6e22e">Pwhite</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>)
 );
 </code></pre></div><p>And now, let us convert this to a score:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">asScore</span>(<span style="color:#ae81ff">60</span>); <span style="color:#75715e">// Duration of 60 beats
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">p</span>.<span style="color:#a6e22e">asScore</span>(<span style="color:#ae81ff">60</span>); <span style="color:#75715e">// Duration of 60 beats
 </span></code></pre></div><p>Finally, we render the score</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">(
 <span style="color:#75715e">// Destination path and file name
 </span><span style="color:#75715e"></span><span style="color:#f92672">~</span><span style="color:#a6e22e">outFile</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;~/Desktop/yo.wav&#34;</span>;
 
@@ -4543,7 +4543,7 @@ NRT works like this (normally): First you write a list of server OSC messages (s
 <p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/sc-render-chopped2.png"><!-- raw HTML omitted --></a></p>
 <p>Rendering one random melody is quite nice, but let us exploit the fact that our pattern chooses random scale degrees every time we play it and combine that functionality with iteration to make 10 (or any number) of rendered random melodies.</p>
 <p>First, let us wrap what we wrote up until this point in a function that we can call as often as we want.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">~</span><span style="color:#a6e22e">renderMelody</span> <span style="color:#f92672">=</span> { <span style="color:#f92672">|</span><span style="color:#a6e22e">pattern</span>, <span style="color:#a6e22e">destinationPath</span><span style="color:#f92672">|</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#f92672">~</span><span style="color:#a6e22e">renderMelody</span> <span style="color:#f92672">=</span> { <span style="color:#f92672">|</span><span style="color:#a6e22e">pattern</span>, <span style="color:#a6e22e">destinationPath</span><span style="color:#f92672">|</span>
 
 <span style="color:#75715e">// Convert pattern to score
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">var</span> <span style="color:#a6e22e">patscore</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">pattern</span>.<span style="color:#a6e22e">asScore</span>(<span style="color:#ae81ff">60</span>); <span style="color:#75715e">// Duration of 60 beats
@@ -4552,13 +4552,13 @@ NRT works like this (normally): First you write a list of server OSC messages (s
 </span><span style="color:#75715e"></span><span style="color:#a6e22e">patscore</span>.<span style="color:#a6e22e">recordNRT</span>(<span style="color:#a6e22e">outputFilePath</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">destinationPath</span>.<span style="color:#a6e22e">asAbsolutePath</span>, <span style="color:#a6e22e">headerFormat</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;WAV&#34;</span>);
 };
 </code></pre></div><p>Let us keep the pattern as is</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Pbind</span>(
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">p</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Pbind</span>(
 <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">instrument</span>, <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">boring_sine</span>,
 <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">dur</span>, <span style="color:#ae81ff">0.25</span>,
 <span style="color:#960050;background-color:#1e0010">\</span><span style="color:#a6e22e">degree</span>, <span style="color:#a6e22e">Pwhite</span>(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>)
 );
 </code></pre></div><p>And then render 10 versions of it</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Now make 10 different melodies and save them to your desktop as wave files
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Now make 10 different melodies and save them to your desktop as wave files
 </span><span style="color:#75715e"></span><span style="color:#ae81ff">10.</span><span style="color:#66d9ef">do</span>{<span style="color:#f92672">|</span><span style="color:#a6e22e">index</span><span style="color:#f92672">|</span>
 <span style="color:#f92672">~</span><span style="color:#a6e22e">renderMelody</span>.<span style="color:#a6e22e">value</span>(<span style="color:#a6e22e">p</span>, <span style="color:#e6db74">&#34;~/Desktop/boringMelody&#34;</span> <span style="color:#f92672">++</span> <span style="color:#a6e22e">index</span> <span style="color:#f92672">++</span> <span style="color:#e6db74">&#34;.wav&#34;</span>);
 };
@@ -4577,11 +4577,11 @@ ps -C scsynth -o pid h Then, we can use the number output from the command above
             <content type="html"><![CDATA[<p>We will assume that you already have SuperCollider running and that you have booted the server. Now you&rsquo;d like to attach the GDB debugger to that process to see what happens when / if it crashes.</p>
 <h2 id="attach-gdb-to-an-already-running-scsynth-process">Attach GDB to an already running scsynth process</h2>
 <p>First, we need to find the pid of the running process:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ps -C scsynth -o pid h
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ps -C scsynth -o pid h
 </code></pre></div><p>Then, we can use the number output from the command above to attach gdb:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gdb scsynth -p &lt;pid&gt;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gdb scsynth -p &lt;pid&gt;
 </code></pre></div><p>Or, both of the above in one line:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gdb scsynth -p <span style="color:#66d9ef">$(</span>ps -C scsynth -o pid h<span style="color:#66d9ef">)</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gdb scsynth -p <span style="color:#66d9ef">$(</span>ps -C scsynth -o pid h<span style="color:#66d9ef">)</span>
 </code></pre></div><p>Once inside GDB, you may execute the command <code>n</code> (or <code>next</code>) until it crashes. Then run <code>bt</code> to get a backtrace with more information.</p>
 ]]></content>
         </item>

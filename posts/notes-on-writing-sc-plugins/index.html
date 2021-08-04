@@ -41,8 +41,8 @@ The two different styles There are two different headers that contain SuperColli
 This post will be updated as I go along.
 Useful links This repo contains example code for writing plugins in both the &ldquo;old&rdquo; and &ldquo;new&rdquo; style which I found helpful in understanding this subject.
 Also check out this cookiecutter template for generating plugins and the Server Plugin API.
-The two different styles There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code."><meta itemprop="datePublished" content="2020-11-13T21:38:31&#43;01:00" />
-<meta itemprop="dateModified" content="2020-11-13T21:38:31&#43;01:00" />
+The two different styles There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code."><meta itemprop="datePublished" content="2020-11-13T21:38:31+01:00" />
+<meta itemprop="dateModified" content="2020-11-13T21:38:31+01:00" />
 <meta itemprop="wordCount" content="724"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 <meta itemprop="keywords" content="supercollider,cpp," />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -65,8 +65,8 @@ Also check out this cookiecutter template for generating plugins and the Server 
 The two different styles There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2020-11-13T21:38:31&#43;01:00" />
-<meta property="article:modified_time" content="2020-11-13T21:38:31&#43;01:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+<meta property="article:published_time" content="2020-11-13T21:38:31+01:00" />
+<meta property="article:modified_time" content="2020-11-13T21:38:31+01:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -182,14 +182,14 @@ The two different styles There are two different headers that contain SuperColli
 <p>There are two different headers that contain SuperCollider&rsquo;s plugin boiler plate code.
 These are imported at the top of both your .cpp and .hpp file and will lead to two different styles of writing your plugin code.</p>
 <h3 id="new-style-c-wrapper">New style c++ wrapper</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.hpp&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.hpp&#34;</span><span style="color:#75715e">
 </span></code></pre></div><p>This header will import &ldquo;newer&rdquo; c++ headers that are recognizable as lower case method names such as:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">set_calc_function<span style="color:#f92672">&lt;</span>BoringMixer, <span style="color:#f92672">&amp;</span>BoringMixer<span style="color:#f92672">::</span>next<span style="color:#f92672">&gt;</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">set_calc_function<span style="color:#f92672">&lt;</span>BoringMixer, <span style="color:#f92672">&amp;</span>BoringMixer<span style="color:#f92672">::</span>next<span style="color:#f92672">&gt;</span>();
 </code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01b-BoringMixer/BoringMixer.cpp">BoringMixer (new style)</a> for a more extensive example.</p>
 <h3 id="old-style">Old style</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_PlugIn.h&#34;</span><span style="color:#75715e">
 </span></code></pre></div><p>This imports the older header, which leads to code with a lot of upper case macros like</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">SETCALC(BoringMixer_next)
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">SETCALC(BoringMixer_next)
 </code></pre></div><p>See <a href="https://github.com/supercollider/example-plugins/blob/master/01a-BoringMixer/BoringMixer.cpp">BoringMixer (old style)</a> for a more extensive example.</p>
 <h2 id="macros">Macros</h2>
 <p>This is a transcription of Dan Stowell&rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &ldquo;new&rdquo; c++ style for writing plugins. It contains <em>some</em> of the macros available when writing UGens/Plugins in c++ in SuperCollider.</p>
@@ -270,13 +270,13 @@ These are imported at the top of both your .cpp and .hpp file and will lead to t
 <h2 id="the-randomness-api">The Randomness API</h2>
 <p>There&rsquo;s an API for a bunch of randomness functions that come with the SuperCollider plugin development framework, most of which reflect sclang equivalents so are probably well known to people with experience i sclang. These are described in the header file <code>SC_RGen.h</code>.</p>
 <p>To use them, first include the header file in your plugin&rsquo;s <code>.hpp</code> file.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_RGen.h&#34;</span><span style="color:#75715e">
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">#include</span> <span style="color:#75715e">&#34;SC_RGen.h&#34;</span><span style="color:#75715e">
 </span></code></pre></div><p>Then instantiate a random number generator class in your header file (under the <code>private:</code> keyword for example) as a member variable.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">RGen <span style="color:#f92672">&amp;</span> rgen <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>mParent <span style="color:#f92672">-&gt;</span> mRGen;
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">RGen <span style="color:#f92672">&amp;</span> rgen <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>mParent <span style="color:#f92672">-&gt;</span> mRGen;
 </code></pre></div><p>With this, you now have access to the random number generators in your calculation functions in your plugin like so:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> random_float <span style="color:#f92672">=</span> rgen.frand();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">float</span> random_float <span style="color:#f92672">=</span> rgen.frand();
 </code></pre></div><h3 id="available-methods-for-random-number-generation">Available methods for random number generation</h3>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">uint32 <span style="color:#a6e22e">trand</span>();
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">uint32 <span style="color:#a6e22e">trand</span>();
 
 int32 <span style="color:#a6e22e">irand</span>(int32 scale);
 int32 <span style="color:#a6e22e">irand2</span>(int32 scale);
@@ -302,10 +302,10 @@ int32 <span style="color:#a6e22e">ibilinrand</span>(int32 scale);
 <span style="color:#66d9ef">double</span> <span style="color:#a6e22e">sum3rand</span>(<span style="color:#66d9ef">double</span> scale);
 </code></pre></div><h3 id="interpolation">Interpolation</h3>
 <p>Interpolation functions available (for working with buffers):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">float</span> lininterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b) 
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#66d9ef">float</span> lininterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> a, <span style="color:#66d9ef">float</span> b) 
 <span style="color:#66d9ef">float</span> cubicinterp(<span style="color:#66d9ef">float</span> x, <span style="color:#66d9ef">float</span> y0, <span style="color:#66d9ef">float</span> y1, <span style="color:#66d9ef">float</span> y2, <span style="color:#66d9ef">float</span> y3)
 </code></pre></div><p>Example from the <code>example-plugins</code> repo&rsquo;s AnalogEcho example:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Four integer phases into the buffer
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#75715e">// Four integer phases into the buffer
 </span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> phase1 <span style="color:#f92672">=</span> writephase <span style="color:#f92672">-</span> offset;
 <span style="color:#66d9ef">int</span> phase2 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>;
 <span style="color:#66d9ef">int</span> phase3 <span style="color:#f92672">=</span> phase1 <span style="color:#f92672">-</span> <span style="color:#ae81ff">2</span>;

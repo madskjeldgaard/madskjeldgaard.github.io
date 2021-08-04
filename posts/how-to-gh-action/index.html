@@ -35,8 +35,8 @@ There is a number of amazing SuperCollider plugin repositories on Github - a lot
 
 <meta itemprop="name" content="Automatically build, compile and release SuperCollider plugins using Github Actions">
 <meta itemprop="description" content="Since the main SuperCollider github repository moved to using Github Actions to automatically build, compile and release cross platform, I felt intrigued to use the same technology to do the same for SuperCollider plugins.
-There is a number of amazing SuperCollider plugin repositories on Github - a lot will demand that the user compiles the sourcecode themselves to use the plugins. For people used to CMake and/or a Linux-ey workflow of compiling, this is not a big problem but for a lot of others (most people perhaps), it really is a doorstopper."><meta itemprop="datePublished" content="2021-03-03T18:22:34&#43;01:00" />
-<meta itemprop="dateModified" content="2021-03-03T18:22:34&#43;01:00" />
+There is a number of amazing SuperCollider plugin repositories on Github - a lot will demand that the user compiles the sourcecode themselves to use the plugins. For people used to CMake and/or a Linux-ey workflow of compiling, this is not a big problem but for a lot of others (most people perhaps), it really is a doorstopper."><meta itemprop="datePublished" content="2021-03-03T18:22:34+01:00" />
+<meta itemprop="dateModified" content="2021-03-03T18:22:34+01:00" />
 <meta itemprop="wordCount" content="415"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 <meta itemprop="keywords" content="supercollider,cpp,github,cmake," />
 <meta name="twitter:card" content="summary_large_image"/>
@@ -53,8 +53,8 @@ There is a number of amazing SuperCollider plugin repositories on Github - a lot
 There is a number of amazing SuperCollider plugin repositories on Github - a lot will demand that the user compiles the sourcecode themselves to use the plugins. For people used to CMake and/or a Linux-ey workflow of compiling, this is not a big problem but for a lot of others (most people perhaps), it really is a doorstopper." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/how-to-gh-action/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-03-03T18:22:34&#43;01:00" />
-<meta property="article:modified_time" content="2021-03-03T18:22:34&#43;01:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+<meta property="article:published_time" content="2021-03-03T18:22:34+01:00" />
+<meta property="article:modified_time" content="2021-03-03T18:22:34+01:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -156,7 +156,7 @@ There is a number of amazing SuperCollider plugin repositories on Github - a lot
 <h2 id="create-a-release">Create a release</h2>
 <p>The way the yaml file is set up, it will activate the process whenever the github repository receives a new tag containing <code>v*</code>, where the asterisk is some version number (for example <code>v1</code> or <code>v2.0.19</code>).</p>
 <p>To activate this, in your local git repo you may run this command to</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create a version tag</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create a version tag</span>
 git tag v0.0.108 
 
 <span style="color:#75715e"># Push new version tag to GH and activate action</span>
