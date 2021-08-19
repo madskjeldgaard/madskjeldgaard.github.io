@@ -14,7 +14,7 @@
       
       <guid>http://madskjeldgaard.dk/pages/software/</guid>
       <description>Most of the software I develop as part of my practice is made available on Github.
-DSP  mkplugins - A collection of C++ based DSP plugins for SuperCollider. faustgen - The Faust compiler embedded in SuperCollider.  Command line tools  osccli - OSC Communication on the command line. Written in fast and safe Rust. cookiecutter quark - A cookiecutter template to help you automatically generate a SuperCollider Quark (package) sox-tricks - Command line tools that make batch processing, editing and organization of audio files a fast and painless task.</description>
+DSP  mkplugins - A collection of C++ based DSP plugins for SuperCollider. faustgen - The Faust compiler embedded in SuperCollider. Gutter Synth for SuperCollider  SuperCollider packages  OutputFX - Easy output fx management CC14 - 14 bit midi for SuperCollider Sleet - A library / factory for SuperCollider sound effects allbuf - Create all possible buffer player patches as SynthDefs in SuperCollider (all = many) PolyBuf - Load samples to buffers, easily Particular - A SuperCollider package for particle synthesis mk-synthlib - My personal synthesizer factory/library for SuperCollider  Vim  faust-nvim - Faust plugin for Vim microcontroller-nvim - Microcontroller plugin for NeoVim, integrating Platformio seamlessly and adding nifty commands for Teensy and other popular dev boards.</description>
     </item>
     
     <item>
@@ -69,6 +69,7 @@ December 6th, 2018, Cappelens Forslag, Oslo, Norway @ Hollow Body Timbals releas
       <guid>http://madskjeldgaard.dk/pages/contact/</guid>
       <description>Email: mail ☺ madskjeldgaard.dk
 Github: madskjeldgaard
+Codeberg: madskjeldgaard
 Instagram: @mads_kjeldgaard
 Twitch: twitch
 YouTube: youtube
