@@ -15,7 +15,7 @@ One advice that I kept hearing again and again though was to install wine (the W
 
     <title>
         
-            Improve Windows VST plugin performance on Arch using Wine TKG :: Mads Kjeldgaard  — Composer and developer
+            Install Wine-TKG to improve Windows VST plugin performance on Arch Linux :: Mads Kjeldgaard  — Composer and developer
         
     </title>
 
@@ -33,22 +33,22 @@ One advice that I kept hearing again and again though was to install wine (the W
 
 
 
-<meta itemprop="name" content="Improve Windows VST plugin performance on Arch using Wine TKG">
+<meta itemprop="name" content="Install Wine-TKG to improve Windows VST plugin performance on Arch Linux">
 <meta itemprop="description" content="I do all of my production work on Arch-based Linux systems these days. This is generally a pleasent experience since Reaper started supporting native Linux builds and yabridgectl made bridging Windows VST Plugins quite breezy and effective. Once setup correctly, this offers a performance experience and workflow that I think is quite close to native.
 One advice that I kept hearing again and again though was to install wine (the Wine program that lets you use Windows software on Linux) using wine-tkg, a customized build system for installing."><meta itemprop="datePublished" content="2021-06-21T11:13:58+02:00" />
 <meta itemprop="dateModified" content="2021-06-21T11:13:58+02:00" />
-<meta itemprop="wordCount" content="521"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+<meta itemprop="wordCount" content="534"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 <meta itemprop="keywords" content="arch,manjaro,vst,windows,wine," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 
-<meta name="twitter:title" content="Improve Windows VST plugin performance on Arch using Wine TKG"/>
+<meta name="twitter:title" content="Install Wine-TKG to improve Windows VST plugin performance on Arch Linux"/>
 <meta name="twitter:description" content="I do all of my production work on Arch-based Linux systems these days. This is generally a pleasent experience since Reaper started supporting native Linux builds and yabridgectl made bridging Windows VST Plugins quite breezy and effective. Once setup correctly, this offers a performance experience and workflow that I think is quite close to native.
 One advice that I kept hearing again and again though was to install wine (the Wine program that lets you use Windows software on Linux) using wine-tkg, a customized build system for installing."/>
 
 
 
-    <meta property="og:title" content="Improve Windows VST plugin performance on Arch using Wine TKG" />
+    <meta property="og:title" content="Install Wine-TKG to improve Windows VST plugin performance on Arch Linux" />
 <meta property="og:description" content="I do all of my production work on Arch-based Linux systems these days. This is generally a pleasent experience since Reaper started supporting native Linux builds and yabridgectl made bridging Windows VST Plugins quite breezy and effective. Once setup correctly, this offers a performance experience and workflow that I think is quite close to native.
 One advice that I kept hearing again and again though was to install wine (the Wine program that lets you use Windows software on Linux) using wine-tkg, a customized build system for installing." />
 <meta property="og:type" content="article" />
@@ -132,7 +132,7 @@ One advice that I kept hearing again and again though was to install wine (the W
 
         <article>
             <h1 class="post-title">
-                <a href="http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/">Improve Windows VST plugin performance on Arch using Wine TKG</a>
+                <a href="http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/">Install Wine-TKG to improve Windows VST plugin performance on Arch Linux</a>
             </h1>
 
             
@@ -144,7 +144,9 @@ One advice that I kept hearing again and again though was to install wine (the W
 <p>Note: It is assumed that you are on Manjaro or Arch Linux.</p>
 <p>The installation process consists of downloading a PKGBUILD, which is a small script that is used in Arch Linux packages to install software (this is a big part of the magic of the Arch User Repository). With a(ny) PKGBUILD file downloaded, you are able to run the <code>makepkg</code> command to build and install the software described in the file on your system using <code>pacman</code>. An added benefit of this is that this allows your system to keep track of the installation.</p>
 <p>We will be using <a href="https://github.com/Frogging-Family/wine-tkg-git">Frogging-Family&rsquo;s PKGBUILD</a> for this installation.</p>
-<h1 id="installation">Installation</h1>
+<h2 id="enable-multilib">Enable multilib</h2>
+<p>Before continuing, you need to <a href="https://wiki.archlinux.org/title/official_repositories#Enabling_multilib">enable multilib</a> if you haven&rsquo;t already.</p>
+<h2 id="installation">Installation</h2>
 <p>First, download the source code and move into it&rsquo;s directory:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://github.com/Frogging-Family/wine-tkg-git
 cd wine-tkg-git/wine-tkg-git
@@ -174,7 +176,7 @@ Make sure it looks like this:</p>
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/arch">arch</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/manjaro">manjaro</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/vst">vst</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/windows">windows</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/wine">wine</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>521 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>534 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-06-21 11:13 &#43;0200</p>
         </div>
