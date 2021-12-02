@@ -178,12 +178,12 @@ I have tried quite a few different approaches to integrating my modular synthesi
 <p>Since the module is now recognized as a midi controller by the computer, we can address it as such in SuperCollider. I use <a href="https://github.com/ModalityTeam/Modality-toolkit">The Modality Toolkit</a> for all of my SuperCollider work involving controllers. The Modality package is basically a large library and framework for doing amazing things with controllers by using them in a <em>modal</em> way making interface setup and reconfiguration fairly easy. It comes with support for a bunch of controllers, and the list of supported ones is constantly growing.</p>
 <p>I added support for the Ornament &amp; Crime module with the Hemisphere Suite installed.</p>
 <p>To use it, install or update Modality in SuperCollider:</p>
-<pre><code>Quarks.gui;
+<pre tabindex="0"><code>Quarks.gui;
 </code></pre><h3 id="setting-up-captain-midi-on-the-hemisphere">Setting up Captain MIDI on the Hemisphere</h3>
 <p>On the module, open up the app &ldquo;Captain MIDI&rdquo; and enter the setup screen.</p>
 <p>The Hemisphere/Captain MIDI description in Modality assumes that you are using it with 4 Mod midi signals going in and out. Set this up on the module like so:</p>
 <p>In the screen that says &ldquo;MIDI Assign&rdquo; at the top, change parameters to this:</p>
-<pre><code>Screen: MIDI Assign
+<pre tabindex="0"><code>Screen: MIDI Assign
 MIDI &gt; A 	Mod
 MIDI &gt; B 	Mod
 MIDI &gt; C 	Mod
@@ -193,7 +193,7 @@ MIDI &gt; D 	Mod
 3 &gt; MIDI 	Mod
 4 &gt; MIDI 	Mod
 </code></pre><p>And on the setup page called &ldquo;MIDI Channel&rdquo;:</p>
-<pre><code>Screen: MIDI Channel
+<pre tabindex="0"><code>Screen: MIDI Channel
 MIDI &gt; A 	1
 MIDI &gt; B 	2
 MIDI &gt; C 	3

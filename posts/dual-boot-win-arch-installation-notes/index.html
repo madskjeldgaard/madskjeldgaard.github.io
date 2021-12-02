@@ -205,7 +205,7 @@ loadkeys dk
 <p>Then open</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/hosts
 </code></pre></div><p>And add</p>
-<pre><code>127.0.0.1 localhost
+<pre tabindex="0"><code>127.0.0.1 localhost
 ::1 localhost
 127.0.1.1 lysendebjerg.localdomain lysendebjerg
 </code></pre><h1 id="root-password">Root password</h1>
@@ -219,7 +219,7 @@ loadkeys dk
 </code></pre></div><p>Allow os-prober (for dual boot only):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">vim /etc/default/grub
 </code></pre></div><p>Add</p>
-<pre><code>GRUB_DISABLE_OS_PROBER=false
+<pre tabindex="0"><code>GRUB_DISABLE_OS_PROBER=false
 </code></pre><p>Create config:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">grub-mkconfig -o /boot/grub/grub.cfg
 </code></pre></div><h1 id="enable-services">Enable services</h1>

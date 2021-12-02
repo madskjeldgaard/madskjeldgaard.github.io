@@ -275,7 +275,7 @@ echo /usr/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p512 -n3 &gt; ~/.jackdrc
 <p>To see which audio interfaces are available on the pi:
 <code>aplay -l</code></p>
 <p>With a USB-interface plugged in, the output should look something like this:</p>
-<pre><code>**** List of PLAYBACK Hardware Devices ****
+<pre tabindex="0"><code>**** List of PLAYBACK Hardware Devices ****
 card 0: ALSA [bcm2835 ALSA], device 0: bcm2835 ALSA [bcm2835 ALSA]  Subdevices: 7/7
   Subdevice #0: subdevice #0
   Subdevice #1: subdevice #1
@@ -316,16 +316,16 @@ sudo cp -d * /boot/overlays
 cd ..
 sudo cp -d bcm* /boot/
 </code></pre></div><p>and then add the following lines to <code>/boot/config.txt</code> by executing <code>sudo vi /boot/config.txt</code>:</p>
-<pre><code>[all]
+<pre tabindex="0"><code>[all]
 kernel=kernel7l
 </code></pre><p>Then reboot the pi by executing <code>sudo reboot</code>, wait a few minutes and then ssh into the pi again.</p>
 <p>If you then run <code>uname -a</code> you should get a result along these lines:</p>
-<pre><code>Linux raspberrypi 4.19.71-rt24-v7l+ #2 SMP PREEMPT RT Sat Apr 25 22:04:08
+<pre tabindex="0"><code>Linux raspberrypi 4.19.71-rt24-v7l+ #2 SMP PREEMPT RT Sat Apr 25 22:04:08
 UTC 2020 armv7l GNU/Linux 
 </code></pre><h2 id="check-your-systems-configuration">Check your system&rsquo;s configuration</h2>
 <p>If you haven&rsquo;t rebooted yet, go ahead and <code>sudo reboot</code>. And then wait for the Pi to power back up again before ssh&rsquo;ing in to continue.</p>
 <p><a href="https://github.com/raboof/realtimeconfigquickscan">realTimeConfigQuickScan</a> is a really nice script that you can use to see if your system is setup correctly. Download and run it like this:</p>
-<pre><code># Scan system 
+<pre tabindex="0"><code># Scan system 
 git clone git://github.com/raboof/realtimeconfigquickscan.git
 cd realtimeconfigquickscan
 perl ./realTimeConfigQuickScan.pl
@@ -403,15 +403,15 @@ nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
 <p><a href="/posts/raspi-zita-njbridge">This blog post</a> describes a way to use the Raspberry Pi in a networked audio configuration.</p>
 <h2 id="watchdog">Watchdog</h2>
 <p>If you are using your Pi for an installation, setting up a watchdog can be a good idea. If your Pi gets overexcited or crashes, the watchdog will reboot the system (which as a consequence will trigger whatever startup script you have installed, if any).</p>
-<pre><code>sudo apt install watchdog
+<pre tabindex="0"><code>sudo apt install watchdog
 </code></pre><p>Open up the config file for the watchdog: <code>/etc/watchdog.conf</code></p>
 <p>And uncomment/add the following:</p>
-<pre><code>max-load-1 = 24
+<pre tabindex="0"><code>max-load-1 = 24
 min-memory = 1
 watchdog-device = /dev/watchdog
 watchdog-timeout=15
 </code></pre><p>The watchdog can be run and activated automatically using systemd. This is done using the following commands:</p>
-<pre><code>sudo systemctl enable watchdog
+<pre tabindex="0"><code>sudo systemctl enable watchdog
 sudo systemctl start watchdog
 </code></pre><p>To test if the watchdog is doing it&rsquo;s job, you can stress the system by creating a so-called fork bomb which will make the system crash by recursively calling a function until the Pi chokes up.</p>
 <p>On the pi (not your main computer!), execute the following fork bomb:</p>

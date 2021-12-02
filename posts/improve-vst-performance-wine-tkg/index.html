@@ -153,17 +153,17 @@ cd wine-tkg-git/wine-tkg-git
 </code></pre></div><p>The next step is to configure the installation. The defaults should be good, but still, if you want to customize your installation, it is done by editing <code>customization.cfg</code>.</p>
 <p>This file allows you to choose a specific wine version.</p>
 <p>For example, to use wine version 6.4 (which at the time of writing this is one of the more stable ones):</p>
-<pre><code>_staging_version=&quot;v6.4&quot;
+<pre tabindex="0"><code>_staging_version=&quot;v6.4&quot;
 </code></pre><p>The most important setting here probably is the one that activates <code>fsync</code>.
 Make sure it looks like this:</p>
-<pre><code>_use_fsync=&quot;true&quot;
+<pre tabindex="0"><code>_use_fsync=&quot;true&quot;
 </code></pre><p>Once that&rsquo;s done, and while still in the directory of the PKGBUILD, you may run the following command to install the software using pacman:</p>
-<pre><code>makepkg -si
+<pre tabindex="0"><code>makepkg -si
 </code></pre><h2 id="after-the-installation">After the installation</h2>
 <p>To allow your system to make use of the fsync feature, you need to modify or add an environment variable to your system. <a href="https://github.com/robbert-vdh/yabridge#environment-configuration">Robbert from yabridge has summarized this quite well</a>, but otherwise this is what you need to do:</p>
 <p>Add <code>export WINEFSYNC=1</code> to <code>$HOME/.zprofile</code> (if using zsh as shell (note, it won&rsquo;t work if you put it in <code>.zshrc</code>))</p>
 <p>Then reboot your system and run this command to verify that it worked:</p>
-<pre><code>env -i HOME=&quot;$HOME&quot; $SHELL -l -c 'echo $WINEFSYNC'
+<pre tabindex="0"><code>env -i HOME=&quot;$HOME&quot; $SHELL -l -c 'echo $WINEFSYNC'
 </code></pre><p>This should print <code>1</code>. If it didn&rsquo;t, something is wrong.</p>
 
             </div>

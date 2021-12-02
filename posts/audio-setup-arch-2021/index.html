@@ -153,13 +153,13 @@
                 <p>These notes are for setting up a new audio system on Arch Linux. It is assumed that you have an AUR helper like yay or paru installed (I use the latter here but exchange with yay if you use that). This isn&rsquo;t a tutorial but just a collection of notes to help myself and perhaps others setup a high performance audio system in Arch Linux. The Arch Linux maintainers have done an amazing job in making it a good operating system for this kind of work by allowing users to easily setup the system with the right privileges and install the needed software.</p>
 <h2 id="install-audio-tools">Install audio tools</h2>
 <p>This will install all the audio tools I need on any system:</p>
-<pre><code>paru -S reaper-bin sws supercollider sc3-plugins jack2 mpv sox qjackctl pulseaudio-bluetooth pulseaudio-jack pulseaudio njconnect flac cadence alsa-firmware alsa-plugins alsa-utils realtimeconfigquickscan-git
+<pre tabindex="0"><code>paru -S reaper-bin sws supercollider sc3-plugins jack2 mpv sox qjackctl pulseaudio-bluetooth pulseaudio-jack pulseaudio njconnect flac cadence alsa-firmware alsa-plugins alsa-utils realtimeconfigquickscan-git
 </code></pre><p>And then to install all SuperCollider plugins on the AUR:
 <code>paru -S supercollider-plugins</code></p>
 <h2 id="system-checking-tools">System checking tools</h2>
 <p>I use the script <code>realTimeAudioConfigQuickScan</code> to check how well I&rsquo;m doing. By running it you can quickly see what needs to be optimized.</p>
 <p>install from AUR:</p>
-<pre><code>paru -S realtimeconfigquickscan-git
+<pre tabindex="0"><code>paru -S realtimeconfigquickscan-git
 </code></pre><p>If you want to go even deeper, there is a script called <code>realtime-suggestions</code>, also available on the AUR but I&rsquo;ve not detected any performance differences when messing with the suggestions from that one.</p>
 <h2 id="realtime-privileges">Realtime privileges</h2>
 <p>Arch has a nice package will allow users in the <code>realtime</code> group to have realtime privileges, including unlocking memory and setting realtime priorities very high.</p>
@@ -177,7 +177,7 @@ systemctl enable --now tuned.service
 tuned-adm profile latency-performance
 </code></pre></div><p>You can setup a udev rule to automatically switch between power save mode and performance when plugging power into your laptop.</p>
 <p>Create the file <code>/etc/udev/rules.d/99-powerprofile_switch.rules</code> and add this (thanks <a href="roosnaflak.com/">Kenneth Flak</a>):</p>
-<pre><code># Rule for when switching to battery
+<pre tabindex="0"><code># Rule for when switching to battery
 ACTION==&quot;change&quot;, SUBSYSTEM==&quot;power_supply&quot;, ATTR{type}==&quot;Mains&quot;, ATTR{online}==&quot;0&quot; RUN+=&quot;/usr/bin/tuned-adm profile laptop-battery-powersave&quot;
 # Rule for when switching to AC
 ACTION==&quot;change&quot;, SUBSYSTEM==&quot;power_supply&quot;, ATTR{type}==&quot;Mains&quot;, ATTR{online}==&quot;1&quot; RUN+=&quot;/usr/bin/tuned-adm profile latency-performance&quot;
@@ -191,12 +191,12 @@ alias cpu-min<span style="color:#f92672">=</span><span style="color:#e6db74">&#3
 <h2 id="realtime-kernel">Realtime kernel</h2>
 <p>The default kernel on Arch is pretty good for audio performance. But you might be able to squeeze a bit more performance out of your system by installing realtime kernels.</p>
 <p>To install prebuilt realtime kernels easily you can add this section:</p>
-<pre><code>[dvzrv]
+<pre tabindex="0"><code>[dvzrv]
 Server = https://pkgbuild.com/~dvzrv/repo/$arch
 </code></pre><p>to your pacman configuration:
 <code>/etc/pacman.conf</code></p>
 <p>Then run</p>
-<pre><code>paru -Syyu linux-rt linux-rt-headers
+<pre tabindex="0"><code>paru -Syyu linux-rt linux-rt-headers
 </code></pre><p>And update your grub bootloader to include the new kernel when booting. Next time you reboot your computer you are able to choose it from the list of kernels in grub: <code>sudo grub-mkconfig -o /boot/grub/grub.cfg</code></p>
 
             </div>

@@ -158,7 +158,7 @@ Another fantastic strength is the library of building blocks it comes with - the
 <p>If you <a href="https://faust.grame.fr/downloads/">download and install faust on your computer</a>(most Linux distributions probably have it in their package managers), you get a ton of compilation tools for free. These are all prefixed <code>faust2&lt;target&gt;</code>.</p>
 <p>For SuperCollider there is a specific tool called <code>faust2supercollider</code>, this takes a Faust file as an input and compiles it as a SuperCollider UGen. The UGen consists of two files: a compiled object and a <code>.sc</code>-file containing the sclang interface for it.</p>
 <p>Let&rsquo;s try a simple example. Create a file called <code>Wah4.dsp</code> (.dsp is the suffix for Faust-files) and put this code in it:</p>
-<pre><code class="language-faust" data-lang="faust">import(&quot;stdfaust.lib&quot;);
+<pre tabindex="0"><code class="language-faust" data-lang="faust">import(&quot;stdfaust.lib&quot;);
 
 // Cutoff frequency argument
 freq=vslider(&quot;cutoff&quot;,500,20.0,20000,1);

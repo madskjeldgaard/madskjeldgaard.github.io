@@ -188,7 +188,7 @@ It is also recommend to read the official guide on how to create packages: Creat
 <p>If you have a tolerance for YouTube videos, then maybe <a href="https://youtu.be/crnGzF43aoc">this video will be helpful to you</a>.</p>
 <p>It is also recommend to read the official guide on how to create packages: <a href="https://wiki.archlinux.org/index.php/Creating_packages">Creating packages</a>.</p>
 <p>The manual for <code>PKGBUILD</code> is a nice resource for information as well:</p>
-<pre><code>man PKGBUILD
+<pre tabindex="0"><code>man PKGBUILD
 </code></pre><h2 id="creating-a-repository">Creating a repository</h2>
 <p>This was one of the steps of creating an AUR package that confused me the most. How do you &ldquo;create a repository&rdquo; like you would on Github by logging in to the web interface and clicking a button that would create a repo?</p>
 <p>Well, the way to do it is:</p>
@@ -314,7 +314,7 @@ git commit .SRCINFO PKGBUILD -m <span style="color:#e6db74">&#34;important chang
 <p><a href="https://wiki.archlinux.org/index.php/VCS_package_guidelines">&hellip; is covered here</a></p>
 <h3 id="make-flags-should-be-avoided">Make-flags should be avoided</h3>
 <p>You shouldn&rsquo;t use flags when <code>make</code>&lsquo;ing software in an AUR package. A common way to speed up the compilation process is to add the <code>-j4</code> flag for example to utilize 4 cores. On Arch that is done globally for packages in the <code>/etc/makepkg.conf</code> configuration file, eg.:</p>
-<pre><code>MAKEFLAGS=&quot;-j4&quot;
+<pre tabindex="0"><code>MAKEFLAGS=&quot;-j4&quot;
 </code></pre><h3 id="no-need-to-unzipuntar-sources">No need to unzip/untar sources</h3>
 <p>This is handled by the package system for you.</p>
 <h3 id="an-aur-package-cannot-touch-a-users-home-directory">An AUR package cannot touch a user&rsquo;s home directory</h3>
