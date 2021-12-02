@@ -2,13 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://madskjeldgaard.dk/tags/neovim/</loc>
+    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/posts/settingupneovimasscide/</loc>
+    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
+    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>http://madskjeldgaard.dk/tags/arch/</loc>
     <lastmod>2021-06-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
     <lastmod>2021-06-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</loc>
@@ -57,9 +66,6 @@
     <lastmod>2021-04-16T16:08:27+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</loc>
-    <lastmod>2021-04-16T16:08:27+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
     <lastmod>2021-04-16T16:08:27+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</loc>
@@ -298,12 +304,8 @@
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/</loc>
   </url><url>
-    <loc>http://madskjeldgaard.dk/tags/neovim/</loc>
-  </url><url>
     <loc>http://madskjeldgaard.dk/posts/yo/</loc>
   </url><url>
     <loc>http://madskjeldgaard.dk/series/</loc>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/settingupneovimasscide/</loc>
   </url>
 </urlset>

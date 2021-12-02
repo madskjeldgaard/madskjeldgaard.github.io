@@ -9,6 +9,200 @@
         <atom:link href="http://madskjeldgaard.dk/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
+            <title>Setting up NeoVim as a SuperCollider IDE</title>
+            <link>http://madskjeldgaard.dk/posts/settingupneovimasscide/</link>
+            <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+            
+            <guid>http://madskjeldgaard.dk/posts/settingupneovimasscide/</guid>
+            <description>SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&amp;rsquo;s lightweight, it is highly configurable and it works everywhere.</description>
+            <content type="html"><![CDATA[<p><a href="https://supercollider.github.io/">SuperCollider</a> is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&rsquo;s lightweight, it is highly configurable and it works <em>everywhere</em>.</p>
+<p>This in turn makes me a faster coder and makes the code itself better and more readable. When I started out with SuperCollider, the only option was to use classic vim with <a href="https://github.com/supercollider/scvim">scvim</a> - and while this was nice, a lot of things were missing for me and/or buggy. Then came NeoVim and in time, David Granström wrote the <a href="https://github.com/davidgranstrom/scnvim">SCNvim</a> plugin for NeoVim and I have been using this for all my SuperCollider coding since it came out.</p>
+<p>I get a lot of questions about setting up NeoVim for SuperCollider usage and so this post is a collection of advice, configuration and links to help you get started with using NeoVim and SuperCollider together.</p>
+<h2 id="a-slight-detour-new-to-neovim">A slight detour: New to (Neo)Vim?</h2>
+<p>If you are new to using (Neo)Vim, I would strongly recommend spending time learning the basics of the program before diving into all of this stuff. It will help you immensely and make it much more fun to use NeoVim as a SuperCollider IDE, so here is some advice for the newbie Vim user:</p>
+<p>Vim comes with a fantastic help system with a lot of documentation. The way to use it is to type <code>:h &lt;something&gt;</code> where you replace <code>&lt;something&gt;</code> with your search term. Whenever in doubt, try looking at the help system for help.</p>
+<p>Vim comes with a small tutorial that I recommend all new users go through. You can access it by running <code>:Tutor</code> inside of Vim.</p>
+<p>The vim manual can be accessed by running <code>:h usr_toc.txt</code> or if you want a nicely formatted version of it online: <a href="vim.help">vim.help</a>. Vim also has a <em>reference manual</em> which is more in the style of cheat sheets or extensive lists of commands and key bindings. My favourite if these and the one I recommend you open from time to time is <code>:h motions.txt</code> - reading this from time to time will turbo charge your editing speed.</p>
+<p><a href="https://thevaluable.dev/vim-beginner/">This blog series</a> is another great resurce for newbies and seasoned users alike (I read it frequently).</p>
+<p>If you prefer videos, there are a gazillion video tutorials on YouTube and the like.</p>
+<p>A final but very important note to new vim users is: Don&rsquo;t blindly copy-paste configurations and plugins. A common mistake is to install tons of plugins and copy configurations from other people, but it is really important that you understand what each plugin does or what each line of configuration is doing to your system - otherwise you will end up with a bloated system with a ton of features and configuration that you do not know exist, let alone how to use them (I made all of these mistakes when I started out!).</p>
+<h3 id="configuring-neovim-using-lua">Configuring NeoVim using lua</h3>
+<p>NeoVim is a fork of Vim, and I won&rsquo;t get into the history of that here, but in terms of configuration this has a slightly confusing but important consequence. Originally, vim was configured using a language called vimscript (<a href="https://learnvimscriptthehardway.stevelosh.com/">this is a nice resource for learning</a> that language). This works perfectly fine in NeoVim, but it is frankly a nightmare to use that language for anything other than basic configuration. NeoVim solves this by allowing users to write all of their configurations and plugins using lua - a tiny, fast and frankly FUN programming language <a href="http://tylerneylon.com/a/learn-lua/">that you could potentially learn in 15 minutes</a> (this is an overstatement but it&rsquo;s good marketing).</p>
+<p>For a guide on <a href="https://github.com/nanotee/nvim-lua-guide">lua and neovim, see this</a>.</p>
+<p>In this post I will write all configuration using lua. To get the most out of the lua api of NeoVim, <em>it is important that you always have the latest version of NeoVim installed (at least version 0.5 which was a major release for the lua stuff).</em></p>
+<h3 id="plugin-management">Plugin management</h3>
+<p>In this post I won&rsquo;t go into details on how to install each plugin. This is done using a plugin manager - I highly recommend <a href="https://github.com/wbthomason/packer.nvim">packer.nvim</a> but you can use whatever you like.</p>
+<h2 id="scnvim---a-neovim-frontend-for-supercollider">SCNvim - A NeoVim frontend for SuperCollider</h2>
+<p><a href="https://github.com/davidgranstrom/scnvim">SCNvim</a> is the plugin that makes it possible for us to work with SuperCollider inside of NeoVim.</p>
+<p>SCNvim serves two purposes. First of all, it adds most of the features we need to have a nice working environment for writing SuperCollider code. But the second, more subtle purpose is as a <a href="https://github.com/davidgranstrom/scnvim/wiki/Using-scnvim-from-lua">lua api for SuperCollider, making it really easy to execute any SuperCollider code from keybindings and functions in Neovim</a>.</p>
+<p>For information on how to configure scnvim, see <code>:h scnvim-configuration</code> and <a href="https://github.com/davidgranstrom/scnvim/wiki/Additional-configuration">the scnvim wiki</a>. Also check out <code>:h scnvim-mappings</code> to see the default key bindings for SCNvim.</p>
+<p>Here are some basic options you can configure for SCNvim that will take care of some of the basics.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- vim.g.scnvim_sclang_options = {&#39;-l&#39;, &#34;/home/mads/.config/SuperCollider/sclang_conf_development.yaml&#34;}</span>
+
+vim.g.scnvim_postwin_syntax_hl <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">-- scnvim neovim docs !</span>
+vim.g.scnvim_scdoc <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">-- vertical &#39;v&#39; or horizontal &#39;h&#39; split</span>
+vim.g.scnvim_postwin_orientation <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v&#39;</span>
+
+<span style="color:#75715e">-- position of the post window &#39;right&#39; or &#39;left&#39;</span>
+vim.g.scnvim_postwin_direction <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;right&#39;</span>
+
+<span style="color:#75715e">-- default is half the terminal size for vertical and a third for horizontal</span>
+vim.g.scnvim_postwin_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+
+<span style="color:#75715e">-- automatically open post window on a SuperCollider error</span>
+vim.g.scnvim_postwin_auto_toggle <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">--	-- duration of the highlight</span>
+vim.g.scnvim_eval_flash_duration <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+
+<span style="color:#75715e">-- number of flashes. A value of 0 disables this feature.</span>
+vim.g.scnvim_eval_flash_repeats <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+
+<span style="color:#75715e">-- set this variable if you don&#39;t want the &#34;echo args&#34; feature</span>
+<span style="color:#75715e">-- vim.g.scnvim_echo_args = 0</span>
+
+<span style="color:#75715e">-- Configure the color of the evaluation flash</span>
+vim.cmd(<span style="color:#e6db74">[[ highlight SCNvimEval guifg=black guibg=white ctermfg=black ctermbg=white ]]</span>)
+
+<span style="color:#75715e">-- Uncomment to not use default keybindings</span>
+<span style="color:#75715e">-- vim.g.scnvim_no_mappings = 1</span>
+</code></pre></div><p>Most of the stuff following this point is optional to get SuperCollider working in NeoVim, but highly recommend to enhance your experience.</p>
+<h3 id="post-installation">Post installation</h3>
+<p>After installing SCNvim, make sure to run <code>:call scnvim#install()</code> so that your SuperCollider class library gets a link to the SCNvim SuperCollider classes needed for all of this to work.</p>
+<p>To make use of the help system, tags (for definitions) and snippets (when you&rsquo;ve set it up), you will need to run <code>:SCNvimTags</code> from time to time. This will basically map your SuperCollider class library and extensions and make NeoVim conscious of them (which also means you need to rerun this command when you add/remove classes or packages from SuperCollider to keep NeoVim up to date with those changes).</p>
+<h3 id="quick-tip-go-to-definition">Quick tip: Go to definition</h3>
+<p>If you&rsquo;ve installed SCNvim and run the <code>SCNvimTags</code> command and restarted NeoVim, you can easily look up definitions for SuperCollider classes. This is really useful in a lot of situations. To do this, put your cursor on a class in a SuperCollider file and press <code>g]</code> or <code>C-]</code> to open it up.</p>
+<p>Press <code>C-o</code> to jump backwards to where you came from (this is an easy way to get lost in rabbit holes, be warned).</p>
+<h2 id="snippets-luasnip">Snippets: LuaSnip</h2>
+<p>One of the productivity boosters of SCNvim is it&rsquo;s ability to automatically generate code snippets. SCNvim itself supports a range of snippet engines, but these days I prefer to use <a href="https://github.com/L3MON4D3/LuaSnip">LuaSnip</a>. After you&rsquo;ve installed and set up LuaSnip, add this to your scnvim configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Use the LuaSnip snippet engine</span>
+<span style="color:#75715e">-- SCNvim supports &#34;ultisnips&#34;, &#34;luasnip&#34; and &#34;snippets.nvim&#34;</span>
+vim.g.scnvim_snippet_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;luasnip&#39;</span>
+</code></pre></div><p>And then, in your LuaSnip snippet table, add the SCNvim snippets like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Add SCNvim snippets to LuaSnip</span>
+<span style="color:#75715e">-- Note: This replaces any supercollider snippets already present in LuaSnip</span>
+require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollider <span style="color:#f92672">=</span> require<span style="color:#e6db74">&#39;scnvim/utils&#39;</span>.get_snippets()
+</code></pre></div><p>Next step is to open up a SuperCollider file and run <code>:SCNvimTags</code> to regenerate the snippet system. Now, restart NeoVim, open up a SuperCollider buffer and type for example <code>SinOsc.ar</code> and press your LuaSnip expansion keybinding (probably Control-k).</p>
+<h3 id="combining-auto-generated-snippets-with-custom-snippets">Combining auto generated snippets with custom snippets</h3>
+<p>This is a more advanced tip and not mandatory for setting up SCNvim snippets. But we&rsquo;re all nerds here so why not:</p>
+<p>Instead of completely replacing all of LuaSnip&rsquo;s supercollider table, it is possible to combine it with your own custom SuperCollider snippets using a bit of lua code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Append table2 to table1</span>
+<span style="color:#66d9ef">local</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">append_to_table</span>(table1, table2)
+	<span style="color:#66d9ef">for</span> key, value <span style="color:#66d9ef">in</span> ipairs(table2) <span style="color:#66d9ef">do</span>
+		table.insert(table1, value)
+	<span style="color:#66d9ef">end</span>
+
+	<span style="color:#66d9ef">return</span> table1
+<span style="color:#66d9ef">end</span>
+
+<span style="color:#75715e">-- This table contains all of your custom SuperCollider snippets</span>
+<span style="color:#66d9ef">local</span> my_custom_sc_snipz <span style="color:#f92672">=</span> {
+
+	<span style="color:#75715e">-- Ndef</span>
+	s(<span style="color:#e6db74">&#34;ndef&#34;</span>,{
+		t(<span style="color:#e6db74">&#34;Ndef(&#34;</span>),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;name&#34;</span>), t(<span style="color:#e6db74">&#34;,{|&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;freq=100, amp=0.5&#34;</span>), t({<span style="color:#e6db74">&#34;|&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;SinOsc.ar(freq) * amp;&#34;</span>), t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
+		t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;})&#34;</span>}),
+		i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;.play&#34;</span>),
+	}),
+
+	<span style="color:#75715e">-- SynthDef</span>
+	s(<span style="color:#e6db74">&#34;synthdef&#34;</span>,{
+		t(<span style="color:#e6db74">&#34;SynthDef(&#34;</span>),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;name&#34;</span>), t(<span style="color:#e6db74">&#34;,{|&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;out=0, amp=0.5&#34;</span>), t({<span style="color:#e6db74">&#34;|&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;var sig = SinOsc.ar;&#34;</span>), t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#34;Out.ar(out, sig)&#34;</span>),
+		t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;})&#34;</span>}),
+		i(<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;.add&#34;</span>),
+	}),
+
+	<span style="color:#75715e">-- Value pattern shorthands</span>
+	s(<span style="color:#e6db74">&#34;pwh&#34;</span>, { t(<span style="color:#e6db74">&#34;Pwhite(&#34;</span>), c(<span style="color:#ae81ff">1</span>, {t(<span style="color:#e6db74">&#34;0.0&#34;</span>), rnd()}), t(<span style="color:#e6db74">&#34;, &#34;</span>), c(<span style="color:#ae81ff">1</span>, {t(<span style="color:#e6db74">&#34;1.0&#34;</span>), rnd()}), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pbr&#34;</span>, { t(<span style="color:#e6db74">&#34;Pbrown(&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;0.0&#34;</span>), t(<span style="color:#e6db74">&#34;, &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;, &#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;0.125&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;ps&#34;</span>, { t(<span style="color:#e6db74">&#34;Pseq([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pr&#34;</span>, { t(<span style="color:#e6db74">&#34;Prand([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pxr&#34;</span>, { t(<span style="color:#e6db74">&#34;Prand([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pw&#34;</span>, { t(<span style="color:#e6db74">&#34;Pwrand([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;0.5, 0.5&#34;</span>), t(<span style="color:#e6db74">&#34;], [&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;50.0, 100.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pseg&#34;</span>, { t(<span style="color:#e6db74">&#34;Pseg(&#34;</span>), t(<span style="color:#e6db74">&#34;[&#34;</span>),i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0,0.0&#34;</span>), t(<span style="color:#e6db74">&#34;],&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;16&#34;</span>), t(<span style="color:#e6db74">&#34;,&#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">lin&#34;</span>), t(<span style="color:#e6db74">&#34;,&#34;</span>), i(<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pstep&#34;</span>, { t(<span style="color:#e6db74">&#34;Pstep(&#34;</span>), t(<span style="color:#e6db74">&#34;[&#34;</span>),i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0,0.0&#34;</span>), t(<span style="color:#e6db74">&#34;],&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;16&#34;</span>), t(<span style="color:#e6db74">&#34;,&#34;</span>), i(<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+
+	<span style="color:#75715e">-- Misc Pattern</span>
+	s(<span style="color:#e6db74">&#34;pf&#34;</span>, { t(<span style="color:#e6db74">&#34;Pfunc({|ev| &#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;&#34;</span>), t(<span style="color:#e6db74">&#34; })&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pp&#34;</span>, { t(<span style="color:#e6db74">&#34;Ppar([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;p,o&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;ptp&#34;</span>, { t(<span style="color:#e6db74">&#34;Ptpar([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;0.0, p, 2.0, o&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+}
+
+<span style="color:#75715e">-- Now append custom snippets to table of scnvim snippets</span>
+require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollider <span style="color:#f92672">=</span> append_to_table(
+	require<span style="color:#e6db74">&#39;scnvim/utils&#39;</span>.get_snippets(),
+	my_custom_sc_snipz
+)
+</code></pre></div><h2 id="statusline">Statusline</h2>
+<p>There are many cool choices for status line plugins for NeoVim. A popular one seems to be <a href="https://github.com/nvim-lualine/lualine.nvim">lualine</a>. I haven&rsquo;t compared all of the NeoVim status line plugins but I use <a href="https://github.com/glepnir/galaxyline.nvim">Galaxyline</a> at the moment.</p>
+<p>SCNvim comes with the ability to display the server status in the statusline of NeoVim.</p>
+<p>To get statuslines to work, you first need to edit your SuperCollider installation&rsquo;s <a href="https://doc.sccode.org/Reference/StartupFile.html">startup.scd</a> file and add the following:</p>
+<pre tabindex="0"><code class="language-supercollider" data-lang="supercollider">// scnvim
+if (\SCNvim.asClass.notNil) {
+    Server.default.doWhenBooted {
+        \SCNvim.asClass.updateStatusLine(1, \SCNvim.asClass.port);
+    }
+}
+</code></pre><p>And then in Galaxyline, this is a way to get the information from SCNvim displayed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">gls.left[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> {
+		Scnvim <span style="color:#f92672">=</span> {
+				provider <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
+						<span style="color:#66d9ef">local</span> scstatus <span style="color:#f92672">=</span> vim.api.nvim_call_function(<span style="color:#e6db74">&#34;scnvim#statusline#server_status&#34;</span>, {})
+						<span style="color:#66d9ef">return</span> scstatus
+				<span style="color:#66d9ef">end</span>,
+				condition <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
+						<span style="color:#66d9ef">if</span> vim.api.nvim_get_option(<span style="color:#e6db74">&#34;filetype&#34;</span>) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;supercollider&#34;</span> <span style="color:#66d9ef">then</span>
+								<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+						<span style="color:#66d9ef">else</span>
+								<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+						<span style="color:#66d9ef">end</span>
+				<span style="color:#66d9ef">end</span>,
+				icon <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; 📡 &#39;</span>,
+				separator <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>,
+				separator_highlight <span style="color:#f92672">=</span> {colors.blue, colors.bg},
+				highlight <span style="color:#f92672">=</span> {colors.blue, colors.bg},
+		}
+	}
+</code></pre></div><h2 id="advanced-syntax-highlighting-treesitter">Advanced syntax highlighting: Treesitter</h2>
+<p>Treesitter is an awesome &ldquo;code parser&rdquo; that has great support in NeoVim. It&rsquo;s basically a program that can quickly and precisely carse your code while you type it and understand&rsquo;s scopes and hierarchies and can use that to make informed decisions. The main (but not only) use case for this is to have advanced syntax highlighting. What this means in practice is that treesitter understands for example what variables are local to functions, which variables are environment variables. It knows the difference between class and instance variables etc etc.</p>
+<p>There is a <a href="https://github.com/madskjeldgaard/tree-sitter-supercollider">tree-sitter grammar for SuperCollider</a>(I could really use some help in maintaining this if anyone is up for it) that enables treesitter to understand SuperCollider code. To use it in NeoVim, first install <a href="https://github.com/nvim-treesitter/nvim-treesitter">neovim-treesitter</a>, restart NeoVim and run <code>TSInstall supercollider</code>. This will download and compile the SuperCollider grammar.</p>
+<p>The only configuration I recommend specifically for SuperCollider and treesitter is to disable treesitter&rsquo;s indentation for SuperCollider - at the moment it is behaving strangely so best to just disable that by adding the following to your nvim-tree-sitter configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">indent <span style="color:#f92672">=</span> {
+			enable <span style="color:#f92672">=</span> {},
+			disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
+		}
+</code></pre></div><p><strong>Side note</strong>
+To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recommend installing one of the modern, neovim-specific color schemes that have full support for it. Eg <a href="https://github.com/ellisonleao/gruvbox.nvim">gruvbox.nvim</a>, <a href="https://github.com/eddyekofo94/gruvbox-flat.nvim">gruvbox-flat.nvim</a> or <a href="https://github.com/navarasu/onedark.nvim">onedark.nvim</a>.</p>
+<h2 id="fuzzy-finding">Fuzzy finding</h2>
+<p>Fuzzy finding is in my opinion one of the greatest inventions in modern programming tooling. If you&rsquo;ve never used fuzzy finding before it will surely blow your mind when you use it for the first time. I highly recommend installing <a href="https://github.com/junegunn/fzf.vim">fzf.vim</a> to get use of this in vim. This will enable commands like <code>:FZF</code> to help you quickly search for files and <code>:Rg</code> to search for specific words in all of your code files (the latter needs <code>ripgrep</code> to be installed, see fzf.vim&rsquo;s github page for more info).</p>
+<p>I wrote a <a href="https://github.com/madskjeldgaard/fzf-sc">small plugin</a> that uses fzf.vim to fuzzy search through a bunch of SuperCollider things like Quarks, Scales, help files, Node proxies, Synthdefs etc. It also contains a small API for creating your own fuzzy searchers for SuperCollider.</p>
+<h2 id="additional-supercollider-plugins">Additional SuperCollider plugins</h2>
+<p>If you want to get wild with your SuperCollider setup in NeoVim, I&rsquo;ve created a plugin for assorted hacks. Some of them are silly and some are really nice. I personally use the command <code>:SCNewQuark</code> all the time <a href="https://github.com/madskjeldgaard/supercollider-h4x-nvim">from this plugin</a> to generate a new SuperCollider package (this is why I am able to make and publish so/too many SuperCollider packages).</p>
+<h2 id="misc-plugins">Misc plugins</h2>
+<p>I highly recommend exploring the world of NeoVim-plugins. Things are moving extremely fast at the moment because the lua API of NeoVim has made it a lot easier to create plugins. As a consequence, there&rsquo;s a <a href="https://github.com/topics/neovim-plugin">gazillion NeoVim plugins out there</a> and I recommend finding and trying the ones that suit you. That said, here are a few that I use a lot with SuperCollider programming that aren&rsquo;t really specific to SuperCollider:</p>
+<ul>
+<li><a href="https://github.com/madskjeldgaard/reaper-nvim">reaper-nvim</a> - If you&rsquo;re a Reaper user, this lets your control Reaper from NeoVim.</li>
+<li><a href="https://github.com/akinsho/toggleterm.nvim">toggleterm</a> - NeoVim already has a great terminal you can open with <code>:term</code> but this plugin makes it even better.</li>
+<li><a href="https://github.com/hrsh7th/nvim-cmp">nvim-cmp</a> - A fantastic completion engine that integrates well with LuaSnip and treesitter.</li>
+<li><a href="https://github.com/tamago324/lir.nvim">lir.nvim</a> - File manager</li>
+<li><a href="https://github.com/tpope/vim-fugitive">vim-fugitive</a> - A great Git integration for vim</li>
+<li><a href="https://github.com/lewis6991/gitsigns.nvim">gitsigns.nvim</a> - Shows a small gutter in NeoVim highlighting what lines are changes, added etc.</li>
+</ul>
+<h2 id="got-questions">Got questions?</h2>
+<p>If you have any questions about SuperCollider, SCNvim or generally on using SuperCollider with NeoVim, I recommend asking on the <a href="scsynth.org">scsynth.org</a> forum. There&rsquo;s a thread on <a href="https://scsynth.org/t/scnvim-a-neovim-frontend-for-supercollider/4420">SCNvim here</a> but also try giving the forum <a href="https://scsynth.org/search?q=neovim">a search</a>, and if you cannot find an appropriate thread for your questions simply start a new one (I&rsquo;m really crap at answering emails so don&rsquo;t expect support from me if you go that route).</p>
+]]></content>
+        </item>
+        
+        <item>
             <title>Setting up Arch Linux for audio performance</title>
             <link>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</link>
             <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
@@ -4596,200 +4790,6 @@ ps -C scsynth -o pid h Then, we can use the number output from the command above
             <guid>http://madskjeldgaard.dk/posts/yo/</guid>
             <description></description>
             <content type="html"><![CDATA[]]></content>
-        </item>
-        
-        <item>
-            <title>Setting up NeoVim as a SuperCollider IDE</title>
-            <link>http://madskjeldgaard.dk/posts/settingupneovimasscide/</link>
-            <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-            
-            <guid>http://madskjeldgaard.dk/posts/settingupneovimasscide/</guid>
-            <description>SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&amp;rsquo;s lightweight, it is highly configurable and it works everywhere.</description>
-            <content type="html"><![CDATA[<p><a href="https://supercollider.github.io/">SuperCollider</a> is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&rsquo;s lightweight, it is highly configurable and it works <em>everywhere</em>.</p>
-<p>This in turn makes me a faster coder and makes the code itself better and more readable. When I started out with SuperCollider, the only option was to use classic vim with <a href="https://github.com/supercollider/scvim">scvim</a> - and while this was nice, a lot of things were missing for me and/or buggy. Then came NeoVim and in time, David Granström wrote the <a href="https://github.com/davidgranstrom/scnvim">SCNvim</a> plugin for NeoVim and I have been using this for all my SuperCollider coding since it came out.</p>
-<p>I get a lot of questions about setting up NeoVim for SuperCollider usage and so this post is a collection of advice, configuration and links to help you get started with using NeoVim and SuperCollider together.</p>
-<h2 id="a-slight-detour-new-to-neovim">A slight detour: New to (Neo)Vim?</h2>
-<p>If you are new to using (Neo)Vim, I would strongly recommend spending time learning the basics of the program before diving into all of this stuff. It will help you immensely and make it much more fun to use NeoVim as a SuperCollider IDE, so here is some advice for the newbie Vim user:</p>
-<p>Vim comes with a fantastic help system with a lot of documentation. The way to use it is to type <code>:h &lt;something&gt;</code> where you replace <code>&lt;something&gt;</code> with your search term. Whenever in doubt, try looking at the help system for help.</p>
-<p>Vim comes with a small tutorial that I recommend all new users go through. You can access it by running <code>:Tutor</code> inside of Vim.</p>
-<p>The vim manual can be accessed by running <code>:h usr_toc.txt</code> or if you want a nicely formatted version of it online: <a href="vim.help">vim.help</a>. Vim also has a <em>reference manual</em> which is more in the style of cheat sheets or extensive lists of commands and key bindings. My favourite if these and the one I recommend you open from time to time is <code>:h motions.txt</code> - reading this from time to time will turbo charge your editing speed.</p>
-<p><a href="https://thevaluable.dev/vim-beginner/">This blog series</a> is another great resurce for newbies and seasoned users alike (I read it frequently).</p>
-<p>If you prefer videos, there are a gazillion video tutorials on YouTube and the like.</p>
-<p>A final but very important note to new vim users is: Don&rsquo;t blindly copy-paste configurations and plugins. A common mistake is to install tons of plugins and copy configurations from other people, but it is really important that you understand what each plugin does or what each line of configuration is doing to your system - otherwise you will end up with a bloated system with a ton of features and configuration that you do not know exist, let alone how to use them (I made all of these mistakes when I started out!).</p>
-<h3 id="configuring-neovim-using-lua">Configuring NeoVim using lua</h3>
-<p>NeoVim is a fork of Vim, and I won&rsquo;t get into the history of that here, but in terms of configuration this has a slightly confusing but important consequence. Originally, vim was configured using a language called vimscript (<a href="https://learnvimscriptthehardway.stevelosh.com/">this is a nice resource for learning</a> that language). This works perfectly fine in NeoVim, but it is frankly a nightmare to use that language for anything other than basic configuration. NeoVim solves this by allowing users to write all of their configurations and plugins using lua - a tiny, fast and frankly FUN programming language <a href="http://tylerneylon.com/a/learn-lua/">that you could potentially learn in 15 minutes</a> (this is an overstatement but it&rsquo;s good marketing).</p>
-<p>For a guide on <a href="https://github.com/nanotee/nvim-lua-guide">lua and neovim, see this</a>.</p>
-<p>In this post I will write all configuration using lua. To get the most out of the lua api of NeoVim, <em>it is important that you always have the latest version of NeoVim installed (at least version 0.5 which was a major release for the lua stuff).</em></p>
-<h3 id="plugin-management">Plugin management</h3>
-<p>In this post I won&rsquo;t go into details on how to install each plugin. This is done using a plugin manager - I highly recommend <a href="https://github.com/wbthomason/packer.nvim">packer.nvim</a> but you can use whatever you like.</p>
-<h2 id="scnvim---a-neovim-frontend-for-supercollider">SCNvim - A NeoVim frontend for SuperCollider</h2>
-<p><a href="https://github.com/davidgranstrom/scnvim">SCNvim</a> is the plugin that makes it possible for us to work with SuperCollider inside of NeoVim.</p>
-<p>SCNvim serves two purposes. First of all, it adds most of the features we need to have a nice working environment for writing SuperCollider code. But the second, more subtle purpose is as a <a href="https://github.com/davidgranstrom/scnvim/wiki/Using-scnvim-from-lua">lua api for SuperCollider, making it really easy to execute any SuperCollider code from keybindings and functions in Neovim</a>.</p>
-<p>For information on how to configure scnvim, see <code>:h scnvim-configuration</code> and <a href="https://github.com/davidgranstrom/scnvim/wiki/Additional-configuration">the scnvim wiki</a>. Also check out <code>:h scnvim-mappings</code> to see the default key bindings for SCNvim.</p>
-<p>Here are some basic options you can configure for SCNvim that will take care of some of the basics.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- vim.g.scnvim_sclang_options = {&#39;-l&#39;, &#34;/home/mads/.config/SuperCollider/sclang_conf_development.yaml&#34;}</span>
-
-vim.g.scnvim_postwin_syntax_hl <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-
-<span style="color:#75715e">-- scnvim neovim docs !</span>
-vim.g.scnvim_scdoc <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-
-<span style="color:#75715e">-- vertical &#39;v&#39; or horizontal &#39;h&#39; split</span>
-vim.g.scnvim_postwin_orientation <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v&#39;</span>
-
-<span style="color:#75715e">-- position of the post window &#39;right&#39; or &#39;left&#39;</span>
-vim.g.scnvim_postwin_direction <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;right&#39;</span>
-
-<span style="color:#75715e">-- default is half the terminal size for vertical and a third for horizontal</span>
-vim.g.scnvim_postwin_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
-
-<span style="color:#75715e">-- automatically open post window on a SuperCollider error</span>
-vim.g.scnvim_postwin_auto_toggle <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-
-<span style="color:#75715e">--	-- duration of the highlight</span>
-vim.g.scnvim_eval_flash_duration <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
-
-<span style="color:#75715e">-- number of flashes. A value of 0 disables this feature.</span>
-vim.g.scnvim_eval_flash_repeats <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-
-<span style="color:#75715e">-- set this variable if you don&#39;t want the &#34;echo args&#34; feature</span>
-<span style="color:#75715e">-- vim.g.scnvim_echo_args = 0</span>
-
-<span style="color:#75715e">-- Configure the color of the evaluation flash</span>
-vim.cmd(<span style="color:#e6db74">[[ highlight SCNvimEval guifg=black guibg=white ctermfg=black ctermbg=white ]]</span>)
-
-<span style="color:#75715e">-- Uncomment to not use default keybindings</span>
-<span style="color:#75715e">-- vim.g.scnvim_no_mappings = 1</span>
-</code></pre></div><p>Most of the stuff following this point is optional to get SuperCollider working in NeoVim, but highly recommend to enhance your experience.</p>
-<h3 id="post-installation">Post installation</h3>
-<p>After installing SCNvim, make sure to run <code>:call scnvim#install()</code> so that your SuperCollider class library gets a link to the SCNvim SuperCollider classes needed for all of this to work.</p>
-<p>To make use of the help system, tags (for definitions) and snippets (when you&rsquo;ve set it up), you will need to run <code>:SCNvimTags</code> from time to time. This will basically map your SuperCollider class library and extensions and make NeoVim conscious of them (which also means you need to rerun this command when you add/remove classes or packages from SuperCollider to keep NeoVim up to date with those changes).</p>
-<h3 id="quick-tip-go-to-definition">Quick tip: Go to definition</h3>
-<p>If you&rsquo;ve installed SCNvim and run the <code>SCNvimTags</code> command and restarted NeoVim, you can easily look up definitions for SuperCollider classes. This is really useful in a lot of situations. To do this, put your cursor on a class in a SuperCollider file and press <code>g]</code> or <code>C-]</code> to open it up.</p>
-<p>Press <code>C-o</code> to jump backwards to where you came from (this is an easy way to get lost in rabbit holes, be warned).</p>
-<h2 id="snippets-luasnip">Snippets: LuaSnip</h2>
-<p>One of the productivity boosters of SCNvim is it&rsquo;s ability to automatically generate code snippets. SCNvim itself supports a range of snippet engines, but these days I prefer to use <a href="https://github.com/L3MON4D3/LuaSnip">LuaSnip</a>. After you&rsquo;ve installed and set up LuaSnip, add this to your scnvim configuration:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Use the LuaSnip snippet engine</span>
-<span style="color:#75715e">-- SCNvim supports &#34;ultisnips&#34;, &#34;luasnip&#34; and &#34;snippets.nvim&#34;</span>
-vim.g.scnvim_snippet_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;luasnip&#39;</span>
-</code></pre></div><p>And then, in your LuaSnip snippet table, add the SCNvim snippets like this:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Add SCNvim snippets to LuaSnip</span>
-<span style="color:#75715e">-- Note: This replaces any supercollider snippets already present in LuaSnip</span>
-require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollider <span style="color:#f92672">=</span> require<span style="color:#e6db74">&#39;scnvim/utils&#39;</span>.get_snippets()
-</code></pre></div><p>Next step is to open up a SuperCollider file and run <code>:SCNvimTags</code> to regenerate the snippet system. Now, restart NeoVim, open up a SuperCollider buffer and type for example <code>SinOsc.ar</code> and press your LuaSnip expansion keybinding (probably Control-k).</p>
-<h3 id="combining-auto-generated-snippets-with-custom-snippets">Combining auto generated snippets with custom snippets</h3>
-<p>This is a more advanced tip and not mandatory for setting up SCNvim snippets. But we&rsquo;re all nerds here so why not:</p>
-<p>Instead of completely replacing all of LuaSnip&rsquo;s supercollider table, it is possible to combine it with your own custom SuperCollider snippets using a bit of lua code.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Append table2 to table1</span>
-<span style="color:#66d9ef">local</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">append_to_table</span>(table1, table2)
-	<span style="color:#66d9ef">for</span> key, value <span style="color:#66d9ef">in</span> ipairs(table2) <span style="color:#66d9ef">do</span>
-		table.insert(table1, value)
-	<span style="color:#66d9ef">end</span>
-
-	<span style="color:#66d9ef">return</span> table1
-<span style="color:#66d9ef">end</span>
-
-<span style="color:#75715e">-- This table contains all of your custom SuperCollider snippets</span>
-<span style="color:#66d9ef">local</span> my_custom_sc_snipz <span style="color:#f92672">=</span> {
-
-	<span style="color:#75715e">-- Ndef</span>
-	s(<span style="color:#e6db74">&#34;ndef&#34;</span>,{
-		t(<span style="color:#e6db74">&#34;Ndef(&#34;</span>),
-		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;name&#34;</span>), t(<span style="color:#e6db74">&#34;,{|&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;freq=100, amp=0.5&#34;</span>), t({<span style="color:#e6db74">&#34;|&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
-		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;SinOsc.ar(freq) * amp;&#34;</span>), t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
-		t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;})&#34;</span>}),
-		i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;.play&#34;</span>),
-	}),
-
-	<span style="color:#75715e">-- SynthDef</span>
-	s(<span style="color:#e6db74">&#34;synthdef&#34;</span>,{
-		t(<span style="color:#e6db74">&#34;SynthDef(&#34;</span>),
-		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;name&#34;</span>), t(<span style="color:#e6db74">&#34;,{|&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;out=0, amp=0.5&#34;</span>), t({<span style="color:#e6db74">&#34;|&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
-		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;var sig = SinOsc.ar;&#34;</span>), t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
-		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#34;Out.ar(out, sig)&#34;</span>),
-		t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;})&#34;</span>}),
-		i(<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;.add&#34;</span>),
-	}),
-
-	<span style="color:#75715e">-- Value pattern shorthands</span>
-	s(<span style="color:#e6db74">&#34;pwh&#34;</span>, { t(<span style="color:#e6db74">&#34;Pwhite(&#34;</span>), c(<span style="color:#ae81ff">1</span>, {t(<span style="color:#e6db74">&#34;0.0&#34;</span>), rnd()}), t(<span style="color:#e6db74">&#34;, &#34;</span>), c(<span style="color:#ae81ff">1</span>, {t(<span style="color:#e6db74">&#34;1.0&#34;</span>), rnd()}), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-	s(<span style="color:#e6db74">&#34;pbr&#34;</span>, { t(<span style="color:#e6db74">&#34;Pbrown(&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;0.0&#34;</span>), t(<span style="color:#e6db74">&#34;, &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;, &#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;0.125&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-	s(<span style="color:#e6db74">&#34;ps&#34;</span>, { t(<span style="color:#e6db74">&#34;Pseq([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-	s(<span style="color:#e6db74">&#34;pr&#34;</span>, { t(<span style="color:#e6db74">&#34;Prand([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-	s(<span style="color:#e6db74">&#34;pxr&#34;</span>, { t(<span style="color:#e6db74">&#34;Prand([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-	s(<span style="color:#e6db74">&#34;pw&#34;</span>, { t(<span style="color:#e6db74">&#34;Pwrand([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;0.5, 0.5&#34;</span>), t(<span style="color:#e6db74">&#34;], [&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;50.0, 100.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-	s(<span style="color:#e6db74">&#34;pseg&#34;</span>, { t(<span style="color:#e6db74">&#34;Pseg(&#34;</span>), t(<span style="color:#e6db74">&#34;[&#34;</span>),i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0,0.0&#34;</span>), t(<span style="color:#e6db74">&#34;],&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;16&#34;</span>), t(<span style="color:#e6db74">&#34;,&#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">lin&#34;</span>), t(<span style="color:#e6db74">&#34;,&#34;</span>), i(<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-	s(<span style="color:#e6db74">&#34;pstep&#34;</span>, { t(<span style="color:#e6db74">&#34;Pstep(&#34;</span>), t(<span style="color:#e6db74">&#34;[&#34;</span>),i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0,0.0&#34;</span>), t(<span style="color:#e6db74">&#34;],&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;16&#34;</span>), t(<span style="color:#e6db74">&#34;,&#34;</span>), i(<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-
-	<span style="color:#75715e">-- Misc Pattern</span>
-	s(<span style="color:#e6db74">&#34;pf&#34;</span>, { t(<span style="color:#e6db74">&#34;Pfunc({|ev| &#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;&#34;</span>), t(<span style="color:#e6db74">&#34; })&#34;</span>)}),
-	s(<span style="color:#e6db74">&#34;pp&#34;</span>, { t(<span style="color:#e6db74">&#34;Ppar([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;p,o&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-	s(<span style="color:#e6db74">&#34;ptp&#34;</span>, { t(<span style="color:#e6db74">&#34;Ptpar([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;0.0, p, 2.0, o&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
-}
-
-<span style="color:#75715e">-- Now append custom snippets to table of scnvim snippets</span>
-require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollider <span style="color:#f92672">=</span> append_to_table(
-	require<span style="color:#e6db74">&#39;scnvim/utils&#39;</span>.get_snippets(),
-	my_custom_sc_snipz
-)
-</code></pre></div><h2 id="statusline">Statusline</h2>
-<p>There are many cool choices for status line plugins for NeoVim. A popular one seems to be <a href="https://github.com/nvim-lualine/lualine.nvim">lualine</a>. I haven&rsquo;t compared all of the NeoVim status line plugins but I use <a href="https://github.com/glepnir/galaxyline.nvim">Galaxyline</a> at the moment.</p>
-<p>SCNvim comes with the ability to display the server status in the statusline of NeoVim.</p>
-<p>To get statuslines to work, you first need to edit your SuperCollider installation&rsquo;s <a href="https://doc.sccode.org/Reference/StartupFile.html">startup.scd</a> file and add the following:</p>
-<pre tabindex="0"><code class="language-supercollider" data-lang="supercollider">// scnvim
-if (\SCNvim.asClass.notNil) {
-    Server.default.doWhenBooted {
-        \SCNvim.asClass.updateStatusLine(1, \SCNvim.asClass.port);
-    }
-}
-</code></pre><p>And then in Galaxyline, this is a way to get the information from SCNvim displayed:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">gls.left[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> {
-		Scnvim <span style="color:#f92672">=</span> {
-				provider <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
-						<span style="color:#66d9ef">local</span> scstatus <span style="color:#f92672">=</span> vim.api.nvim_call_function(<span style="color:#e6db74">&#34;scnvim#statusline#server_status&#34;</span>, {})
-						<span style="color:#66d9ef">return</span> scstatus
-				<span style="color:#66d9ef">end</span>,
-				condition <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
-						<span style="color:#66d9ef">if</span> vim.api.nvim_get_option(<span style="color:#e6db74">&#34;filetype&#34;</span>) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;supercollider&#34;</span> <span style="color:#66d9ef">then</span>
-								<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
-						<span style="color:#66d9ef">else</span>
-								<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
-						<span style="color:#66d9ef">end</span>
-				<span style="color:#66d9ef">end</span>,
-				icon <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; 📡 &#39;</span>,
-				separator <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>,
-				separator_highlight <span style="color:#f92672">=</span> {colors.blue, colors.bg},
-				highlight <span style="color:#f92672">=</span> {colors.blue, colors.bg},
-		}
-	}
-</code></pre></div><h2 id="advanced-syntax-highlighting-treesitter">Advanced syntax highlighting: Treesitter</h2>
-<p>Treesitter is an awesome &ldquo;code parser&rdquo; that has great support in NeoVim. It&rsquo;s basically a program that can quickly and precisely carse your code while you type it and understand&rsquo;s scopes and hierarchies and can use that to make informed decisions. The main (but not only) use case for this is to have advanced syntax highlighting. What this means in practice is that treesitter understands for example what variables are local to functions, which variables are environment variables. It knows the difference between class and instance variables etc etc.</p>
-<p>There is a <a href="https://github.com/madskjeldgaard/tree-sitter-supercollider">tree-sitter grammar for SuperCollider</a>(I could really use some help in maintaining this if anyone is up for it) that enables treesitter to understand SuperCollider code. To use it in NeoVim, first install <a href="https://github.com/nvim-treesitter/nvim-treesitter">neovim-treesitter</a>, restart NeoVim and run <code>TSInstall supercollider</code>. This will download and compile the SuperCollider grammar.</p>
-<p>The only configuration I recommend specifically for SuperCollider and treesitter is to disable treesitter&rsquo;s indentation for SuperCollider - at the moment it is behaving strangely so best to just disable that by adding the following to your nvim-tree-sitter configuration:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">indent <span style="color:#f92672">=</span> {
-			enable <span style="color:#f92672">=</span> {},
-			disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
-		}
-</code></pre></div><p><strong>Side note</strong>
-To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recommend installing one of the modern, neovim-specific color schemes that have full support for it. Eg <a href="https://github.com/ellisonleao/gruvbox.nvim">gruvbox.nvim</a>, <a href="https://github.com/eddyekofo94/gruvbox-flat.nvim">gruvbox-flat.nvim</a> or <a href="https://github.com/navarasu/onedark.nvim">onedark.nvim</a>.</p>
-<h2 id="fuzzy-finding">Fuzzy finding</h2>
-<p>Fuzzy finding is in my opinion one of the greatest inventions in modern programming tooling. If you&rsquo;ve never used fuzzy finding before it will surely blow your mind when you use it for the first time. I highly recommend installing <a href="https://github.com/junegunn/fzf.vim">fzf.vim</a> to get use of this in vim. This will enable commands like <code>:FZF</code> to help you quickly search for files and <code>:Rg</code> to search for specific words in all of your code files (the latter needs <code>ripgrep</code> to be installed, see fzf.vim&rsquo;s github page for more info).</p>
-<p>I wrote a <a href="https://github.com/madskjeldgaard/fzf-sc">small plugin</a> that uses fzf.vim to fuzzy search through a bunch of SuperCollider things like Quarks, Scales, help files, Node proxies, Synthdefs etc. It also contains a small API for creating your own fuzzy searchers for SuperCollider.</p>
-<h2 id="additional-supercollider-plugins">Additional SuperCollider plugins</h2>
-<p>If you want to get wild with your SuperCollider setup in NeoVim, I&rsquo;ve created a plugin for assorted hacks. Some of them are silly and some are really nice. I personally use the command <code>:SCNewQuark</code> all the time <a href="https://github.com/madskjeldgaard/supercollider-h4x-nvim">from this plugin</a> to generate a new SuperCollider package (this is why I am able to make and publish so/too many SuperCollider packages).</p>
-<h2 id="misc-plugins">Misc plugins</h2>
-<p>I highly recommend exploring the world of NeoVim-plugins. Things are moving extremely fast at the moment because the lua API of NeoVim has made it a lot easier to create plugins. As a consequence, there&rsquo;s a <a href="https://github.com/topics/neovim-plugin">gazillion NeoVim plugins out there</a> and I recommend finding and trying the ones that suit you. That said, here are a few that I use a lot with SuperCollider programming that aren&rsquo;t really specific to SuperCollider:</p>
-<ul>
-<li><a href="https://github.com/madskjeldgaard/reaper-nvim">reaper-nvim</a> - If you&rsquo;re a Reaper user, this lets your control Reaper from NeoVim.</li>
-<li><a href="https://github.com/akinsho/toggleterm.nvim">toggleterm</a> - NeoVim already has a great terminal you can open with <code>:term</code> but this plugin makes it even better.</li>
-<li><a href="https://github.com/hrsh7th/nvim-cmp">nvim-cmp</a> - A fantastic completion engine that integrates well with LuaSnip and treesitter.</li>
-<li><a href="https://github.com/tamago324/lir.nvim">lir.nvim</a> - File manager</li>
-<li><a href="https://github.com/tpope/vim-fugitive">vim-fugitive</a> - A great Git integration for vim</li>
-<li><a href="https://github.com/lewis6991/gitsigns.nvim">gitsigns.nvim</a> - Shows a small gutter in NeoVim highlighting what lines are changes, added etc.</li>
-</ul>
-<h2 id="got-questions">Got questions?</h2>
-<p>If you have any questions about SuperCollider, SCNvim or generally on using SuperCollider with NeoVim, I recommend asking on the <a href="scsynth.org">scsynth.org</a> forum. There&rsquo;s a thread on <a href="https://scsynth.org/t/scnvim-a-neovim-frontend-for-supercollider/4420">SCNvim here</a> but also try giving the forum <a href="https://scsynth.org/search?q=neovim">a search</a>, and if you cannot find an appropriate thread for your questions simply start a new one (I&rsquo;m really crap at answering emails so don&rsquo;t expect support from me if you go that route).</p>
-]]></content>
         </item>
         
     </channel>

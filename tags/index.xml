@@ -6,7 +6,25 @@
     <description>Recent content in Tags on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 29 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>neovim</title>
+      <link>http://madskjeldgaard.dk/tags/neovim/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/neovim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>supercollider</title>
+      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>arch</title>
       <link>http://madskjeldgaard.dk/tags/arch/</link>
@@ -121,15 +139,6 @@
       <pubDate>Fri, 16 Apr 2021 16:08:27 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/faust/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>supercollider</title>
-      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
-      <pubDate>Fri, 16 Apr 2021 16:08:27 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
       <description></description>
     </item>
     
@@ -400,15 +409,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/tags/gdb/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>neovim</title>
-      <link>http://madskjeldgaard.dk/tags/neovim/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/tags/neovim/</guid>
       <description></description>
     </item>
     

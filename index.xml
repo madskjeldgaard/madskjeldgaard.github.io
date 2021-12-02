@@ -8,6 +8,15 @@
     <language>en-uk</language>
     <lastBuildDate>Tue, 14 Apr 2020 10:41:44 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Setting up NeoVim as a SuperCollider IDE</title>
+      <link>http://madskjeldgaard.dk/posts/settingupneovimasscide/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/settingupneovimasscide/</guid>
+      <description>SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&amp;rsquo;s lightweight, it is highly configurable and it works everywhere.</description>
+    </item>
+    
+    <item>
       <title>Setting up Arch Linux for audio performance</title>
       <link>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</link>
       <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
@@ -538,15 +547,6 @@ ps -C scsynth -o pid h Then, we can use the number output from the command above
       
       <guid>http://madskjeldgaard.dk/posts/yo/</guid>
       <description></description>
-    </item>
-    
-    <item>
-      <title>Setting up NeoVim as a SuperCollider IDE</title>
-      <link>http://madskjeldgaard.dk/posts/settingupneovimasscide/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/settingupneovimasscide/</guid>
-      <description>SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&amp;rsquo;s lightweight, it is highly configurable and it works everywhere.</description>
     </item>
     
   </channel>
