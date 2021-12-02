@@ -5,7 +5,8 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="author" content="">
-<meta name="description" content="SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&amp;rsquo;s lightweight, it is highly configurable and it works everywhere." />
+<meta name="description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim." />
 <meta name="keywords" content="computer music, supercollider, rust, vim, linux, supercollider, neovim" />
 <meta name="robots" content="noodp" />
 <meta name="theme-color" content="" />
@@ -33,22 +34,25 @@
 
 
 <meta itemprop="name" content="Setting up NeoVim as a SuperCollider IDE">
-<meta itemprop="description" content="SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&rsquo;s lightweight, it is highly configurable and it works everywhere."><meta itemprop="datePublished" content="2021-12-01T00:00:00+00:00" />
+<meta itemprop="description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim."><meta itemprop="datePublished" content="2021-12-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-12-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2411"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+<meta itemprop="wordCount" content="2446"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/sc-lysningsrommet.jpg">
 <meta itemprop="keywords" content="supercollider,neovim," />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/full/sc-lysningsrommet.jpg"/>
 
 <meta name="twitter:title" content="Setting up NeoVim as a SuperCollider IDE"/>
-<meta name="twitter:description" content="SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&rsquo;s lightweight, it is highly configurable and it works everywhere."/>
+<meta name="twitter:description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim."/>
 
 
 
     <meta property="og:title" content="Setting up NeoVim as a SuperCollider IDE" />
-<meta property="og:description" content="SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&rsquo;s lightweight, it is highly configurable and it works everywhere." />
+<meta property="og:description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://madskjeldgaard.dk/posts/settingupneovimasscide/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/settingupneovimasscide/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/full/sc-lysningsrommet.jpg" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2021-12-01T00:00:00+00:00" />
 <meta property="article:modified_time" content="2021-12-01T00:00:00+00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
 
@@ -166,7 +170,9 @@
             
 
             <div class="post-content">
-                <p><a href="https://supercollider.github.io/">SuperCollider</a> is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&rsquo;s lightweight, it is highly configurable and it works <em>everywhere</em>.</p>
+                <p><img src="/img/full/sc-lysningsrommet.jpg" alt="/img/full/sc-lysningsrommet.jpg">
+<em>SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at <a href="https://kkh.se/en/">the art academy in stockholm</a></em></p>
+<p><a href="https://supercollider.github.io/">SuperCollider</a> is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&rsquo;s lightweight, it is highly configurable and it works <em>everywhere</em>.</p>
 <p>This in turn makes me a faster coder and makes the code itself better and more readable. When I started out with SuperCollider, the only option was to use classic vim with <a href="https://github.com/supercollider/scvim">scvim</a> - and while this was nice, a lot of things were missing for me and/or buggy. Then came NeoVim and in time, David Granström wrote the <a href="https://github.com/davidgranstrom/scnvim">SCNvim</a> plugin for NeoVim and I have been using this for all my SuperCollider coding since it came out.</p>
 <p>I get a lot of questions about setting up NeoVim for SuperCollider usage and so this post is a collection of advice, configuration and links to help you get started with using NeoVim and SuperCollider together.</p>
 <h2 id="a-slight-detour-new-to-neovim">A slight detour: New to (Neo)Vim?</h2>
@@ -176,7 +182,7 @@
 <p>The vim manual can be accessed by running <code>:h usr_toc.txt</code> or if you want a nicely formatted version of it online: <a href="vim.help">vim.help</a>. Vim also has a <em>reference manual</em> which is more in the style of cheat sheets or extensive lists of commands and key bindings. My favourite if these and the one I recommend you open from time to time is <code>:h motions.txt</code> - reading this from time to time will turbo charge your editing speed.</p>
 <p><a href="https://thevaluable.dev/vim-beginner/">This blog series</a> is another great resurce for newbies and seasoned users alike (I read it frequently).</p>
 <p>If you prefer videos, there are a gazillion video tutorials on YouTube and the like.</p>
-<p>A final but very important note to new vim users is: Don&rsquo;t blindly copy-paste configurations and plugins. A common mistake is to install tons of plugins and copy configurations from other people, but it is really important that you understand what each plugin does or what each line of configuration is doing to your system - otherwise you will end up with a bloated system with a ton of features and configuration that you do not know exist, let alone how to use them (I made all of these mistakes when I started out!).</p>
+<p>A final but very important note to new vim users is: Don&rsquo;t blindly copy-paste configurations and plugins. A common mistake is to install tons of plugins and copy configurations from other people, but it is really important that you understand what each plugin does or what each line of configuration is doing to your system - otherwise you will end up with a bloated system with a ton of features and configuration that you do not know exist, let alone how to use them (I made all of these mistakes when I started out!). An additional advantage of installing things piece by piece is you can more easily see when/where problems or conflicts occur when you build your system.</p>
 <h3 id="configuring-neovim-using-lua">Configuring NeoVim using lua</h3>
 <p>NeoVim is a fork of Vim, and I won&rsquo;t get into the history of that here, but in terms of configuration this has a slightly confusing but important consequence. Originally, vim was configured using a language called vimscript (<a href="https://learnvimscriptthehardway.stevelosh.com/">this is a nice resource for learning</a> that language). This works perfectly fine in NeoVim, but it is frankly a nightmare to use that language for anything other than basic configuration. NeoVim solves this by allowing users to write all of their configurations and plugins using lua - a tiny, fast and frankly FUN programming language <a href="http://tylerneylon.com/a/learn-lua/">that you could potentially learn in 15 minutes</a> (this is an overstatement but it&rsquo;s good marketing).</p>
 <p>For a guide on <a href="https://github.com/nanotee/nvim-lua-guide">lua and neovim, see this</a>.</p>
@@ -239,18 +245,10 @@ vim.g.scnvim_snippet_format <span style="color:#f92672">=</span> <span style="co
 require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollider <span style="color:#f92672">=</span> require<span style="color:#e6db74">&#39;scnvim/utils&#39;</span>.get_snippets()
 </code></pre></div><p>Next step is to open up a SuperCollider file and run <code>:SCNvimTags</code> to regenerate the snippet system. Now, restart NeoVim, open up a SuperCollider buffer and type for example <code>SinOsc.ar</code> and press your LuaSnip expansion keybinding (probably Control-k).</p>
 <h3 id="combining-auto-generated-snippets-with-custom-snippets">Combining auto generated snippets with custom snippets</h3>
+<p><img src="/img/custom-sc-snips.gif" alt="/img/custom-sc-snips.gif"></p>
 <p>This is a more advanced tip and not mandatory for setting up SCNvim snippets. But we&rsquo;re all nerds here so why not:</p>
 <p>Instead of completely replacing all of LuaSnip&rsquo;s supercollider table, it is possible to combine it with your own custom SuperCollider snippets using a bit of lua code.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Append table2 to table1</span>
-<span style="color:#66d9ef">local</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">append_to_table</span>(table1, table2)
-	<span style="color:#66d9ef">for</span> key, value <span style="color:#66d9ef">in</span> ipairs(table2) <span style="color:#66d9ef">do</span>
-		table.insert(table1, value)
-	<span style="color:#66d9ef">end</span>
-
-	<span style="color:#66d9ef">return</span> table1
-<span style="color:#66d9ef">end</span>
-
-<span style="color:#75715e">-- This table contains all of your custom SuperCollider snippets</span>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- This table contains all of your custom SuperCollider snippets</span>
 <span style="color:#66d9ef">local</span> my_custom_sc_snipz <span style="color:#f92672">=</span> {
 
 	<span style="color:#75715e">-- Ndef</span>
@@ -289,11 +287,10 @@ require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollid
 }
 
 <span style="color:#75715e">-- Now append custom snippets to table of scnvim snippets</span>
-require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollider <span style="color:#f92672">=</span> append_to_table(
-	require<span style="color:#e6db74">&#39;scnvim/utils&#39;</span>.get_snippets(),
-	my_custom_sc_snipz
-)
+<span style="color:#66d9ef">local</span> scnvim_snippets <span style="color:#f92672">=</span> require<span style="color:#e6db74">&#39;scnvim.utils&#39;</span>.get_snippets()
+require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollider <span style="color:#f92672">=</span> vim.tbl_extend(<span style="color:#e6db74">&#39;force&#39;</span>, {}, scnvim_snippets, my_custom_sc_snipz)
 </code></pre></div><h2 id="statusline">Statusline</h2>
+<p><img src="/img/sc-statusline.gif" alt="/img/sc-statusline.gif"></p>
 <p>There are many cool choices for status line plugins for NeoVim. A popular one seems to be <a href="https://github.com/nvim-lualine/lualine.nvim">lualine</a>. I haven&rsquo;t compared all of the NeoVim status line plugins but I use <a href="https://github.com/glepnir/galaxyline.nvim">Galaxyline</a> at the moment.</p>
 <p>SCNvim comes with the ability to display the server status in the statusline of NeoVim.</p>
 <p>To get statuslines to work, you first need to edit your SuperCollider installation&rsquo;s <a href="https://doc.sccode.org/Reference/StartupFile.html">startup.scd</a> file and add the following:</p>
@@ -328,12 +325,13 @@ if (\SCNvim.asClass.notNil) {
 <p>There is a <a href="https://github.com/madskjeldgaard/tree-sitter-supercollider">tree-sitter grammar for SuperCollider</a>(I could really use some help in maintaining this if anyone is up for it) that enables treesitter to understand SuperCollider code. To use it in NeoVim, first install <a href="https://github.com/nvim-treesitter/nvim-treesitter">neovim-treesitter</a>, restart NeoVim and run <code>TSInstall supercollider</code>. This will download and compile the SuperCollider grammar.</p>
 <p>The only configuration I recommend specifically for SuperCollider and treesitter is to disable treesitter&rsquo;s indentation for SuperCollider - at the moment it is behaving strangely so best to just disable that by adding the following to your nvim-tree-sitter configuration:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">indent <span style="color:#f92672">=</span> {
-			enable <span style="color:#f92672">=</span> {},
-			disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
-		}
+	enable <span style="color:#f92672">=</span> {},
+	disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
+}
 </code></pre></div><p><strong>Side note</strong>
 To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recommend installing one of the modern, neovim-specific color schemes that have full support for it. Eg <a href="https://github.com/ellisonleao/gruvbox.nvim">gruvbox.nvim</a>, <a href="https://github.com/eddyekofo94/gruvbox-flat.nvim">gruvbox-flat.nvim</a> or <a href="https://github.com/navarasu/onedark.nvim">onedark.nvim</a>.</p>
 <h2 id="fuzzy-finding">Fuzzy finding</h2>
+<p><img src="/img/quarksinstall.gif" alt="/img/quarksinstall.gif"></p>
 <p>Fuzzy finding is in my opinion one of the greatest inventions in modern programming tooling. If you&rsquo;ve never used fuzzy finding before it will surely blow your mind when you use it for the first time. I highly recommend installing <a href="https://github.com/junegunn/fzf.vim">fzf.vim</a> to get use of this in vim. This will enable commands like <code>:FZF</code> to help you quickly search for files and <code>:Rg</code> to search for specific words in all of your code files (the latter needs <code>ripgrep</code> to be installed, see fzf.vim&rsquo;s github page for more info).</p>
 <p>I wrote a <a href="https://github.com/madskjeldgaard/fzf-sc">small plugin</a> that uses fzf.vim to fuzzy search through a bunch of SuperCollider things like Quarks, Scales, help files, Node proxies, Synthdefs etc. It also contains a small API for creating your own fuzzy searchers for SuperCollider.</p>
 <h2 id="additional-supercollider-plugins">Additional SuperCollider plugins</h2>
@@ -349,7 +347,7 @@ To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recomm
 <li><a href="https://github.com/lewis6991/gitsigns.nvim">gitsigns.nvim</a> - Shows a small gutter in NeoVim highlighting what lines are changes, added etc.</li>
 </ul>
 <h2 id="got-questions">Got questions?</h2>
-<p>If you have any questions about SuperCollider, SCNvim or generally on using SuperCollider with NeoVim, I recommend asking on the <a href="scsynth.org">scsynth.org</a> forum. There&rsquo;s a thread on <a href="https://scsynth.org/t/scnvim-a-neovim-frontend-for-supercollider/4420">SCNvim here</a> but also try giving the forum <a href="https://scsynth.org/search?q=neovim">a search</a>, and if you cannot find an appropriate thread for your questions simply start a new one (I&rsquo;m really crap at answering emails so don&rsquo;t expect support from me if you go that route).</p>
+<p>If you have any questions about SuperCollider, SCNvim or generally on using SuperCollider with NeoVim, I recommend asking on the <a href="scsynth.org">scsynth.org</a> forum. There&rsquo;s a thread on <a href="https://scsynth.org/t/scnvim-a-neovim-frontend-for-supercollider/4420">SCNvim here</a> but also try giving the forum <a href="https://scsynth.org/search?q=neovim">a search</a>, and if you cannot find an appropriate thread for your questions simply start a new one (I&rsquo;m really crap at answering emails so don&rsquo;t expect support from me if you go that route). For scnvim specific things, I&rsquo;d recommend asking on the <a href="https://github.com/davidgranstrom/scnvim/discussions">discussion forum of scnvim</a>.</p>
 
             </div>
         </article>
@@ -361,7 +359,7 @@ To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recomm
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/neovim">neovim</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2411 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2446 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-12-01 01:00 &#43;0100</p>
         </div>

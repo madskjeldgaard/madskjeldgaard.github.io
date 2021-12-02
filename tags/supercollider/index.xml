@@ -13,7 +13,8 @@
       <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/settingupneovimasscide/</guid>
-      <description>SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&amp;rsquo;s lightweight, it is highly configurable and it works everywhere.</description>
+      <description>SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim.</description>
     </item>
     
     <item>
