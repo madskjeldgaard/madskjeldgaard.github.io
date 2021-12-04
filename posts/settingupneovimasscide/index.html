@@ -37,7 +37,7 @@ SuperCollider is my favourite programming language for music and sound and I use
 <meta itemprop="description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in Stockholm
 SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim."><meta itemprop="datePublished" content="2021-12-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-12-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2447"><meta itemprop="image" content="http://madskjeldgaard.dk/img/neovim-logo-flat.png"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/sc-lysningsrommet.jpg">
+<meta itemprop="wordCount" content="2491"><meta itemprop="image" content="http://madskjeldgaard.dk/img/neovim-logo-flat.png"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/sc-lysningsrommet.jpg">
 <meta itemprop="keywords" content="supercollider,neovim," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/neovim-logo-flat.png"/>
@@ -179,7 +179,7 @@ SuperCollider is my favourite programming language for music and sound and I use
 <p>If you are new to using (Neo)Vim, I would strongly recommend spending time learning the basics of the program before diving into all of this stuff. It will help you immensely and make it much more fun to use NeoVim as a SuperCollider IDE, so here is some advice for the newbie Vim user:</p>
 <p>Vim comes with a fantastic help system with a lot of documentation. The way to use it is to type <code>:h &lt;something&gt;</code> where you replace <code>&lt;something&gt;</code> with your search term. Whenever in doubt, try looking at the help system for help.</p>
 <p>Vim comes with a small tutorial that I recommend all new users go through. You can access it by running <code>:Tutor</code> inside of Vim.</p>
-<p>The vim manual can be accessed by running <code>:h usr_toc.txt</code> or if you want a nicely formatted version of it online: <a href="vim.help">vim.help</a>. Vim also has a <em>reference manual</em> which is more in the style of cheat sheets or extensive lists of commands and key bindings. My favourite if these and the one I recommend you open from time to time is <code>:h motions.txt</code> - reading this from time to time will turbo charge your editing speed.</p>
+<p>The vim manual can be accessed by running <code>:h usr_toc.txt</code> or if you want a nicely formatted version of it online: <a href="vim.help">vim.help</a>. Vim also has a <em>reference manual</em> which is more in the style of cheat sheets or extensive lists of commands and key bindings. My favourite of these and the one I recommend you open from time to time is <code>:h motions.txt</code> - reading this from time to time will turbo charge your editing speed.</p>
 <p><a href="https://thevaluable.dev/vim-beginner/">This blog series</a> is another great resource for newbies and seasoned users alike (I read it frequently).</p>
 <p>If you prefer videos, there are a gazillion video tutorials on YouTube and the like.</p>
 <p>A final but very important note to new vim users is: Don&rsquo;t blindly copy-paste configurations and plugins. A common mistake is to install tons of plugins and copy configurations from other people, but it is really important that you understand what each plugin does or what each line of configuration is doing to your system - otherwise you will end up with a bloated system with a ton of features and configuration that you do not know exist, let alone how to use them (I made all of these mistakes when I started out!). An additional advantage of installing things piece by piece is you can more easily see when/where problems or conflicts occur when you build your system.</p>
@@ -328,6 +328,18 @@ if (\SCNvim.asClass.notNil) {
 	enable <span style="color:#f92672">=</span> {},
 	disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
 }
+</code></pre></div><p>It goes inside of the setup table for nvim-treesitter like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Setup nvim-treesitter</span>
+require<span style="color:#e6db74">&#39;nvim-treesitter.configs&#39;</span>.setup {
+  ensure_installed <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;all&#34;</span>,
+  indent <span style="color:#f92672">=</span> {
+	  enable <span style="color:#f92672">=</span> {},
+	  disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
+  },
+  highlight <span style="color:#f92672">=</span> {
+    enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>,              <span style="color:#75715e">-- false will disable the whole extension</span>
+  }
+}
 </code></pre></div><p><strong>Side note</strong>
 To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recommend installing one of the modern, neovim-specific color schemes that have full support for it. Eg <a href="https://github.com/ellisonleao/gruvbox.nvim">gruvbox.nvim</a>, <a href="https://github.com/eddyekofo94/gruvbox-flat.nvim">gruvbox-flat.nvim</a> or <a href="https://github.com/navarasu/onedark.nvim">onedark.nvim</a>.</p>
 <h2 id="fuzzy-finding">Fuzzy finding</h2>
@@ -359,7 +371,7 @@ To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recomm
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/neovim">neovim</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2447 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2491 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-12-01 01:00 &#43;0100</p>
         </div>

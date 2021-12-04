@@ -25,7 +25,7 @@ SuperCollider is my favourite programming language for music and sound and I use
 <p>If you are new to using (Neo)Vim, I would strongly recommend spending time learning the basics of the program before diving into all of this stuff. It will help you immensely and make it much more fun to use NeoVim as a SuperCollider IDE, so here is some advice for the newbie Vim user:</p>
 <p>Vim comes with a fantastic help system with a lot of documentation. The way to use it is to type <code>:h &lt;something&gt;</code> where you replace <code>&lt;something&gt;</code> with your search term. Whenever in doubt, try looking at the help system for help.</p>
 <p>Vim comes with a small tutorial that I recommend all new users go through. You can access it by running <code>:Tutor</code> inside of Vim.</p>
-<p>The vim manual can be accessed by running <code>:h usr_toc.txt</code> or if you want a nicely formatted version of it online: <a href="vim.help">vim.help</a>. Vim also has a <em>reference manual</em> which is more in the style of cheat sheets or extensive lists of commands and key bindings. My favourite if these and the one I recommend you open from time to time is <code>:h motions.txt</code> - reading this from time to time will turbo charge your editing speed.</p>
+<p>The vim manual can be accessed by running <code>:h usr_toc.txt</code> or if you want a nicely formatted version of it online: <a href="vim.help">vim.help</a>. Vim also has a <em>reference manual</em> which is more in the style of cheat sheets or extensive lists of commands and key bindings. My favourite of these and the one I recommend you open from time to time is <code>:h motions.txt</code> - reading this from time to time will turbo charge your editing speed.</p>
 <p><a href="https://thevaluable.dev/vim-beginner/">This blog series</a> is another great resource for newbies and seasoned users alike (I read it frequently).</p>
 <p>If you prefer videos, there are a gazillion video tutorials on YouTube and the like.</p>
 <p>A final but very important note to new vim users is: Don&rsquo;t blindly copy-paste configurations and plugins. A common mistake is to install tons of plugins and copy configurations from other people, but it is really important that you understand what each plugin does or what each line of configuration is doing to your system - otherwise you will end up with a bloated system with a ton of features and configuration that you do not know exist, let alone how to use them (I made all of these mistakes when I started out!). An additional advantage of installing things piece by piece is you can more easily see when/where problems or conflicts occur when you build your system.</p>
@@ -173,6 +173,18 @@ if (\SCNvim.asClass.notNil) {
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">indent <span style="color:#f92672">=</span> {
 	enable <span style="color:#f92672">=</span> {},
 	disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
+}
+</code></pre></div><p>It goes inside of the setup table for nvim-treesitter like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Setup nvim-treesitter</span>
+require<span style="color:#e6db74">&#39;nvim-treesitter.configs&#39;</span>.setup {
+  ensure_installed <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;all&#34;</span>,
+  indent <span style="color:#f92672">=</span> {
+	  enable <span style="color:#f92672">=</span> {},
+	  disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
+  },
+  highlight <span style="color:#f92672">=</span> {
+    enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>,              <span style="color:#75715e">-- false will disable the whole extension</span>
+  }
 }
 </code></pre></div><p><strong>Side note</strong>
 To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recommend installing one of the modern, neovim-specific color schemes that have full support for it. Eg <a href="https://github.com/ellisonleao/gruvbox.nvim">gruvbox.nvim</a>, <a href="https://github.com/eddyekofo94/gruvbox-flat.nvim">gruvbox-flat.nvim</a> or <a href="https://github.com/navarasu/onedark.nvim">onedark.nvim</a>.</p>
