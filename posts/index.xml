@@ -31,6 +31,13 @@ SuperCollider is my favourite programming language for music and sound and I use
 <p>A final but very important note to new vim users is: Don&rsquo;t blindly copy-paste configurations and plugins. A common mistake is to install tons of plugins and copy configurations from other people, but it is really important that you understand what each plugin does or what each line of configuration is doing to your system - otherwise you will end up with a bloated system with a ton of features and configuration that you do not know exist, let alone how to use them (I made all of these mistakes when I started out!). An additional advantage of installing things piece by piece is you can more easily see when/where problems or conflicts occur when you build your system.</p>
 <h3 id="configuring-neovim-using-lua">Configuring NeoVim using lua</h3>
 <p>NeoVim is a fork of Vim, and I won&rsquo;t get into the history of that here, but in terms of configuration this has a slightly confusing but important consequence. Originally, vim was configured using a language called vimscript (<a href="https://learnvimscriptthehardway.stevelosh.com/">this is a nice resource for learning</a> that language). This works perfectly fine in NeoVim, but it is frankly a nightmare to use that language for anything other than basic configuration. NeoVim solves this by allowing users to write all of their configurations and plugins using lua - a tiny, fast and frankly FUN programming language <a href="http://tylerneylon.com/a/learn-lua/">that you could potentially learn in 15 minutes</a> (this is an overstatement but it&rsquo;s good marketing).</p>
+<p>For NeoVim you can either call your configuration file init.vim or init.lua depending on which scripting language you use. The manual says this about where to put it:</p>
+<pre tabindex="0"><code>The config file is located at:
+	Unix		~/.config/nvim/init.vim (or init.lua)
+	Windows		~/AppData/Local/nvim/init.vim (or init.lua)
+or if |$XDG_CONFIG_HOME| is defined:
+			$XDG_CONFIG_HOME/nvim/init.vim (or init.lua)
+</code></pre><p>If you are starting a new configuration with NeoVim with this, consult <code>:h init.lua</code> for more information on where to put the config file and what to call it. I&rsquo;d recommend going for <code>init.lua</code> and predominantly write the thing in lua.</p>
 <p>For a guide on <a href="https://github.com/nanotee/nvim-lua-guide">lua and neovim, see this</a>.</p>
 <p>In this post I will write all configuration using lua. To get the most out of the lua api of NeoVim, <em>it is important that you always have the latest version of NeoVim installed (at least version 0.5 which was a major release for the lua stuff).</em></p>
 <h3 id="plugin-management">Plugin management</h3>

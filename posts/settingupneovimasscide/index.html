@@ -37,7 +37,7 @@ SuperCollider is my favourite programming language for music and sound and I use
 <meta itemprop="description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in Stockholm
 SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim."><meta itemprop="datePublished" content="2021-12-01T00:00:00+00:00" />
 <meta itemprop="dateModified" content="2021-12-01T00:00:00+00:00" />
-<meta itemprop="wordCount" content="2491"><meta itemprop="image" content="http://madskjeldgaard.dk/img/neovim-logo-flat.png"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/sc-lysningsrommet.jpg">
+<meta itemprop="wordCount" content="2582"><meta itemprop="image" content="http://madskjeldgaard.dk/img/neovim-logo-flat.png"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/sc-lysningsrommet.jpg">
 <meta itemprop="keywords" content="supercollider,neovim," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/neovim-logo-flat.png"/>
@@ -123,7 +123,7 @@ SuperCollider is my favourite programming language for music and sound and I use
     <main class="post">
 
         <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>12 minutes
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>13 minutes
 
             
 
@@ -185,6 +185,13 @@ SuperCollider is my favourite programming language for music and sound and I use
 <p>A final but very important note to new vim users is: Don&rsquo;t blindly copy-paste configurations and plugins. A common mistake is to install tons of plugins and copy configurations from other people, but it is really important that you understand what each plugin does or what each line of configuration is doing to your system - otherwise you will end up with a bloated system with a ton of features and configuration that you do not know exist, let alone how to use them (I made all of these mistakes when I started out!). An additional advantage of installing things piece by piece is you can more easily see when/where problems or conflicts occur when you build your system.</p>
 <h3 id="configuring-neovim-using-lua">Configuring NeoVim using lua</h3>
 <p>NeoVim is a fork of Vim, and I won&rsquo;t get into the history of that here, but in terms of configuration this has a slightly confusing but important consequence. Originally, vim was configured using a language called vimscript (<a href="https://learnvimscriptthehardway.stevelosh.com/">this is a nice resource for learning</a> that language). This works perfectly fine in NeoVim, but it is frankly a nightmare to use that language for anything other than basic configuration. NeoVim solves this by allowing users to write all of their configurations and plugins using lua - a tiny, fast and frankly FUN programming language <a href="http://tylerneylon.com/a/learn-lua/">that you could potentially learn in 15 minutes</a> (this is an overstatement but it&rsquo;s good marketing).</p>
+<p>For NeoVim you can either call your configuration file init.vim or init.lua depending on which scripting language you use. The manual says this about where to put it:</p>
+<pre tabindex="0"><code>The config file is located at:
+	Unix		~/.config/nvim/init.vim (or init.lua)
+	Windows		~/AppData/Local/nvim/init.vim (or init.lua)
+or if |$XDG_CONFIG_HOME| is defined:
+			$XDG_CONFIG_HOME/nvim/init.vim (or init.lua)
+</code></pre><p>If you are starting a new configuration with NeoVim with this, consult <code>:h init.lua</code> for more information on where to put the config file and what to call it. I&rsquo;d recommend going for <code>init.lua</code> and predominantly write the thing in lua.</p>
 <p>For a guide on <a href="https://github.com/nanotee/nvim-lua-guide">lua and neovim, see this</a>.</p>
 <p>In this post I will write all configuration using lua. To get the most out of the lua api of NeoVim, <em>it is important that you always have the latest version of NeoVim installed (at least version 0.5 which was a major release for the lua stuff).</em></p>
 <h3 id="plugin-management">Plugin management</h3>
@@ -371,7 +378,7 @@ To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recomm
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/neovim">neovim</a></span>
                 </p>
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2491 Words</p>
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2582 Words</p>
 
             <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-12-01 01:00 &#43;0100</p>
         </div>
