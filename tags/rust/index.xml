@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rust on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/rust/</link>
+    <description>Recent content in rust on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Thu, 11 Jun 2020 16:49:29 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Raspberry Pi 4: Simple Button to OSC example in Rust</title>
+      <link>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</link>
+      <pubDate>Thu, 11 Jun 2020 16:49:29 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</guid>
+      <description>Today I did a small experiment with my Raspberry Pi 4: I wanted to poll the GPIO data pins and use data from them in SuperCollider. This is best done by polling the pins in a separate program and then sending that data to SuperCollider via OSC.
+I have done this in Python before but I much prefer doing this kind of thing in Rust since the latter is fast and safe (and just generally: I love Rust!</description>
+    </item>
+    
+    <item>
+      <title>Setting up Vim and YouCompleteMe for Rust development</title>
+      <link>http://madskjeldgaard.dk/posts/rust-ycm/</link>
+      <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/rust-ycm/</guid>
+      <description>These are notes for setting up YouCompleteMe - a program for autocompletion, code linting and debugging in the text editor Vim - for developing Rust programs. I find this program vital to my Rust workflow because it allows me to more easily explore code and correct mistakes before they reach the compiler. YouCompleteMe will tell you if there are syntactic mistakes in your code, it will tell you about unused variables and code and it will often suggest changes to problematic code.</description>
+    </item>
+    
+    <item>
+      <title>On Rust, OSC and creative coding in nannou</title>
+      <link>http://madskjeldgaard.dk/posts/nannou-osc-guides/</link>
+      <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/nannou-osc-guides/</guid>
+      <description>Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.
+A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
+The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust.</description>
+    </item>
+    
+  </channel>
+</rss>

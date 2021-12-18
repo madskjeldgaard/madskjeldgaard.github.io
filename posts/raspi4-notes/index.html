@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
+It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux, supercollider, raspberrypi, termux" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://madskjeldgaard.dk/posts/raspi4-notes/" />
+
+
+    <title>
+        
+            Notes for setting up a Raspberry Pi 4 for audio work :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Notes for setting up a Raspberry Pi 4 for audio work">
+<meta itemprop="description" content="These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
+It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in."><meta itemprop="datePublished" content="2020-04-30T16:07:22+02:00" />
+<meta itemprop="dateModified" content="2020-04-30T16:07:22+02:00" />
+<meta itemprop="wordCount" content="3072"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/raspi-and-cheap-usb-interface.jpg"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/raspi-termux.png"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/termux-ssh-arm.jpg">
+<meta itemprop="keywords" content="supercollider,raspberrypi,termux," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/full/raspi-and-cheap-usb-interface.jpg"/>
+
+<meta name="twitter:title" content="Notes for setting up a Raspberry Pi 4 for audio work"/>
+<meta name="twitter:description" content="These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
+It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in."/>
+
+
+
+    <meta property="og:title" content="Notes for setting up a Raspberry Pi 4 for audio work" />
+<meta property="og:description" content="These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
+It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/raspi4-notes/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/full/raspi-and-cheap-usb-interface.jpg" /><meta property="og:image" content="http://madskjeldgaard.dk/img/full/raspi-termux.png" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/termux-ssh-arm.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-04-30T16:07:22+02:00" />
+<meta property="article:modified_time" content="2020-04-30T16:07:22+02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-04-30 16:07:22 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>15 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="http://madskjeldgaard.dk/posts/raspi4-notes/">Notes for setting up a Raspberry Pi 4 for audio work</a>
+            </h1>
+                <hr />
+                <aside id="toc">
+                <div class="toc-title">Table of Contents</div>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#before-contacting-me-about-this-guide">Before contacting me about this guide</a></li>
+    <li><a href="#preparing-the-pi">Preparing the Pi</a>
+      <ul>
+        <li><a href="#installing-raspbian-lite">Installing Raspbian Lite</a></li>
+        <li><a href="#enable-ssh">Enable ssh</a></li>
+        <li><a href="#setup-default-wifi-network">Setup default WIFI-network</a></li>
+        <li><a href="#ssh-log-in-to-your-raspbian-lite-remotely">ssh: Log in to your Raspbian Lite remotely</a></li>
+      </ul>
+    </li>
+    <li><a href="#special-note-for-kitty-users">Special note for kitty users</a></li>
+    <li><a href="#important-packages-and-dependencies">Important packages and dependencies</a></li>
+    <li><a href="#tuning-the-system">Tuning the system</a></li>
+    <li><a href="#install-and-setup-jack">Install and setup jack</a>
+      <ul>
+        <li><a href="#changing-audio-interface">Changing audio interface</a></li>
+        <li><a href="#disable-the-on-board-audio-output">Disable the on-board audio output</a></li>
+      </ul>
+    </li>
+    <li><a href="#install-a-real-time-kernel">Install a real-time kernel</a></li>
+    <li><a href="#check-your-systems-configuration">Check your system&rsquo;s configuration</a></li>
+    <li><a href="#download-and-compile-latest-version-of-supercollider">Download, and compile latest version of SuperCollider</a>
+      <ul>
+        <li><a href="#testing-your-supercollider-installation">Testing your SuperCollider installation</a></li>
+        <li><a href="#editing-supercollider-files">Editing SuperCollider files</a></li>
+        <li><a href="#neovim-and-scnvim">NeoVim and scnvim</a></li>
+      </ul>
+    </li>
+    <li><a href="#controlling-the-pi-using-a-phone">Controlling the pi using a phone</a></li>
+    <li><a href="#using-the-raspberry-pi-for-networked-audio">Using the Raspberry Pi for networked audio</a></li>
+    <li><a href="#watchdog">Watchdog</a></li>
+    <li><a href="#backing-up-images">Backing up images</a></li>
+    <li><a href="#preconfigured-images">Preconfigured images</a></li>
+    <li><a href="#links-for-further-information">Links for further information</a></li>
+  </ul>
+</nav>
+                </aside>
+                <hr />
+
+            
+
+            <div class="post-content">
+                <p><img src="/img/full/raspi-and-cheap-usb-interface.jpg" alt="raspberry pi 4 setup "></p>
+<p>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running <a href="https://supercollider.sourceforge.net/">SuperCollider programs for interactive installations</a>.</p>
+<p>I used <a href="https://www.raspberrypi.org/downloads/Raspbian/">Raspbian Lite</a> for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).</p>
+<p>It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</p>
+<p>When logged in to the Pi via ssh, we can setup everything from the command line fairly quickly.</p>
+
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe src="https://player.vimeo.com/video/414061680" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="vimeo video" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
+
+<h2 id="before-contacting-me-about-this-guide">Before contacting me about this guide</h2>
+<p><em>Edit June 2021:</em></p>
+<p>I get a ton of email about this post and the subject of Raspberry Pis because of it. While the majority of these are sympathetic, I unfortunately don&rsquo;t have time to answer all of them, sorry. With that out of the way, let&rsquo;s continue on our journey.</p>
+<h2 id="preparing-the-pi">Preparing the Pi</h2>
+<p>You may skip this step if you already have a Raspberry Pi setup with ssh and you are logged into it. Otherwise, here are the steps needed to get access to a fresh Raspbian Lite installation from another computer.</p>
+<h3 id="installing-raspbian-lite">Installing Raspbian Lite</h3>
+<p>To install Raspbian Lite on an SD card, plug the card in to your computer.</p>
+<p>Then download the <a href="https://www.raspberrypi.org/downloads/raspbian/">Raspbian Lite image.</a></p>
+<p>Next, flash it onto your SD card. The easiest way to do this is by using <a href="https://www.balena.io/etcher/">Balena Etcher</a>. With this program you can open up the image for Raspbian Lite, choose the SD card and click flash.</p>
+<p>Note: On some Linux systems you may need to start Balena Etcher using sudo to allow it access to the SD card.</p>
+<h3 id="enable-ssh">Enable ssh</h3>
+<p>With the flashed SD card containing your Raspbian Lite installation still in your computer, find the <code>boot</code> folder on it. Create an empty file here called <code>ssh</code>.</p>
+<p>This will enable ssh upon boot and allow us to control the Raspberry Pi remotely.</p>
+<h3 id="setup-default-wifi-network">Setup default WIFI-network</h3>
+<p>To automatically connect to your WIFI network on startup, you need to add another file to the <code>boot</code> folder.</p>
+<p>This one should be named <code>wpa_supplicant.conf</code> which will contain information about your network.</p>
+<p>You can copy and paste the snippet below into this file, but make sure you do the following edits to it:</p>
+<ol>
+<li>Replace the string in the <code>ssid</code> line with the name of your network.</li>
+<li>Replace the string  in the <code>psk</code> line with the password your network.</li>
+<li>Replace the country code in the <code>country=NO</code> line (I am in Norway = NO).</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ctrl_interface<span style="color:#f92672">=</span>DIR<span style="color:#f92672">=</span>/var/run/wpa_supplicant GROUP<span style="color:#f92672">=</span>netdev
+update_config<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+ap_scan<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+fast_reauth<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+country<span style="color:#f92672">=</span>NO
+
+network<span style="color:#f92672">={</span>
+	ssid<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your network&#39;s SSID&#34;</span>
+	psk<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Your network&#39;s password/psk&#34;</span>
+	id_str<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0&#34;</span>
+	priority<span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Save the file, put the SD card back into your Pi and plug the power cord into it to boot it. Wait a few minutes for it to boot.</p>
+<h3 id="ssh-log-in-to-your-raspbian-lite-remotely">ssh: Log in to your Raspbian Lite remotely</h3>
+<p>If you followed the steps above, your Pi should now be connected to the same network as your computer.</p>
+<p>To do this, you need the IP address of the Pi. See <a href="https://www.raspberrypi.org/documentation/remote-access/ip-address.md">this article which contains some nice ideas on how to do this.</a></p>
+<p>Once found, you can log in from your computer by opening up a terminal and executing <code>ssh pi@address</code>, replacing &ldquo;address&rdquo; with the actual IP address. If succesful you should now be prompted for the password of the <code>pi</code> user which by default is <code>raspberry</code>.</p>
+<h2 id="special-note-for-kitty-users">Special note for kitty users</h2>
+<p>If on your host computer you are using <a href="https://sw.kovidgoyal.net/kitty/">kitty</a> as your terminal emulator you may experience some annoyances if you ssh using the normal <code>ssh</code> command. This is because the Pi isn&rsquo;t recognizing your terminal type.</p>
+<p>You can fix this by from your computer ssh&rsquo;ing using <code>kitty +kitten ssh</code> instead.</p>
+<p>I made an alias for this so that I can just type <code>kssh</code>. If you want an alias on your system, add this to your <code>$HOME/.bashrc</code> file on your computer (not the Pi) if you are using bash as your main shell or <code>$HOME/.zshrc</code> (if using zsh as your main shell):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">alias kssh<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;kitty +kitten ssh&#34;</span>
+</code></pre></div><p>And then restart your system or resource the file using <code>source $HOME/.bashrc</code> or <code>source $HOME/.zshrc</code>.</p>
+<h2 id="important-packages-and-dependencies">Important packages and dependencies</h2>
+<p>Run this command to install git and perl which are important packages you will need later on.</p>
+<p><code>sudo apt update &amp;&amp; sudo apt install git perl</code></p>
+<p>Optionally you can install these programs as well which are nice (vim is a text editor, htop is for monitoring system resources and tmux is for multiple terminal windows). They are optional but I always use them.</p>
+<p><code>sudo apt update &amp;&amp; sudo apt install vim htop tmux</code></p>
+<h2 id="tuning-the-system">Tuning the system</h2>
+<p>The following commands are based on <a href="https://wiki.linuxaudio.org/wiki/system_configuration">the canonical instructions for tuning your linux system for audio work.</a>. <em>Warning:</em> These will alter config files on your system, use at your own risk and only on a fresh Raspbian installation.</p>
+<p>I gathered these in a handy gist, so you can execute them just by copy-pasting this (extremely long due to gist url&rsquo;s) command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e <span style="color:#f92672">&amp;&amp;</span> mv c5731e95bc5be9b3e2789b14b1149b6e raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> cd raspiaudiotune <span style="color:#f92672">&amp;&amp;</span> chmod +x raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> ./raspiaudiotune.sh <span style="color:#f92672">&amp;&amp;</span> cd ~ <span style="color:#f92672">&amp;&amp;</span> rm -rf raspiaudiotune
+</code></pre></div><p>This is the full script:</p>
+<script type="application/javascript" src="https://gist.github.com/madskjeldgaard/c5731e95bc5be9b3e2789b14b1149b6e.js"></script>
+
+<p>To make these changes take effect, the pi must be rebooted</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo reboot
+</code></pre></div><h2 id="install-and-setup-jack">Install and setup jack</h2>
+<p>Jack is used to patch audio throughout your audio system on Linux. In this case we will mostly use it to patch audio from software to the hardware output.</p>
+<p>Let&rsquo;s install and setup jack:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Install jack</span>
+sudo apt-get install jackd2
+</code></pre></div><p>Jack has a configuration file in <code>~/.jackdrc</code> that we will set up on installation, but you can edit this anytime to tune the system&rsquo;s settings using a text editor by running <code>nano ~/.jackdrc</code> for example or <code>vi ~/.jackdrc</code>. The config file consists of a <code>jackd</code> command which will be run by SuperCollider when we boot the audio server in there.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Create config file in home folder called .jackdrc</span>
+echo /usr/bin/jackd -P75 -dalsa -dhw:1 -r44100 -p512 -n3 &gt; ~/.jackdrc
+</code></pre></div><p>Explanations of the flags used here:</p>
+<ul>
+<li><code>-P75</code> - the real-time priority of the audio</li>
+<li><code>-dhw:1</code> signifies the device number used to connect to jack. You can get a list of available devices to choose from using <code>aplay -l</code> then change the number <code>1</code> to whatever you like. 1 is usually the USB card.</li>
+<li><code>-r44100</code> is the sample rate.</li>
+<li><code>-p512</code> is the block size. This can be tuned to achieve lower latency. Must be power of two. I get latencies around 3-4ms with this set to <code>-p64</code>.</li>
+<li><code>-n3</code> - jack&rsquo;s buffer periods. Jack recommends using 3 here for USB devices.</li>
+</ul>
+<p>Additionally, <a href="https://www.fredrikolofsson.com">Fredrik Olofsson</a> pointed out to me that it can be useful to use the <code>-p</code>-flag to restrict the number of possible ports for jack to connect to, this reduces the amount of ram used, which is why the SuperCollider readme recommends adding the <code>-p16</code> flag to the jack command in <code>.jackdrc</code>.</p>
+<h3 id="changing-audio-interface">Changing audio interface</h3>
+<p>Never use the built in audio jack on a Raspberry Pi for anything serious. Instead, you can use any class compliant USB audio interface. These range from cheap 1$ Chinese ones to top-of-the-line RME Fireface UCX. I use and like both of these for different situations.</p>
+<p>To see which audio interfaces are available on the pi:
+<code>aplay -l</code></p>
+<p>With a USB-interface plugged in, the output should look something like this:</p>
+<pre tabindex="0"><code>**** List of PLAYBACK Hardware Devices ****
+card 0: ALSA [bcm2835 ALSA], device 0: bcm2835 ALSA [bcm2835 ALSA]  Subdevices: 7/7
+  Subdevice #0: subdevice #0
+  Subdevice #1: subdevice #1
+  Subdevice #2: subdevice #2
+  Subdevice #3: subdevice #3
+  Subdevice #4: subdevice #4
+  Subdevice #5: subdevice #5
+  Subdevice #6: subdevice #6
+card 0: ALSA [bcm2835 ALSA], device 1: bcm2835 IEC958/HDMI [bcm2835 IEC958/HDMI]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 0: ALSA [bcm2835 ALSA], device 2: bcm2835 IEC958/HDMI1 [bcm2835 IEC958/HDMI1]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+card 1: UCX23906524 [Fireface UCX (23906524)], device 0: USB Audio [USB Audio]
+  Subdevices: 1/1
+  Subdevice #0: subdevice #0
+</code></pre><p>Note the card number. Card 0 is the trashy jack on the pi. Card 1 is the USB audio interface.</p>
+<h3 id="disable-the-on-board-audio-output">Disable the on-board audio output</h3>
+<p>To disable the useless on board jack output on the raspberry pi open up the boot config file</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vi /boot/config.txt
+</code></pre></div><p>Find the line that says <code>dtparam=audio=on</code> and comment it out so that it looks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e">#dtparam=audio=on</span>
+</code></pre></div><p>Then reboot, and run <code>aplay -l</code> to verify it isn&rsquo;t there anymore.</p>
+<h2 id="install-a-real-time-kernel">Install a real-time kernel</h2>
+<p>One of the most important things you can do to improve any Linux system&rsquo;s audio performance is installing a real-time-kernel. On the Raspberry Pi, you need to compile this kernel yourself. <a href="https://lemariva.com/blog/2018/07/raspberry-pi-preempt-rt-patching-tutorial-for-kernel-4-14-y">There are instructions for doing so here</a>.</p>
+<p>Compiling a kernel takes a lot of time, but my colleague at <a href="https://notam.no">Notam</a>, Thom Johansen, has built a <a href="http://users.notam.no/~thomj/rt-kernel-gcc_8_3_0.tar.gz">great RT-kernel for the Raspberry Pi 4 that you can download here</a>. For any other kind of Raspberry Pi, you are on your own (see the link above which has a guide for how to do this).</p>
+<p><em>A big fat warning</em>: It&rsquo;s a good idea to <a href="https://thepihut.com/blogs/raspberry-pi-tutorials/17789160-backing-up-and-restoring-your-raspberry-pis-sd-card">back up your sd card at this point, if you have important data on it</a>. Screwing up the kernel installation can get you in a complicated situation.</p>
+<p>If you are on a Pi 4, then proceed by executing these commands to download and install the kernel:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir rtkernel <span style="color:#f92672">&amp;&amp;</span> cd rtkernel
+wget https://users.notam.no/~thomj/rt-kernel.tar.gz <span style="color:#f92672">&amp;&amp;</span> tar xzf rt-kernel.tar.gz
+cd boot
+sudo cp -rd * /boot/
+cd ../lib
+sudo cp -dr * /lib/
+cd ../overlays
+sudo cp -d * /boot/overlays
+cd ..
+sudo cp -d bcm* /boot/
+</code></pre></div><p>and then add the following lines to <code>/boot/config.txt</code> by executing <code>sudo vi /boot/config.txt</code>:</p>
+<pre tabindex="0"><code>[all]
+kernel=kernel7l
+</code></pre><p>Then reboot the pi by executing <code>sudo reboot</code>, wait a few minutes and then ssh into the pi again.</p>
+<p>If you then run <code>uname -a</code> you should get a result along these lines:</p>
+<pre tabindex="0"><code>Linux raspberrypi 4.19.71-rt24-v7l+ #2 SMP PREEMPT RT Sat Apr 25 22:04:08
+UTC 2020 armv7l GNU/Linux 
+</code></pre><h2 id="check-your-systems-configuration">Check your system&rsquo;s configuration</h2>
+<p>If you haven&rsquo;t rebooted yet, go ahead and <code>sudo reboot</code>. And then wait for the Pi to power back up again before ssh&rsquo;ing in to continue.</p>
+<p><a href="https://github.com/raboof/realtimeconfigquickscan">realTimeConfigQuickScan</a> is a really nice script that you can use to see if your system is setup correctly. Download and run it like this:</p>
+<pre tabindex="0"><code># Scan system 
+git clone git://github.com/raboof/realtimeconfigquickscan.git
+cd realtimeconfigquickscan
+perl ./realTimeConfigQuickScan.pl
+</code></pre><h2 id="download-and-compile-latest-version-of-supercollider">Download, and compile latest version of SuperCollider</h2>
+<p>You can run many different kinds of software on the Raspberry Pi headless: <a href="http://fredrikolofsson.com/f0blog/?q=node/630">Pure Data</a>, Csound and SuperCollider are a few free and open source options.</p>
+<p>I personally prefer SuperCollider so that&rsquo;s what I&rsquo;m going to use here.</p>
+<p>The easiest way to compile and install the latest version of SuperCollider is to use <a href="https://github.com/lvm/build-supercollider">lvm&rsquo;s build scripts</a>. I created <a href="https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908">my own modified version</a> of them which are tailor fit to a headless Raspberry Pi install.</p>
+<p>Run these scripts by executing this massive oneliner:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">git clone https://gist.github.com/madskjeldgaard/10ab025993d5b77d235819d56c4cc908 <span style="color:#f92672">&amp;&amp;</span> mv 10ab025993d5b77d235819d56c4cc908 scbuildscripts <span style="color:#f92672">&amp;&amp;</span> cd scbuildscripts <span style="color:#f92672">&amp;&amp;</span> chmod +x *.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc4pi.sh <span style="color:#f92672">&amp;&amp;</span> ./build-sc3-plugins-pi.sh
+</code></pre></div><h3 id="testing-your-supercollider-installation">Testing your SuperCollider installation</h3>
+<p>Let&rsquo;s create a simple SuperCollider test file which will boot the audio server (and automatically start and connect Jack) to see if the installation went well and we are getting sound out of the pi.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Make a SuperCollider file for testing. </span>
+echo <span style="color:#e6db74">&#34;s.waitForBoot{ play{PinkNoise.ar(0.5).dup(2)} }&#34;</span> &gt;&gt; test.scd
+
+<span style="color:#75715e"># This will boot the server and play white noise in 2 channels</span>
+<span style="color:#75715e"># Stop it by hitting Ctrl+d on your keyboard</span>
+sclang test.scd
+</code></pre></div><h3 id="editing-supercollider-files">Editing SuperCollider files</h3>
+<p>As shown above, you can run any SuperCollider file by passing it as an argument to <code>sclang</code> on the command line.</p>
+<p>If you just have a finished SuperCollider-file that you want to run, then this is probably fine. You can use any text editor to make small edits to your files (<code>vi</code>, <code>nano</code>, <code>vim</code>/<code>nvim</code> or <code>emacs</code> are popular choices).</p>
+<p>But, really, this isn&rsquo;t a great way of working.</p>
+<h3 id="neovim-and-scnvim">NeoVim and scnvim</h3>
+<p>My preferred way of working (on any computer, single board or not) is using a combination of NeoVim and the <a href="https://github.com/davidgranstrom/scnvim">scnvim plugin</a>.</p>
+<p>To get this combination to work properly, unfortunately you cannot just install NeoVim using Raspbian&rsquo;s package manager since we need a fairly new version of NeoVim to get it to work (and Raspbian/Debian typically has pretty old &ldquo;stable&rdquo; versions in it&rsquo;s package manager).</p>
+<p>Follow <a href="https://github.com/neovim/neovim/wiki/Building-Neovim">the instructions here</a> (look for <code>Debian</code> things, this should be the same on Raspbian) to build NeoVim from source. The neovim wiki is the best place to find instructions on this, but I will condense the commands I used to build neovim on Raspbian below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Dependencies</span>
+sudo apt-get install ninja-build gettext libtool libtool-bin autoconf automake cmake g++ pkg-config unzip
+
+<span style="color:#75715e"># Get the neovim source code and switch to the stable branch</span>
+git clone https://github.com/neovim/neovim <span style="color:#f92672">&amp;&amp;</span> cd neovim <span style="color:#f92672">&amp;&amp;</span> git checkout stable
+
+<span style="color:#75715e"># Build and install</span>
+make -j4 <span style="color:#f92672">&amp;&amp;</span> sudo make install
+
+<span style="color:#75715e"># Remove source files</span>
+cd ..
+rm -rf neovim
+</code></pre></div><p>Now, verify that NeoVim is installed by running the following command:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">nvim --version
+</code></pre></div><p>If you get any output from that command, you are good to go and can proceed to install <a href="https://github.com/davidgranstrom/scnvim">scnvim</a> by following the instructions on the project&rsquo;s github repo.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># make a neovim config file </span>
+mkdir ~/.config/nvim
+echo <span style="color:#e6db74">&#34;call plug#begin()
+</span><span style="color:#e6db74">Plug &#39;davidgranstrom/scnvim&#39;
+</span><span style="color:#e6db74">call plug#end()&#34;</span> &gt; ~/.config/nvim/init.vim
+
+<span style="color:#75715e"># Install the vim-plug plugin manager</span>
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs <span style="color:#ae81ff">\
+</span><span style="color:#ae81ff"></span>    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+<span style="color:#75715e"># Open nvim and install the scnvim plugin</span>
+nvim -c <span style="color:#e6db74">&#34;:PlugInstall&#34;</span>
+</code></pre></div><p>Exit neovim when it&rsquo;s done installing the plugin, then finish the scnvim integration by symlinking the SuperCollider classes that came with the plugin to the extensions folder of SC:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir -p $HOME/.local/share/SuperCollider/Extensions/scide_scvim
+ln -sf /home/pi/.config/nvim/plugged/scnvim/sc /home/pi/.local/share/SuperCollider/Extensions/scide_scvim
+</code></pre></div><p>You should now be good to go. Open up the <code>test.scd</code> file from before and edit it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#75715e"># Open a SuperCollider file and start SCNvim on startup (by running the :SCNvimStart command)</span>
+nvim test.scd -c <span style="color:#e6db74">&#34;SCNvimStart&#34;</span>
+</code></pre></div><h2 id="controlling-the-pi-using-a-phone">Controlling the pi using a phone</h2>
+<p><img src="/img/full/raspi-termux.png" alt="raspi termux"></p>
+<p>If you installed ssh on your Raspberry Pi you can access it from any computer using the <code>ssh</code> program.</p>
+<p>A fun thing about this is that if you have an Android phone you can also use that to access your Pi. <del>I have no idea why you would do that but it&rsquo;s not up to me to judge.</del></p>
+<p><img src="/img/small/termux-ssh-arm.jpg" alt="broken arm and termux"></p>
+<p><em>My friend actually used this trick to livecode SuperCollider on his Raspberry Pi while recovering from a broken arm.</em></p>
+<p>To access your Raspberry Pi using your Android phone follow these steps:</p>
+<p><strong>On your phone:</strong></p>
+<ol>
+<li>Install <a href="https://wiki.termux.com/wiki/Main_Page">termux</a>.</li>
+<li>Open up Termux, type and run the following command: <code>pkg install openssh</code>. This will install ssh and let you log in to your Raspberry Pi from your phone.</li>
+<li>Find the address of your Pi on the network and ssh into it in Termux using this command (change the IP to whatever the ip of your pi is):</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ssh pi@10.0.1.51
+</code></pre></div><p>And now you&rsquo;re in your Pi on your phone and can do everything you would be able to with a computer ssh&rsquo;d into your Pi.</p>
+<h2 id="using-the-raspberry-pi-for-networked-audio">Using the Raspberry Pi for networked audio</h2>
+<p><a href="/posts/raspi-zita-njbridge">This blog post</a> describes a way to use the Raspberry Pi in a networked audio configuration.</p>
+<h2 id="watchdog">Watchdog</h2>
+<p>If you are using your Pi for an installation, setting up a watchdog can be a good idea. If your Pi gets overexcited or crashes, the watchdog will reboot the system (which as a consequence will trigger whatever startup script you have installed, if any).</p>
+<pre tabindex="0"><code>sudo apt install watchdog
+</code></pre><p>Open up the config file for the watchdog: <code>/etc/watchdog.conf</code></p>
+<p>And uncomment/add the following:</p>
+<pre tabindex="0"><code>max-load-1 = 24
+min-memory = 1
+watchdog-device = /dev/watchdog
+watchdog-timeout=15
+</code></pre><p>The watchdog can be run and activated automatically using systemd. This is done using the following commands:</p>
+<pre tabindex="0"><code>sudo systemctl enable watchdog
+sudo systemctl start watchdog
+</code></pre><p>To test if the watchdog is doing it&rsquo;s job, you can stress the system by creating a so-called fork bomb which will make the system crash by recursively calling a function until the Pi chokes up.</p>
+<p>On the pi (not your main computer!), execute the following fork bomb:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">forkbomb<span style="color:#f92672">(){</span> forkbomb | forkbomb &amp; <span style="color:#f92672">}</span>; forkbomb
+</code></pre></div><p>Wait a bit and then see your pi crash. After choking up, it should automatically reboot itself. If it does this, your watchdog is doing it&rsquo;s job.</p>
+<h2 id="backing-up-images">Backing up images</h2>
+<p>It is possible to back up and compress your SD card containing your Raspberry Pi installation so that it&rsquo;s easy to recall later on, flash it to more cards or share it online.</p>
+<p>See the official <a href="https://www.raspberrypi.org/documentation/linux/filesystem/backup.md">guide for this</a>.</p>
+<p>But in a nutshell:</p>
+<p>On your main (unix/Linux) computer:</p>
+<p>Run <code>lsblk</code> in a terminal to see which partitions are available.</p>
+<p>Then plug in the sd card from the Pi into the computer and repeat the command above and see which partition was added.
+This is your sd card. Look at the size to verify that it matches your sd card.</p>
+<p>Normally this is called something like <code>sda</code> or <code>sdb</code> but on my Arch Linux computer it looks like this, where the <code>mmcblk0</code> is the sd card:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">NAME MAJ:MIN RM   SIZE RO TYPE MOUNTPOINT
+mmcblk0
+│    179:0    <span style="color:#ae81ff">0</span>  29,7G  <span style="color:#ae81ff">0</span> disk
+├─mmcblk0p1
+│    179:1    <span style="color:#ae81ff">0</span> 440,6M  <span style="color:#ae81ff">0</span> part
+├─mmcblk0p2
+│    179:2    <span style="color:#ae81ff">0</span>     1K  <span style="color:#ae81ff">0</span> part
+├─mmcblk0p5
+│    179:5    <span style="color:#ae81ff">0</span>    32M  <span style="color:#ae81ff">0</span> part /run/media
+├─mmcblk0p6
+│    179:6    <span style="color:#ae81ff">0</span>   256M  <span style="color:#ae81ff">0</span> part /run/media
+├─mmcblk0p7
+│    179:7    <span style="color:#ae81ff">0</span>  19,5G  <span style="color:#ae81ff">0</span> part /run/media
+└─mmcblk0p8
+     259:4    <span style="color:#ae81ff">0</span>   9,5G  <span style="color:#ae81ff">0</span> part /run/media
+nvme0n1
+│    259:0    <span style="color:#ae81ff">0</span> 238,5G  <span style="color:#ae81ff">0</span> disk
+├─nvme0n1p1
+│    259:1    <span style="color:#ae81ff">0</span>   512M  <span style="color:#ae81ff">0</span> part
+├─nvme0n1p2
+│    259:2    <span style="color:#ae81ff">0</span>   230G  <span style="color:#ae81ff">0</span> part /
+└─nvme0n1p3
+     259:3    <span style="color:#ae81ff">0</span>     8G  <span style="color:#ae81ff">0</span> part <span style="color:#f92672">[</span>SWAP<span style="color:#f92672">]</span>
+</code></pre></div><p>Then, using the information that the <code>mmcblk0</code> partition is the sd card, we can run the following command to first create an image from the partition and then compress it into a tarball ( warning: the resulting files may be quite large, depending on the size of the sd card! ):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo dd bs<span style="color:#f92672">=</span>4M <span style="color:#66d9ef">if</span><span style="color:#f92672">=</span>/dev/mmcblk0 | gzip &gt; mega-badass-pi-image.img.gz
+</code></pre></div><h2 id="preconfigured-images">Preconfigured images</h2>
+<p><a href="https://oddodd.org/">Niklas Adam</a> has done us all a favour and made preconfigured images available which are already setup for audio work. So if you don&rsquo;t feel like going through this setup process, you can simply download one of them and flash them to a card and you are good to go.</p>
+<p><a href="https://oddodd.org/lib/rpi_images/images/">Download the images here.</a></p>
+<p>Among other things, there are <a href="https://oddodd.org/lib/rpi_images/images/?dir=arch-arm">preconfigured images for Arch Arm </a>!</p>
+<h2 id="links-for-further-information">Links for further information</h2>
+<ul>
+<li><a href="https://medium.com/swlh/make-your-raspberry-pi-file-system-read-only-Raspbian-buster-c558694de79">Make your Raspberry Pi file system read-only </a></li>
+<li><a href="https://github.com/supercollider/supercollider/blob/develop/README_RASPBERRY_PI.md">Raspberry Pi readme in the SuperCollider repo</a></li>
+<li><a href="https://hackernoon.com/raspberry-pi-headless-install-462ccabd75d0">Headless Raspberry Pi setup</a></li>
+<li><a href="https://raspberrypihq.com/how-to-connect-your-raspberry-pi-to-wifi/">How to automatically connect to wifi on startup</a></li>
+<li><a href="http://fredrikolofsson.com/f0blog/?q=node/630">PureData on headless Raspberry Pi</a></li>
+<li><a href="http://fredrikolofsson.com/f0blog/?q=node/672">building supercollider for piCore linux</a></li>
+<li><a href="http://roosnaflak.com/tech-and-research/setting-up-arch-arm-raspberry-pi-4/">Setting up Arch Arm on Raspberry Pi 4</a></li>
+</ul>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/raspberrypi">raspberrypi</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/termux">termux</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>3072 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-30 16:07 &#43;0200</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="http://madskjeldgaard.dk/posts/raspi-zita-njbridge/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">Networked audio using Raspberry Pi 4 (zita-njbridge and SuperCollider)</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="http://madskjeldgaard.dk/posts/awesome-sc/">
+                                <span class="button__text">Awesome SuperCollider: A curated list</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+            <span></span>
+            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
+
+
+
+    </body>
+</html>

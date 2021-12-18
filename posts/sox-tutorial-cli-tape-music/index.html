@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&amp;rsquo;s you perform powerful audio operations by typing just a few words in your computer&amp;rsquo;s terminal.
+I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux, sox, tutorial" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/" />
+
+
+    <title>
+        
+            SoX tutorial: Command line tape music (an introduction) :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+
+
+
+
+
+<meta itemprop="name" content="SoX tutorial: Command line tape music (an introduction)">
+<meta itemprop="description" content="SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&rsquo;s you perform powerful audio operations by typing just a few words in your computer&rsquo;s terminal.
+I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg."><meta itemprop="datePublished" content="2020-04-26T00:00:44+02:00" />
+<meta itemprop="dateModified" content="2020-04-26T00:00:44+02:00" />
+<meta itemprop="wordCount" content="1103"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+<meta itemprop="keywords" content="sox,tutorial," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+
+<meta name="twitter:title" content="SoX tutorial: Command line tape music (an introduction)"/>
+<meta name="twitter:description" content="SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&rsquo;s you perform powerful audio operations by typing just a few words in your computer&rsquo;s terminal.
+I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg."/>
+
+
+
+    <meta property="og:title" content="SoX tutorial: Command line tape music (an introduction)" />
+<meta property="og:description" content="SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&rsquo;s you perform powerful audio operations by typing just a few words in your computer&rsquo;s terminal.
+I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-04-26T00:00:44+02:00" />
+<meta property="article:modified_time" content="2020-04-26T00:00:44+02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-04-26 00:00:44 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>6 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="http://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/">SoX tutorial: Command line tape music (an introduction)</a>
+            </h1>
+                <hr />
+                <aside id="toc">
+                <div class="toc-title">Table of Contents</div>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#installing-sox">Installing SoX</a>
+      <ul>
+        <li><a href="#macos">MacOS</a></li>
+        <li><a href="#windows">Windows</a></li>
+        <li><a href="#ubuntu">Ubuntu</a></li>
+        <li><a href="#arch--manjaro">Arch / Manjaro</a></li>
+      </ul>
+    </li>
+    <li><a href="#whats-included">What&rsquo;s included</a>
+      <ul>
+        <li><a href="#the-manual">The manual</a></li>
+        <li><a href="#audio-recorder">Audio recorder</a></li>
+        <li><a href="#audio-player">Audio player</a></li>
+      </ul>
+    </li>
+    <li><a href="#command-line-basics">Command line basics</a></li>
+    <li><a href="#the-sox-command">The sox command</a></li>
+    <li><a href="#command-line-tape-music">Command line tape music</a></li>
+  </ul>
+</nav>
+                </aside>
+                <hr />
+
+            
+
+            <div class="post-content">
+                <p>SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&rsquo;s you perform powerful audio operations by typing just a few words in your computer&rsquo;s terminal.</p>
+<p>I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg. normalizing and entire folder of drum sounds in a matter of seconds). It is a very trustworhy and flexible solution ̣̣- and can even be used for DJ&rsquo;ing.</p>
+<p>But the commands for SoX are dense and sometimes slightly obscure so getting started is not always easy.</p>
+<p>Hopefully, this tutorial will sort out those problems.</p>
+<h2 id="installing-sox">Installing SoX</h2>
+<h3 id="macos">MacOS</h3>
+<p>Using the Homebrew package manager:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">brew install sox
+</code></pre></div><h3 id="windows">Windows</h3>
+<p>Using the Chocolatey package manager</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">choco install sox.portable
+</code></pre></div><h3 id="ubuntu">Ubuntu</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo apt install sox
+</code></pre></div><h3 id="arch--manjaro">Arch / Manjaro</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S sox
+</code></pre></div><h2 id="whats-included">What&rsquo;s included</h2>
+<h3 id="the-manual">The manual</h3>
+<p><img src="/img/small/sox-man.png" alt="sox manual"></p>
+<p>To read the manual, open up a terminal and type <code>man sox</code>.</p>
+<p>The manual is the best place to find information and example usages for SoX.</p>
+<p>To search the manual press <code>/</code> followed by your search query. By pressing <code>n</code> while searching, the cursor will jump to the next instance of the query you searched for. By pressing <code>N</code> the cursor will jump to the previous instance.</p>
+<p>Scroll forward one page by pressing <code>ctrl-f</code></p>
+<p>And backwards one page by pressing <code>ctrl-b</code></p>
+<p>Exit the manual by pressing <code>q</code></p>
+<h3 id="audio-recorder">Audio recorder</h3>
+<p>SoX includes a very handy way of recording audio using the <code>rec</code> command.</p>
+<p>The simplest use is to type <code>rec filename</code> which will start recording from the default input until you stop it by pressing <code>ctrl-c</code> in the terminal window.</p>
+<p>Example use:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec hello.wav
+</code></pre></div><p>You can specify a predefined length of the recording like this: <code>rec hello.wav trim 0 30:00</code> which will record for 30 minutes and then automatically stop</p>
+<h3 id="audio-player">Audio player</h3>
+<p>Similarly, playing audio is also possible using the command <code>play</code></p>
+<p>Example use:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav
+</code></pre></div><p>Note that both play and rec can be used with SoX&rsquo;s many included effects.</p>
+<p>Playing the above example at half speed with a flanger at the end is as simple as</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play hello.wav speed 0.5 flanger
+</code></pre></div><h2 id="command-line-basics">Command line basics</h2>
+<p>You do not have to have a lot of command line experience to use SoX but there is a few basic commands that will make it easier for you to navigate your computer in the command line.</p>
+<p>• <code>pwd</code> - see path to directory you are currently in
+• <code>ls</code> - see files in current directory
+• <code>cd /some/path</code> - move to <strong>/some/path</strong>
+• <code>cd ..</code> - move up one folder
+• <code>cd ~</code> - move to home folder</p>
+<p>As well as commands, here are some essential keyboard shortcuts:
+• up/down - scroll through previous commands (easy way to see / reuse previous work)
+• ctrl-c - cancel/abort the program (a sort of panic button)</p>
+<p>Sometimes, a simple way of using <code>cd</code> is to drag and drop a folder from your computer onto your terminal, this will in most cases paste the full path.</p>
+<h2 id="the-sox-command">The sox command</h2>
+<p>Our main interface for sox in this tutorial will be the <code>sox</code> command. The basic usage of this includes specifying an input file path, an output file path and then optionally some effects followed by an optional series of parameters.</p>
+<p>The basic command we will use will thus look like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox inputfile outputfile effect parameters
+</code></pre></div><p>If your input or output file contains spaces in the file name, you should wrap the path to it in quotation marks like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox <span style="color:#e6db74">&#34;/some folder/containg/a sound.wav&#34;</span> <span style="color:#e6db74">&#34;outputfolder/a new sound.wav&#34;</span> effect param1
+</code></pre></div><p>Like other command line tools, sox executes from the context of the folder that you are currently in (which can be found by typing <code>pwd</code>) and as such you do not need to type out the entire path to a file if it is in the same folder as the one you are executing sox from.</p>
+<h2 id="command-line-tape-music">Command line tape music</h2>
+<p>Tape music artists of the 60&rsquo;s and 70&rsquo;s had very rudimentary tools at their disposal - mostly they did their work using reel-to-reel tape recorders and simple effects. But you would be surprised by the incredible sonic possibilities available in a tool as simple as this, using basic techniques of recording, reversing, adding effects, changing playback speed, etc. you can get a long way towards making interesting music.</p>
+<p>Let us explore some of SoX' basic commands a bit by doing some command line audio manipulations reminiscent of classic tape music techniques.</p>
+<p>First of all, we need some audio to operate on. I would recommend recording a quick bit from your computer&rsquo;s microphone. If you have an instrument around, maybe use that for this exercise or simply (like me) whistle like an idiot in front of your computer.</p>
+<p>Record to the file idiot.wav for 10 seconds:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">rec idiot.wav trim 0:0 0:10
+</code></pre></div><p>Once SoX is done recording, it will post a &ldquo;done&rdquo; message.</p>
+<p>Moving on, let us test the file we just recorded</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play idiot.wav
+</code></pre></div><p>You should now hear yourself doing something silly in front of your computer a few seconds ago.</p>
+<p>To convert this to something else, we need to invoke the <code>sox</code> command now, providing it with an input file name, an output file name and a chain of effects. In this example, I will add a silly effects chain consisting of reversing the audio -&gt; flanger (2ms delay) -&gt; playback speed 50% (0.5) -&gt; reverb. The output of this operation will be saved in the file <code>art.wav</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox idiot.wav art.wav reverse flanger <span style="color:#ae81ff">2</span> speed 0.5 reverb
+</code></pre></div><p>If you execute the command <code>ls</code> now, you should in your directory see both the files idiot.wav (the original) and the manipulated file art.wav.</p>
+<p>Just to be sure, we can test our output file.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">play art.wav
+</code></pre></div><p>Now, we would not be proper command line tape musicians if we felt satisfied after 1 manipulation to the original recording, so let us continue our sonic journey by transforming the <code>art.wav</code> file further, this time we will time stretch to twice the length (factor 2), reverse the audio again and add some reverb. Just to make sure we do not lose too much of our audio level, we will normalize the output to -0.1db as well finally saving the result in the file <code>art2.wav</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox art.wav art2.wav stretch <span style="color:#ae81ff">2</span> reverse reverb norm -0.1
+</code></pre></div><hr>
+<p><em>This tutorial is part of a series:</em></p>
+<ul>
+<li><a href="/posts/sox-tutorial-cli-tape-music">SoX tutorial: Command line tape music</a></li>
+<li><a href="/posts/sox-tutorial-split-by-silence">SoX tutorial: Split by silence</a></li>
+<li><a href="/posts/sox-tutorial-batch-processing">SoX tutorial: Batch processing audio</a></li>
+<li><a href="/posts/sox-tutorial-sox-on-android">SoX tutorial: SoX on Android</a></li>
+</ul>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/sox">sox</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/tutorial">tutorial</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1103 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-26 00:00 &#43;0200</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="http://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">SoX tutorial: Split by silence</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/">
+                                <span class="button__text">NeoVim setup for c&#43;&#43; and openFrameworks development</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+            <span></span>
+            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
+
+
+
+    </body>
+</html>

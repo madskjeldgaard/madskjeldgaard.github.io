@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="These are workshop notes for the online introductory SuperCollider workshop put on by Notam in September 2020. It covers the basics of using the pattern library in SuperCollider
+You can download the notes here: workshop-notes
+Design  Short history of SuperCollider SC was designed by James McCartney as closed source proprietary software
+Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$&#43;shipping and could only run on PowerMacs." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://madskjeldgaard.dk/posts/pattern-workshop-sept-2020/" />
+
+
+    <title>
+        
+            Workshop notes for SuperCollider pattern introduction workshop september 2020 :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Workshop notes for SuperCollider pattern introduction workshop september 2020">
+<meta itemprop="description" content="These are workshop notes for the online introductory SuperCollider workshop put on by Notam in September 2020. It covers the basics of using the pattern library in SuperCollider
+You can download the notes here: workshop-notes
+Design  Short history of SuperCollider SC was designed by James McCartney as closed source proprietary software
+Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$&#43;shipping and could only run on PowerMacs."><meta itemprop="datePublished" content="2020-09-01T15:32:13+02:00" />
+<meta itemprop="dateModified" content="2020-09-01T15:32:13+02:00" />
+<meta itemprop="wordCount" content="1609"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+
+<meta name="twitter:title" content="Workshop notes for SuperCollider pattern introduction workshop september 2020"/>
+<meta name="twitter:description" content="These are workshop notes for the online introductory SuperCollider workshop put on by Notam in September 2020. It covers the basics of using the pattern library in SuperCollider
+You can download the notes here: workshop-notes
+Design  Short history of SuperCollider SC was designed by James McCartney as closed source proprietary software
+Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$&#43;shipping and could only run on PowerMacs."/>
+
+
+
+    <meta property="og:title" content="Workshop notes for SuperCollider pattern introduction workshop september 2020" />
+<meta property="og:description" content="These are workshop notes for the online introductory SuperCollider workshop put on by Notam in September 2020. It covers the basics of using the pattern library in SuperCollider
+You can download the notes here: workshop-notes
+Design  Short history of SuperCollider SC was designed by James McCartney as closed source proprietary software
+Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$&#43;shipping and could only run on PowerMacs." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/pattern-workshop-sept-2020/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-09-01T15:32:13+02:00" />
+<meta property="article:modified_time" content="2020-09-01T15:32:13+02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-09-01 15:32:13 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>8 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="http://madskjeldgaard.dk/posts/pattern-workshop-sept-2020/">Workshop notes for SuperCollider pattern introduction workshop september 2020</a>
+            </h1>
+                <hr />
+                <aside id="toc">
+                <div class="toc-title">Table of Contents</div>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#design">Design</a>
+      <ul>
+        <li><a href="#short-history-of-supercollider">Short history of SuperCollider</a></li>
+        <li><a href="#overview">Overview</a></li>
+        <li><a href="#architecture">Architecture</a></li>
+        <li><a href="#multiple-servers">Multiple servers</a></li>
+        <li><a href="#consequences-of-scs-modular-design">Consequences of SC&rsquo;s modular design</a></li>
+        <li><a href="#extending-supercollider">Extending SuperCollider</a></li>
+        <li><a href="#sc-plugins">SC Plugins</a></li>
+      </ul>
+    </li>
+    <li><a href="#how-to-use-the-ide">How to use the IDE</a>
+      <ul>
+        <li><a href="#important-keyboard-shortcuts">Important keyboard shortcuts</a></li>
+        <li><a href="#the-ide-as-a-calculator">The IDE as a calculator</a></li>
+        <li><a href="#autocompletion">Autocompletion</a></li>
+        <li><a href="#the-status-line">The status line</a></li>
+        <li><a href="#help-browser">Help browser</a></li>
+        <li><a href="#help-browser-online">Help browser online</a></li>
+        <li><a href="#post-window">Post window</a></li>
+      </ul>
+    </li>
+    <li><a href="#about-patterns">About patterns</a>
+      <ul>
+        <li><a href="#what-is-a-pattern">What is a pattern?</a></li>
+        <li><a href="#guides-in-the-help-system">Guides in the help system</a></li>
+      </ul>
+    </li>
+    <li><a href="#event-patterns---sequence-sound-events">Event patterns - Sequence sound events</a>
+      <ul>
+        <li><a href="#what-is-a-sound-event">What is a (sound) event?</a></li>
+        <li><a href="#what-does-an-event-look-like">What does an Event look like?</a></li>
+        <li><a href="#changing-the-default-synth">Changing the default synth</a></li>
+        <li><a href="#introducing-the-almighty-pbind">Introducing the almighty Pbind</a></li>
+        <li><a href="#keys-correspond-to-synth-arguments">Keys correspond to Synth arguments</a></li>
+        <li><a href="#important-note-on-the-dur-key">Important note on the dur key</a></li>
+        <li><a href="#when-does-a-pbind-end">When does a Pbind end?</a></li>
+        <li><a href="#live-coding-pdef">Live coding: Pdef</a></li>
+      </ul>
+    </li>
+    <li><a href="#value-patterns---generate-data-for-your-event-patterns">Value patterns - Generate data for your event patterns</a>
+      <ul>
+        <li><a href="#the-building-blocks-of-compositions">The building blocks of compositions</a></li>
+        <li><a href="#list-patterns">List patterns</a></li>
+        <li><a href="#testing-value-patterns-asstream">Testing value patterns: asStream</a></li>
+        <li><a href="#pseq-classic-sequencer">Pseq: Classic sequencer</a></li>
+        <li><a href="#random-value-patterns-pwhite-and-pbrown">Random value patterns: Pwhite and Pbrown</a></li>
+        <li><a href="#random-sequence-patterns-prand-and-pxrand">Random sequence patterns: Prand and Pxrand</a></li>
+        <li><a href="#probability-pwrand">Probability: Pwrand</a></li>
+        <li><a href="#envelope-pattern-pseg">Envelope pattern: Pseg</a></li>
+        <li><a href="#rest">Rest</a></li>
+        <li><a href="#pkey-share-data-between-event-keys">Pkey: Share data between event keys</a></li>
+        <li><a href="#patterns-in-patterns-the-computer-music-inception">patterns in patterns: The computer music inception</a></li>
+      </ul>
+    </li>
+    <li><a href="#working-with-pitches">Working with pitches</a>
+      <ul>
+        <li><a href="#the-pitch-model">The pitch model</a></li>
+        <li><a href="#changing-scales">Changing scales</a></li>
+        <li><a href="#available-scales">Available scales</a></li>
+        <li><a href="#changing-root-note">Changing root note</a></li>
+        <li><a href="#changing-octaves">Changing octaves</a></li>
+        <li><a href="#playing-chords">Playing chords</a></li>
+        <li><a href="#changing-tempo">Changing tempo</a></li>
+      </ul>
+    </li>
+    <li><a href="#further-learning-resources">Further learning resources</a>
+      <ul>
+        <li><a href="#videos">Videos</a></li>
+        <li><a href="#e-book">E-book</a></li>
+      </ul>
+    </li>
+    <li><a href="#community">Community</a>
+      <ul>
+        <li><a href="#awesome-supercollider">Awesome SuperCollider</a></li>
+        <li><a href="#learning-to-code-advice">Learning to code: Advice</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+                </aside>
+                <hr />
+
+            
+
+            <div class="post-content">
+                <p><em>These are workshop notes for the online introductory SuperCollider workshop put on by <a href="https://notam.no">Notam</a> in September 2020.
+It covers the basics of using the pattern library in SuperCollider</em></p>
+<p>You can download the notes here: <a href="/pdf/pattern-workshop-sept-2020.pdf">workshop-notes</a></p>
+<h2 id="design">Design</h2>
+<hr>
+<h3 id="short-history-of-supercollider">Short history of SuperCollider</h3>
+<p>SC was designed by James McCartney as closed source proprietary software</p>
+<p>Version 1 <a href="https://groups.google.com/forum/#!topic/comp.music.research/g2f9EcL1mUw">came out in 1996 based on a Max
+object</a>
+called Pyrite. Cost 250$+shipping and could only run on PowerMacs.</p>
+<p>Became free open source software in 2002 and is now cross platform and is now maintained by a wonderful group of developers.</p>
+<hr>
+<h3 id="overview">Overview</h3>
+<p>When you download SuperCollider, you get an application that consists of
+3 separate programs:</p>
+<ol>
+<li>The IDE, a smart text editor</li>
+<li>The SuperCollider language / client (<strong>sclang</strong>)</li>
+<li>The SuperCollider sound server (<strong>scsynth</strong>)</li>
+</ol>
+<hr>
+<h3 id="architecture">Architecture</h3>
+<p><img src="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/client-server.png" alt="alt"></p>
+<p>The client (language and interpreter) communicates with the server
+(signal processing)</p>
+<p>This happens over the network using Open Sound Control</p>
+<hr>
+<h3 id="multiple-servers">Multiple servers</h3>
+<p><img src="https://www.madskjeldgaard.dk/wp-content/uploads/2019/08/client-multiple-servers.png" alt="alt"></p>
+<p>This modular / networked design means one client can control many
+servers</p>
+<hr>
+<h3 id="consequences-of-scs-modular-design">Consequences of SC&rsquo;s modular design</h3>
+<p>Each of SuperCollider&rsquo;s components are replacable:</p>
+<p>IDE &lt;&mdash;&gt; SCIDE, (N)Vim, Atom or VSCode</p>
+<p>language &lt;&mdash;&gt; Python, CLisp, TidalCycles, Javascript</p>
+<p>server &lt;&mdash;&gt; Max/MSP, Ableton Live, Reaper</p>
+<hr>
+<h3 id="extending-supercollider">Extending SuperCollider</h3>
+<p>The functionality of SuperCollider can be extended using external
+packages</p>
+<p>These are called Quarks and can be installed using SuperCollider itself</p>
+<pre><code>// Install packages via GUI (does not contain all packages)
+Quarks.gui;
+
+// Install package outside of gui using URL
+Quarks.install(&quot;https://github.com/madskjeldgaard/KloudGen&quot;);
+</code></pre>
+<hr>
+<h3 id="sc-plugins">SC Plugins</h3>
+<p><a href="https://supercollider.github.io/sc3-plugins/">SC3 Plugins</a> is a
+collection of user contributed code, mostly for making sound</p>
+<p>The plugins are quite essential (and of varying quality / maintenance)</p>
+<hr>
+<h2 id="how-to-use-the-ide">How to use the IDE</h2>
+<p>The IDE is the text editor that comes with SuperCollider. It has some
+really smart features that are really helpful when writing code.</p>
+<hr>
+<h3 id="important-keyboard-shortcuts">Important keyboard shortcuts</h3>
+<ul>
+<li>Open help file for thing under cursor: <strong>Ctrl/cmd + d</strong></li>
+<li>Evaluate code block: <strong>Ctrl/cmd + enter</strong></li>
+<li>Stop all running code: <strong>Ctrl/cmd + .</strong></li>
+<li>Start audio server: <strong>Ctrl/cmd + b</strong></li>
+<li>Recompile: <strong>Ctrl/cmd + shift + l</strong></li>
+<li>Clear post window: <strong>Ctrl/cmd + shift + p</strong></li>
+</ul>
+<hr>
+<h3 id="the-ide-as-a-calculator">The IDE as a calculator</h3>
+<p>SuperCollider is an interpreted language</p>
+<p>This means we can &ldquo;live code&rdquo; it without waiting for it to compile</p>
+<p>A good example of this is using it as a calculator. Try typing <code>2+2</code> and
+evaluate it:</p>
+<pre tabindex="0"><code class="language-{.supercollider}" data-lang="{.supercollider}">2+2
+-&gt; 4
+</code></pre><hr>
+<h3 id="autocompletion">Autocompletion</h3>
+<p><img src="https://madskjeldgaard.dk/img/full/scide/scide-autocomplete.png" alt="autocomplete"></p>
+<p>Start typing <code>Sin</code> and see a menu pop up with suggestions (and help
+files).</p>
+<p>Use <code>up/down</code> arrow keys to navigate and hit <code>enter</code> to choose one</p>
+<hr>
+<h3 id="the-status-line">The status line</h3>
+<p><img src="https://madskjeldgaard.dk/img/full/scide/scide-status.png" alt="autocomplete"></p>
+<p>Shows information about system usage</p>
+<p>Right click to see server options + volume slider</p>
+<hr>
+<h3 id="help-browser">Help browser</h3>
+<p><img src="https://madskjeldgaard.dk/img/full/scide/scide-help.png" alt="autocomplete"></p>
+<p>There is an interactive help browser available.</p>
+<p>You can select and evaluate all code in the browser and see / hear the
+results immediately.</p>
+<hr>
+<h3 id="help-browser-online">Help browser online</h3>
+<p>There&rsquo;s an online version of the help system available at
+<a href="doc.sccode.org/">doc.sccode.org/</a> which is really helpful for sharing
+links to documentation.</p>
+<hr>
+<h3 id="post-window">Post window</h3>
+<p>This is where you see the resulting return messages of the code you have
+evaluated</p>
+<p>This is also where you see error messages posted.</p>
+<hr>
+<h2 id="about-patterns">About patterns</h2>
+<hr>
+<h3 id="what-is-a-pattern">What is a pattern?</h3>
+<p><a href="http://doc.sccode.org/Classes/Pattern.html">From the Pattern help file</a>:</p>
+<blockquote>
+<p>&ldquo;[The Pattern] classes form a rich and concise score language for
+music&rdquo;</p>
+</blockquote>
+<p>In other words:</p>
+<p>Patterns are used to sequence and compose music</p>
+<p>The cool thing about this is it is music treated as data.</p>
+<p>This means we can easily transpose, stretch and warp the composition like you will see in the following (instead of manually doing all of these things in a DAW).</p>
+<p>This means for example that composing a 4 bar loop is not necessarily any more or less work than a 4 hour one.</p>
+<hr>
+<h3 id="guides-in-the-help-system">Guides in the help system</h3>
+<p>Patterns are pretty well documented in the help system:</p>
+<ul>
+<li><a href="http://doc.sccode.org/Browse.html#Streams-Patterns-Events%3EA-Practical-Guide">A practical
+guide</a></li>
+<li><a href="http://doc.sccode.org/Browse.html#Tutorials%3EStreams-Patterns-Events">Understanding Streams, Events and
+Patterns</a></li>
+</ul>
+<hr>
+<h2 id="event-patterns---sequence-sound-events">Event patterns - Sequence sound events</h2>
+<hr>
+<h3 id="what-is-a-sound-event">What is a (sound) event?</h3>
+<p>Think of what happens when you press the key of a piano</p>
+<p>What data does that involve?</p>
+<hr>
+<ul>
+<li>Duration of key press</li>
+<li>Pitch of the key</li>
+<li>Sustain (are you holding the foot pedal?)</li>
+<li>etc. etc.</li>
+</ul>
+<hr>
+<h3 id="what-does-an-event-look-like">What does an Event look like?</h3>
+<p>Make sure your server is booted before trying this:</p>
+<pre><code>// See the post window when evaluating these
+().play; // Default event
+(freq:999).play; 
+(freq:123, sustain: 8).play;
+</code></pre>
+<hr>
+<h3 id="changing-the-default-synth">Changing the default synth</h3>
+<p>The default synth sucks</p>
+<p>You can change it by defining a new synth called <code>\default</code></p>
+<p>More info on <a href="https://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/">my
+website</a></p>
+<hr>
+<h3 id="introducing-the-almighty-pbind">Introducing the almighty Pbind</h3>
+<p>Arguably the most important pattern class in SuperCollider</p>
+<p>A Pbind simply consists of a list of key/value pairs.</p>
+<p>In this example, the keys are on the left side ( <code>\dur</code> and <code>\degree</code> ) and the values on the right ( <code>1/4</code> and <code>0</code> ).</p>
+<pre tabindex="0"><code class="language-supercollider" data-lang="supercollider">// Play quarter notes (try changing the 0 to another integer)
+Pbind(
+	\dur, 1/4,
+	\degree, 0
+).play
+</code></pre><p>Note the commas: This is what makes it a list.</p>
+<hr>
+<h3 id="keys-correspond-to-synth-arguments">Keys correspond to Synth arguments</h3>
+<p>Most often, keys correspond to a Synth&rsquo;s arguments.</p>
+<p>Example: If a SynthDef has the argument cutoff, we can access that
+argument in a Pbind using <code>\cutoff</code>.</p>
+<hr>
+<h3 id="important-note-on-the-dur-key">Important note on the dur key</h3>
+<p><code>\dur </code>is used in most SynthDefs to specify the duration of a
+note/event.</p>
+<p>Make sure this key never gets the value 0.</p>
+<hr>
+<h3 id="when-does-a-pbind-end">When does a Pbind end?</h3>
+<p>If one of the keys of a Pbind are supplied with a fixed length value
+pattern, the one running out of values first, will make the Pbind end.</p>
+<hr>
+<h3 id="live-coding-pdef">Live coding: Pdef</h3>
+<p>Live coding patterns: Wrap your event pattern (Pbind) in a Pdef:</p>
+<pre><code>Pdef('myCoolPattern', Pbind(...)).play;
+</code></pre>
+<p>The Pdef has a name &lsquo;myCoolPattern&rsquo; which is a kind of data slot
+accessible throughout your system</p>
+<p>Every time you evaluate this code, it overwrites that data slot
+(maintaining only one copy)</p>
+<hr>
+<h2 id="value-patterns---generate-data-for-your-event-patterns">Value patterns - Generate data for your event patterns</h2>
+<hr>
+<h3 id="the-building-blocks-of-compositions">The building blocks of compositions</h3>
+<p>Basic building blocks:</p>
+<ul>
+<li>List patterns - <code>Pseq</code></li>
+<li>Random value patterns, eg <code>Pwhite</code>, <code>Pbrown</code></li>
+<li>Random sequence patterns - <code>Pshuf</code>, <code>Prand</code>, etc.</li>
+<li>Rests</li>
+</ul>
+<p>Slightly more advanced building blocks:</p>
+<ul>
+<li>Envelope patterns like <code>Pseg</code> or <code>Pstep</code></li>
+<li>Data sharing between event parameters, eg <code>Plambda</code> -</li>
+<li>Patterns in patterns</li>
+</ul>
+<p>Advanced:</p>
+<ul>
+<li>Generate patterns / Pattern spawning - eg. <code>Pspawn</code></li>
+</ul>
+<hr>
+<h3 id="list-patterns">List patterns</h3>
+<p>See <a href="http://doc.sccode.org/Browse.html#Streams-Patterns-Events%3EPatterns%3EList">all of them
+here</a></p>
+<hr>
+<h3 id="testing-value-patterns-asstream">Testing value patterns: asStream</h3>
+<p>You will see the .asStream method a lot in the documentation for value
+patterns.</p>
+<pre><code>// Pattern
+p  Pseq([1,2,3]);
+
+// Convert to stream
+p  p.asStream;
+
+// See what values the pattern produces
+p.next; // 1, 2, 3, nil
+</code></pre>
+<hr>
+<h3 id="pseq-classic-sequencer">Pseq: Classic sequencer</h3>
+<pre><code>// Play values 1 then 2 then 3
+Pseq([1,2,3]);
+
+// 4 to the floor
+Pseq([1,1,1,1]);
+</code></pre>
+<hr>
+<h3 id="random-value-patterns-pwhite-and-pbrown">Random value patterns: Pwhite and Pbrown</h3>
+<pre><code>// (Pseudo) random values
+Pwhite(lo: 0.0, hi: 1.0, length: inf);
+
+// Drunk walk
+Pbrown(lo: 0.0, hi: 1.0, step: 0.125, length: inf);
+</code></pre>
+<hr>
+<h3 id="random-sequence-patterns-prand-and-pxrand">Random sequence patterns: Prand and Pxrand</h3>
+<pre><code>// Randomly choose from a list
+Prand([1,2,3],inf);
+
+// Randomly choose from a list (no repeating elements)
+Pxrand([1,2,3],inf);
+</code></pre>
+<hr>
+<h3 id="probability-pwrand">Probability: Pwrand</h3>
+<p>Choose items in a list depending on probability</p>
+<pre><code>// 50/50 chance of either 1 or 10
+Pwrand([1, 10], [0.5, 0.5])
+
+// 25% chance of 1, 25% change of 3, 50% chance of 7
+Pwrand([1, 3, 7], [0.25, 0.25, 0.5])
+
+// 30% chance of 3, 40% change of 2, 30% chance of 5
+Pwrand([4, 2, 5], [0.3, 0.4, 0.3])
+</code></pre>
+<hr>
+<h3 id="envelope-pattern-pseg">Envelope pattern: Pseg</h3>
+<pre><code>// Linear envelope from 1 to 5 in 4 beats
+Pseg( levels: [1, 5], durs: 4, curves: \linear);
+
+// Exponential envelope from 10 to 10000 in 8 beats 
+Pseg( levels: [10, 10000], durs: 8, curves: \exp);
+</code></pre>
+<hr>
+<h3 id="rest">Rest</h3>
+<p>Skip/sleep a pattern using Rest. If used in the <code>\dur </code>key of a
+Pbind, the value in the parenthesis is the sleep time</p>
+<pre><code>// One beat, two beats, rest 1 beat, 3 beats
+Pbind(\dur, Pseq([1,2,Rest(1),3])).play;
+</code></pre>
+<hr>
+<h3 id="pkey-share-data-between-event-keys">Pkey: Share data between event keys</h3>
+<p>Using Pkey we can make an event&rsquo;s parameters interact with eachother</p>
+<pre><code>// The higher the scale degree
+// ... the shorter the sound
+Pbind(
+    \degree, Pwhite(1,10),
+    \dur, 1 / Pkey(\degree)
+).play
+</code></pre>
+<p>More info about data sharing in patterns:
+<a href="http://doc.sccode.org/Tutorials/A-Practical-Guide/PG_06g_Data_Sharing.html">here</a></p>
+<hr>
+<h3 id="patterns-in-patterns-the-computer-music-inception">patterns in patterns: The computer music inception</h3>
+<p>You can put patterns in almost all parts of patterns.</p>
+<p>This may lead to interesting results:</p>
+<pre><code>// A sequence with 3 random values at the end
+Pseq([1,2,Pwhite(1,10,3)]);
+
+// An exponential envelope of random length
+Pseg(levels: [10, 10000], durs: Pwhite(1,10), curves: \exp);
+</code></pre>
+<hr>
+<h2 id="working-with-pitches">Working with pitches</h2>
+<p>The pattern library comes with a bunch of useful features for working with pitches in a convenient and interesting way.</p>
+<hr>
+<h3 id="the-pitch-model">The pitch model</h3>
+<p><img src="http://doc.sccode.org/Classes/Event-default-note.png" alt="pitch model"></p>
+<p><a href="http://doc.sccode.org/Classes/Event.html">Pitch model is described
+here</a></p>
+<hr>
+<h3 id="changing-scales">Changing scales</h3>
+<pre><code>// Use the \scale key, pass in a Scale object
+Pbind(\scale, Scale.minor, \degree, Pseq((1..10))).play;
+Pbind(\scale, Scale.major, \degree, Pseq((1..10))).play;
+Pbind(\scale, Scale.bhairav, \degree, Pseq((1..10))).play;
+</code></pre>
+<hr>
+<h3 id="available-scales">Available scales</h3>
+<pre><code>// See all available scales
+Scale.directory.postln
+</code></pre>
+<hr>
+<h3 id="changing-root-note">Changing root note</h3>
+<pre><code>// Use the \root key to transpose root note (halftones)
+Pbind(\root, 0, \degree, Pseq((1..10))).play;
+Pbind(\root, 1, \degree, Pseq((1..10))).play;
+Pbind(\root, 2, \degree, Pseq((1..10))).play;
+</code></pre>
+<hr>
+<h3 id="changing-octaves">Changing octaves</h3>
+<pre><code>// Use the \octave key
+Pbind(\octave, Pseq([2,4,5],inf), \degree, Pseq((1..10))).play;
+Pbind(\octave, Pwhite(3,6), \degree, Pseq((1..10))).play;
+Pbind(\octave, 7, \degree, Pseq((1..10))).play;
+</code></pre>
+<hr>
+<h3 id="playing-chords">Playing chords</h3>
+<pre><code>// Add an array of numbers to the degree parameter 
+// to play several synths at the same time (as a chord)
+Pbind(\degree, [0,2,5] + Pseq([2,4,5],inf), \dur, 0.25).play;
+</code></pre>
+<hr>
+<h3 id="changing-tempo">Changing tempo</h3>
+<p>The tempo of patterns are controlled by the TempoClock class You can
+either create your own TempoClock or modify the default clock like below</p>
+<pre><code>TempoClock.default.tempo_(0.5) // Half tempo
+TempoClock.default.tempo_(0.25) // quarter tempo
+TempoClock.default.tempo_(1) // normal tempo
+</code></pre>
+<hr>
+<h2 id="further-learning-resources">Further learning resources</h2>
+<hr>
+<h3 id="videos">Videos</h3>
+<p>Tutorials by Eli Fieldsteel covering a range of subjects: <a href="https://www.youtube.com/watch?vyRzsOOiJ_p4&amp;listPLPYzvS8A_rTaNDweXe6PX4CXSGq4iEWYC">SuperCollider
+Tutorials</a></p>
+<hr>
+<h3 id="e-book">E-book</h3>
+<ul>
+<li><a href="https://ccrma.stanford.edu/~ruviaro/texts/A_Gentle_Introduction_To_SuperCollider.pdf">A gentle introduction to
+SuperCollider</a></li>
+</ul>
+<p>Paper:</p>
+<ul>
+<li><a href="https://www.logos-verlag.de/cgi-bin/engbuchmid?isbn4017&amp;lngeng&amp;id">Introduction to SuperCollider, Andrea
+Valle</a></li>
+<li><a href="https://mitpress.mit.edu/books/supercollider-book">The SuperCollider
+Book</a></li>
+</ul>
+<hr>
+<h2 id="community">Community</h2>
+<ul>
+<li><a href="http://scsynth.org/">scsynth.org</a></li>
+<li><a href="http://sccode.org/">sccode.org</a></li>
+<li><a href="https://scsynth.slack.com/">Slack</a></li>
+<li><a href="https://talk.lurk.org/channel/supercollider">Lurk</a></li>
+<li><a href="https://www.birmingham.ac.uk/facilities/ea-studios/research/supercollider/mailinglist.aspx">Mailing
+list</a></li>
+<li><a href="https://t.me/supercollider_en">Telegram</a></li>
+<li><a href="https://t.me/supercollider_es">Telegram ES</a></li>
+<li><a href="https://www.facebook.com/groups/supercollider/">Facebook</a></li>
+</ul>
+<hr>
+<h3 id="awesome-supercollider">Awesome SuperCollider</h3>
+<p>A curated list of SuperCollider stuff</p>
+<p>Find inspiration and (a lot more) more resources here:</p>
+<p><a href="https://github.com/madskjeldgaard/awesome-supercollider">Awesome
+Supercollider</a></p>
+<hr>
+<h3 id="learning-to-code-advice">Learning to code: Advice</h3>
+<ul>
+<li>Practice 5 minutes every day</li>
+<li>Set yourself goals: Make (small) projects</li>
+<li>Use the community</li>
+<li>Contribute to SuperCollider - improve documentation, help out on the
+forums or make bug reports</li>
+</ul>
+<hr>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1609 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-09-01 15:32 &#43;0200</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="http://madskjeldgaard.dk/posts/aur-package-workflow/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">Notes on creating packages for the Arch User Repository (AUR)</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="http://madskjeldgaard.dk/posts/kloudgenerator-sketch/">
+                                <span class="button__text">Sketch for a granular cloud generator in SuperCollider</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+            <span></span>
+            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
+
+
+
+    </body>
+</html>

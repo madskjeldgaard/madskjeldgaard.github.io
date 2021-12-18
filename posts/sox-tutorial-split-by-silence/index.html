@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.
+Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux, sox, tutorial" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/" />
+
+
+    <title>
+        
+            SoX tutorial: Split by silence :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+
+
+
+
+
+<meta itemprop="name" content="SoX tutorial: Split by silence">
+<meta itemprop="description" content="SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.
+Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts."><meta itemprop="datePublished" content="2020-04-26T01:07:33+02:00" />
+<meta itemprop="dateModified" content="2020-04-26T01:07:33+02:00" />
+<meta itemprop="wordCount" content="782"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+<meta itemprop="keywords" content="sox,tutorial," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+
+<meta name="twitter:title" content="SoX tutorial: Split by silence"/>
+<meta name="twitter:description" content="SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.
+Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts."/>
+
+
+
+    <meta property="og:title" content="SoX tutorial: Split by silence" />
+<meta property="og:description" content="SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.
+Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2020-04-26T01:07:33+02:00" />
+<meta property="article:modified_time" content="2020-04-26T01:07:33+02:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2020-04-26 01:07:33 &#43;0200 CEST" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>4 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="http://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/">SoX tutorial: Split by silence</a>
+            </h1>
+                <hr />
+                <aside id="toc">
+                <div class="toc-title">Table of Contents</div>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#what-is-silence">What is silence</a></li>
+    <li><a href="#trimming-silence-from-beginning-and-end-of-one-file">Trimming silence from beginning and end of one file</a></li>
+    <li><a href="#chaining-pseudo-effects">Chaining (pseudo) effects</a></li>
+    <li><a href="#chopping-three-bursts">Chopping three bursts</a></li>
+  </ul>
+</nav>
+                </aside>
+                <hr />
+
+            
+
+            <div class="post-content">
+                <p>SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.</p>
+<p>Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts.</p>
+<p>In SoX we can approach this problem quite simply: Split the input file (the long file containing many different sounds in sequence) by detecting the silence in between the sounds.</p>
+<p>To do this we need to use the <code>silence</code> effect in SoX, which I will explain in a bit more detail since it is an important one and it&rsquo;s syntax is a bit esoteric to say the least.</p>
+<h2 id="what-is-silence">What is silence</h2>
+<p>In the manual, <code>silence</code> is defined like this:</p>
+<p>&ldquo;Removes silence from the beginning, middle, or end of the audio. &lsquo;Silence&rsquo; is determined by a specified threshold.&rdquo;</p>
+<p><code>silence</code> takes a range of optional arguments but we will only use the first three of them:</p>
+<ul>
+<li>above-periods - indicate if audio should be trimmed at the begnning of the audio. 0 = no silence trimmed from beginning, 1 = trim silence from beginning</li>
+<li>duration - amount of time in seconds that non-silence must be detected before it stops trimming audio</li>
+<li>threshold - audio threshold, we will indicate this in percentages</li>
+</ul>
+<p>The parameters are stringed together after the <code>silence</code> keyword in the sox command like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence above-periods duration threshold
+</code></pre></div><h2 id="trimming-silence-from-beginning-and-end-of-one-file">Trimming silence from beginning and end of one file</h2>
+<p>To trim the beginning of a file until the audio is above 1% in volume for more than 0.1 seconds, you would write a command like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1%
+</code></pre></div><p>To trim the ending as well, we basically repeat the parameters like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1%
+</code></pre></div><h2 id="chaining-pseudo-effects">Chaining (pseudo) effects</h2>
+<p>This is all good and well, but we want to produce a sample bank from one input audio file. To do this we need to make use of SoX' ability to chain effects chains after eachother and enter into &ldquo;multiple output file mode&rdquo;.</p>
+<p>From the manual: &ldquo;In multiple output mode, a new file is created when the effects prior to the &lsquo;newfile&rsquo; indicate they are done. The effects chain listed after &lsquo;newfile&rsquo; is then started up and its output is saved to the new file.&rdquo;</p>
+<p>An effects chain can thus be chained after another using a colon <code>:</code>. Now instead of manually writing out the silence effect and it&rsquo;s parameters for each bit we want to extract from the sound file, we can make the process automatically restart each time it has detected a bit of sound by silence</p>
+<p>To do this we need to chain the <code>restart</code> pseudoeffect at the end of our command. This will make the process create a new file from the bit it detected by silence, then restart the process from where it left off and repeat until it reaches the end of the file. Kind of like slicing off bits of a (sound) sausage from left to right.</p>
+<p>Our final command for chopping files by silence will then end up looking like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox infile.wav outfile.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1% : newfile : restart
+</code></pre></div><h2 id="chopping-three-bursts">Chopping three bursts</h2>
+<p><img src="/img/small/threebursts.png" alt="alt"></p>
+<p>As an example of the above, let us have a look at a sound file containing three short noise bursts.</p>
+<p>The sound file is called threebursts.wav and can be <a href="/audio/threebursts.wav">downloaded here</a>.</p>
+<p>To split the soundfile into three seperate files containing the bursts (without the silence in between), we simply execute the command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sox threebursts.wav burst_num.wav silence <span style="color:#ae81ff">1</span> 0.1 1% <span style="color:#ae81ff">1</span> 0.1 1% : newfile : restart
+</code></pre></div><p>which will produce sound files called &ldquo;burst_num001.wav&rdquo;, &ldquo;burst_num002.wav&rdquo; etc.</p>
+<p>Now this works very well for our very unnatural example here, but I encourage you to mess around with the parameters when you do this on your own with your own files. Change the threshold to 5% for example if it&rsquo;s noisy or set the duration to something higher if it results in too many small files.</p>
+<p>Note: Sometimes on some systems this command will produce an extra audio file containing nothing. I honestly have no idea why. Just delete the file (or send me an email if you have a solution to this problem)</p>
+<hr>
+<p><em>This tutorial is part of a series:</em></p>
+<ul>
+<li><a href="/posts/sox-tutorial-cli-tape-music">SoX tutorial: Command line tape music</a></li>
+<li><a href="/posts/sox-tutorial-split-by-silence">SoX tutorial: Split by silence</a></li>
+<li><a href="/posts/sox-tutorial-batch-processing">SoX tutorial: Batch processing audio</a></li>
+<li><a href="/posts/sox-tutorial-sox-on-android">SoX tutorial: SoX on Android</a></li>
+</ul>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/sox">sox</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/tutorial">tutorial</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>782 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-04-26 01:07 &#43;0200</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+                        <span class="button previous">
+                            <a href="http://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/">
+                                <span class="button__icon">←</span>
+                                <span class="button__text">SoX tutorial: Batch processing audio on the command line</span>
+                            </a>
+                        </span>
+                    
+
+                    
+                        <span class="button next">
+                            <a href="http://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/">
+                                <span class="button__text">SoX tutorial: Command line tape music (an introduction)</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+            <span></span>
+            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
+
+
+
+    </body>
+</html>

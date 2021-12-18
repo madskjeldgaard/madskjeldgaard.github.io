@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in Stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux, supercollider, neovim" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://madskjeldgaard.dk/posts/settingupneovimasscide/" />
+
+
+    <title>
+        
+            Setting up NeoVim as a SuperCollider IDE :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+
+
+
+
+
+<meta itemprop="name" content="Setting up NeoVim as a SuperCollider IDE">
+<meta itemprop="description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in Stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim."><meta itemprop="datePublished" content="2021-12-01T00:00:00+00:00" />
+<meta itemprop="dateModified" content="2021-12-01T00:00:00+00:00" />
+<meta itemprop="wordCount" content="2597"><meta itemprop="image" content="http://madskjeldgaard.dk/img/neovim-logo-flat.png"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/sc-lysningsrommet.jpg">
+<meta itemprop="keywords" content="supercollider,neovim," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/neovim-logo-flat.png"/>
+
+<meta name="twitter:title" content="Setting up NeoVim as a SuperCollider IDE"/>
+<meta name="twitter:description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in Stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim."/>
+
+
+
+    <meta property="og:title" content="Setting up NeoVim as a SuperCollider IDE" />
+<meta property="og:description" content="SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in Stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C&#43;&#43;, lua and SuperCollider in one and the same project) and that editor for me is NeoVim." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/settingupneovimasscide/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/neovim-logo-flat.png" /><meta property="og:image" content="http://madskjeldgaard.dk/img/full/sc-lysningsrommet.jpg" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2021-12-01T00:00:00+00:00" />
+<meta property="article:modified_time" content="2021-12-01T00:00:00+00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2021-12-01 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>13 minutes
+
+            
+
+            </p>
+        </div>
+
+        <article>
+            <h1 class="post-title">
+                <a href="http://madskjeldgaard.dk/posts/settingupneovimasscide/">Setting up NeoVim as a SuperCollider IDE</a>
+            </h1>
+                <hr />
+                <aside id="toc">
+                <div class="toc-title">Table of Contents</div>
+                    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#a-slight-detour-new-to-neovim">A slight detour: New to (Neo)Vim?</a>
+      <ul>
+        <li><a href="#configuring-neovim-using-lua">Configuring NeoVim using lua</a></li>
+        <li><a href="#plugin-management">Plugin management</a></li>
+      </ul>
+    </li>
+    <li><a href="#scnvim---a-neovim-front-end-for-supercollider">SCNvim - A NeoVim front end for SuperCollider</a>
+      <ul>
+        <li><a href="#post-installation">Post installation</a></li>
+        <li><a href="#quick-tip-go-to-definition">Quick tip: Go to definition</a></li>
+      </ul>
+    </li>
+    <li><a href="#snippets-luasnip">Snippets: LuaSnip</a>
+      <ul>
+        <li><a href="#combining-auto-generated-snippets-with-custom-snippets">Combining auto generated snippets with custom snippets</a></li>
+      </ul>
+    </li>
+    <li><a href="#statusline">Statusline</a></li>
+    <li><a href="#advanced-syntax-highlighting-treesitter">Advanced syntax highlighting: Treesitter</a></li>
+    <li><a href="#fuzzy-finding">Fuzzy finding</a></li>
+    <li><a href="#additional-supercollider-plugins">Additional SuperCollider plugins</a></li>
+    <li><a href="#misc-plugins">Misc plugins</a></li>
+    <li><a href="#got-questions">Got questions?</a></li>
+  </ul>
+</nav>
+                </aside>
+                <hr />
+
+            
+
+            <div class="post-content">
+                <p><img src="/img/full/sc-lysningsrommet.jpg" alt="/img/full/sc-lysningsrommet.jpg">
+<em>SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at <a href="https://kkh.se/en/">the art academy in Stockholm</a></em></p>
+<p><a href="https://supercollider.github.io/">SuperCollider</a> is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim. The advantages of (Neo)Vim are many but for me the primary ones are that it is a keyboard centric tool, it&rsquo;s lightweight, it is highly configurable and it works <em>everywhere</em>.</p>
+<p>This in turn makes me a faster coder and makes the code itself better and more readable. When I started out with SuperCollider, the only option was to use classic vim with <a href="https://github.com/supercollider/scvim">scvim</a> - and while this was nice, a lot of things were missing for me and/or buggy. Then came NeoVim and in time, David Granström wrote the <a href="https://github.com/davidgranstrom/scnvim">SCNvim</a> plugin for NeoVim and I have been using this for all my SuperCollider coding since it came out.</p>
+<p>I get a lot of questions about setting up NeoVim for SuperCollider usage and so this post is a collection of advice, configuration and links to help you get started with using NeoVim and SuperCollider together.</p>
+<h2 id="a-slight-detour-new-to-neovim">A slight detour: New to (Neo)Vim?</h2>
+<p>If you are new to using (Neo)Vim, I would strongly recommend spending time learning the basics of the program before diving into all of this stuff. It will help you immensely and make it much more fun to use NeoVim as a SuperCollider IDE, so here is some advice for the newbie Vim user:</p>
+<p>Vim comes with a fantastic help system with a lot of documentation. The way to use it is to type <code>:h &lt;something&gt;</code> where you replace <code>&lt;something&gt;</code> with your search term. Whenever in doubt, try looking at the help system for help.</p>
+<p>Vim comes with a small tutorial that I recommend all new users go through. You can access it by running <code>:Tutor</code> inside of Vim.</p>
+<p>The vim manual can be accessed by running <code>:h usr_toc.txt</code> or if you want a nicely formatted version of it online: <a href="vim.help">vim.help</a>. Vim also has a <em>reference manual</em> which is more in the style of cheat sheets or extensive lists of commands and key bindings. My favourite of these and the one I recommend you open from time to time is <code>:h motions.txt</code> - reading this from time to time will turbo charge your editing speed.</p>
+<p><a href="https://thevaluable.dev/vim-beginner/">This blog series</a> is another great resource for newbies and seasoned users alike (I read it frequently).</p>
+<p>If you prefer videos, there are a gazillion video tutorials on YouTube and the like.</p>
+<p>A final but very important note to new vim users is: Don&rsquo;t blindly copy-paste configurations and plugins. A common mistake is to install tons of plugins and copy configurations from other people, but it is really important that you understand what each plugin does or what each line of configuration is doing to your system - otherwise you will end up with a bloated system with a ton of features and configuration that you do not know exist, let alone how to use them (I made all of these mistakes when I started out!). An additional advantage of installing things piece by piece is you can more easily see when/where problems or conflicts occur when you build your system.</p>
+<h3 id="configuring-neovim-using-lua">Configuring NeoVim using lua</h3>
+<p>NeoVim is a fork of Vim, and I won&rsquo;t get into the history of that here, but in terms of configuration this has a slightly confusing but important consequence. Originally, vim was configured using a language called vimscript (<a href="https://learnvimscriptthehardway.stevelosh.com/">this is a nice resource for learning</a> that language). This works perfectly fine in NeoVim, but it is frankly a nightmare to use that language for anything other than basic configuration. NeoVim solves this by allowing users to write all of their configurations and plugins using lua - a tiny, fast and frankly FUN programming language <a href="http://tylerneylon.com/a/learn-lua/">that you could potentially learn in 15 minutes</a> (this is an overstatement but it&rsquo;s good marketing).</p>
+<p>For NeoVim you can either call your configuration file init.vim or init.lua depending on which scripting language you use. It is common to break up the configuration into different files, but this is mostly to keep it clean and maintanable (<a href="https://github.com/Allaman/nvim/tree/main/lua">this is a nice way to organize your NeoVim configuration</a>). The manual says this about where to put it:</p>
+<pre tabindex="0"><code>The config file is located at:
+	Unix		~/.config/nvim/init.vim (or init.lua)
+	Windows		~/AppData/Local/nvim/init.vim (or init.lua)
+or if |$XDG_CONFIG_HOME| is defined:
+			$XDG_CONFIG_HOME/nvim/init.vim (or init.lua)
+</code></pre><p>If you are starting a new configuration with NeoVim with this, consult <code>:h init.lua</code> for more information on where to put the config file and what to call it. I&rsquo;d recommend going for <code>init.lua</code> and predominantly write the thing in lua.</p>
+<p>For a guide on <a href="https://github.com/nanotee/nvim-lua-guide">lua and neovim, see this</a>.</p>
+<p>In this post I will write all configuration using lua. To get the most out of the lua api of NeoVim, <em>it is important that you always have the latest version of NeoVim installed (at least version 0.5 which was a major release for the lua stuff).</em></p>
+<h3 id="plugin-management">Plugin management</h3>
+<p>In this post I won&rsquo;t go into details on how to install each plugin. This is done using a plugin manager - I highly recommend <a href="https://github.com/wbthomason/packer.nvim">packer.nvim</a> but you can use whatever you like.</p>
+<h2 id="scnvim---a-neovim-front-end-for-supercollider">SCNvim - A NeoVim front end for SuperCollider</h2>
+<p><a href="https://github.com/davidgranstrom/scnvim">SCNvim</a> is the plugin that makes it possible for us to work with SuperCollider inside of NeoVim.</p>
+<p>SCNvim serves two purposes. First of all, it adds most of the features we need to have a nice working environment for writing SuperCollider code. But the second, more subtle purpose is as a <a href="https://github.com/davidgranstrom/scnvim/wiki/Using-scnvim-from-lua">lua api for SuperCollider, making it really easy to execute any SuperCollider code from keybindings and functions in Neovim</a>.</p>
+<p>For information on how to configure scnvim, see <code>:h scnvim-configuration</code> and <a href="https://github.com/davidgranstrom/scnvim/wiki/Additional-configuration">the scnvim wiki</a>. Also check out <code>:h scnvim-mappings</code> to see the default key bindings for SCNvim.</p>
+<p>Here are some basic options you can configure for SCNvim that will take care of some of the basics.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- vim.g.scnvim_sclang_options = {&#39;-l&#39;, &#34;/home/mads/.config/SuperCollider/sclang_conf_development.yaml&#34;}</span>
+
+vim.g.scnvim_postwin_syntax_hl <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">-- scnvim neovim docs !</span>
+vim.g.scnvim_scdoc <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">-- vertical &#39;v&#39; or horizontal &#39;h&#39; split</span>
+vim.g.scnvim_postwin_orientation <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;v&#39;</span>
+
+<span style="color:#75715e">-- position of the post window &#39;right&#39; or &#39;left&#39;</span>
+vim.g.scnvim_postwin_direction <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;right&#39;</span>
+
+<span style="color:#75715e">-- default is half the terminal size for vertical and a third for horizontal</span>
+vim.g.scnvim_postwin_size <span style="color:#f92672">=</span> <span style="color:#ae81ff">50</span>
+
+<span style="color:#75715e">-- automatically open post window on a SuperCollider error</span>
+vim.g.scnvim_postwin_auto_toggle <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+
+<span style="color:#75715e">--	-- duration of the highlight</span>
+vim.g.scnvim_eval_flash_duration <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+
+<span style="color:#75715e">-- number of flashes. A value of 0 disables this feature.</span>
+vim.g.scnvim_eval_flash_repeats <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+
+<span style="color:#75715e">-- set this variable if you don&#39;t want the &#34;echo args&#34; feature</span>
+<span style="color:#75715e">-- vim.g.scnvim_echo_args = 0</span>
+
+<span style="color:#75715e">-- Configure the color of the evaluation flash</span>
+vim.cmd(<span style="color:#e6db74">[[ highlight SCNvimEval guifg=black guibg=white ctermfg=black ctermbg=white ]]</span>)
+
+<span style="color:#75715e">-- Uncomment to not use default keybindings</span>
+<span style="color:#75715e">-- vim.g.scnvim_no_mappings = 1</span>
+</code></pre></div><p>Most of the stuff following this point is optional to get SuperCollider working in NeoVim, but highly recommend to enhance your experience.</p>
+<h3 id="post-installation">Post installation</h3>
+<p>After installing SCNvim, make sure to run <code>:call scnvim#install()</code> so that your SuperCollider class library gets a link to the SCNvim SuperCollider classes needed for all of this to work.</p>
+<p>To make use of the help system, tags (for definitions) and snippets (when you&rsquo;ve set it up), you will need to run <code>:SCNvimTags</code> from time to time. This will basically map your SuperCollider class library and extensions and make NeoVim conscious of them (which also means you need to rerun this command when you add/remove classes or packages from SuperCollider to keep NeoVim up to date with those changes).</p>
+<h3 id="quick-tip-go-to-definition">Quick tip: Go to definition</h3>
+<p>If you&rsquo;ve installed SCNvim and run the <code>SCNvimTags</code> command and restarted NeoVim, you can easily look up definitions for SuperCollider classes. This is really useful in a lot of situations. To do this, put your cursor on a class in a SuperCollider file and press <code>g]</code> or <code>C-]</code> to open it up.</p>
+<p>Press <code>C-o</code> to jump backwards to where you came from (this is an easy way to get lost in rabbit holes, be warned).</p>
+<h2 id="snippets-luasnip">Snippets: LuaSnip</h2>
+<p>One of the productivity boosters of SCNvim is it&rsquo;s ability to automatically generate code snippets. SCNvim itself supports a range of snippet engines, but these days I prefer to use <a href="https://github.com/L3MON4D3/LuaSnip">LuaSnip</a>. After you&rsquo;ve installed and set up LuaSnip, add this to your scnvim configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Use the LuaSnip snippet engine</span>
+<span style="color:#75715e">-- SCNvim supports &#34;ultisnips&#34;, &#34;luasnip&#34; and &#34;snippets.nvim&#34;</span>
+vim.g.scnvim_snippet_format <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;luasnip&#39;</span>
+</code></pre></div><p>And then, in your LuaSnip snippet table, add the SCNvim snippets like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Add SCNvim snippets to LuaSnip</span>
+<span style="color:#75715e">-- Note: This replaces any supercollider snippets already present in LuaSnip</span>
+require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollider <span style="color:#f92672">=</span> require<span style="color:#e6db74">&#39;scnvim/utils&#39;</span>.get_snippets()
+</code></pre></div><p>Next step is to open up a SuperCollider file and run <code>:SCNvimTags</code> to regenerate the snippet system. Now, restart NeoVim, open up a SuperCollider buffer and type for example <code>SinOsc.ar</code> and press your LuaSnip expansion keybinding (probably Control-k).</p>
+<h3 id="combining-auto-generated-snippets-with-custom-snippets">Combining auto generated snippets with custom snippets</h3>
+<p><img src="/img/custom-sc-snips.gif" alt="/img/custom-sc-snips.gif"></p>
+<p>This is a more advanced tip and not mandatory for setting up SCNvim snippets. But we&rsquo;re all nerds here so why not:</p>
+<p>Instead of completely replacing all of LuaSnip&rsquo;s supercollider table, it is possible to combine it with your own custom SuperCollider snippets using a bit of lua code.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- This table contains all of your custom SuperCollider snippets</span>
+<span style="color:#66d9ef">local</span> my_custom_sc_snipz <span style="color:#f92672">=</span> {
+
+	<span style="color:#75715e">-- Ndef</span>
+	s(<span style="color:#e6db74">&#34;ndef&#34;</span>,{
+		t(<span style="color:#e6db74">&#34;Ndef(&#34;</span>),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;name&#34;</span>), t(<span style="color:#e6db74">&#34;,{|&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;freq=100, amp=0.5&#34;</span>), t({<span style="color:#e6db74">&#34;|&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;SinOsc.ar(freq) * amp;&#34;</span>), t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
+		t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;})&#34;</span>}),
+		i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;.play&#34;</span>),
+	}),
+
+	<span style="color:#75715e">-- SynthDef</span>
+	s(<span style="color:#e6db74">&#34;synthdef&#34;</span>,{
+		t(<span style="color:#e6db74">&#34;SynthDef(&#34;</span>),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;name&#34;</span>), t(<span style="color:#e6db74">&#34;,{|&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;out=0, amp=0.5&#34;</span>), t({<span style="color:#e6db74">&#34;|&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;var sig = SinOsc.ar;&#34;</span>), t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>}),
+		t(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>), i(<span style="color:#ae81ff">4</span>, <span style="color:#e6db74">&#34;Out.ar(out, sig)&#34;</span>),
+		t({<span style="color:#e6db74">&#34;&#34;</span>, <span style="color:#e6db74">&#34;})&#34;</span>}),
+		i(<span style="color:#ae81ff">5</span>, <span style="color:#e6db74">&#34;.add&#34;</span>),
+	}),
+
+	<span style="color:#75715e">-- Value pattern shorthands</span>
+	s(<span style="color:#e6db74">&#34;pwh&#34;</span>, { t(<span style="color:#e6db74">&#34;Pwhite(&#34;</span>), c(<span style="color:#ae81ff">1</span>, {t(<span style="color:#e6db74">&#34;0.0&#34;</span>), rnd()}), t(<span style="color:#e6db74">&#34;, &#34;</span>), c(<span style="color:#ae81ff">1</span>, {t(<span style="color:#e6db74">&#34;1.0&#34;</span>), rnd()}), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pbr&#34;</span>, { t(<span style="color:#e6db74">&#34;Pbrown(&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;0.0&#34;</span>), t(<span style="color:#e6db74">&#34;, &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;, &#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;0.125&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;ps&#34;</span>, { t(<span style="color:#e6db74">&#34;Pseq([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pr&#34;</span>, { t(<span style="color:#e6db74">&#34;Prand([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pxr&#34;</span>, { t(<span style="color:#e6db74">&#34;Prand([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pw&#34;</span>, { t(<span style="color:#e6db74">&#34;Pwrand([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;0.5, 0.5&#34;</span>), t(<span style="color:#e6db74">&#34;], [&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;50.0, 100.0&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pseg&#34;</span>, { t(<span style="color:#e6db74">&#34;Pseg(&#34;</span>), t(<span style="color:#e6db74">&#34;[&#34;</span>),i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0,0.0&#34;</span>), t(<span style="color:#e6db74">&#34;],&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;16&#34;</span>), t(<span style="color:#e6db74">&#34;,&#34;</span>), i(<span style="color:#ae81ff">3</span>, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">lin&#34;</span>), t(<span style="color:#e6db74">&#34;,&#34;</span>), i(<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pstep&#34;</span>, { t(<span style="color:#e6db74">&#34;Pstep(&#34;</span>), t(<span style="color:#e6db74">&#34;[&#34;</span>),i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;1.0,0.0&#34;</span>), t(<span style="color:#e6db74">&#34;],&#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;16&#34;</span>), t(<span style="color:#e6db74">&#34;,&#34;</span>), i(<span style="color:#ae81ff">3</span>,<span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+
+	<span style="color:#75715e">-- Misc Pattern</span>
+	s(<span style="color:#e6db74">&#34;pf&#34;</span>, { t(<span style="color:#e6db74">&#34;Pfunc({|ev| &#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;&#34;</span>), t(<span style="color:#e6db74">&#34; })&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;pp&#34;</span>, { t(<span style="color:#e6db74">&#34;Ppar([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;p,o&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+	s(<span style="color:#e6db74">&#34;ptp&#34;</span>, { t(<span style="color:#e6db74">&#34;Ptpar([&#34;</span>), i(<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;0.0, p, 2.0, o&#34;</span>), t(<span style="color:#e6db74">&#34;], &#34;</span>), i(<span style="color:#ae81ff">2</span>, <span style="color:#e6db74">&#34;inf&#34;</span>), t(<span style="color:#e6db74">&#34;)&#34;</span>)}),
+}
+
+<span style="color:#75715e">-- Now append custom snippets to table of scnvim snippets</span>
+<span style="color:#66d9ef">local</span> scnvim_snippets <span style="color:#f92672">=</span> require<span style="color:#e6db74">&#39;scnvim.utils&#39;</span>.get_snippets()
+require<span style="color:#e6db74">&#39;luasnip&#39;</span>.snippets.supercollider <span style="color:#f92672">=</span> vim.tbl_extend(<span style="color:#e6db74">&#39;force&#39;</span>, {}, scnvim_snippets, my_custom_sc_snipz)
+</code></pre></div><h2 id="statusline">Statusline</h2>
+<p><img src="/img/sc-statusline.gif" alt="/img/sc-statusline.gif"></p>
+<p>There are many cool choices for status line plugins for NeoVim. A popular one seems to be <a href="https://github.com/nvim-lualine/lualine.nvim">lualine</a>. I haven&rsquo;t compared all of the NeoVim status line plugins but I use <a href="https://github.com/glepnir/galaxyline.nvim">Galaxyline</a> at the moment.</p>
+<p>SCNvim comes with the ability to display the server status in the statusline of NeoVim.</p>
+<p>To get statuslines to work, you first need to edit your SuperCollider installation&rsquo;s <a href="https://doc.sccode.org/Reference/StartupFile.html">startup.scd</a> file and add the following:</p>
+<pre tabindex="0"><code class="language-supercollider" data-lang="supercollider">// scnvim
+if (\SCNvim.asClass.notNil) {
+    Server.default.doWhenBooted {
+        \SCNvim.asClass.updateStatusLine(1, \SCNvim.asClass.port);
+    }
+}
+</code></pre><p>And then in Galaxyline, this is a way to get the information from SCNvim displayed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">gls.left[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> {
+		Scnvim <span style="color:#f92672">=</span> {
+				provider <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
+						<span style="color:#66d9ef">local</span> scstatus <span style="color:#f92672">=</span> vim.api.nvim_call_function(<span style="color:#e6db74">&#34;scnvim#statusline#server_status&#34;</span>, {})
+						<span style="color:#66d9ef">return</span> scstatus
+				<span style="color:#66d9ef">end</span>,
+				condition <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>()
+						<span style="color:#66d9ef">if</span> vim.api.nvim_get_option(<span style="color:#e6db74">&#34;filetype&#34;</span>) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;supercollider&#34;</span> <span style="color:#66d9ef">then</span>
+								<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+						<span style="color:#66d9ef">else</span>
+								<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+						<span style="color:#66d9ef">end</span>
+				<span style="color:#66d9ef">end</span>,
+				icon <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; 📡 &#39;</span>,
+				separator <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>,
+				separator_highlight <span style="color:#f92672">=</span> {colors.blue, colors.bg},
+				highlight <span style="color:#f92672">=</span> {colors.blue, colors.bg},
+		}
+	}
+</code></pre></div><h2 id="advanced-syntax-highlighting-treesitter">Advanced syntax highlighting: Treesitter</h2>
+<p>Treesitter is an awesome &ldquo;code parser&rdquo; that has great support in NeoVim. It&rsquo;s basically a program that can quickly and precisely parse your code while you type it and understands scopes and hierarchies and can use that to make informed decisions. The main (but not only) use case for this is to have advanced syntax highlighting. What this means in practice is that treesitter understands for example what variables are local to functions, which variables are environment variables. It knows the difference between class and instance variables etc etc.</p>
+<p>There is a <a href="https://github.com/madskjeldgaard/tree-sitter-supercollider">tree-sitter grammar for SuperCollider</a>(I could really use some help in maintaining this if anyone is up for it) that enables treesitter to understand SuperCollider code. To use it in NeoVim, first install <a href="https://github.com/nvim-treesitter/nvim-treesitter">neovim-treesitter</a>, restart NeoVim and run <code>TSInstall supercollider</code>. This will download and compile the SuperCollider grammar.</p>
+<p>The only configuration I recommend specifically for SuperCollider and treesitter is to disable treesitter&rsquo;s indentation for SuperCollider - at the moment it is behaving strangely so best to just disable that by adding the following to your nvim-tree-sitter configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">indent <span style="color:#f92672">=</span> {
+	enable <span style="color:#f92672">=</span> {},
+	disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
+}
+</code></pre></div><p>It goes inside of the setup table for nvim-treesitter like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua"><span style="color:#75715e">-- Setup nvim-treesitter</span>
+require<span style="color:#e6db74">&#39;nvim-treesitter.configs&#39;</span>.setup {
+  ensure_installed <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;all&#34;</span>,
+  indent <span style="color:#f92672">=</span> {
+	  enable <span style="color:#f92672">=</span> {},
+	  disable <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;supercollider&#34;</span>}
+  },
+  highlight <span style="color:#f92672">=</span> {
+    enable <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>,              <span style="color:#75715e">-- false will disable the whole extension</span>
+  }
+}
+</code></pre></div><p><strong>Side note</strong>
+To get the most out of tree-sitter&rsquo;s delicious code highlighting, I recommend installing one of the modern, neovim-specific color schemes that have full support for it. Eg <a href="https://github.com/ellisonleao/gruvbox.nvim">gruvbox.nvim</a>, <a href="https://github.com/eddyekofo94/gruvbox-flat.nvim">gruvbox-flat.nvim</a> or <a href="https://github.com/navarasu/onedark.nvim">onedark.nvim</a>.</p>
+<h2 id="fuzzy-finding">Fuzzy finding</h2>
+<p><img src="/img/quarksinstall.gif" alt="/img/quarksinstall.gif"></p>
+<p>Fuzzy finding is in my opinion one of the greatest inventions in modern programming tooling. If you&rsquo;ve never used fuzzy finding before it will surely blow your mind when you use it for the first time. I highly recommend installing <a href="https://github.com/ibhagwan/fzf-lua#installation">fzf-lua</a> or <a href="https://github.com/junegunn/fzf.vim">fzf.vim</a> to get use of this in vim. This will for example enable commands to help you quickly search for files and specific words in all of your code files.</p>
+<p>I wrote a <a href="https://github.com/madskjeldgaard/fzf-sc">small plugin</a> that uses fzf to fuzzy search through a bunch of SuperCollider things like Quarks, Scales, help files, Node proxies, Synthdefs etc. It also contains a small API for creating your own fuzzy searchers for SuperCollider.</p>
+<h2 id="additional-supercollider-plugins">Additional SuperCollider plugins</h2>
+<p>If you want to get wild with your SuperCollider setup in NeoVim, I&rsquo;ve created a plugin for assorted hacks. Some of them are silly and some are really nice. I personally use the command <code>:SCNewQuark</code> all the time <a href="https://github.com/madskjeldgaard/supercollider-h4x-nvim">from this plugin</a> to generate a new SuperCollider package (this is why I am able to make and publish so/too many SuperCollider packages).</p>
+<h2 id="misc-plugins">Misc plugins</h2>
+<p>I highly recommend exploring the world of NeoVim-plugins. Things are moving extremely fast at the moment because the lua API of NeoVim has made it a lot easier to create plugins. As a consequence, there&rsquo;s a <a href="https://github.com/topics/neovim-plugin">gazillion NeoVim plugins out there</a> and I recommend finding and trying the ones that suit you. That said, here are a few that I use a lot with SuperCollider programming that aren&rsquo;t really specific to SuperCollider:</p>
+<ul>
+<li><a href="https://github.com/madskjeldgaard/reaper-nvim">reaper-nvim</a> - If you&rsquo;re a Reaper user, this lets your control Reaper from NeoVim.</li>
+<li><a href="https://github.com/akinsho/toggleterm.nvim">toggleterm</a> - NeoVim already has a great terminal you can open with <code>:term</code> but this plugin makes it even better.</li>
+<li><a href="https://github.com/hrsh7th/nvim-cmp">nvim-cmp</a> - A fantastic completion engine that integrates well with LuaSnip and treesitter.</li>
+<li><a href="https://github.com/tamago324/lir.nvim">lir.nvim</a> - File manager</li>
+<li><a href="https://github.com/tpope/vim-fugitive">vim-fugitive</a> - A great Git integration for vim</li>
+<li><a href="https://github.com/lewis6991/gitsigns.nvim">gitsigns.nvim</a> - Shows a small gutter in NeoVim highlighting what lines are changes, added etc.</li>
+</ul>
+<h2 id="got-questions">Got questions?</h2>
+<p>If you have any questions about SuperCollider, SCNvim or generally on using SuperCollider with NeoVim, I recommend asking on the <a href="scsynth.org">scsynth.org</a> forum. There&rsquo;s a thread on <a href="https://scsynth.org/t/scnvim-a-neovim-frontend-for-supercollider/4420">SCNvim here</a> but also try giving the forum <a href="https://scsynth.org/search?q=neovim">a search</a>, and if you cannot find an appropriate thread for your questions simply start a new one (I&rsquo;m really crap at answering emails so don&rsquo;t expect support from me if you go that route). For scnvim specific things, I&rsquo;d recommend asking on the <a href="https://github.com/davidgranstrom/scnvim/discussions">discussion forum of scnvim</a>.</p>
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/neovim">neovim</a></span>
+                </p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>2597 Words</p>
+
+            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-12-01 01:00 &#43;0100</p>
+        </div>
+
+        
+            <div class="pagination">
+                <div class="pagination__title">
+                    <span class="pagination__title-h">Read other posts</span>
+                    <hr />
+                </div>
+
+                <div class="pagination__buttons">
+                    
+
+                    
+                        <span class="button next">
+                            <a href="http://madskjeldgaard.dk/posts/audio-setup-arch-2021/">
+                                <span class="button__text">Setting up Arch Linux for audio performance</span>
+                                <span class="button__icon">→</span>
+                            </a>
+                        </span>
+                    
+                </div>
+            </div>
+        
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+            <span></span>
+            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
+
+
+
+    </body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="mads">
+<meta name="description" content="The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
+A nice alternative: A triangle wave synth with a low pass filter Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth." />
+<meta name="keywords" content="computer music, supercollider, rust, vim, linux, supercollider, tutorial" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="http://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/" />
+
+
+    <title>
+        
+            How to change the default synth in SuperCollider :: Mads Kjeldgaard  — Composer and developer
+        
+    </title>
+
+
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
+    type="text/css">
+
+
+
+<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+
+
+
+
+
+<meta itemprop="name" content="How to change the default synth in SuperCollider">
+<meta itemprop="description" content="The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
+A nice alternative: A triangle wave synth with a low pass filter Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth."><meta itemprop="datePublished" content="2019-10-18T12:42:12+00:00" />
+<meta itemprop="dateModified" content="2019-10-18T12:42:12+00:00" />
+<meta itemprop="wordCount" content="327"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+<meta itemprop="keywords" content="supercollider,tutorial," />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+
+<meta name="twitter:title" content="How to change the default synth in SuperCollider"/>
+<meta name="twitter:description" content="The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
+A nice alternative: A triangle wave synth with a low pass filter Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth."/>
+
+
+
+    <meta property="og:title" content="How to change the default synth in SuperCollider" />
+<meta property="og:description" content="The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
+A nice alternative: A triangle wave synth with a low pass filter Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2019-10-18T12:42:12+00:00" />
+<meta property="article:modified_time" content="2019-10-18T12:42:12+00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+
+
+
+    <meta property="article:published_time" content="2019-10-18 12:42:12 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+    </head>
+
+    <body class="">
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text">madskjeldgaard</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+            
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+            
+
+            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+</svg>
+</span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="http://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/">How to change the default synth in SuperCollider</a></h2>
+
+            
+
+            <div class="post-content">
+                <p>The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="a-nice-alternative-a-triangle-wave-synth-with-a-low-pass-filter">A nice alternative: A triangle wave synth with a low pass filter</h2>
+<p>Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth. Well that world is here and now.</p>
+<p>Overwriting the default is actually easy. All you have to do is write a new SynthDef called <code>\default</code>. Evaluate this piece of code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// A simple triangle wave synth in stereo 
+</span><span style="color:#75715e"></span>(
+<span style="color:#a6e22e">SynthDef</span>.<span style="color:#66d9ef">new</span>(<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#66d9ef">default</span>, {
+<span style="color:#a6e22e">arg</span> <span style="color:#a6e22e">dur</span>, <span style="color:#a6e22e">attack</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.01</span>, <span style="color:#a6e22e">release</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1.0</span>,
+<span style="color:#a6e22e">t_gate</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">out</span>, <span style="color:#a6e22e">freq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">442</span>, <span style="color:#a6e22e">cutoff</span><span style="color:#f92672">=</span><span style="color:#ae81ff">5500</span>,
+<span style="color:#a6e22e">rq</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, <span style="color:#a6e22e">pan</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.0</span>, <span style="color:#a6e22e">amp</span><span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>;
+
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">env</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">EnvGen</span>.<span style="color:#a6e22e">kr</span>(
+	<span style="color:#a6e22e">Env</span>.<span style="color:#a6e22e">perc</span>(<span style="color:#a6e22e">attack</span>, <span style="color:#a6e22e">release</span>), 
+	<span style="color:#a6e22e">t_gate</span>, 
+	<span style="color:#a6e22e">timeScale</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">dur</span>, 
+	<span style="color:#a6e22e">doneAction</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
+);
+<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">DPW3Tri</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">freq</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">freq</span>, <span style="color:#a6e22e">mul</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">env</span>);
+<span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">RLPF</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">sig</span>, <span style="color:#a6e22e">cutoff</span>.<span style="color:#a6e22e">clip</span>(<span style="color:#ae81ff">20.0</span>, <span style="color:#ae81ff">20000.0</span>), <span style="color:#a6e22e">rq</span>.<span style="color:#a6e22e">clip</span>(<span style="color:#ae81ff">0.0</span>,<span style="color:#ae81ff">1.0</span>));
+<span style="color:#a6e22e">sig</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">Pan2</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">sig</span>, <span style="color:#a6e22e">pan</span>);
+<span style="color:#a6e22e">Out</span>.<span style="color:#a6e22e">ar</span>(<span style="color:#a6e22e">out</span>, <span style="color:#a6e22e">sig</span> <span style="color:#f92672">*</span> <span style="color:#a6e22e">amp</span>);
+}).<span style="color:#a6e22e">add</span>;
+)
+</code></pre></div><p>Try this new default synth out by playing the default event again:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-smalltalk" data-lang="smalltalk">().play;
+</code></pre></div><p>Isn’t that much better?</p>
+<p>Now, let us try it with patterns:</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<h2 id="make-this-the-default-synth-permanently">Make this the default synth permanently</h2>
+<p>To make this change permanent we need to edit the startup file for SuperCollider. This is a regular SuperCollider file that is evaluated on startup. It is a good place to keep settings and defaults. Here is how to access it:</p>
+<ol>
+<li>
+<p>Open the SuperCollider IDE<!-- raw HTML omitted --></p>
+</li>
+<li>
+<p>In the top menu, click “File”</p>
+</li>
+<li>
+<p>In the drop down click “Open startup file”</p>
+</li>
+</ol>
+<p>Now, if we just paste the code from above here, it will still get overwritten by the default synth when booting the server. To get around this, we need to add our synth after the server has booted. We do this by wrapping our SynthDef in a server function called doWhenBooted (<code>s.doWhenBooted{/* paste code here*/}</code>):</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Here is what the default synth should now sound like (with a bit of reverb of course)</p>
+<!-- raw HTML omitted -->
+<p><!-- raw HTML omitted --><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2019/10/new-default-synth.mp4">https://www.madskjeldgaard.dk/wp-content/uploads/2019/10/new-default-synth.mp4</a><!-- raw HTML omitted --><!-- raw HTML omitted --></p>
+<!-- raw HTML omitted -->
+
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+  				<p>
+  					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/tutorial">tutorial</a></span>
+  				</p>
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2021</span>
+            
+            <span></span>
+            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+        </div>
+    </div>
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
+            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+        </div>
+    </div>
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+
+<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
+
+
+
+    </body>
+</html>

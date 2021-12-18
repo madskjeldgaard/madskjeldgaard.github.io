@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>neovim on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/neovim/</link>
+    <description>Recent content in neovim on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/neovim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Setting up NeoVim as a SuperCollider IDE</title>
+      <link>http://madskjeldgaard.dk/posts/settingupneovimasscide/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/settingupneovimasscide/</guid>
+      <description>SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in Stockholm
+SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cpp on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/cpp/</link>
+    <description>Recent content in cpp on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Fri, 14 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/cpp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A simple multi touch midi controller using the Trill sensor and Teensy LC</title>
+      <link>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</guid>
+      <description>I recently bought one of Bela&amp;rsquo;s Trill sensors - a really nice multitouch capacitive sensor that comes in various shapes and sizes (and open source hardware !). Capacitive touch sensing is something that has been used in analog modular synthesizers for half a century. The main attraction for me as an artist is that it is incredibly response as opposed to the bulky rubber buttons you get on terrible commercial midi controllers or even high quality switches: As soon as you touch it, it sends off a signal (as opposed to a hardware button where the button has to be pressed to the point where it triggers - it sounds like nothing when put in to writing but the difference in responsiveness is incredible).</description>
+    </item>
+    
+    <item>
+      <title>Tutorial: How to write plugins for SuperCollider using C&#43;&#43;</title>
+      <link>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</link>
+      <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</guid>
+      <description>My amazing workplace allowed me time during the Covid-19 lockdowns in Oslo to spend time improving my C++ and DSP skills. The result of this is a bunch of plugins for SuperCollider, some of which are already released as well as a trunk of Notam plugins that are to be announced.
+The process of creating server plugins (aka UGens) for SuperCollider is one of the most fun and gratifying ways one can experiment with DSP and C++ in my opinion.</description>
+    </item>
+    
+    <item>
+      <title>Setting up and using the Daisy Seed DSP platform on Linux</title>
+      <link>http://madskjeldgaard.dk/posts/daisy-setup/</link>
+      <pubDate>Thu, 11 Mar 2021 09:20:36 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/daisy-setup/</guid>
+      <description>I recently got hold of Electro-Smith&amp;rsquo;s powerful Daisy Seed microcontroller board for developing embedded DSP projects. Unfortunately, at the time of writing the libraries for it do not support Platformio fully which is normally my preferred way of working with microcontrollers but fortunately it&amp;rsquo;s pretty easy to setup and use using make. Here are my notes for doing that.
+Install prerequisites (on Arch) yay -S dfu-util gcc-arm-none-eabi-bin Setup and build libraries From the root of your project:</description>
+    </item>
+    
+    <item>
+      <title>Automatically build, compile and release SuperCollider plugins using Github Actions</title>
+      <link>http://madskjeldgaard.dk/posts/how-to-gh-action/</link>
+      <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/how-to-gh-action/</guid>
+      <description>Since the main SuperCollider github repository moved to using Github Actions to automatically build, compile and release cross platform, I felt intrigued to use the same technology to do the same for SuperCollider plugins.
+There is a number of amazing SuperCollider plugin repositories on Github - a lot will demand that the user compiles the sourcecode themselves to use the plugins. For people used to CMake and/or a Linux-ey workflow of compiling, this is not a big problem but for a lot of others (most people perhaps), it really is a doorstopper.</description>
+    </item>
+    
+    <item>
+      <title>A midi controller in a box of screws</title>
+      <link>http://madskjeldgaard.dk/posts/master-volume/</link>
+      <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
+      <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&amp;rsquo;s bits for this) to allow high resolution on the potentiometer&amp;rsquo;s input.
+The controller is very cheap and simple to make.</description>
+    </item>
+    
+    <item>
+      <title>Mutable Instruments dev environment on Arch Linux</title>
+      <link>http://madskjeldgaard.dk/posts/mutable-dev/</link>
+      <pubDate>Tue, 26 Jan 2021 13:39:45 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/mutable-dev/</guid>
+      <description>Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware (check out this brilliant tutorial om how to do the same).
+The company has even open sourced it&amp;rsquo;s development environment which on most systems may be setup in a virtual machine.
+But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely.</description>
+    </item>
+    
+    <item>
+      <title>Helpful SuperCollider plugin macros</title>
+      <link>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</link>
+      <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</guid>
+      <description>This is a transcription of Dan Stowell&amp;rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &amp;ldquo;new&amp;rdquo; c++ style for writing plugins. It contains some of the macros available when writing UGens/Plugins in c++ in SuperCollider.
+This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
+Also check out this cookiecutter template for generating plugins and the Server Plugin API.</description>
+    </item>
+    
+    <item>
+      <title>Notes on writing SuperCollider plugins</title>
+      <link>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</link>
+      <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</guid>
+      <description>This post is a collection of notes on how to write plugins for SuperCollider.
+This post will be updated as I go along.
+Useful links This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
+Also check out this cookiecutter template for generating plugins and the Server Plugin API.
+The two different styles There are two different headers that contain SuperCollider&amp;rsquo;s plugin boiler plate code.</description>
+    </item>
+    
+    <item>
+      <title>NeoVim setup for c&#43;&#43; and openFrameworks development</title>
+      <link>http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/</link>
+      <pubDate>Mon, 06 Apr 2020 15:44:23 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/</guid>
+      <description>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
+This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
+I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.</description>
+    </item>
+    
+  </channel>
+</rss>

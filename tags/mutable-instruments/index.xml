@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>mutable-instruments on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/mutable-instruments/</link>
+    <description>Recent content in mutable-instruments on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Tue, 26 Jan 2021 13:39:45 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/mutable-instruments/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mutable Instruments dev environment on Arch Linux</title>
+      <link>http://madskjeldgaard.dk/posts/mutable-dev/</link>
+      <pubDate>Tue, 26 Jan 2021 13:39:45 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/mutable-dev/</guid>
+      <description>Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware (check out this brilliant tutorial om how to do the same).
+The company has even open sourced it&amp;rsquo;s development environment which on most systems may be setup in a virtual machine.
+But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely.</description>
+    </item>
+    
+  </channel>
+</rss>

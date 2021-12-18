@@ -1,0 +1,416 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/</link>
+    <description>Recent content in Tags on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>neovim</title>
+      <link>http://madskjeldgaard.dk/tags/neovim/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/neovim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>supercollider</title>
+      <link>http://madskjeldgaard.dk/tags/supercollider/</link>
+      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/supercollider/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>arch</title>
+      <link>http://madskjeldgaard.dk/tags/arch/</link>
+      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/arch/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>windows</title>
+      <link>http://madskjeldgaard.dk/tags/windows/</link>
+      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/windows/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>manjaro</title>
+      <link>http://madskjeldgaard.dk/tags/manjaro/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/manjaro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vst</title>
+      <link>http://madskjeldgaard.dk/tags/vst/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/vst/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>wine</title>
+      <link>http://madskjeldgaard.dk/tags/wine/</link>
+      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/wine/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>bela</title>
+      <link>http://madskjeldgaard.dk/tags/bela/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/bela/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>controller</title>
+      <link>http://madskjeldgaard.dk/tags/controller/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/controller/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cpp</title>
+      <link>http://madskjeldgaard.dk/tags/cpp/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/cpp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>diy</title>
+      <link>http://madskjeldgaard.dk/tags/diy/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/diy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>teensy</title>
+      <link>http://madskjeldgaard.dk/tags/teensy/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/teensy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>trill</title>
+      <link>http://madskjeldgaard.dk/tags/trill/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/trill/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>dsp</title>
+      <link>http://madskjeldgaard.dk/tags/dsp/</link>
+      <pubDate>Fri, 16 Apr 2021 16:08:27 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/dsp/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>faust</title>
+      <link>http://madskjeldgaard.dk/tags/faust/</link>
+      <pubDate>Fri, 16 Apr 2021 16:08:27 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/faust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>daisy</title>
+      <link>http://madskjeldgaard.dk/tags/daisy/</link>
+      <pubDate>Thu, 11 Mar 2021 09:20:36 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/daisy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cmake</title>
+      <link>http://madskjeldgaard.dk/tags/cmake/</link>
+      <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/cmake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>github</title>
+      <link>http://madskjeldgaard.dk/tags/github/</link>
+      <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/github/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mutable-instruments</title>
+      <link>http://madskjeldgaard.dk/tags/mutable-instruments/</link>
+      <pubDate>Tue, 26 Jan 2021 13:39:45 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/mutable-instruments/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>esp32</title>
+      <link>http://madskjeldgaard.dk/tags/esp32/</link>
+      <pubDate>Mon, 09 Nov 2020 16:29:19 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/esp32/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>microcontroller</title>
+      <link>http://madskjeldgaard.dk/tags/microcontroller/</link>
+      <pubDate>Mon, 09 Nov 2020 16:29:19 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/microcontroller/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>osc</title>
+      <link>http://madskjeldgaard.dk/tags/osc/</link>
+      <pubDate>Mon, 09 Nov 2020 16:29:19 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/osc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>14bitmidi</title>
+      <link>http://madskjeldgaard.dk/tags/14bitmidi/</link>
+      <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/14bitmidi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>microcontrollers</title>
+      <link>http://madskjeldgaard.dk/tags/microcontrollers/</link>
+      <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/microcontrollers/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>midi</title>
+      <link>http://madskjeldgaard.dk/tags/midi/</link>
+      <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/midi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>http://madskjeldgaard.dk/tags/linux/</link>
+      <pubDate>Sat, 10 Oct 2020 17:17:22 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>granularsynthesis</title>
+      <link>http://madskjeldgaard.dk/tags/granularsynthesis/</link>
+      <pubDate>Fri, 21 Aug 2020 11:14:29 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/granularsynthesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>raspberrypi</title>
+      <link>http://madskjeldgaard.dk/tags/raspberrypi/</link>
+      <pubDate>Thu, 11 Jun 2020 16:49:29 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/raspberrypi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rust</title>
+      <link>http://madskjeldgaard.dk/tags/rust/</link>
+      <pubDate>Thu, 11 Jun 2020 16:49:29 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>nvim</title>
+      <link>http://madskjeldgaard.dk/tags/nvim/</link>
+      <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/nvim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>vim</title>
+      <link>http://madskjeldgaard.dk/tags/vim/</link>
+      <pubDate>Thu, 11 Jun 2020 11:07:41 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>eurorack</title>
+      <link>http://madskjeldgaard.dk/tags/eurorack/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/eurorack/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>modular-synthesis</title>
+      <link>http://madskjeldgaard.dk/tags/modular-synthesis/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/modular-synthesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>open-source</title>
+      <link>http://madskjeldgaard.dk/tags/open-source/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/open-source/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ornament-and-crime</title>
+      <link>http://madskjeldgaard.dk/tags/ornament-and-crime/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/ornament-and-crime/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zita-njbridge</title>
+      <link>http://madskjeldgaard.dk/tags/zita-njbridge/</link>
+      <pubDate>Sun, 03 May 2020 10:17:27 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/zita-njbridge/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>termux</title>
+      <link>http://madskjeldgaard.dk/tags/termux/</link>
+      <pubDate>Thu, 30 Apr 2020 16:07:22 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/termux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>creative-coding</title>
+      <link>http://madskjeldgaard.dk/tags/creative-coding/</link>
+      <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/creative-coding/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>http://madskjeldgaard.dk/tags/tutorial/</link>
+      <pubDate>Sun, 26 Apr 2020 15:02:49 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sox</title>
+      <link>http://madskjeldgaard.dk/tags/sox/</link>
+      <pubDate>Sun, 26 Apr 2020 10:21:42 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/sox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>openframeworks</title>
+      <link>http://madskjeldgaard.dk/tags/openframeworks/</link>
+      <pubDate>Mon, 06 Apr 2020 15:44:23 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/openframeworks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>workshop-material</title>
+      <link>http://madskjeldgaard.dk/tags/workshop-material/</link>
+      <pubDate>Thu, 23 Jan 2020 21:18:29 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/workshop-material/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ambisonics</title>
+      <link>http://madskjeldgaard.dk/tags/ambisonics/</link>
+      <pubDate>Thu, 22 Aug 2019 08:56:36 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/ambisonics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>c&#43;&#43;</title>
+      <link>http://madskjeldgaard.dk/tags/c&#43;&#43;/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>gdb</title>
+      <link>http://madskjeldgaard.dk/tags/gdb/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/tags/gdb/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

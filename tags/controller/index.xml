@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>controller on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/controller/</link>
+    <description>Recent content in controller on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Fri, 14 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/controller/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A simple multi touch midi controller using the Trill sensor and Teensy LC</title>
+      <link>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</link>
+      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</guid>
+      <description>I recently bought one of Bela&amp;rsquo;s Trill sensors - a really nice multitouch capacitive sensor that comes in various shapes and sizes (and open source hardware !). Capacitive touch sensing is something that has been used in analog modular synthesizers for half a century. The main attraction for me as an artist is that it is incredibly response as opposed to the bulky rubber buttons you get on terrible commercial midi controllers or even high quality switches: As soon as you touch it, it sends off a signal (as opposed to a hardware button where the button has to be pressed to the point where it triggers - it sounds like nothing when put in to writing but the difference in responsiveness is incredible).</description>
+    </item>
+    
+    <item>
+      <title>A midi controller in a box of screws</title>
+      <link>http://madskjeldgaard.dk/posts/master-volume/</link>
+      <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
+      <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&amp;rsquo;s bits for this) to allow high resolution on the potentiometer&amp;rsquo;s input.
+The controller is very cheap and simple to make.</description>
+    </item>
+    
+    <item>
+      <title>Control voltage and SuperCollider: Using the open source module Ornament &amp; Crime as a midi-cv interface</title>
+      <link>http://madskjeldgaard.dk/posts/hemisphere/</link>
+      <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/hemisphere/</guid>
+      <description>My Ornament &amp;amp; Crime build (the Mini OC version). The USB connector on the Teensy on the back of the module has been rewired to a Neutrik USB connector attached to a panel next to it (the grey panel).
+I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.</description>
+    </item>
+    
+  </channel>
+</rss>

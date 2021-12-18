@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>microcontroller on Mads Kjeldgaard</title>
+    <link>http://madskjeldgaard.dk/tags/microcontroller/</link>
+    <description>Recent content in microcontroller on Mads Kjeldgaard</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-uk</language>
+    <lastBuildDate>Mon, 09 Nov 2020 16:29:19 +0100</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/microcontroller/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Esp32 Simple Osc Receiver</title>
+      <link>http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/</link>
+      <pubDate>Mon, 09 Nov 2020 16:29:19 +0100</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/</guid>
+      <description>Lately I have started experimenting with the very cheap and powerful ESP32 microcontrollers.
+Today I made a simple example of a firmware which receives OSC from a computer and then blinks the on-board LED according to the incoming message and I packaged it all as an easy to clone/copy/use platformio project (mostly for myself).
+The firmware uses CNMAT&amp;rsquo;s OSC library:
+#include &amp;#34;Arduino.h&amp;#34;#include &amp;#34;WiFi.h&amp;#34;#include &amp;lt;OSCMessage.h&amp;gt; WiFiUDP Udp; // A UDP instance to let us send and receive packets over UDP int LED_BUILTIN = 2; // Options int update_rate = 16; // Network settings char ssid[] = &amp;#34;wifiname&amp;#34;; // your network SSID (name) char pass[] = &amp;#34;wifipassword&amp;#34;; // your network password unsigned int localPort = 8888; // local port to listen for OSC packets  void setup() { pinMode(LED_BUILTIN, OUTPUT); /* setup wifi */ WiFi.</description>
+    </item>
+    
+    <item>
+      <title>Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins</title>
+      <link>http://madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</link>
+      <pubDate>Thu, 22 Aug 2019 08:56:36 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</guid>
+      <description>Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
+Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
+In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.</description>
+    </item>
+    
+  </channel>
+</rss>
