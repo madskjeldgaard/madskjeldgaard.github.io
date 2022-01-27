@@ -2,20 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>termux on Mads Kjeldgaard</title>
+    
+    
+    
     <link>http://madskjeldgaard.dk/tags/termux/</link>
     <description>Recent content in termux on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Thu, 30 Apr 2020 16:07:22 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/termux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 30 Apr 2020 16:07:22 +0200</lastBuildDate>
+    
+	<atom:link href="http://madskjeldgaard.dk/tags/termux/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Notes for setting up a Raspberry Pi 4 for audio work</title>
       <link>http://madskjeldgaard.dk/posts/raspi4-notes/</link>
       <pubDate>Thu, 30 Apr 2020 16:07:22 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/raspi4-notes/</guid>
-      <description>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
 I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
-It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</description>
+It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -24,9 +42,20 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
       <pubDate>Sun, 26 Apr 2020 10:21:42 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/</guid>
-      <description>In this tutorial, I will cover how to install and setup SoX on android devices using Termux.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          In this tutorial, I will cover how to install and setup SoX on android devices using Termux.
 Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.
-Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.</description>
+Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.
+          
+        
+        </description>
     </item>
     
   </channel>

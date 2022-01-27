@@ -2,29 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>teensy on Mads Kjeldgaard</title>
+    
+    
+    
     <link>http://madskjeldgaard.dk/tags/teensy/</link>
     <description>Recent content in teensy on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 14 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/teensy/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>A simple multi touch midi controller using the Trill sensor and Teensy LC</title>
-      <link>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</link>
-      <pubDate>Fri, 14 May 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</guid>
-      <description>I recently bought one of Bela&amp;rsquo;s Trill sensors - a really nice multitouch capacitive sensor that comes in various shapes and sizes (and open source hardware !). Capacitive touch sensing is something that has been used in analog modular synthesizers for half a century. The main attraction for me as an artist is that it is incredibly response as opposed to the bulky rubber buttons you get on terrible commercial midi controllers or even high quality switches: As soon as you touch it, it sends off a signal (as opposed to a hardware button where the button has to be pressed to the point where it triggers - it sounds like nothing when put in to writing but the difference in responsiveness is incredible).</description>
-    </item>
+    <lastBuildDate>Wed, 21 Oct 2020 15:48:28 +0200</lastBuildDate>
     
-    <item>
-      <title>A midi controller in a box of screws</title>
-      <link>http://madskjeldgaard.dk/posts/master-volume/</link>
-      <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
-      <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&amp;rsquo;s bits for this) to allow high resolution on the potentiometer&amp;rsquo;s input.
-The controller is very cheap and simple to make.</description>
-    </item>
+	<atom:link href="http://madskjeldgaard.dk/tags/teensy/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>Working with 14bit Midi using a Teensy microcontroller and Supercollider</title>
@@ -32,7 +20,41 @@ The controller is very cheap and simple to make.</description>
       <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</guid>
-      <description>Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>A midi controller in a box of screws</title>
+      <link>http://madskjeldgaard.dk/posts/master-volume/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.
+          
+        
+        </description>
     </item>
     
   </channel>

@@ -2,19 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pages on Mads Kjeldgaard</title>
+    
+    
+    
     <link>http://madskjeldgaard.dk/pages/</link>
     <description>Recent content in Pages on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 19 Jun 2020 09:30:50 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/pages/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 Jun 2020 09:30:50 +0200</lastBuildDate>
+    
+	<atom:link href="http://madskjeldgaard.dk/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Software</title>
       <link>http://madskjeldgaard.dk/pages/software/</link>
       <pubDate>Fri, 19 Jun 2020 09:30:50 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/pages/software/</guid>
-      <description>Most of the software I develop as part of my practice is made available on Github.
-DSP  mkplugins - A collection of C++ based DSP plugins for SuperCollider. faustgen - The Faust compiler embedded in SuperCollider. Gutter Synth for SuperCollider  SuperCollider packages  OutputFX - Easy output fx management CC14 - 14 bit midi for SuperCollider Sleet - A library / factory for SuperCollider sound effects allbuf - Create all possible buffer player patches as SynthDefs in SuperCollider (all = many) PolyBuf - Load samples to buffers, easily Particular - A SuperCollider package for particle synthesis mk-synthlib - My personal synthesizer factory/library for SuperCollider  Vim  faust-nvim - Faust plugin for Vim microcontroller-nvim - Microcontroller plugin for NeoVim, integrating Platformio seamlessly and adding nifty commands for Teensy and other popular dev boards.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Most of the software I develop as part of my practice is made available on Github.
+ tree-sitter-supercollider - Advanced, incremental code parser grammar adding support for the SuperCollider programming language in the tree-sitter parser.  Instruments / Systems #   vortex - A system for turbulent tape music akkorder - This repo contains the code used to generate the pieces for the release &amp;ldquo;Akkorder&amp;rdquo; by Mads Kjeldgaard.  Command line tools #   osccli - OSC Communication on the command line.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -23,8 +41,19 @@ DSP  mkplugins - A collection of C++ based DSP plugins for SuperCollider. faustg
       <pubDate>Wed, 27 May 2020 22:25:05 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/pages/movies/</guid>
-      <description>These are films that I saw (oftentime with Sofie) and liked a lot and that I recommend others to watch as well.
-   title year     A Separation 2011   Alien 1979   All Hands On Deck 2020   Alphaville 1965   Amour 2012   Antichrist 2009   Apocalypse Now 1979   Ascenseur pour l&amp;rsquo;échafaud 1958   Bacurau 2019   Beanpole 2019   Borgman 2013   Brazil 1985   Bullhead 2011   Caché 2005   Chaser 2008   Down Terrace 2009   Elle 2016   Embrace of the serpent 2015   Festen 1998   Fucking Åmål 1999   Hiroshima Mon Amour 1959   Ikiru 1952   In the mood for love 2000   Kramer vs.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          These are films that I saw (oftentime with Sofie) and liked a lot and that I recommend others to watch as well.
+   title year     A Separation 2011   Alien 1979   Alphaville 1965   Amour 2012   Antichrist 2009   Apocalypse Now 1979   Ascenseur pour l&amp;rsquo;échafaud 1958   Bacurau 2019   Borgman 2013   Bullhead 2011   Caché 2005   Chaser 2008   Down Terrace 2009   Elle 2016   Festen 1998   Fucking Åmål 1999   Hiroshima Mon Amour 1959   Ikiru 1952   L&amp;rsquo;Humanité 1999   La Vie de Jésus 1997   Lady Snowblood 1973   Le Feu Follet 1963   Le Samouraï 1967   Le feu follet 1963   Lost in Translation 2003   Love Streams 1984   Lyset fra sjokoladefabrikken 2020   Naked 1993   Night and Day 2008   Night of the Hunter 1955   Nobody Knows 2004   Oslo, 31.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -33,8 +62,19 @@ DSP  mkplugins - A collection of C++ based DSP plugins for SuperCollider. faustg
       <pubDate>Thu, 30 Apr 2020 12:48:40 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/pages/work/</guid>
-      <description>Releases         3D audio Verdenskværnen
-I solens flint 1000 floder</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Releases #         Compilations #   3D audio #  Verdenskværnen
+I solens flint 1000 floder
+          
+        
+        </description>
     </item>
     
     <item>
@@ -43,9 +83,19 @@ I solens flint 1000 floder</description>
       <pubDate>Tue, 14 Apr 2020 10:41:44 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/pages/about/</guid>
-      <description>new Twitch.Player(&#34;twitch-embed&#34;, { video: &#34;895251155&#34;, height: 500, width: 900 });  Bio Mads Kjeldgaard (b. 1988 Horsens, Denmark) is an electronic music composer.
-His main field of interest as a composer is computer music.
-He has studied Electronic Music Composition at the Danish Institute of Electronic Music (DIEM) at the Royal Academy of Music and has a degree in journalism from the Danish School of Media and Journalism.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Bio #  Mads Kjeldgaard (b. 1988 Horsens, Denmark) is an electronic music composer.
+His main field of interest as a composer is computer music. Using selfauthored algorithmic systems and DIY electronics, he explores psychoacoustics as well as ideas of time, perception and &amp;ldquo;living&amp;rdquo; sound environments. By expressing himself mainly in software, his compositions often end up as code outlining the conditions of composition, rather than the specificities of the artform.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -54,12 +104,23 @@ He has studied Electronic Music Composition at the Danish Institute of Electroni
       <pubDate>Tue, 14 Apr 2020 10:41:44 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/pages/concerts/</guid>
-      <description>Past concerts:
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Past concerts:
 September 20th-21st, Ultima Festival @ Sentralen. World premiere of 3D audio piece &amp;ldquo;I solens flint 1000 floder&amp;rdquo; + ambisonic remixes of classic works of Else Marie Pade, Bernard Parmegiani and Edgar(d) Varése.
 June 17th, SCOslo community concert @ Notam.
 April 28th, IAC, Malmø, Sweden @ INTONAL Festival. Acousmatic concert with Giuseppe Pisano
 March 9th, 2019, Kulturhuset, Oslo, Norway @ Fritt Fall. Livecode / improvisation.
-December 6th, 2018, Cappelens Forslag, Oslo, Norway @ Hollow Body Timbals release.</description>
+December 6th, 2018, Cappelens Forslag, Oslo, Norway @ Hollow Body Timbals release.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -68,13 +129,22 @@ December 6th, 2018, Cappelens Forslag, Oslo, Norway @ Hollow Body Timbals releas
       <pubDate>Tue, 14 Apr 2020 10:41:44 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/pages/contact/</guid>
-      <description>Email: mail ☺ madskjeldgaard.dk
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Email: mail ☺ madskjeldgaard.dk
 Github: madskjeldgaard
-Codeberg: madskjeldgaard
 Instagram: @mads_kjeldgaard
-Twitch: twitch
 YouTube: youtube
-Configuration files: dotfiles</description>
+Configuration files: dotfiles
+          
+        
+        </description>
     </item>
     
   </channel>

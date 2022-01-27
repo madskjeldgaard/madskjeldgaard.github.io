@@ -1,60 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="">
-<meta name="description" content="I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&amp;rsquo;s bits for this) to allow high resolution on the potentiometer&amp;rsquo;s input.
-The controller is very cheap and simple to make." />
-<meta name="keywords" content="computer music, supercollider, rust, vim, linux, supercollider, cpp, teensy, controller" />
+  <head>
+    
+      <title>
+        A midi controller in a box of screws ::
+        Mads Kjeldgaard — Composer and developer
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here."
+/>
+<meta
+  name="keywords"
+  content="computer music, supercollider, rust, vim, linux"
+/>
 <meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
 <link rel="canonical" href="http://madskjeldgaard.dk/posts/master-volume/" />
 
 
-    <title>
-        
-            A midi controller in a box of screws :: Mads Kjeldgaard  — Composer and developer
-        
-    </title>
 
 
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
+<link rel="stylesheet" href="http://madskjeldgaard.dk/assets/style.css" />
+
+<link rel="stylesheet" href="http://madskjeldgaard.dk/style.css" />
 
 
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="http://madskjeldgaard.dk/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="http://madskjeldgaard.dk/img/favicon.png" />
 
-<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
 
 
-
-
-
-
-<meta itemprop="name" content="A midi controller in a box of screws">
-<meta itemprop="description" content="I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&rsquo;s bits for this) to allow high resolution on the potentiometer&rsquo;s input.
-The controller is very cheap and simple to make."><meta itemprop="datePublished" content="2021-02-06T21:16:09+00:00" />
-<meta itemprop="dateModified" content="2021-02-06T21:16:09+00:00" />
-<meta itemprop="wordCount" content="136"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/screws1.jpg"><meta itemprop="image" content="http://madskjeldgaard.dk/img/full/screws2.jpg">
-<meta itemprop="keywords" content="supercollider,cpp,teensy,controller," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/full/screws1.jpg"/>
 
 <meta name="twitter:title" content="A midi controller in a box of screws"/>
-<meta name="twitter:description" content="I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&rsquo;s bits for this) to allow high resolution on the potentiometer&rsquo;s input.
-The controller is very cheap and simple to make."/>
+<meta name="twitter:description" content="I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here."/>
 
 
 
-    <meta property="og:title" content="A midi controller in a box of screws" />
-<meta property="og:description" content="I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&rsquo;s bits for this) to allow high resolution on the potentiometer&rsquo;s input.
-The controller is very cheap and simple to make." />
+<meta property="og:title" content="A midi controller in a box of screws" />
+<meta property="og:description" content="I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/master-volume/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/full/screws1.jpg" /><meta property="og:image" content="http://madskjeldgaard.dk/img/full/screws2.jpg" /><meta property="article:section" content="posts" />
-<meta property="article:published_time" content="2021-02-06T21:16:09+00:00" />
-<meta property="article:modified_time" content="2021-02-06T21:16:09+00:00" /><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+<meta property="og:site_name" content="Mads Kjeldgaard" />
 
 
 
@@ -62,87 +75,147 @@ The controller is very cheap and simple to make." />
 
 
 
-    <meta property="article:published_time" content="2021-02-06 21:16:09 &#43;0000 UTC" />
-
-
-
-
-
-
-
-
-    </head>
-
-    <body class="">
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">></span>
-            <span class="logo__text">madskjeldgaard</span>
-            <span class="logo__cursor" style=
-                  "
-                   
-                   ">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
-            
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
-    </ul>
-</nav>
-
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
-            
-
-            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
 </svg>
 </span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/pages/about">about</a></li>
+        
+      
+        
+          <li><a href="/pages/contact">contact</a></li>
+        
+      
+        
+          <li><a href="/posts">posts</a></li>
+        
+      
+        
+          <li><a href="/pages/software">software</a></li>
+        
+      
+        
+          <li><a href="/pages/work">sound</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/pages/about">about</a></li>
+      
+    
+      
+        <li><a href="/pages/contact">contact</a></li>
+      
+    
+      
+        <li><a href="/posts">posts</a></li>
+      
+    
+      
+        <li><a href="/pages/software">software</a></li>
+      
+    
+      
+        <li><a href="/pages/work">sound</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
         </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
     </span>
+  </span>
 </header>
 
 
-            <div class="content">
-                
-    <main class="post">
+      <div class="content">
+        
+  
+  
 
-        <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>One minute
+  <div class="post">
+    <h1 class="post-title">A midi controller in a box of screws</h1>
+    <div class="post-meta">
+      
 
-            
+      
 
-            </p>
-        </div>
 
-        <article>
-            <h1 class="post-title">
-                <a href="http://madskjeldgaard.dk/posts/master-volume/">A midi controller in a box of screws</a>
-            </h1>
+      
+    </div>
 
-            
+    
+      <span class="post-tags">
+        
+          <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+        
+          <a href="http://madskjeldgaard.dk/tags/cpp/">#cpp</a>&nbsp;
+        
+          <a href="http://madskjeldgaard.dk/tags/teensy/">#teensy</a>&nbsp;
+        
+      </span>
+    
 
-            <div class="post-content">
-                <p><img src="/img/full/screws1.jpg" alt="box of screws controller">
+    
+
+    <div class="post-content">
+      
+      <p><img src="/img/full/screws1.jpg" alt="box of screws controller">
 <img src="/img/full/screws2.jpg" alt="box of screws controller"></p>
-<p>I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&rsquo;s bits for this) to allow high resolution on the potentiometer&rsquo;s input.</p>
-<p>The controller is very cheap and simple to make.
-It revolves around the wonderful and cheap (11$) Teensy LC.</p>
+<p>I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former.</p>
+<p>It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.</p>
 <p>Bill of materials includes:</p>
 <ul>
 <li>A 10k potentiometer</li>
@@ -150,86 +223,143 @@ It revolves around the wonderful and cheap (11$) Teensy LC.</p>
 <li>A <a href="https://www.pjrc.com/teensy/teensyLC.html">Teensy LC</a></li>
 <li>A box (I used a leftover box that had contained some wood screws - perfect size!)</li>
 <li>A few wires</li>
-<li>(Optionally) A <a href="https://www.thingiverse.com/thing:4568474">3D-printed bracket to mount the Teensy to the side of the box</a></li>
 </ul>
 <p>All <a href="https://github.com/madskjeldgaard/MasterVolumeController">code and notes for building may be found here</a>.</p>
+<h2 id="supercollider-example">
+  SuperCollider example
+  <a href="#supercollider-example" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>To use this controller as the master volume controller in SuperCollider you may copy and paste the following code to your startup file in SuperCollider.</p>
+<pre tabindex="0"><code>//------------------------------------------
+// Server volume set by external controller
+//------------------------------------------
 
-            </div>
-        </article>
+Server.local.waitForBoot{
 
-        <hr />
+	// Adjust these to match the Teensy code
+	var potentiometerCC = 7;
+	var muteNoteNum = 44;
+	var midichan = 0;
 
-        <div class="post-info">
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/supercollider">supercollider</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/cpp">cpp</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/teensy">teensy</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/controller">controller</a></span>
-                </p>
+	// Adjust this if device sourceid varies
+	var deviceSrcID = 1572864; 
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>136 Words</p>
+	// ----------------
 
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2021-02-06 22:16 &#43;0100</p>
-        </div>
+	// Connect midi
+	MIDIIn.connectAll();
 
-        
-            <div class="pagination">
-                <div class="pagination__title">
-                    <span class="pagination__title-h">Read other posts</span>
-                    <hr />
-                </div>
+	// Setup responder for master volume
+	MIDIdef.cc(\masterVolume, {|...args| 
+		var value = args[0];
+		var volume = (value / 128.0).ampdb;
 
-                <div class="pagination__buttons">
-                    
-                        <span class="button previous">
-                            <a href="http://madskjeldgaard.dk/posts/how-to-gh-action/">
-                                <span class="button__icon">←</span>
-                                <span class="button__text">Automatically build, compile and release SuperCollider plugins using Github Actions</span>
-                            </a>
-                        </span>
-                    
+		&quot;Server volume: % db&quot;.format(volume.round(0.01)).postln;
 
-                    
-                        <span class="button next">
-                            <a href="http://madskjeldgaard.dk/posts/mutable-dev/">
-                                <span class="button__text">Mutable Instruments dev environment on Arch Linux</span>
-                                <span class="button__icon">→</span>
-                            </a>
-                        </span>
-                    
-                </div>
-            </div>
-        
-    </main>
+		Server.local.volume = volume;
+	}, 
+		chan: midichan,
+		ccNum: potentiometerCC, 
+		srcID: deviceSrcID
+	).fix; // Make permanent between hardstops
 
-            </div>
+	// Mute button
+	MIDIdef.noteOn(\masterMute, {|...args| 
 
-            
-                <footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2021</span>
-            
-            <span></span>
-            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
-        </div>
+		if(Server.local.volume.isMuted, {
+			&quot;Unmuting...&quot;.postln; 
+			Server.local.unmute 
+		}, {
+			&quot;Muting...&quot;.postln; 
+			Server.local.mute 
+		})
+
+	}, 
+		noteNum: muteNoteNum, 
+		chan: midichan,
+		srcID: deviceSrcID
+	).fix; // Make permanent between hardstops
+
+};
+
+</code></pre>
     </div>
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
-            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">SuperCollider tutorial: Easily render generative compositions as sound files using NRT</span>
+                </a>
+              </span>
+            
+            
+          </div>
         </div>
-    </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2022 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
 </footer>
 
-            
-        </div>
-
-        
+<script src="http://madskjeldgaard.dk/assets/main.js"></script>
+<script src="http://madskjeldgaard.dk/assets/prism.js"></script>
 
 
+      
+    </div>
 
-
-<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
-
-
-
-    </body>
+    
+  </body>
 </html>

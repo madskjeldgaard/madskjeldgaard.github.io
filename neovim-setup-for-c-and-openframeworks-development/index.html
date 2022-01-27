@@ -1,48 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="mads">
-<meta name="description" content="It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
+  <head>
+    
+      <title>
+        NeoVim setup for c&#43;&#43; and openFrameworks development ::
+        Mads Kjeldgaard — Composer and developer
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
 This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
 I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
-So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins." />
-<meta name="keywords" content="computer music, supercollider, rust, vim, linux, cpp, openframeworks, creative-coding, tutorial" />
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins."
+/>
+<meta
+  name="keywords"
+  content="computer music, supercollider, rust, vim, linux"
+/>
 <meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
 <link rel="canonical" href="http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/" />
 
 
-    <title>
-        
-            NeoVim setup for c&#43;&#43; and openFrameworks development :: Mads Kjeldgaard  — Composer and developer
-        
-    </title>
 
 
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
+<link rel="stylesheet" href="http://madskjeldgaard.dk/assets/style.css" />
+
+<link rel="stylesheet" href="http://madskjeldgaard.dk/style.css" />
 
 
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="http://madskjeldgaard.dk/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="http://madskjeldgaard.dk/img/favicon.png" />
 
-<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
 
 
-
-
-
-
-<meta itemprop="name" content="NeoVim setup for c&#43;&#43; and openFrameworks development">
-<meta itemprop="description" content="It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
-This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
-I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
-So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins."><meta itemprop="datePublished" content="2020-04-06T15:44:23+00:00" />
-<meta itemprop="dateModified" content="2020-04-06T15:44:23+00:00" />
-<meta itemprop="wordCount" content="769"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
-<meta itemprop="keywords" content="cpp,openframeworks,creative-coding,tutorial," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 
@@ -54,7 +59,7 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 
 
 
-    <meta property="og:title" content="NeoVim setup for c&#43;&#43; and openFrameworks development" />
+<meta property="og:title" content="NeoVim setup for c&#43;&#43; and openFrameworks development" />
 <meta property="og:description" content="It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
 This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
 I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
@@ -70,83 +75,163 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 
 
 
-    <meta property="article:published_time" content="2020-04-06 15:44:23 &#43;0000 UTC" />
-
-
-
-
-
-
-
-
-    </head>
-
-    <body class="">
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">></span>
-            <span class="logo__text">madskjeldgaard</span>
-            <span class="logo__cursor" style=
-                  "
-                   
-                   ">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
-            
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
-    </ul>
-</nav>
-
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
-            
-
-            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
 </svg>
 </span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/pages/about">about</a></li>
+        
+      
+        
+          <li><a href="/pages/contact">contact</a></li>
+        
+      
+        
+          <li><a href="/posts">posts</a></li>
+        
+      
+        
+          <li><a href="/pages/software">software</a></li>
+        
+      
+        
+          <li><a href="/pages/work">sound</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/pages/about">about</a></li>
+      
+    
+      
+        <li><a href="/pages/contact">contact</a></li>
+      
+    
+      
+        <li><a href="/posts">posts</a></li>
+      
+    
+      
+        <li><a href="/pages/software">software</a></li>
+      
+    
+      
+        <li><a href="/pages/work">sound</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
         </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
     </span>
+  </span>
 </header>
 
 
-            <div class="content">
-                
-    <main class="post">
+      <div class="content">
+        
+  
+  
 
-        <div class="post-info">
-            
-            </p>
-        </div>
+  <div class="post">
+    <h1 class="post-title">NeoVim setup for c++ and openFrameworks development</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-04-06
+        </span>
 
-        <article>
-            <h2 class="post-title"><a href="http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/">NeoVim setup for c++ and openFrameworks development</a></h2>
+        
+      
 
-            
+      
+        <span class="post-author"
+          >— Written by mads</span
+        >
 
-            <div class="post-content">
-                <p><img src="/img/small/of-vim.png" alt="open frameworks + vim"></p>
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="http://madskjeldgaard.dk/tags/cpp/">#cpp</a>&nbsp;
+        
+          <a href="http://madskjeldgaard.dk/tags/openframeworks/">#openframeworks</a>&nbsp;
+        
+          <a href="http://madskjeldgaard.dk/tags/creative-coding/">#creative-coding</a>&nbsp;
+        
+          <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+      <p><img src="/img/small/of-vim.png" alt="open frameworks + vim"></p>
 <p>It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.</p>
 <p>This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.</p>
 <p>I got a lot of pointers for this setup from <a href="https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE">Chendi Xue’s blogpost about Vim/CPP development</a>.</p>
 <p>So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.</p>
-<h2 id="install-clang-formatting">Install clang formatting</h2>
+<h2 id="install-clang-formatting">
+  Install clang formatting
+  <a href="#install-clang-formatting" class="h-anchor" aria-hidden="true">#</a>
+</h2>
 <p>On Arch Linux I had to install clang to make this work: <code>sudo pacman -Syu clang</code></p>
 <p>There’s some really nice autoformatting plugins from Google. Add these to your init.vim and install:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; Code formatting (for c++)</span><span style="color:#960050;background-color:#1e0010">
@@ -157,7 +242,10 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#75715e">&#34; CPP setup done using this tutorial https://xuechendi.github.io/2019/11/11/VIM-CPP-IDE-2019-111-11-VIM_CPP_IDE</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">&#34; Code formatting</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span> <span style="color:#a6e22e">FileType</span> <span style="color:#a6e22e">c</span>,<span style="color:#a6e22e">cpp</span>,<span style="color:#a6e22e">proto</span>,<span style="color:#a6e22e">javascript</span> <span style="color:#a6e22e">AutoFormatBuffer</span> <span style="color:#a6e22e">clang</span>-<span style="color:#a6e22e">format</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><h2 id="ctags">Ctags</h2>
+</span></code></pre></div><h2 id="ctags">
+  Ctags
+  <a href="#ctags" class="h-anchor" aria-hidden="true">#</a>
+</h2>
 <p>Ctags makes it possible to autocomplete source code when you are writing code and with the power of YCM it should also make it possible to work with methods of classes in a nice way.</p>
 <p>First, install Ctags</p>
 <p>Arch: <code>sudo pacman -Syu ctags</code></p>
@@ -167,7 +255,10 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <p>Now, from the root of your open frameworks projects you can run the following command to generate a tags file:</p>
 <p><code>compiledb -n make</code></p>
 <p>This will output a file called <code>compile_commands.json</code> containing the tags.</p>
-<h2 id="youcompleteme">YouCompleteMe</h2>
+<h2 id="youcompleteme">
+  YouCompleteMe
+  <a href="#youcompleteme" class="h-anchor" aria-hidden="true">#</a>
+</h2>
 <p><img src="/img/gif/of-ycm.gif" alt="open frameworks + vim"></p>
 <p><a href="https://www.madskjeldgaard.dk/wp-content/uploads/2020/04/of-ycm.gif"><!-- raw HTML omitted --></a></p>
 <p>Following this installation guide thoroughly <a href="https://github.com/ycm-core/YouCompleteMe/wiki/Full-Installation-Guide">installation guide</a></p>
@@ -179,7 +270,10 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 <p>Try opening up a openframeworks, run the <code>compiledb -n make</code> command and move to <code>ofApp.cpp</code> and inside the setup function add the following:</p>
 <p><code>auto rect = ofRectangle(0, 0, 250, 250);</code></p>
 <p>This will make a rectangle object. Now, in the next line, write <code>rect.</code> – by the <code>.</code> you should now see a list of suggested methods to use that are native to the ofRectangle class.</p>
-<h2 id="keybindings">Keybindings</h2>
+<h2 id="keybindings">
+  Keybindings
+  <a href="#keybindings" class="h-anchor" aria-hidden="true">#</a>
+</h2>
 <p>Most of the relevant keymappings I use, I got from <a href="http://roosnaflak.com/tech-and-research/openframeworks-nvim-archlinux/">Kenneth Flak’s blogpost about the same</a>. These will setup vim to compile your oF program when you press ctrl-e (this is convenient since this is the same shortcut we use in <a href="https://github.com/davidgranstrom/scnvim">SCNVim</a>):</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-vim" data-lang="vim"><span style="color:#a6e22e">augroup</span> <span style="color:#a6e22e">c</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">autocmd</span>!<span style="color:#960050;background-color:#1e0010">
@@ -213,7 +307,10 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">mv</span> :<span style="color:#a6e22e">AV</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#75715e">&#34; switch in same window</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">nnoremap</span> <span style="color:#a6e22e">ma</span> :<span style="color:#a6e22e">A</span><span style="color:#960050;background-color:#1e0010">
-</span></code></pre></div><h1 id="snippets">Snippets</h1>
+</span></code></pre></div><h1 id="snippets">
+  Snippets
+  <a href="#snippets" class="h-anchor" aria-hidden="true">#</a>
+</h1>
 <p><img src="/img/gif/of-snippets.gif" alt="open frameworks + vim"></p>
 <p>Another really nice feature in this dev environment is the addition of snippets. I use UltiSnips for this. When I set this up, I read varying reports about how well UltiSnips works with YCM, but for me it works fine.</p>
 <p>Install <a href="https://github.com/SirVer/ultisnips">UltiSnips</a> and then add these to your init.vim:</p>
@@ -265,49 +362,58 @@ So, without further ado here are my notes for setting up shop using YouCompleteM
 </span><span style="color:#960050;background-color:#1e0010"></span>#<span style="color:#66d9ef">endif</span><span style="color:#960050;background-color:#1e0010">
 </span><span style="color:#960050;background-color:#1e0010"></span><span style="color:#a6e22e">endsnippet</span><span style="color:#960050;background-color:#1e0010">
 </span></code></pre></div>
-            </div>
-        </article>
-
-        <hr />
-
-        <div class="post-info">
-  				<p>
-  					<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/cpp">cpp</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/openframeworks">openframeworks</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/creative-coding">creative-coding</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/tutorial">tutorial</a></span>
-  				</p>
-  		</div>
-    </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2021</span>
-            
-            <span></span>
-            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
-        </div>
     </div>
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
-            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
-        </div>
-    </div>
+    
+
+    
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2022 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
 </footer>
 
-            
-        </div>
-
-        
+<script src="http://madskjeldgaard.dk/assets/main.js"></script>
+<script src="http://madskjeldgaard.dk/assets/prism.js"></script>
 
 
+      
+    </div>
 
-
-<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
-
-
-
-    </body>
+    
+  </body>
 </html>

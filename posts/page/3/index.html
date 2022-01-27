@@ -1,0 +1,1554 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+         ::
+        Mads Kjeldgaard — Composer and developer
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content=""
+/>
+<meta
+  name="keywords"
+  content="computer music, supercollider, rust, vim, linux"
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="http://madskjeldgaard.dk/posts/" />
+
+
+
+
+
+<link rel="stylesheet" href="http://madskjeldgaard.dk/assets/style.css" />
+
+<link rel="stylesheet" href="http://madskjeldgaard.dk/style.css" />
+
+
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="http://madskjeldgaard.dk/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="http://madskjeldgaard.dk/img/favicon.png" />
+
+
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
+
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="Website of composer Mads Kjeldgaard"/>
+
+
+
+<meta property="og:title" content="" />
+<meta property="og:description" content="Website of composer Mads Kjeldgaard" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="http://madskjeldgaard.dk/posts/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="og:site_name" content="Mads Kjeldgaard" />
+
+
+
+
+<link rel="alternate" type="application/rss+xml" href="/posts/index.xml" title="Mads Kjeldgaard" />
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/pages/about">about</a></li>
+        
+      
+        
+          <li><a href="/pages/contact">contact</a></li>
+        
+      
+        
+          <li><a href="/posts">posts</a></li>
+        
+      
+        
+          <li><a href="/pages/software">software</a></li>
+        
+      
+        
+          <li><a href="/pages/work">sound</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/pages/about">about</a></li>
+      
+    
+      
+        <li><a href="/pages/contact">contact</a></li>
+      
+    
+      
+        <li><a href="/posts">posts</a></li>
+      
+    
+      
+        <li><a href="/pages/software">software</a></li>
+      
+    
+      
+        <li><a href="/pages/work">sound</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  <div class="posts">
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/mutable-dev/">Mutable Instruments dev environment on Arch Linux</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2021-01-26
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/cpp/">#cpp</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/arch/">#arch</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/mutable-instruments/">#mutable-instruments</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware.
+The company has even open sourced it&rsquo;s development environment which on most systems may be setup in a virtual machine.
+But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/mutable-dev/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/">Working with 14bit Midi using a Teensy microcontroller and Supercollider</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-10-21
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/teensy/">#teensy</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/microcontrollers/">#microcontrollers</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/midi/">#midi</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/14bitmidi/">#14bitmidi</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/14bit-midi-teensy-supercollider/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/portable-arch-computermusic-distro-usb/">A portable Arch Linux Computer Music system on a USB drive</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-10-10
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/arch/">#arch</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/linux/">#linux</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Inspired by this blog post, I have been toying with a silly idea lately: A completely portable Arch Linux distribution set up properly for computer music, but flashed onto a USB thumb drive so that I may pop it into any computer, boot from the thumb drive and start creating music on whatever hardware is in front of me.
+I have achieved this now using the awesome alma project. Alma is a tool for creating persistent USB installations of Arch Linux using a series of configuration files and bash scripts called presets.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/portable-arch-computermusic-distro-usb/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/vst-manager/">How to install Windows VST Plugins on Arch Linux</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-10-02
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/arch/">#arch</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/vst/">#vst</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/windows/">#windows</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the linvst VST plugin bridging software.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/vst-manager/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/aur-package-workflow/">Notes on creating packages for the Arch User Repository (AUR)</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-09-19
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/arch/">#arch</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/linux/">#linux</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              These are notes I have been taking while making packages for the Arch User Repository, a community based package repository for users of Arch Linux and it&rsquo;s derivative operating systems. This isn&rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.
+If you have a tolerance for YouTube videos, then maybe this video will be helpful to you.
+It is also recommend to read the official guide on how to create packages: Creating packages.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/aur-package-workflow/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/pattern-workshop-sept-2020/">Workshop notes for SuperCollider pattern introduction workshop september 2020</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-09-01
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              These are workshop notes for the online introductory SuperCollider workshop put on by Notam in September 2020. It covers the basics of using the pattern library in SuperCollider
+You can download the notes here: workshop-notes
+Design #   Short history of SuperCollider #  SC was designed by James McCartney as closed source proprietary software
+Version 1 came out in 1996 based on a Max object called Pyrite. Cost 250$+shipping and could only run on PowerMacs.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/pattern-workshop-sept-2020/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/kloudgenerator-sketch/">Sketch for a granular cloud generator in SuperCollider</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-08-21
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/granularsynthesis/">#granularsynthesis</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              A cloud generator is basically a synthesis process that generates a lot of micro sound events (grains) at the same time. This as a whole becomes a bigger textural structure called a &ldquo;cloud&rdquo; generally.
+  I have done a lot of experiments lately using SuperCollider&rsquo;s pattern library to sequence micro compositions on a per-sound-particle basis, but to take a break from that work (which rarely leads to succesful results I have to say), I challenged myself a bit and tried to make an audio rate granular synthesis cloud generator.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/kloudgenerator-sketch/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/">Raspberry Pi 4: Simple Button to OSC example in Rust</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-06-11
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/rust/">#rust</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/raspberrypi/">#raspberrypi</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/osc/">#osc</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Today I did a small experiment with my Raspberry Pi 4: I wanted to poll the GPIO data pins and use data from them in SuperCollider. This is best done by polling the pins in a separate program and then sending that data to SuperCollider via OSC.
+I have done this in Python before but I much prefer doing this kind of thing in Rust since the latter is fast and safe (and just generally: I love Rust!
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/raspi-4-gpio-button-rust/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/rust-ycm/">Setting up Vim and YouCompleteMe for Rust development</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-06-11
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/vim/">#vim</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/nvim/">#nvim</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/rust/">#rust</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              These are notes for setting up YouCompleteMe - a program for autocompletion, code linting and debugging in the text editor Vim - for developing Rust programs. I find this program vital to my Rust workflow because it allows me to more easily explore code and correct mistakes before they reach the compiler. YouCompleteMe will tell you if there are syntactic mistakes in your code, it will tell you about unused variables and code and it will often suggest changes to problematic code.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/rust-ycm/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/interview-pa-2020/">Interview with Passive/Aggressive</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-06-06
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              At the beginning of the Covid-19 crisis the Danish artist Claus Haxholm reached out to me to do an interview by email. It turned out to be a lengthy email exchange which resulted in an interview available on the Danish music website Passive/Aggressive.
+In the interview (which is in Danish unfortunately) I talk about the brain, morphology, Norway, time and different speculative subjects related to computer music, as well as my Vortex system.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/interview-pa-2020/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/hemisphere/">Control voltage and SuperCollider: Using the open source module Ornament &amp; Crime as a midi-cv interface</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-05-24
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/ornament-and-crime/">#ornament-and-crime</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/open-source/">#open-source</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/modular-synthesis/">#modular-synthesis</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/eurorack/">#eurorack</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              My Ornament &amp; Crime build (the Mini OC version). The USB connector on the Teensy on the back of the module has been rewired to a Neutrik USB connector attached to a panel next to it (the grey panel).
+I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/hemisphere/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/raspi-zita-njbridge/">Networked audio using Raspberry Pi 4 (zita-njbridge and SuperCollider)</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-05-03
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/raspberrypi/">#raspberrypi</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/zita-njbridge/">#zita-njbridge</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Jack is an incredibly flexible piece of software for making audio connections. It&rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
+This is exploited to it&rsquo;s fullest in the zita-njbridge package.
+To quote from the manual on zita-njbridge:
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/raspi-zita-njbridge/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/raspi4-notes/">Notes for setting up a Raspberry Pi 4 for audio work</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-30
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/raspberrypi/">#raspberrypi</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/termux/">#termux</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
+It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/raspi4-notes/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/awesome-sc/">Awesome SuperCollider: A curated list</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-30
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              A while ago I started compiling a list of links to SuperCollider based things that I found interesting and wanted to save for later.
+The list grew and at one point I organized it all in one public repository where the SuperCollider community could help curate links to awesome SuperCollider things and it has since then become a truly rich resource for things like tutorials, reading material, nice projects and tools.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/awesome-sc/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/nannou-osc-guides/">On Rust, OSC and creative coding in nannou</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-26
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/rust/">#rust</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/creative-coding/">#creative-coding</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Nannou is a relatively new framework for creative coding ⨪ kind of like processing, openFrameworks and cinder.
+A creative coding framework usually consists of a cluster of tools for working creatively with audio, visuals, robotics, lasers and many other things in one coding framework, and nannou is no different.
+The great thing about nannou is that it is a framework making use of the cool new systems programming language Rust.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/nannou-osc-guides/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/sox-tutorial-sox-on-android/">SoX tutorial: SoX on Android</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-26
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/sox/">#sox</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/termux/">#termux</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              In this tutorial, I will cover how to install and setup SoX on android devices using Termux.
+Termux is a free “Android terminal emulator and Linux environment app that works directly with no rooting or setup required”.
+Basically it is a command line interface for your Android device and works like a small linux distribution. It even includes a package management system. And if you get something like an OTG-dongle you can even connect a keyboard and/or a class compliant sound interface.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/sox-tutorial-sox-on-android/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/sox-tutorial-batch-processing/">SoX tutorial: Batch processing audio on the command line</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-26
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/sox/">#sox</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              To make full use of SoX' potential for batch processing we will be using a bit of command line wizardry.
+The idea is to put our sox command inside of a for-loop which iterates over all audio files in the folder you are currently in. If you are unsure of what folder your terminal is executing from, you can write pwd to see it&rsquo;s full path and ls to see the folder&rsquo;s contents.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/sox-tutorial-batch-processing/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/sox-tutorial-split-by-silence/">SoX tutorial: Split by silence</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-26
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/sox/">#sox</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              SoX has a very effective and rather precise way of semi-automatically chopping a sound file into smaller sound files.
+Let us say you have a sound file containing many different sounds seperated by a bit of silence in between. It could be a series of drum hits that you have recorded off of a drum machine. To make these sounds easy to use, you most probably need them as seperate sound files so you can load them into a sampler or other software as a sample bank of sorts.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/sox-tutorial-split-by-silence/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/sox-tutorial-cli-tape-music/">SoX tutorial: Command line tape music (an introduction)</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-26
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/sox/">#sox</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              SoX is a very powerful command line audio processing tool. You can think of it as a sort of command line equivalent of Audacity but with a text based interface that let&rsquo;s you perform powerful audio operations by typing just a few words in your computer&rsquo;s terminal.
+I came across SoX via the live coding community where it is a popular tool for chopping sound files (by detecting silence) and batch processing large quantities of audio files (eg.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/sox-tutorial-cli-tape-music/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/neovim-setup-for-c-and-openframeworks-development/">NeoVim setup for c++ and openFrameworks development</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-06
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/cpp/">#cpp</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/openframeworks/">#openframeworks</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/creative-coding/">#creative-coding</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              It is possible to get a nice development environment on Linux (and other platforms) using NeoVim and a few plugins and settings.
+This dev environment includes snippets, autocomplete, debugging and smart code suggestions for methods.
+I got a lot of pointers for this setup from Chendi Xue’s blogpost about Vim/CPP development.
+So, without further ado here are my notes for setting up shop using YouCompleteMe, UltiSnips and some formatting plugins.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/neovim-setup-for-c-and-openframeworks-development/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/">SuperCollider workshop at Notam, january 2020: Algorithmic composition using patterns</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-01-23
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/workshop-material/">#workshop-material</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Here are the slides for the SuperCollider workshop at Notam, january 2020.
+Download slides
+ Algorithmic composition using patterns #  Notam, january 2020 #   About me #   Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)   Notam #   Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others), see website notam.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/">Pattern workshop, Herlev Bibliotek 2019</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-11-06
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/workshop-material/">#workshop-material</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.
+The SynthDef used for the workshop [can be downloaded here.][1]
+Download slides here.
+ SuperCollider workshop #  Herlev Bibliotek, Denmark, 2019 #   About me #   Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)    Notam #   Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others) Studios / 3D sound / VR / Visuals Courses   My practice #   Computer music / livecoding Field recording 3D sound composition Sound environments   Contact info #   mail: mail@madskjeldgaard.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/pattern-workshop-herlev-bibliotek-2019/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/">How to change the default synth in SuperCollider</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-10-18
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
+A nice alternative: A triangle wave synth with a low pass filter #  Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/how-to-change-the-default-synth-in-supercollider/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/scintro-notam-2019/">Introduction to SuperCollider, Notam 2019</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-09-01
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/workshop-material/">#workshop-material</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Here you will find the material for the introductory workshop held at Notam, Oslo in late summer 2019.
+The slides may be used as a sort of cheatsheet as well as notes for remembering the topics covered:
+• An overview: What is SuperCollider and what can you do with it?
+• The design and architecture of SuperCollider
+• Language basics: syntax, variables, expressions and functions
+• Learning resources: How to proceed from here
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/scintro-notam-2019/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/">Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-08-22
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/ambisonics/">#ambisonics</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/microcontroller/">#microcontroller</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
+Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
+In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/">SuperCollider tutorial: Mass producing SynthDefs</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-08-19
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
+But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
+This becomes annoying when working with UGens that want to know the exact number of channels used, eg.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/">SuperCollider tutorial: Easily render generative compositions as sound files using NRT</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-08-05
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
+NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/master-volume/">A midi controller in a box of screws</a></h1>
+        <div class="post-meta">
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/cpp/">#cpp</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/teensy/">#teensy</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/master-volume/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+      <span class="button previous">
+        <a href="/posts/page/2/">
+          <span class="button__icon">←</span>
+          <span class="button__text">Newer posts</span>
+        </a>
+      </span>
+    
+    
+  </div>
+</div>
+
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2022 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="http://madskjeldgaard.dk/assets/main.js"></script>
+<script src="http://madskjeldgaard.dk/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

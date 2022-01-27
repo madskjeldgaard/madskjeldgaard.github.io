@@ -2,20 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ambisonics on Mads Kjeldgaard</title>
+    
+    
+    
     <link>http://madskjeldgaard.dk/tags/ambisonics/</link>
     <description>Recent content in ambisonics on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Thu, 22 Aug 2019 08:56:36 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/ambisonics/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 22 Aug 2019 08:56:36 +0000</lastBuildDate>
+    
+	<atom:link href="http://madskjeldgaard.dk/tags/ambisonics/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Ambisonics tutorial: Binaural head rotation using Reaper, Hedrot and IEM Plugins</title>
       <link>http://madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</link>
       <pubDate>Thu, 22 Aug 2019 08:56:36 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</guid>
-      <description>Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Hedrot is an inexpensive head rotator that you can build yourself and attach to any pair of head phones, based on a small microcontroller (a Teensy) with an attached sensor board that measures your head’s rotation, pitch, tilt, etc.
 Using the Hedrot, you can monitor a binaural version of an ambisonic mix in a pair of headphones and be able to move your head around inside the sound field.
-In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.</description>
+In this tutorial we will cover how to set up the Hedrot application to send it’s sensor data via OSC to Reaper to rotate our ambisonic mix with our head movements.
+          
+        
+        </description>
     </item>
     
   </channel>

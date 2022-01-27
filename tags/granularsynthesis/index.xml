@@ -2,19 +2,37 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>granularsynthesis on Mads Kjeldgaard</title>
+    
+    
+    
     <link>http://madskjeldgaard.dk/tags/granularsynthesis/</link>
     <description>Recent content in granularsynthesis on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Fri, 21 Aug 2020 11:14:29 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/granularsynthesis/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 21 Aug 2020 11:14:29 +0200</lastBuildDate>
+    
+	<atom:link href="http://madskjeldgaard.dk/tags/granularsynthesis/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Sketch for a granular cloud generator in SuperCollider</title>
       <link>http://madskjeldgaard.dk/posts/kloudgenerator-sketch/</link>
       <pubDate>Fri, 21 Aug 2020 11:14:29 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/kloudgenerator-sketch/</guid>
-      <description>A cloud generator is basically a synthesis process that generates a lot of micro sound events (grains) at the same time. This as a whole becomes a bigger textural structure called a &amp;ldquo;cloud&amp;rdquo; generally.
-  I have done a lot of experiments lately using SuperCollider&amp;rsquo;s pattern library to sequence micro compositions on a per-sound-particle basis, but to take a break from that work (which rarely leads to succesful results I have to say), I challenged myself a bit and tried to make an audio rate granular synthesis cloud generator.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          A cloud generator is basically a synthesis process that generates a lot of micro sound events (grains) at the same time. This as a whole becomes a bigger textural structure called a &amp;ldquo;cloud&amp;rdquo; generally.
+  I have done a lot of experiments lately using SuperCollider&amp;rsquo;s pattern library to sequence micro compositions on a per-sound-particle basis, but to take a break from that work (which rarely leads to succesful results I have to say), I challenged myself a bit and tried to make an audio rate granular synthesis cloud generator.
+          
+        
+        </description>
     </item>
     
   </channel>

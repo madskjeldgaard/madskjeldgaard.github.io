@@ -2,39 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>arch on Mads Kjeldgaard</title>
+    
+    
+    
     <link>http://madskjeldgaard.dk/tags/arch/</link>
     <description>Recent content in arch on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Tue, 29 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/arch/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Setting up Arch Linux for audio performance</title>
-      <link>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</link>
-      <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</guid>
-      <description>These notes are for setting up a new audio system on Arch Linux. It is assumed that you have an AUR helper like yay or paru installed (I use the latter here but exchange with yay if you use that). This isn&amp;rsquo;t a tutorial but just a collection of notes to help myself and perhaps others setup a high performance audio system in Arch Linux. The Arch Linux maintainers have done an amazing job in making it a good operating system for this kind of work by allowing users to easily setup the system with the right privileges and install the needed software.</description>
-    </item>
+    <lastBuildDate>Tue, 26 Jan 2021 13:39:45 +0100</lastBuildDate>
     
-    <item>
-      <title>Dual boot setup with Windows and Arch: Installation notes</title>
-      <link>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</link>
-      <pubDate>Tue, 22 Jun 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</guid>
-      <description>These are notes that I gathered for myself while setting up and installing a dual boot system on an old laptop that I repaired and resurrected. The laptop has a 1TB hard drive so it&amp;rsquo;s got plenty of space for fun stuff like this.
-The first step is to install Windows. I won&amp;rsquo;t cover that here. I installed it on the first 100GB of the 1TB hard drive and then rebooted from the Arch Live Iso to start the arch installation to take up the rest of the drive.</description>
-    </item>
+	<atom:link href="http://madskjeldgaard.dk/tags/arch/index.xml" rel="self" type="application/rss+xml" />
     
-    <item>
-      <title>Install Wine-TKG to improve Windows VST plugin performance on Arch Linux</title>
-      <link>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</link>
-      <pubDate>Mon, 21 Jun 2021 11:13:58 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</guid>
-      <description>I do all of my production work on Arch-based Linux systems these days. This is generally a pleasent experience since Reaper started supporting native Linux builds and yabridgectl made bridging Windows VST Plugins quite breezy and effective. Once setup correctly, this offers a performance experience and workflow that I think is quite close to native.
-One advice that I kept hearing again and again though was to install wine (the Wine program that lets you use Windows software on Linux) using wine-tkg, a customized build system for installing.</description>
-    </item>
     
     <item>
       <title>Mutable Instruments dev environment on Arch Linux</title>
@@ -42,9 +20,20 @@ One advice that I kept hearing again and again though was to install wine (the W
       <pubDate>Tue, 26 Jan 2021 13:39:45 +0100</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/mutable-dev/</guid>
-      <description>Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware (check out this brilliant tutorial om how to do the same).
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Mutable Instruments is an absolutely amazing synthesizer company that produces open source hardware with open source firmware on it. I have several of these and I love poking around in the firmware.
 The company has even open sourced it&amp;rsquo;s development environment which on most systems may be setup in a virtual machine.
-But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely.</description>
+But this is not so easy on Arch Linux, since these virtual machines rely on old(er) kernels, and I am always on bleeding edge kernel versions on my development laptop, so I decided to setup my own little development environment for hacking Mutable Instruments (and similar) firmwares directly in Arch with no virtual machines used and it seems to work quite nicely.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -53,17 +42,39 @@ But this is not so easy on Arch Linux, since these virtual machines rely on old(
       <pubDate>Sat, 10 Oct 2020 17:17:22 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/portable-arch-computermusic-distro-usb/</guid>
-      <description>Inspired by this blog post, I have been toying with a silly idea lately: A completely portable Arch Linux distribution set up properly for computer music, but flashed onto a USB thumb drive so that I may pop it into any computer, boot from the thumb drive and start creating music on whatever hardware is in front of me.
-I have achieved this now using the awesome alma project. Alma is a tool for creating persistent USB installations of Arch Linux using a series of configuration files and bash scripts called presets.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Inspired by this blog post, I have been toying with a silly idea lately: A completely portable Arch Linux distribution set up properly for computer music, but flashed onto a USB thumb drive so that I may pop it into any computer, boot from the thumb drive and start creating music on whatever hardware is in front of me.
+I have achieved this now using the awesome alma project. Alma is a tool for creating persistent USB installations of Arch Linux using a series of configuration files and bash scripts called presets.
+          
+        
+        </description>
     </item>
     
     <item>
-      <title>How to install Windows VST Plugins on Arch Linux and Manjaro</title>
+      <title>How to install Windows VST Plugins on Arch Linux</title>
       <link>http://madskjeldgaard.dk/posts/vst-manager/</link>
       <pubDate>Fri, 02 Oct 2020 12:20:40 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/vst-manager/</guid>
-      <description>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the linvst VST plugin bridging software.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -72,18 +83,20 @@ I have achieved this now using the awesome alma project. Alma is a tool for crea
       <pubDate>Sat, 19 Sep 2020 22:51:04 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/aur-package-workflow/</guid>
-      <description>These are notes I have been taking while making packages for the Arch User Repository, a community based package repository for users of Arch Linux and it&amp;rsquo;s derivative operating systems. This isn&amp;rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          These are notes I have been taking while making packages for the Arch User Repository, a community based package repository for users of Arch Linux and it&amp;rsquo;s derivative operating systems. This isn&amp;rsquo;t a complete guide and certainly not beginner friendly but should help some people with some linux experience get started.
 If you have a tolerance for YouTube videos, then maybe this video will be helpful to you.
-It is also recommend to read the official guide on how to create packages: Creating packages.</description>
-    </item>
-    
-    <item>
-      <title>Notes on creating packages for the Arch User Repository (AUR)</title>
-      <link>http://madskjeldgaard.dk/posts/yo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/yo/</guid>
-      <description></description>
+It is also recommend to read the official guide on how to create packages: Creating packages.
+          
+        
+        </description>
     </item>
     
   </channel>
