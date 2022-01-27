@@ -2,92 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://madskjeldgaard.dk/tags/neovim/</loc>
-    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/settingupneovimasscide/</loc>
-    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
-    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/</loc>
-    <lastmod>2021-12-01T00:00:00+00:00</lastmod>
-  </url><url>
     <loc>http://madskjeldgaard.dk/tags/arch/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/audio-setup-arch-2021/</loc>
-    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/dual-boot-win-arch-installation-notes/</loc>
-    <lastmod>2021-06-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/windows/</loc>
-    <lastmod>2021-06-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/improve-vst-performance-wine-tkg/</loc>
-    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/manjaro/</loc>
-    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/vst/</loc>
-    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/wine/</loc>
-    <lastmod>2021-06-21T11:13:58+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/multi-touch-trill-controller1/</loc>
-    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/bela/</loc>
-    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/controller/</loc>
-    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
+    <lastmod>2021-01-26T13:39:45+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/tags/cpp/</loc>
-    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/diy/</loc>
-    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/teensy/</loc>
-    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/trill/</loc>
-    <lastmod>2021-05-14T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/dsp/</loc>
-    <lastmod>2021-04-16T16:08:27+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/faust/</loc>
-    <lastmod>2021-04-16T16:08:27+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</loc>
-    <lastmod>2021-04-16T16:08:27+02:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</loc>
-    <lastmod>2021-03-18T22:09:08+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/daisy/</loc>
-    <lastmod>2021-03-11T09:20:36+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/daisy-setup/</loc>
-    <lastmod>2021-03-11T09:20:36+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/how-to-gh-action/</loc>
-    <lastmod>2021-03-03T18:22:34+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/cmake/</loc>
-    <lastmod>2021-03-03T18:22:34+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/github/</loc>
-    <lastmod>2021-03-03T18:22:34+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/master-volume/</loc>
-    <lastmod>2021-02-06T21:16:09+00:00</lastmod>
+    <lastmod>2021-01-26T13:39:45+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/mutable-dev/</loc>
     <lastmod>2021-01-26T13:39:45+01:00</lastmod>
@@ -95,23 +14,8 @@
     <loc>http://madskjeldgaard.dk/tags/mutable-instruments/</loc>
     <lastmod>2021-01-26T13:39:45+01:00</lastmod>
   </url><url>
-    <loc>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</loc>
-    <lastmod>2020-11-13T21:38:31+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</loc>
-    <lastmod>2020-11-13T21:38:31+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/esp32/</loc>
-    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/</loc>
-    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/microcontroller/</loc>
-    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/osc/</loc>
-    <lastmod>2020-11-09T16:29:19+01:00</lastmod>
+    <loc>http://madskjeldgaard.dk/tags/</loc>
+    <lastmod>2021-01-26T13:39:45+01:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/tags/14bitmidi/</loc>
     <lastmod>2020-10-21T15:48:28+02:00</lastmod>
@@ -120,6 +24,12 @@
     <lastmod>2020-10-21T15:48:28+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/tags/midi/</loc>
+    <lastmod>2020-10-21T15:48:28+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/supercollider/</loc>
+    <lastmod>2020-10-21T15:48:28+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/teensy/</loc>
     <lastmod>2020-10-21T15:48:28+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</loc>
@@ -132,6 +42,12 @@
     <lastmod>2020-10-10T17:17:22+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/vst-manager/</loc>
+    <lastmod>2020-10-02T12:20:40+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/vst/</loc>
+    <lastmod>2020-10-02T12:20:40+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/windows/</loc>
     <lastmod>2020-10-02T12:20:40+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/aur-package-workflow/</loc>
@@ -151,6 +67,9 @@
   </url><url>
     <loc>http://madskjeldgaard.dk/pages/software/</loc>
     <lastmod>2020-06-19T09:30:50+02:00</lastmod>
+  </url><url>
+    <loc>http://madskjeldgaard.dk/tags/osc/</loc>
+    <lastmod>2020-06-11T16:49:29+02:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/raspi-4-gpio-button-rust/</loc>
     <lastmod>2020-06-11T16:49:29+02:00</lastmod>
@@ -290,21 +209,18 @@
     <loc>http://madskjeldgaard.dk/ambisonics-tutorial-binaural-head-rotation-using-reaper-hedrot-and-iem-plugins/</loc>
     <lastmod>2019-08-22T08:56:36+00:00</lastmod>
   </url><url>
+    <loc>http://madskjeldgaard.dk/tags/microcontroller/</loc>
+    <lastmod>2019-08-22T08:56:36+00:00</lastmod>
+  </url><url>
     <loc>http://madskjeldgaard.dk/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/</loc>
     <lastmod>2019-08-19T10:36:35+00:00</lastmod>
   </url><url>
     <loc>http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/</loc>
     <lastmod>2019-08-05T17:46:09+00:00</lastmod>
   </url><url>
-    <loc>http://madskjeldgaard.dk/tags/c&#43;&#43;/</loc>
+    <loc>http://madskjeldgaard.dk/posts/master-volume/</loc>
   </url><url>
     <loc>http://madskjeldgaard.dk/categories/</loc>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/tags/gdb/</loc>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/</loc>
-  </url><url>
-    <loc>http://madskjeldgaard.dk/posts/yo/</loc>
   </url><url>
     <loc>http://madskjeldgaard.dk/series/</loc>
   </url>

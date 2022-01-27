@@ -2,96 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>supercollider on Mads Kjeldgaard</title>
+    
+    
+    
     <link>http://madskjeldgaard.dk/tags/supercollider/</link>
     <description>Recent content in supercollider on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Wed, 01 Dec 2021 00:00:00 +0000</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/supercollider/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Setting up NeoVim as a SuperCollider IDE</title>
-      <link>http://madskjeldgaard.dk/posts/settingupneovimasscide/</link>
-      <pubDate>Wed, 01 Dec 2021 00:00:00 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/settingupneovimasscide/</guid>
-      <description>SuperCollider-NeoVim setup in use at the wonderful Lysningsrommet at the art academy in Stockholm
-SuperCollider is my favourite programming language for music and sound and I use it all the time. The programming language comes with an IDE that is quite capable, but I for one prefer doing all of my coding in one editor (sometimes I write C++, lua and SuperCollider in one and the same project) and that editor for me is NeoVim.</description>
-    </item>
+    <lastBuildDate>Wed, 21 Oct 2020 15:48:28 +0200</lastBuildDate>
     
-    <item>
-      <title>Getting started with Faust for SuperCollider</title>
-      <link>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</link>
-      <pubDate>Fri, 16 Apr 2021 16:08:27 +0200</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/</guid>
-      <description>I recently started toying around with Faust. Faust is a functional programming language specifically designed for audio manipulation. One of the many strengths of Faust is it&amp;rsquo;s compiler backends that allows the user to compile Faust code to almost any end target - including microcontrollers, JUCE/VST plugin projects, Pure Data, Max and SuperCollider - with the same Faust code. It even works in the browser.
-Another fantastic strength is the library of building blocks it comes with - these are extremely high quality and reflect a lot of the new developments in DSP technology and research in recent years.</description>
-    </item>
+	<atom:link href="http://madskjeldgaard.dk/tags/supercollider/index.xml" rel="self" type="application/rss+xml" />
     
-    <item>
-      <title>Tutorial: How to write plugins for SuperCollider using C&#43;&#43;</title>
-      <link>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</link>
-      <pubDate>Thu, 18 Mar 2021 22:09:08 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/</guid>
-      <description>My amazing workplace allowed me time during the Covid-19 lockdowns in Oslo to spend time improving my C++ and DSP skills. The result of this is a bunch of plugins for SuperCollider, some of which are already released as well as a trunk of Notam plugins that are to be announced.
-The process of creating server plugins (aka UGens) for SuperCollider is one of the most fun and gratifying ways one can experiment with DSP and C++ in my opinion.</description>
-    </item>
-    
-    <item>
-      <title>Automatically build, compile and release SuperCollider plugins using Github Actions</title>
-      <link>http://madskjeldgaard.dk/posts/how-to-gh-action/</link>
-      <pubDate>Wed, 03 Mar 2021 18:22:34 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/how-to-gh-action/</guid>
-      <description>Since the main SuperCollider github repository moved to using Github Actions to automatically build, compile and release cross platform, I felt intrigued to use the same technology to do the same for SuperCollider plugins.
-There is a number of amazing SuperCollider plugin repositories on Github - a lot will demand that the user compiles the sourcecode themselves to use the plugins. For people used to CMake and/or a Linux-ey workflow of compiling, this is not a big problem but for a lot of others (most people perhaps), it really is a doorstopper.</description>
-    </item>
-    
-    <item>
-      <title>A midi controller in a box of screws</title>
-      <link>http://madskjeldgaard.dk/posts/master-volume/</link>
-      <pubDate>Sat, 06 Feb 2021 21:16:09 +0000</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
-      <description>I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former, the main improvement being that if you press the button while booting the device it goes into 14 bit midi mode (leveraging 13 of the Teensy&amp;rsquo;s bits for this) to allow high resolution on the potentiometer&amp;rsquo;s input.
-The controller is very cheap and simple to make.</description>
-    </item>
-    
-    <item>
-      <title>Helpful SuperCollider plugin macros</title>
-      <link>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</link>
-      <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/</guid>
-      <description>This is a transcription of Dan Stowell&amp;rsquo;s very helpful table in the SuperCollider Book (MIT), slightly edited and transcribed for the &amp;ldquo;new&amp;rdquo; c++ style for writing plugins. It contains some of the macros available when writing UGens/Plugins in c++ in SuperCollider.
-This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
-Also check out this cookiecutter template for generating plugins and the Server Plugin API.</description>
-    </item>
-    
-    <item>
-      <title>Notes on writing SuperCollider plugins</title>
-      <link>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</link>
-      <pubDate>Fri, 13 Nov 2020 21:38:31 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/</guid>
-      <description>This post is a collection of notes on how to write plugins for SuperCollider.
-This post will be updated as I go along.
-Useful links This repo contains example code for writing plugins in both the &amp;ldquo;old&amp;rdquo; and &amp;ldquo;new&amp;rdquo; style which I found helpful in understanding this subject.
-Also check out this cookiecutter template for generating plugins and the Server Plugin API.
-The two different styles There are two different headers that contain SuperCollider&amp;rsquo;s plugin boiler plate code.</description>
-    </item>
-    
-    <item>
-      <title>Esp32 Simple Osc Receiver</title>
-      <link>http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/</link>
-      <pubDate>Mon, 09 Nov 2020 16:29:19 +0100</pubDate>
-      
-      <guid>http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/</guid>
-      <description>Lately I have started experimenting with the very cheap and powerful ESP32 microcontrollers.
-Today I made a simple example of a firmware which receives OSC from a computer and then blinks the on-board LED according to the incoming message and I packaged it all as an easy to clone/copy/use platformio project (mostly for myself).
-The firmware uses CNMAT&amp;rsquo;s OSC library:
-#include &amp;#34;Arduino.h&amp;#34;#include &amp;#34;WiFi.h&amp;#34;#include &amp;lt;OSCMessage.h&amp;gt; WiFiUDP Udp; // A UDP instance to let us send and receive packets over UDP int LED_BUILTIN = 2; // Options int update_rate = 16; // Network settings char ssid[] = &amp;#34;wifiname&amp;#34;; // your network SSID (name) char pass[] = &amp;#34;wifipassword&amp;#34;; // your network password unsigned int localPort = 8888; // local port to listen for OSC packets  void setup() { pinMode(LED_BUILTIN, OUTPUT); /* setup wifi */ WiFi.</description>
-    </item>
     
     <item>
       <title>Working with 14bit Midi using a Teensy microcontroller and Supercollider</title>
@@ -99,7 +20,18 @@ The firmware uses CNMAT&amp;rsquo;s OSC library:
       <pubDate>Wed, 21 Oct 2020 15:48:28 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/</guid>
-      <description>Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -108,8 +40,19 @@ The firmware uses CNMAT&amp;rsquo;s OSC library:
       <pubDate>Fri, 21 Aug 2020 11:14:29 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/kloudgenerator-sketch/</guid>
-      <description>A cloud generator is basically a synthesis process that generates a lot of micro sound events (grains) at the same time. This as a whole becomes a bigger textural structure called a &amp;ldquo;cloud&amp;rdquo; generally.
-  I have done a lot of experiments lately using SuperCollider&amp;rsquo;s pattern library to sequence micro compositions on a per-sound-particle basis, but to take a break from that work (which rarely leads to succesful results I have to say), I challenged myself a bit and tried to make an audio rate granular synthesis cloud generator.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          A cloud generator is basically a synthesis process that generates a lot of micro sound events (grains) at the same time. This as a whole becomes a bigger textural structure called a &amp;ldquo;cloud&amp;rdquo; generally.
+  I have done a lot of experiments lately using SuperCollider&amp;rsquo;s pattern library to sequence micro compositions on a per-sound-particle basis, but to take a break from that work (which rarely leads to succesful results I have to say), I challenged myself a bit and tried to make an audio rate granular synthesis cloud generator.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -118,8 +61,19 @@ The firmware uses CNMAT&amp;rsquo;s OSC library:
       <pubDate>Sun, 24 May 2020 10:10:40 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/hemisphere/</guid>
-      <description>My Ornament &amp;amp; Crime build (the Mini OC version). The USB connector on the Teensy on the back of the module has been rewired to a Neutrik USB connector attached to a panel next to it (the grey panel).
-I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          My Ornament &amp;amp; Crime build (the Mini OC version). The USB connector on the Teensy on the back of the module has been rewired to a Neutrik USB connector attached to a panel next to it (the grey panel).
+I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -128,10 +82,21 @@ I have tried quite a few different approaches to integrating my modular synthesi
       <pubDate>Sun, 03 May 2020 10:17:27 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/raspi-zita-njbridge/</guid>
-      <description>Jack is an incredibly flexible piece of software for making audio connections. It&amp;rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Jack is an incredibly flexible piece of software for making audio connections. It&amp;rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
 This is exploited to it&amp;rsquo;s fullest in the zita-njbridge package.
 To quote from the manual on zita-njbridge:
- The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server.</description>
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -140,9 +105,20 @@ To quote from the manual on zita-njbridge:
       <pubDate>Thu, 30 Apr 2020 16:07:22 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/raspi4-notes/</guid>
-      <description>These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
 I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
-It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.</description>
+It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -151,8 +127,19 @@ It is presumed that you have installed Raspbian on an SD card, with ssh enabled 
       <pubDate>Thu, 30 Apr 2020 12:57:31 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/awesome-sc/</guid>
-      <description>A while ago I started compiling a list of links to SuperCollider based things that I found interesting and wanted to save for later.
-The list grew and at one point I organized it all in one public repository where the SuperCollider community could help curate links to awesome SuperCollider things and it has since then become a truly rich resource for things like tutorials, reading material, nice projects and tools.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          A while ago I started compiling a list of links to SuperCollider based things that I found interesting and wanted to save for later.
+The list grew and at one point I organized it all in one public repository where the SuperCollider community could help curate links to awesome SuperCollider things and it has since then become a truly rich resource for things like tutorials, reading material, nice projects and tools.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -161,9 +148,20 @@ The list grew and at one point I organized it all in one public repository where
       <pubDate>Thu, 23 Jan 2020 21:18:29 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/</guid>
-      <description>Here are the slides for the SuperCollider workshop at Notam, january 2020.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Here are the slides for the SuperCollider workshop at Notam, january 2020.
 Download slides
- Algorithmic composition using patterns Notam, january 2020  About me  Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)   Notam  Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others), see website notam.no Studios / 3D sound / VR / Visuals / Electronics Courses   My practice  Computer music / livecoding Concrete music Cybernetic / systemic music   Contact info  mail: mail@madskjeldgaard.</description>
+ Algorithmic composition using patterns #  Notam, january 2020 #   About me #   Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)   Notam #   Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others), see website notam.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -172,10 +170,21 @@ Download slides
       <pubDate>Wed, 06 Nov 2019 11:22:54 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/</guid>
-      <description>Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.
 The SynthDef used for the workshop [can be downloaded here.][1]
 Download slides here.
- SuperCollider workshop Herlev Bibliotek, Denmark, 2019  About me  Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)    Notam  Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others) Studios / 3D sound / VR / Visuals Courses   My practice  Computer music / livecoding Field recording 3D sound composition Sound environments   Contact info  mail: mail@madskjeldgaard.</description>
+ SuperCollider workshop #  Herlev Bibliotek, Denmark, 2019 #   About me #   Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)    Notam #   Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others) Studios / 3D sound / VR / Visuals Courses   My practice #   Computer music / livecoding Field recording 3D sound composition Sound environments   Contact info #   mail: mail@madskjeldgaard.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -184,8 +193,19 @@ Download slides here.
       <pubDate>Fri, 18 Oct 2019 12:42:12 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/</guid>
-      <description>The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
-A nice alternative: A triangle wave synth with a low pass filter Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
+A nice alternative: A triangle wave synth with a low pass filter #  Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -194,12 +214,23 @@ A nice alternative: A triangle wave synth with a low pass filter Imagine a utopi
       <pubDate>Sun, 01 Sep 2019 12:54:46 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/scintro-notam-2019/</guid>
-      <description>Here you will find the material for the introductory workshop held at Notam, Oslo in late summer 2019.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Here you will find the material for the introductory workshop held at Notam, Oslo in late summer 2019.
 The slides may be used as a sort of cheatsheet as well as notes for remembering the topics covered:
 • An overview: What is SuperCollider and what can you do with it?
 • The design and architecture of SuperCollider
 • Language basics: syntax, variables, expressions and functions
-• Learning resources: How to proceed from here</description>
+• Learning resources: How to proceed from here
+          
+        
+        </description>
     </item>
     
     <item>
@@ -208,9 +239,20 @@ The slides may be used as a sort of cheatsheet as well as notes for remembering 
       <pubDate>Mon, 19 Aug 2019 10:36:35 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/</guid>
-      <description>In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
 But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
-This becomes annoying when working with UGens that want to know the exact number of channels used, eg.</description>
+This becomes annoying when working with UGens that want to know the exact number of channels used, eg.
+          
+        
+        </description>
     </item>
     
     <item>
@@ -219,19 +261,42 @@ This becomes annoying when working with UGens that want to know the exact number
       <pubDate>Mon, 05 Aug 2019 17:46:09 +0000</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/</guid>
-      <description>One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
-NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.</description>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
+NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.
+          
+        
+        </description>
     </item>
     
     <item>
-      <title>GDB and SuperCollider plugins</title>
-      <link>http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/</link>
+      <title>A midi controller in a box of screws</title>
+      <link>http://madskjeldgaard.dk/posts/master-volume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/</guid>
-      <description>We will assume that you already have SuperCollider running and that you have booted the server. Now you&amp;rsquo;d like to attach the GDB debugger to that process to see what happens when / if it crashes.
-Attach GDB to an already running scsynth process First, we need to find the pid of the running process:
-ps -C scsynth -o pid h Then, we can use the number output from the command above to attach gdb:</description>
+      <guid>http://madskjeldgaard.dk/posts/master-volume/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          I recently built version 2 of a &amp;ldquo;master volume control&amp;rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.
+          
+        
+        </description>
     </item>
     
   </channel>

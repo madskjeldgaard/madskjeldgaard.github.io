@@ -1,39 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="">
-<meta name="description" content="" />
-<meta name="keywords" content="computer music, supercollider, rust, vim, linux" />
+  <head>
+    
+      <title>
+        supercollider ::
+        Mads Kjeldgaard — Composer and developer
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content=""
+/>
+<meta
+  name="keywords"
+  content="computer music, supercollider, rust, vim, linux"
+/>
 <meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
 <link rel="canonical" href="http://madskjeldgaard.dk/tags/supercollider/" />
 
 
-    <title>
-        
-            supercollider :: Mads Kjeldgaard  — Composer and developer
-        
-    </title>
 
 
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
+<link rel="stylesheet" href="http://madskjeldgaard.dk/assets/style.css" />
+
+<link rel="stylesheet" href="http://madskjeldgaard.dk/style.css" />
 
 
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="http://madskjeldgaard.dk/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="http://madskjeldgaard.dk/img/favicon.png" />
 
-<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
 
 
-
-
-
-
-<meta itemprop="name" content="supercollider">
-<meta itemprop="description" content="Website of composer Mads Kjeldgaard">
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/>
 
@@ -42,7 +53,7 @@
 
 
 
-    <meta property="og:title" content="supercollider" />
+<meta property="og:title" content="supercollider" />
 <meta property="og:description" content="Website of composer Mads Kjeldgaard" />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://madskjeldgaard.dk/tags/supercollider/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/states-of-emergency.jpg"/><meta property="og:site_name" content="Mads Kjeldgaard" />
@@ -50,335 +61,804 @@
 
 
 
+<link rel="alternate" type="application/rss+xml" href="/tags/supercollider/index.xml" title="Mads Kjeldgaard" />
 
 
 
-
-
-<link rel="alternate" type="application/rss+xml" href="http://madskjeldgaard.dk/tags/supercollider/index.xml" title="Mads Kjeldgaard" />
-
-
-
-
-
-    </head>
-
-    <body class="">
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">></span>
-            <span class="logo__text">madskjeldgaard</span>
-            <span class="logo__cursor" style=
-                  "
-                   
-                   ">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
-            
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
-    </ul>
-</nav>
-
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
-            
-
-            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
 </svg>
 </span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/pages/about">about</a></li>
+        
+      
+        
+          <li><a href="/pages/contact">contact</a></li>
+        
+      
+        
+          <li><a href="/posts">posts</a></li>
+        
+      
+        
+          <li><a href="/pages/software">software</a></li>
+        
+      
+        
+          <li><a href="/pages/work">sound</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/pages/about">about</a></li>
+      
+    
+      
+        <li><a href="/pages/contact">contact</a></li>
+      
+    
+      
+        <li><a href="/posts">posts</a></li>
+      
+    
+      
+        <li><a href="/pages/software">software</a></li>
+      
+    
+      
+        <li><a href="/pages/work">sound</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
         </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
     </span>
+  </span>
 </header>
 
 
-            <div class="content">
-                
-    <main class="posts">
-        <h1>supercollider</h1>
-            <div class="posts-group">
-                <div class="post-year">2021</div>
-
-                <ul class="posts-list">
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/settingupneovimasscide/">
-                                <span class="post-title">Setting up NeoVim as a SuperCollider IDE</span>
-                                <span class="post-day">
-                                    
-                                        Dec 1
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/getting-started-with-faust-for-supercollider/">
-                                <span class="post-title">Getting started with Faust for SuperCollider</span>
-                                <span class="post-day">
-                                    
-                                        Apr 16
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/supercollider-server-plugin-tutorial/">
-                                <span class="post-title">Tutorial: How to write plugins for SuperCollider using C&#43;&#43;</span>
-                                <span class="post-day">
-                                    
-                                        Mar 18
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/how-to-gh-action/">
-                                <span class="post-title">Automatically build, compile and release SuperCollider plugins using Github Actions</span>
-                                <span class="post-day">
-                                    
-                                        Mar 3
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/master-volume/">
-                                <span class="post-title">A midi controller in a box of screws</span>
-                                <span class="post-day">
-                                    
-                                        Feb 6
-                                    
-                                </span>
-                            </a>
-                        </li>
-                </ul>
-            </div>
-            <div class="posts-group">
-                <div class="post-year">2020</div>
-
-                <ul class="posts-list">
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/notes-on-writing-sc-plugins/">
-                                <span class="post-title">Notes on writing SuperCollider plugins</span>
-                                <span class="post-day">
-                                    
-                                        Nov 13
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/helpful-sc-plugin-macros/">
-                                <span class="post-title">Helpful SuperCollider plugin macros</span>
-                                <span class="post-day">
-                                    
-                                        Nov 13
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/esp32-simple-osc-receiver/">
-                                <span class="post-title">Esp32 Simple Osc Receiver</span>
-                                <span class="post-day">
-                                    
-                                        Nov 9
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/">
-                                <span class="post-title">Working with 14bit Midi using a Teensy microcontroller and Supercollider</span>
-                                <span class="post-day">
-                                    
-                                        Oct 21
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/kloudgenerator-sketch/">
-                                <span class="post-title">Sketch for a granular cloud generator in SuperCollider</span>
-                                <span class="post-day">
-                                    
-                                        Aug 21
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/hemisphere/">
-                                <span class="post-title">Control voltage and SuperCollider: Using the open source module Ornament &amp; Crime as a midi-cv interface</span>
-                                <span class="post-day">
-                                    
-                                        May 24
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/raspi-zita-njbridge/">
-                                <span class="post-title">Networked audio using Raspberry Pi 4 (zita-njbridge and SuperCollider)</span>
-                                <span class="post-day">
-                                    
-                                        May 3
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/raspi4-notes/">
-                                <span class="post-title">Notes for setting up a Raspberry Pi 4 for audio work</span>
-                                <span class="post-day">
-                                    
-                                        Apr 30
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/awesome-sc/">
-                                <span class="post-title">Awesome SuperCollider: A curated list</span>
-                                <span class="post-day">
-                                    
-                                        Apr 30
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/">
-                                <span class="post-title">SuperCollider workshop at Notam, january 2020: Algorithmic composition using patterns</span>
-                                <span class="post-day">
-                                    
-                                        Jan 23
-                                    
-                                </span>
-                            </a>
-                        </li>
-                </ul>
-            </div>
-            <div class="posts-group">
-                <div class="post-year">2019</div>
-
-                <ul class="posts-list">
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/">
-                                <span class="post-title">Pattern workshop, Herlev Bibliotek 2019</span>
-                                <span class="post-day">
-                                    
-                                        Nov 6
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/">
-                                <span class="post-title">How to change the default synth in SuperCollider</span>
-                                <span class="post-day">
-                                    
-                                        Oct 18
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/scintro-notam-2019/">
-                                <span class="post-title">Introduction to SuperCollider, Notam 2019</span>
-                                <span class="post-day">
-                                    
-                                        Sep 1
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/">
-                                <span class="post-title">SuperCollider tutorial: Mass producing SynthDefs</span>
-                                <span class="post-day">
-                                    
-                                        Aug 19
-                                    
-                                </span>
-                            </a>
-                        </li>
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/">
-                                <span class="post-title">SuperCollider tutorial: Easily render generative compositions as sound files using NRT</span>
-                                <span class="post-day">
-                                    
-                                        Aug 5
-                                    
-                                </span>
-                            </a>
-                        </li>
-                </ul>
-            </div>
-            <div class="posts-group">
-                <div class="post-year">0001</div>
-
-                <ul class="posts-list">
-                        <li class="post-item">
-                            <a href="http://madskjeldgaard.dk/posts/gdb-and-supercollider-plugins/">
-                                <span class="post-title">GDB and SuperCollider plugins</span>
-                                <span class="post-day">
-                                    
-                                        Jan 1
-                                    
-                                </span>
-                            </a>
-                        </li>
-                </ul>
-            </div>
-    </main>
-
-            </div>
+      <div class="content">
+        
+  <div class="posts">
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/14bit-midi-teensy-supercollider/">Working with 14bit Midi using a Teensy microcontroller and Supercollider</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-10-21
+            </span>
 
             
-                <footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2021</span>
-            
-            <span></span>
-            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
-        </div>
-    </div>
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
-            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
-        </div>
-    </div>
-</footer>
+          
+          
 
-            
+
+          
         </div>
 
         
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/teensy/">#teensy</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/microcontrollers/">#microcontrollers</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/midi/">#midi</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/14bitmidi/">#14bitmidi</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Lately I have been experimenting with 14bit MIDI and found it to be a huge revelation for my work with SuperCollider. Often, the regular data range of MIDI (0-127) is way too choppy and coarse for nice interactions with your systems and instruments in SuperCollider, but 14 bit MIDI provides a resolution of 16384 steps which is great. This is actually achieved quite cleverly by combining two MIDI CC signals in to one.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/14bit-midi-teensy-supercollider/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/kloudgenerator-sketch/">Sketch for a granular cloud generator in SuperCollider</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-08-21
+            </span>
+
+            
+          
+          
 
 
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/granularsynthesis/">#granularsynthesis</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              A cloud generator is basically a synthesis process that generates a lot of micro sound events (grains) at the same time. This as a whole becomes a bigger textural structure called a &ldquo;cloud&rdquo; generally.
+  I have done a lot of experiments lately using SuperCollider&rsquo;s pattern library to sequence micro compositions on a per-sound-particle basis, but to take a break from that work (which rarely leads to succesful results I have to say), I challenged myself a bit and tried to make an audio rate granular synthesis cloud generator.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/kloudgenerator-sketch/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/hemisphere/">Control voltage and SuperCollider: Using the open source module Ornament &amp; Crime as a midi-cv interface</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-05-24
+            </span>
+
+            
+          
+          
 
 
-<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/ornament-and-crime/">#ornament-and-crime</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/open-source/">#open-source</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/modular-synthesis/">#modular-synthesis</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/eurorack/">#eurorack</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              My Ornament &amp; Crime build (the Mini OC version). The USB connector on the Teensy on the back of the module has been rewired to a Neutrik USB connector attached to a panel next to it (the grey panel).
+I have tried quite a few different approaches to integrating my modular synthesizer with my SuperCollider workflow and I have found most them to be disappointing, extremely expensive and or inflexible.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/hemisphere/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/raspi-zita-njbridge/">Networked audio using Raspberry Pi 4 (zita-njbridge and SuperCollider)</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-05-03
+            </span>
+
+            
+          
+          
 
 
+          
+        </div>
 
-    </body>
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/raspberrypi/">#raspberrypi</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/zita-njbridge/">#zita-njbridge</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Jack is an incredibly flexible piece of software for making audio connections. It&rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
+This is exploited to it&rsquo;s fullest in the zita-njbridge package.
+To quote from the manual on zita-njbridge:
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/raspi-zita-njbridge/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/raspi4-notes/">Notes for setting up a Raspberry Pi 4 for audio work</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-30
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/raspberrypi/">#raspberrypi</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/termux/">#termux</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              These are notes for setting up a Raspberry Pi 4 single board computer for pro audio work. Specifically for running SuperCollider programs for interactive installations.
+I used Raspbian Lite for this, since my intention is to run the Raspberry Pi in headless mode, meaning using no display and no desktop environment (to save resources).
+It is presumed that you have installed Raspbian on an SD card, with ssh enabled (allowing you to log in to the pi over the network and execute commands using a terminal), and that you are logged in.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/raspi4-notes/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/awesome-sc/">Awesome SuperCollider: A curated list</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-04-30
+            </span>
+
+            
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              A while ago I started compiling a list of links to SuperCollider based things that I found interesting and wanted to save for later.
+The list grew and at one point I organized it all in one public repository where the SuperCollider community could help curate links to awesome SuperCollider things and it has since then become a truly rich resource for things like tutorials, reading material, nice projects and tools.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/awesome-sc/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/">SuperCollider workshop at Notam, january 2020: Algorithmic composition using patterns</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2020-01-23
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/workshop-material/">#workshop-material</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Here are the slides for the SuperCollider workshop at Notam, january 2020.
+Download slides
+ Algorithmic composition using patterns #  Notam, january 2020 #   About me #   Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)   Notam #   Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others), see website notam.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/supercollider-workshop-at-notam-january-2020-algorithmic-composition-using-patterns/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/pattern-workshop-herlev-bibliotek-2019/">Pattern workshop, Herlev Bibliotek 2019</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-11-06
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/workshop-material/">#workshop-material</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Here are the materials for the SuperCollider workshop at Herlev Bibliotek, Denmark, November 2019.
+The SynthDef used for the workshop [can be downloaded here.][1]
+Download slides here.
+ SuperCollider workshop #  Herlev Bibliotek, Denmark, 2019 #   About me #   Name: Mads Kjeldgaard Occupation: Composer and developer Work: The Norwegian Center for Technology and Art (Notam)    Notam #   Development for art projects (hardware, software, tech and artistic guidance) Communities / meetups (SC meetup among others) Studios / 3D sound / VR / Visuals Courses   My practice #   Computer music / livecoding Field recording 3D sound composition Sound environments   Contact info #   mail: mail@madskjeldgaard.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/pattern-workshop-herlev-bibliotek-2019/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/how-to-change-the-default-synth-in-supercollider/">How to change the default synth in SuperCollider</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-10-18
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              The default synth sound in SuperCollider is a cheesy old piano sound. If you have ever tried the event pattern examples in the documentation of SuperCollider or been in the process of testing some pattern specifics of your own, you will have heard this extremely unconvincing synthesizer:
+A nice alternative: A triangle wave synth with a low pass filter #  Imagine a utopian world where the default cheese-piano-synth has been replaced by a nicer, kind of gameboy like synth.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/how-to-change-the-default-synth-in-supercollider/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/scintro-notam-2019/">Introduction to SuperCollider, Notam 2019</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-09-01
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/workshop-material/">#workshop-material</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              Here you will find the material for the introductory workshop held at Notam, Oslo in late summer 2019.
+The slides may be used as a sort of cheatsheet as well as notes for remembering the topics covered:
+• An overview: What is SuperCollider and what can you do with it?
+• The design and architecture of SuperCollider
+• Language basics: syntax, variables, expressions and functions
+• Learning resources: How to proceed from here
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/scintro-notam-2019/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/">SuperCollider tutorial: Mass producing SynthDefs</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-08-19
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              In SuperCollider, one of the most common ways of making sounds is by first defining a sort of recipe for a UGEN patch in a SynthDef and then from that recipe produce Synths that make sounds.
+But when you write a SynthDef, the patch architecture cannot change after the definition (as opposed to changing arguments in the patch).
+This becomes annoying when working with UGens that want to know the exact number of channels used, eg.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/2019-08-19-supercollider-tutorial-mass-producing-synthdefs/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/">SuperCollider tutorial: Easily render generative compositions as sound files using NRT</a></h1>
+        <div class="post-meta">
+          
+            <span class="post-date">
+              2019-08-05
+            </span>
+
+            
+          
+          
+            <span class="post-author"
+              >— Written by mads</span
+            >
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/tutorial/">#tutorial</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              One of the many powerful features of SuperCollider is it’s ability to render sounds offline. This is called Non-Realtime Synthesis (NRT). NRT is for example useful for fast, offline processing of sounds, doing sound analysis or rendering generative compositions.
+NRT works like this (normally): First you write a list of server OSC messages (stored in a Score usually) which will tell the (offline) server what to do at what point in time when you decide to render it.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/2019-08-05-supercollider-how-to-render-patterns-as-sound-files-using-nrt/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+      <div class="post on-list">
+        <h1 class="post-title"><a href="http://madskjeldgaard.dk/posts/master-volume/">A midi controller in a box of screws</a></h1>
+        <div class="post-meta">
+          
+          
+
+
+          
+        </div>
+
+        
+          <span class="post-tags">
+            
+              <a href="http://madskjeldgaard.dk/tags/supercollider/">#supercollider</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/cpp/">#cpp</a>&nbsp;
+            
+              <a href="http://madskjeldgaard.dk/tags/teensy/">#teensy</a>&nbsp;
+            
+          </span>
+        
+
+        
+
+        <div class="post-content">
+          
+            
+              I recently built version 2 of a &ldquo;master volume control&rdquo; midi controller that I had made before. This version is slightly improved on the former.
+It is very cheap and simple. It revolves around the wonderful and cheap (11$) Teensy LC.
+Bill of materials includes:
+ A 10k potentiometer A button A Teensy LC A box (I used a leftover box that had contained some wood screws - perfect size!) A few wires  All code and notes for building may be found here.
+            
+          
+        </div>
+        
+          <div>
+            <a class="read-more button" href="/posts/master-volume/"
+              >Read more →</a
+            >
+          </div>
+        
+      </div>
+    
+    <div class="pagination">
+  <div class="pagination__buttons">
+    
+    
+      <span class="button next">
+        <a href="/tags/supercollider/page/2/">
+          <span class="button__text">Older posts</span>
+          <span class="button__icon">→</span>
+        </a>
+      </span>
+    
+  </div>
+</div>
+
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2022 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
+</footer>
+
+<script src="http://madskjeldgaard.dk/assets/main.js"></script>
+<script src="http://madskjeldgaard.dk/assets/prism.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
 </html>

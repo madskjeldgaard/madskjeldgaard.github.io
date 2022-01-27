@@ -2,21 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>zita-njbridge on Mads Kjeldgaard</title>
+    
+    
+    
     <link>http://madskjeldgaard.dk/tags/zita-njbridge/</link>
     <description>Recent content in zita-njbridge on Mads Kjeldgaard</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-uk</language>
-    <lastBuildDate>Sun, 03 May 2020 10:17:27 +0200</lastBuildDate><atom:link href="http://madskjeldgaard.dk/tags/zita-njbridge/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 03 May 2020 10:17:27 +0200</lastBuildDate>
+    
+	<atom:link href="http://madskjeldgaard.dk/tags/zita-njbridge/index.xml" rel="self" type="application/rss+xml" />
+    
+    
     <item>
       <title>Networked audio using Raspberry Pi 4 (zita-njbridge and SuperCollider)</title>
       <link>http://madskjeldgaard.dk/posts/raspi-zita-njbridge/</link>
       <pubDate>Sun, 03 May 2020 10:17:27 +0200</pubDate>
       
       <guid>http://madskjeldgaard.dk/posts/raspi-zita-njbridge/</guid>
-      <description>Jack is an incredibly flexible piece of software for making audio connections. It&amp;rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Jack is an incredibly flexible piece of software for making audio connections. It&amp;rsquo;s mostly used to connect and patch virtually within one computer but it has a range of amazing extra features for connecting things in alternative ways.
 This is exploited to it&amp;rsquo;s fullest in the zita-njbridge package.
 To quote from the manual on zita-njbridge:
- The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server.</description>
+ The zita-j2n (sender) and zita-n2j (receiver) applications allow to exchange up to 64 channels of full-quality uncompressed audio streams between two or more systems running the Jack audio server.
+          
+        
+        </description>
     </item>
     
   </channel>

@@ -1,52 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="ie=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<meta name="author" content="">
-<meta name="description" content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software." />
-<meta name="keywords" content="computer music, supercollider, rust, vim, linux, arch, vst, windows, manjaro, wine" />
+  <head>
+    
+      <title>
+        How to install Windows VST Plugins on Arch Linux ::
+        Mads Kjeldgaard — Composer and developer
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the linvst VST plugin bridging software."
+/>
+<meta
+  name="keywords"
+  content="computer music, supercollider, rust, vim, linux"
+/>
 <meta name="robots" content="noodp" />
-<meta name="theme-color" content="" />
 <link rel="canonical" href="http://madskjeldgaard.dk/posts/vst-manager/" />
 
 
-    <title>
-        
-            How to install Windows VST Plugins on Arch Linux and Manjaro :: Mads Kjeldgaard  — Composer and developer
-        
-    </title>
 
 
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.2.1/css/flag-icon.min.css" rel="stylesheet"
-    type="text/css">
+<link rel="stylesheet" href="http://madskjeldgaard.dk/assets/style.css" />
+
+<link rel="stylesheet" href="http://madskjeldgaard.dk/style.css" />
 
 
+<link
+  rel="apple-touch-icon-precomposed"
+  sizes="144x144"
+  href="http://madskjeldgaard.dk/img/apple-touch-icon-144-precomposed.png"
+/>
+<link rel="shortcut icon" href="http://madskjeldgaard.dk/img/favicon.png" />
 
-<link rel="stylesheet" href="/main.min.01710bb66eae7f22dfce673f5d03773a71e52d8e273581b97701e62d8db59cb3.css">
+
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="http://madskjeldgaard.dk/assets/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
 
 
-
-
-
-
-<meta itemprop="name" content="How to install Windows VST Plugins on Arch Linux and Manjaro">
-<meta itemprop="description" content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software."><meta itemprop="datePublished" content="2020-10-02T12:20:40+02:00" />
-<meta itemprop="dateModified" content="2020-10-02T12:20:40+02:00" />
-<meta itemprop="wordCount" content="1219"><meta itemprop="image" content="http://madskjeldgaard.dk/img/small/linvstprefs.png">
-<meta itemprop="keywords" content="arch,vst,windows,manjaro,wine," />
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="http://madskjeldgaard.dk/img/small/linvstprefs.png"/>
 
-<meta name="twitter:title" content="How to install Windows VST Plugins on Arch Linux and Manjaro"/>
-<meta name="twitter:description" content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software."/>
+<meta name="twitter:title" content="How to install Windows VST Plugins on Arch Linux"/>
+<meta name="twitter:description" content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the linvst VST plugin bridging software."/>
 
 
 
-    <meta property="og:title" content="How to install Windows VST Plugins on Arch Linux and Manjaro" />
-<meta property="og:description" content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the yabridge or linvst VST plugin bridging software." />
+<meta property="og:title" content="How to install Windows VST Plugins on Arch Linux" />
+<meta property="og:description" content="One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the wine Windows compatibility layer and the linvst VST plugin bridging software." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://madskjeldgaard.dk/posts/vst-manager/" /><meta property="og:image" content="http://madskjeldgaard.dk/img/small/linvstprefs.png" /><meta property="article:section" content="posts" />
 <meta property="article:published_time" content="2020-10-02T12:20:40+02:00" />
@@ -58,82 +66,154 @@
 
 
 
-    <meta property="article:published_time" content="2020-10-02 12:20:40 &#43;0200 CEST" />
-
-
-
-
-
-
-
-
-    </head>
-
-    <body class="">
-        <div class="container">
-            <header class="header">
-    <span class="header__inner">
-        <a href="/" style="text-decoration: none;">
-    <div class="logo">
-        
-            <span class="logo__mark">></span>
-            <span class="logo__text">madskjeldgaard</span>
-            <span class="logo__cursor" style=
-                  "
-                   
-                   ">
-            </span>
-        
-    </div>
-</a>
-
-
-        <span class="header__right">
-            
-                <nav class="menu">
-    <ul class="menu__inner"><li><a href="http://madskjeldgaard.dk/pages/about">about</a></li><li><a href="http://madskjeldgaard.dk/pages/contact">contact</a></li><li><a href="http://madskjeldgaard.dk/posts">posts</a></li><li><a href="http://madskjeldgaard.dk/pages/software">software</a></li><li><a href="http://madskjeldgaard.dk/pages/work">sound</a></li>
-    </ul>
-</nav>
-
-                <span class="menu-trigger">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                        <path d="M0 0h24v24H0z" fill="none"/>
-                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
-                    </svg>
-                </span>
-            
-
-            <span class="theme-toggle unselectable"><svg class="theme-toggler" width="24" height="24" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <path d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
-  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
-  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"/>
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
 </svg>
 </span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/pages/about">about</a></li>
+        
+      
+        
+          <li><a href="/pages/contact">contact</a></li>
+        
+      
+        
+          <li><a href="/posts">posts</a></li>
+        
+      
+        
+          <li><a href="/pages/software">software</a></li>
+        
+      
+        
+          <li><a href="/pages/work">sound</a></li>
+        
+      
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/pages/about">about</a></li>
+      
+    
+      
+        <li><a href="/pages/contact">contact</a></li>
+      
+    
+      
+        <li><a href="/posts">posts</a></li>
+      
+    
+      
+        <li><a href="/pages/software">software</a></li>
+      
+    
+      
+        <li><a href="/pages/work">sound</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
         </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
     </span>
+  </span>
 </header>
 
 
-            <div class="content">
-                
-    <main class="post">
+      <div class="content">
+        
+  
+  
 
-        <div class="post-info">
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>6 minutes
+  <div class="post">
+    <h1 class="post-title">How to install Windows VST Plugins on Arch Linux</h1>
+    <div class="post-meta">
+      
+        <span class="post-date">
+          2020-10-02
+        </span>
 
-            
+        
+          
+        
+      
 
-            </p>
-        </div>
+      
 
-        <article>
-            <h1 class="post-title">
-                <a href="http://madskjeldgaard.dk/posts/vst-manager/">How to install Windows VST Plugins on Arch Linux and Manjaro</a>
-            </h1>
-                <hr />
-                <aside id="toc">
-                <div class="toc-title">Table of Contents</div>
-                    <nav id="TableOfContents">
+
+      
+    </div>
+
+    
+      <span class="post-tags">
+        
+          <a href="http://madskjeldgaard.dk/tags/arch/">#arch</a>&nbsp;
+        
+          <a href="http://madskjeldgaard.dk/tags/vst/">#vst</a>&nbsp;
+        
+          <a href="http://madskjeldgaard.dk/tags/windows/">#windows</a>&nbsp;
+        
+      </span>
+    
+
+    
+
+    <div class="post-content">
+      
+        
+        <h2>Table of Contents</h2>
+        <aside class="table-of-contents"><nav id="TableOfContents">
   <ul>
     <li><a href="#preparations">Preparations</a>
       <ul>
@@ -141,15 +221,13 @@
         <li><a href="#wine">wine</a></li>
       </ul>
     </li>
-    <li><a href="#method-1-yabridge">Method 1: yabridge</a>
-      <ul>
-        <li><a href="#tip-migrating-an-installation-with-yabridge">Tip: Migrating an installation with yabridge</a></li>
-      </ul>
-    </li>
-    <li><a href="#method-2-linvst">Method 2: Linvst</a>
+    <li><a href="#setting-up-linux-vst-compatibility">Setting up linux VST compatibility</a>
       <ul>
         <li><a href="#setting-linvstmanager-preferences">Setting linvstmanager preferences</a></li>
-        <li><a href="#part-0-installing-a-plugin">Part 0: Installing a plugin</a></li>
+      </ul>
+    </li>
+    <li><a href="#installing-a-plugin">Installing a plugin</a>
+      <ul>
         <li><a href="#part-1-install-the-plugin-to-your-wine-drive">Part 1: Install the plugin to your wine drive</a></li>
         <li><a href="#part-2-find-and-enable-the-plugins-in-vstmanager">Part 2: Find and enable the plugins in vstmanager</a></li>
         <li><a href="#part-3-enable-the-plugin">Part 3: Enable the plugin</a></li>
@@ -158,22 +236,23 @@
     </li>
     <li><a href="#scan-for-the-plugins-in-your-daw">Scan for the plugins in your DAW</a></li>
     <li><a href="#an-alternative-approach-using-carla">An alternative approach: Using Carla</a></li>
-    <li><a href="#troubleshooting">Troubleshooting</a></li>
   </ul>
-</nav>
-                </aside>
-                <hr />
-
-            
-
-            <div class="post-content">
-                <p>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the <code>wine</code> Windows compatibility layer and the <code>yabridge</code> or <code>linvst</code> VST plugin bridging software.</p>
-<p>The workflow for getting set up though was quite difficult before I switched to Arch based distributions than on other Linux distributions (thanks to the Arch User Repository (AUR)), and even though it is significantly easier on Arch and Manjaro, it still has some quirks in the setup process which I have tried to collect here as a set of instructions and notes for getting started.</p>
+</nav></aside>
+        
+      
+      <p>One of the big hurdles for me when switching from a Mac based audio setup was the potential loss of access to my expensive collection of VST plugins (because a lot of developers still ignore the Linux platform as if it was 1995 even though it has never been easier to make and release cross platform plugins). Little did I know that almost all of them would run just fine on Linux using the <code>wine</code> Windows compatibility layer and the <code>linvst</code> VST plugin bridging software.</p>
+<p>The workflow for getting set up though was quite difficult before I switched to Arch based distributions than on other Linux distributions (thanks to the Arch User Repository (AUR)), and even though it is significantly easier on Arch, it still has some quirks in the setup process which I have tried to collect here as a set of instructions and notes for getting started.</p>
 <p><strong>Disclaimer</strong>
 There may be licensing problems in doing this operation on some plugins. I talked to a commercial plugin developer about using their plugins on Linux and they said that it sounded interesting (because they developed everything on Linux anyway (but did not make releases for Linux)) but that I was probably in conflict with their licensing when doing so. I don&rsquo;t take responsibility for anyone breaking any laws here.</p>
-<h2 id="preparations">Preparations</h2>
-<h3 id="enable-32-bit-repositories">Enable 32 bit repositories</h3>
-<p>To install <code>wine</code> (and enable 32 bit support) you need to do enable the <code>multilib</code> repositories in your pacman configuration. If you are running Manjaro, this is already done for you so you can skip this section.</p>
+<h2 id="preparations">
+  Preparations
+  <a href="#preparations" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<h3 id="enable-32-bit-repositories">
+  Enable 32 bit repositories
+  <a href="#enable-32-bit-repositories" class="h-anchor" aria-hidden="true">#</a>
+</h3>
+<p>To install <code>wine</code> (and enable 32 bit support) you need to do enable the <code>multilib</code> repositories in your pacman configuration.</p>
 <p>By doing this, you get access to a range of 32 bit software that can be run on a 64 bit machine.</p>
 <p>Open up <code>/etc/pacman.conf</code> in your favourite text editor. E.g. in vim:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo vim /etc/pacman.conf
@@ -183,37 +262,48 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 </code></pre></div><p>And then upgrade your system:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -Syu
 </code></pre></div><p>See <a href="https://wiki.archlinux.org/index.php/Official_repositories#multilib">the arch wiki for more information</a>.</p>
-<h3 id="wine">wine</h3>
+<h3 id="wine">
+  wine
+  <a href="#wine" class="h-anchor" aria-hidden="true">#</a>
+</h3>
 <p>To be able to run Windows software on Linux, you need to install <code>wine</code>. Wine is a huge subject in itself (and I definitely do not master it at all), but it basically runs as a compatibility layer between windows software and your linux system.</p>
 <p>If you followed the previous step by enabling multilib, you should now be able to install wine like this:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo pacman -S wine
-</code></pre></div><h2 id="method-1-yabridge">Method 1: yabridge</h2>
-<p>Using <a href="https://github.com/robbert-vdh/yabridge">yabridge</a> is my favourite way of using vst plugins on Linux these days. It is the simplest and easiest method and includes a lot of really good documentation. In fact, the documentation is so good that I won&rsquo;t go into too much detail here about it - simply check out the Github page for it or visit <a href="https://discord.com/invite/pyNeweqadf">the discord chat server associated with it</a>.</p>
-<p>Installing on Arch and Manjaro is easy:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S yabridge
-</code></pre></div><p>This gives you access to the command line tool <code>yabridgectl</code> which is the main interface for you. After installing a vst plugin using wine, all you have to do is make sure yabridge knows the path to the folder containing the plugin and then simply run <code>yabridgectl sync</code> and that&rsquo;s it.</p>
-<h3 id="tip-migrating-an-installation-with-yabridge">Tip: Migrating an installation with yabridge</h3>
-<p>I recently had to migrate my wine installation to another computer, since my primary computer died on me. This was surprisingly easy - I simply moved the <code>$HOME/.wine</code> folder to my new computer&rsquo;s home directory, installed wine and wine-mono and then ran <code>yabridgectl sync</code> and I was up and running.</p>
-<h2 id="method-2-linvst">Method 2: Linvst</h2>
-<p>This method involves using <a href="https://github.com/osxmidi/LinVst">linvst</a> to enable vst support. It is used to create bridges between the windows <code>.dll</code> files that VST plugins are delivered in and creates a Linux equivalent <code>.so</code> file. Managing this process can be complicated and a bit of a pain, but thankfully there is a program to do it all for us: <a href="linvstmanager">https://github.com/Goli4thus/linvstmanager</a>.</p>
+</code></pre></div><h2 id="setting-up-linux-vst-compatibility">
+  Setting up linux VST compatibility
+  <a href="#setting-up-linux-vst-compatibility" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>The main software used to enable windows VST plugins is <a href="https://github.com/osxmidi/LinVst">linvst</a>. It is used to create bridges between the windows <code>.dll</code> files that VST plugins are delivered in and creates a Linux equivalent <code>.so</code> file. Managing this process can be complicated and a bit of a pain, but thankfully there is a program to do it all for us: <a href="linvstmanager">https://github.com/Goli4thus/linvstmanager</a>.</p>
 <p>Linvstmanager is the main program we use to keep track of vst plugins, where they are and if they are supported on our system.</p>
 <p>There are packages for linvstmanager and all of the linvst bridges on <a href="aur.archlinux.org">the AUR</a> that can be installed using <code>yay</code> or another aur helper system:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">yay -S linvstmanager-git linvst-bin linvst3-bin linvst-x-bin linvst3-x-bin
-</code></pre></div><h3 id="setting-linvstmanager-preferences">Setting linvstmanager preferences</h3>
+</code></pre></div><h3 id="setting-linvstmanager-preferences">
+  Setting linvstmanager preferences
+  <a href="#setting-linvstmanager-preferences" class="h-anchor" aria-hidden="true">#</a>
+</h3>
 <p><img src="/img/small/linvstprefs.png" alt="linvstmanager preferences"></p>
 <p>Before we are able to use linvstmanager, we need to tell it where the vst bridges we installed along with it are in our system.</p>
 <p>If you used the packages from the AUR, they are probably in <code>/usr/share/LinVst</code>. Select and find them in your preferences.</p>
 <p>Next up you need to set a folder that will contain your plugins. This is called the <strong>Link folder</strong>. This is the folder your DAW needs to read from when scanning for VST Plugins. I have put mine in a hidden folder called <code>.vst-win</code> in my user&rsquo;s home directory but you can put it anywhere.</p>
-<h3 id="part-0-installing-a-plugin">Part 0: Installing a plugin</h3>
+<h2 id="installing-a-plugin">
+  Installing a plugin
+  <a href="#installing-a-plugin" class="h-anchor" aria-hidden="true">#</a>
+</h2>
 <p>This is the workflow I use for downloading and installing a plugin. See the <a href="https://github.com/Goli4thus/linvstmanager">linvstmanager documentation</a> for a more thorough explanation.</p>
-<h3 id="part-1-install-the-plugin-to-your-wine-drive">Part 1: Install the plugin to your wine drive</h3>
+<h3 id="part-1-install-the-plugin-to-your-wine-drive">
+  Part 1: Install the plugin to your wine drive
+  <a href="#part-1-install-the-plugin-to-your-wine-drive" class="h-anchor" aria-hidden="true">#</a>
+</h3>
 <ol>
 <li>Go to the developer&rsquo;s website and download the <code>.exe</code> file for installing the plugin on a Windows system.</li>
 <li>Open up a terminal and execute <code>wine path/to/plugin.exe</code></li>
 <li>Follow the install instructions of the vst plugins you are installing. Note where you are putting the <code>.dll</code> and/or <code>.vst3</code> files at the end of the installation.</li>
 </ol>
 <p>This will leave the plugin files in your wine installation&rsquo;s &ldquo;C&rdquo; drive which is probably in your home folder: <code>~/.wine/drive_c</code></p>
-<h3 id="part-2-find-and-enable-the-plugins-in-vstmanager">Part 2: Find and enable the plugins in vstmanager</h3>
+<h3 id="part-2-find-and-enable-the-plugins-in-vstmanager">
+  Part 2: Find and enable the plugins in vstmanager
+  <a href="#part-2-find-and-enable-the-plugins-in-vstmanager" class="h-anchor" aria-hidden="true">#</a>
+</h3>
 <p><img src="/img/small/linvstscan.png" alt="scan process"></p>
 <ol>
 <li>Open <code>linvstmanager</code> to create a bridge to your new plugin.</li>
@@ -222,105 +312,121 @@ Include <span style="color:#f92672">=</span> /etc/pacman.d/mirrorlist
 <li>Once the scan is finished you should get a list of files. Find the ones you want to use and press <code>s</code> to select.</li>
 <li>Click <code>Add</code></li>
 </ol>
-<h3 id="part-3-enable-the-plugin">Part 3: Enable the plugin</h3>
+<h3 id="part-3-enable-the-plugin">
+  Part 3: Enable the plugin
+  <a href="#part-3-enable-the-plugin" class="h-anchor" aria-hidden="true">#</a>
+</h3>
 <p>In the main window of linvstmanager you should now see your plugin listed with a <code>no so</code> warning next to it.</p>
 <ol>
 <li>Update by pressing <code>u</code> or going to the menu <code>Edit-&gt;Update</code></li>
 <li>Right click on the plugin you just added and click enable. It should now turn green.</li>
 </ol>
-<h3 id="part-4-save-settings">Part 4: Save settings</h3>
+<h3 id="part-4-save-settings">
+  Part 4: Save settings
+  <a href="#part-4-save-settings" class="h-anchor" aria-hidden="true">#</a>
+</h3>
 <p>Before finishing off, save the settings.</p>
 <p>Go to menu <code>File-&gt;Save</code> or press <code>Ctrl+s</code></p>
-<h2 id="scan-for-the-plugins-in-your-daw">Scan for the plugins in your DAW</h2>
+<h2 id="scan-for-the-plugins-in-your-daw">
+  Scan for the plugins in your DAW
+  <a href="#scan-for-the-plugins-in-your-daw" class="h-anchor" aria-hidden="true">#</a>
+</h2>
 <p><img src="/img/small/linvst-reaper.png" alt="linvst settings in Reaper"></p>
 <p>You should now be able to use your newly bridged Windows VST plugins in your DAW. Point it to the link folder you set in your linvstmanager preferences and scan for the plugins.</p>
 <p>In <a href="http://reaper.fm/">Reaper</a> (which, by the way, has an amazing Linux native installation) for example, you can add the Link folder as a path in your Preferences.
 Find the <code>VST</code> tab and add the <strong>Link folder</strong> path you set in linvstmanager.
 The syntax for this consists of full path names with semicolons (<code>;</code>) in between: <code>/a/full/path;/another/full/path</code></p>
 <p>After adding the path, click <code>re-scan</code>.</p>
-<h2 id="an-alternative-approach-using-carla">An alternative approach: Using Carla</h2>
+<h2 id="an-alternative-approach-using-carla">
+  An alternative approach: Using Carla
+  <a href="#an-alternative-approach-using-carla" class="h-anchor" aria-hidden="true">#</a>
+</h2>
 <p>An alternative approach is to use <a href="https://kx.studio/Applications:Carla">carla</a>, which has been <a href="http://blog.kindohm.com/posts/2020/2020-06-06-vsts-on-linux/">outlined nicely by kindohm / Mike Hodnick in this post</a>.</p>
-<h2 id="troubleshooting">Troubleshooting</h2>
-<ul>
-<li>If you get errors about a kernel32 dll missing, the solution for me was to run <code>winetricks</code> and run <code>create prefix</code> and install wine mono.</li>
-</ul>
 
-            </div>
-        </article>
-
-        <hr />
-
-        <div class="post-info">
-                <p>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg><span class="tag"><a href="http://madskjeldgaard.dk/tags/arch">arch</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/vst">vst</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/windows">windows</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/manjaro">manjaro</a></span><span class="tag"><a href="http://madskjeldgaard.dk/tags/wine">wine</a></span>
-                </p>
-
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>1219 Words</p>
-
-            <p><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>2020-10-02 12:20 &#43;0200</p>
-        </div>
-
-        
-            <div class="pagination">
-                <div class="pagination__title">
-                    <span class="pagination__title-h">Read other posts</span>
-                    <hr />
-                </div>
-
-                <div class="pagination__buttons">
-                    
-                        <span class="button previous">
-                            <a href="http://madskjeldgaard.dk/posts/portable-arch-computermusic-distro-usb/">
-                                <span class="button__icon">←</span>
-                                <span class="button__text">A portable Arch Linux Computer Music system on a USB drive</span>
-                            </a>
-                        </span>
-                    
-
-                    
-                        <span class="button next">
-                            <a href="http://madskjeldgaard.dk/posts/aur-package-workflow/">
-                                <span class="button__text">Notes on creating packages for the Arch User Repository (AUR)</span>
-                                <span class="button__icon">→</span>
-                            </a>
-                        </span>
-                    
-                </div>
-            </div>
-        
-    </main>
-
-            </div>
-
-            
-                <footer class="footer">
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>&copy; 2021</span>
-            
-            <span></span>
-            <span> <a href="http://madskjeldgaard.dk/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
-        </div>
     </div>
-    <div class="footer__inner">
-        <div class="footer__content">
-            <span>Powered by <a href="http://gohugo.io">Hugo</a></span>
-            <span>Made with &#10084; by <a href="https://github.com/rhazdon">Djordje Atlialp</a></span>
+    
+      
+        <div class="pagination">
+          <div class="pagination__title">
+            <span class="pagination__title-h"
+              >Read other posts</span
+            >
+            <hr />
+          </div>
+          <div class="pagination__buttons">
+            
+              <span class="button previous">
+                <a href="http://madskjeldgaard.dk/posts/portable-arch-computermusic-distro-usb/">
+                  <span class="button__icon">←</span>
+                  <span class="button__text">A portable Arch Linux Computer Music system on a USB drive</span>
+                </a>
+              </span>
+            
+            
+              <span class="button next">
+                <a href="http://madskjeldgaard.dk/posts/aur-package-workflow/">
+                  <span class="button__text">Notes on creating packages for the Arch User Repository (AUR)</span>
+                  <span class="button__icon">→</span>
+                </a>
+              </span>
+            
+          </div>
         </div>
-    </div>
+      
+    
+
+    
+      
+        
+
+      
+    
+  </div>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >madskjeldgaard</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+      <div class="copyright">
+        <span
+          >© 2022 Powered by
+          <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a></span
+        >
+        <span
+          >Theme created by
+          <a href="https://twitter.com/panr" target="_blank" rel="noopener">panr</a></span
+        >
+      </div>
+    
+  </div>
 </footer>
 
-            
-        </div>
-
-        
+<script src="http://madskjeldgaard.dk/assets/main.js"></script>
+<script src="http://madskjeldgaard.dk/assets/prism.js"></script>
 
 
+      
+    </div>
 
-
-<script type="text/javascript" src="/bundle.min.59ecdc8ddd50b30e6dd7ad4a5372c3fd24a26db671cc1575443b150ceb9d4bc8e73618fb298596b5c336cf5d8c2db90bd7e72a648479e97884e5398722f962fa.js" integrity="sha512-Wezcjd1Qsw5t161KU3LD/SSibbZxzBV1RDsVDOudS8jnNhj7KYWWtcM2z12MLbkL1&#43;cqZIR56XiE5TmHIvli&#43;g=="></script>
-
-
-
-    </body>
+    
+  </body>
 </html>
